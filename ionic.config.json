@@ -1,0 +1,7 @@
+{
+  "name": "app_fitgymV2",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react-vite"
+}

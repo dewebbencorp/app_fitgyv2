@@ -1,0 +1,14 @@
+.iontab{
+  
+    border-radius: 10px;
+}
+.imgHome{
+    width:35%;
+}
+ion-tab-button{
+    color:white;
+}
+.tab-selected{
+    color:#47402e ;
+  
+}

@@ -1,0 +1,46 @@
+.misPuntos{
+    display:grid;
+    grid-template-columns: auto 12% auto;
+    gap:1px;
+}
+
+.itemPuntos1{
+    grid-column: 1 /span 3;
+    grid-row: 1;
+
+}
+.itemPuntos1 h4{
+    font-size: 2rem;
+    letter-spacing: 4px;
+    margin-left: 2rem;
+}
+ .itemPuntos2{
+    grid-column:2 ;
+    grid-row:2;   
+    
+    
+  
+
+}
+
+ .itemPuntos3{
+    grid-column: 3;
+    grid-row:2;
+ }
+
+ .itemPuntos3 p{
+    font-size: 12px;
+    margin-left: 2rem;
+    margin-top: -0.2rem;
+ 
+ }
+.itemPuntos4{
+    grid-column: 3;
+    grid-row: 3;
+}
+.itemPuntos4 p{
+    font-size: 2.5rem;
+    margin-top: -2.4rem;
+    margin-left: 2rem;
+
+}

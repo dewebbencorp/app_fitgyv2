@@ -1,0 +1,28 @@
+@import url('https://fonts.cdnfonts.com/css/kenyan-coffee');
+@import url('https://fonts.cdnfonts.com/css/poppins');
+:root{
+    --kenyan: 'Kenyan Coffee', sans-serif;
+    --poppins:'Poppins', sans-serif;
+    --naranja1:#ff4804
+}
+body{
+ 
+    --ion-background-color: #1c1c1c;
+    --ion-text-color: #ffffff;
+    --ion-tab-bar-background: #ff4804;
+}
+.kenyan{
+    font-family: var(--kenyan);
+  }
+  .poppins{
+    font-family: var(--poppins);
+  }
+
+  ion-button{
+    --background: var(--naranja1);
+    font-weight: bold;
+  }
+  ion-tabs{
+    border-radius: 100px;
+    color:white;
+  }

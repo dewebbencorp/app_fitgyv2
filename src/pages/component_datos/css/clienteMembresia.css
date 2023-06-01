@@ -1,0 +1,21 @@
+.clienteMembresia{
+    display:grid;
+    gap:.01vh;
+    margin-left: 2rem;
+}
+.itemCM1{
+    grid-column: 1;
+    grid-row: 1;
+}
+.itemCM1 h4{
+    font-size: 2rem;
+    letter-spacing: 4px;
+}
+.itemCM2{
+    grid-column: 1;
+    grid-row:2;
+}
+.itemCM2 p{
+   position: relative;
+   bottom:1.8rem;
+}
