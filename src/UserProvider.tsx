@@ -37,8 +37,11 @@ const AuthContext = createContext<AuthContextProps>({
     redireccionar:false,
     salir:false
   });
+  interface Props {
+    children: React.ReactNode;
+  }
 
-export const AuthProvider: React.FC =( {children} ) => {
+export const AuthProvider: React.FC <Props>=( {children} ) => {
     const [user,setUser] = useState<User | null>(null);
     const [alerta,setAlerta] = useState('');
     const [redireccionar,setRedireecionar] = useState(false);
