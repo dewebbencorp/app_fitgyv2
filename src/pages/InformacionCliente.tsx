@@ -15,7 +15,8 @@ const InformacionCliente  = ()=>{
           <Puntos/>
           <AgendarCita/>
           <ClienteMembresia/>
-            <CerrarSesion/>
+            <CerrarSesion />
+           
         </IonContent>
 
 

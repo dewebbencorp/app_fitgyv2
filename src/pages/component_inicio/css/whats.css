@@ -1,7 +1,8 @@
 .whatsContainer{
 
     position:relative;
-    top: 14rem;
+    top: 10rem;
+    
     min-height: 2vh;
 }
 
@@ -12,14 +13,14 @@
     position:fixed;
     left:21.5rem;
     width:12%;
-    top:49rem;
+    top:44rem;
 }
 
 .whats img{
     width:8%;
    position: fixed;
    left:22rem;
-   top:49.5rem;
+   top:44.5rem;
 
    
    

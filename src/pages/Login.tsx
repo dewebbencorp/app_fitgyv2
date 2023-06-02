@@ -65,11 +65,6 @@ const Login = () => {
 
   };
 
-  const assignaPass=(ev:Event)=>{
-    const pass =(ev.target as HTMLInputElement).value;
-    setPassword(pass);
-  }
-
   const markTouched = () => {
     setIsTouched(true);
   };
@@ -151,7 +146,7 @@ const Login = () => {
             type="password"
             id="password"
             value={password}
-            onIonChange={(e) => { assignaPass }}
+            onIonInput={(e:any) => { setPassword(e.target.value) }}
 
           />
           <IonButton expand="full" className="btn_login" onClick={iniciarSesion} >Iniciar sesión</IonButton>
