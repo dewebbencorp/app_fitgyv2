@@ -1,9 +1,9 @@
-import { IonButton, IonContent, IonInput, IonModal,IonAlert } from "@ionic/react";
+import { IonButton, IonContent, IonInput, IonModal,IonAlert, IonProgressBar } from "@ionic/react";
 import Barcode from 'react-barcode';
 import { useState, useEffect,useRef } from "react";
 import { SocialSharing } from '@ionic-native/social-sharing';
 import { useAuth } from './../UserProvider';
-
+import html2canvas from 'html2canvas';
 import cupon from './img/cupon.png'
 import compartir from './img/compartir.png';
 import './css/cupon.css';
@@ -14,22 +14,114 @@ const Cupon = () => {
     const { user } = useAuth();
     const [codigo, setCodigo] = useState('');
     const [beneficiario, setBeneficiario] = useState('');
+    const [aceptaTerminos,setAceptaTerminos] = useState<boolean>();
     const [showAlert, setShowAlert] = useState(false);
+    const [showAlertCondiciones, setShowAlertCondiciones] = useState(false);
+    const [showProgress, setShowProgress] = useState(false);
     const [showModal, setShowModal] = useState<boolean>(false);
     const [fechaFormateada, setFechaFormateada] = useState('');
-
-
+    const [anuncio, setAnuncio] = useState('');
+    const [progressTerminos, setProgressTerminos] = useState(false);
+    const barcode = useRef(null);
  
-    
-
     useEffect(() => {
         const fechaActual = new Date();
         setFechaFormateada(formatFecha(fechaActual));
+        console.log("alerta condiciones",showAlertCondiciones);
+        let send = ({
+            "claveSocio":user?.Clav_Asociado
+        })
+        let url = "https://187.188.16.29:4431/webservice-app2/controllers/getAceptaTerminos.php";
+            fetch(url, {
+                method: 'POST', // or 'PUT'
+                 // data can be `string` or {object}!
+                 body:JSON.stringify(send),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            }).then(res => res.json())
+                .then(data => {
+                  
+                    setAceptaTerminos(data.aceptoTerminos);
+                 
+                    if(aceptaTerminos == false){
+                       setAnuncio('Debes aceptar los términos y condiciones');
+                        setShowAlertCondiciones(true);
+                    }
+                    else{
+                        setShowAlertCondiciones(false);
+                    }
+                    // Manejar la respuesta del servidor
+                  
+                  
+              
 
-        console.log(fechaFormateada);
+                })
+                .catch(error => console.error('Error:', error))
+                .then(response => console.log('Success:', response));
 
         
-    });
+    },[fechaFormateada,aceptaTerminos]);
+
+    
+
+   const aceptoTerminos = () =>{
+    setAnuncio('Aceptando terminos...');
+    setProgressTerminos(true);
+    let send = ({
+        "claveSocio":user?.Clav_Asociado
+    })
+    let url = "https://187.188.16.29:4431/webservice-app2/controllers/aceptaTerminos.php";
+    fetch(url, {
+        method: 'POST', // or 'PUT'
+         // data can be `string` or {object}!
+         body:JSON.stringify(send),
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    }).then(res => res.json())
+        .then(data => {
+            setProgressTerminos(false);
+            console.log(data);
+            if(data.valido){
+                setAceptaTerminos(true);
+            }
+          
+      
+
+        })
+        .catch(error => console.error('Error:', error))
+        .then(response => console.log('Success:', response));
+   }
+    const share = async () => {
+        setShowProgress(true);
+       if (barcode.current){
+
+           html2canvas(barcode.current).then(function(canvas){
+            
+            const img = document.createElement('img');
+            img.src = canvas.toDataURL('image/png');
+            
+            try {
+              
+                SocialSharing.share('Te envio este regalo para que disfrutes :)','Te envio este regalo para que disfrutes :)',img.src);
+                setShowProgress(false);
+               console.log('Compartido con éxito');
+             } catch (error) {
+               console.error('Error al compartir:', error);
+             }
+           });
+       }
+       
+       
+      
+      
+   
+    
+ 
+     
+      };
+    
 
 
     const crearCodigoBarras = () => {
@@ -68,38 +160,52 @@ const Cupon = () => {
 
 
     return (
+
+        
         <IonContent>
-            <div id="barraNaranja">
+                {aceptaTerminos?
+                 <div className="generaCupon">
 
-            </div>
+                    <div id="barraNaranja">
 
-            <div id="contenedorCupon">
-
-            </div>
-            <div id="tituloCupon">
-                <h5 className="poppins" id="t_fit">The Fit Bar</h5>
-                <span className="poppins" id="t_cupon">CUPÓN</span>
-
-            </div>
-         
-            <div id="nombreBeneficiario">
-                <IonInput
-                    placeholder="Nombre de beneficiario"
-                    value={beneficiario}
-
-
-                    onIonInput={(e: any) => { setBeneficiario(e.target.value) }}
-
-                ></IonInput>
-
-            </div>
-
-            <div id="btn_generar">
-
-                <IonButton onClick={crearCodigoBarras} ><img src={cupon} width="10%" /> &nbsp; Generar</IonButton>
-            </div>
+                    </div>
+        
+                    <div id="contenedorCupon">
+        
+                    </div>
+                    <div id="tituloCupon">
+                        <h5 className="poppins" id="t_fit">The Fit Bar</h5>
+                        <span className="poppins" id="t_cupon">CUPÓN</span>
+        
+                    </div>
+                 
+                    <div id="nombreBeneficiario">
+                        <IonInput
+                            placeholder="Nombre de beneficiario"
+                            value={beneficiario}
+        
+        
+                            onIonInput={(e: any) => { setBeneficiario(e.target.value) }}
+        
+                        ></IonInput>
+        
+                    </div>
+        
+                    <div id="btn_generar">
+        
+                        <IonButton onClick={crearCodigoBarras} ><img src={cupon} width="10%" /> &nbsp; Generar</IonButton>
+                    </div>
+                 </div>
+                
+                
+                :<div><h2 className="poppins" id="anuncio">{anuncio} </h2></div>}
+                  {progressTerminos ?
+                          <IonProgressBar className="progress" type="indeterminate" color="light"></IonProgressBar>
+                    :<div></div>}
 
             <IonModal isOpen={showModal}>
+                
+            <div ref = {barcode} id="barcode">
                 <div id="barraNaranja">
                     <h3 className="poppins">Cupón exitoso</h3>
                     <p className="poppins">{fechaFormateada}</p>
@@ -107,12 +213,15 @@ const Cupon = () => {
                 </div>
                 <div id="tarjetaRegalo">
 
-                    <div   id= "barcode" >
+                    <div>
                         <Barcode   value={codigo}  />
                    
 
                     </div>
                         
+                </div>
+                
+                </div>
                     <div id="cerrar">
 
                         <div id="compartir">
@@ -120,8 +229,12 @@ const Cupon = () => {
                             <p className="poppins">Compartir</p>
                         </div>
                         <IonButton onClick={() => setShowModal(false)}>Cerrar</IonButton>
+
                     </div>
-                </div>
+                    {showProgress ?
+                          <IonProgressBar className="progress" type="indeterminate" color="light"></IonProgressBar>
+                    :<div></div>}
+                   
             </IonModal>
 
 
@@ -129,17 +242,38 @@ const Cupon = () => {
 
 
             <IonAlert
-        isOpen={showAlert}
-        onDidDismiss={() => setShowAlert(false)}
-        cssClass="my-custom-class"
-        header={'Cuidado'}
-      
-        message={'Debe ingresar un beneficiario.'}
-        buttons={[{
-            text:"Ok",
-           
-        }]}
-      />
+            isOpen={showAlert}
+            onDidDismiss={() => setShowAlert(false)}
+            cssClass="my-custom-class"
+            header={'Cuidado'}
+        
+            message={'Debe ingresar un beneficiario.'}
+            buttons={[{
+                text:"Ok",
+            }]}
+        />
+           <IonAlert
+            isOpen={showAlertCondiciones}
+            onDidDismiss={() => setShowAlert(false)}
+            cssClass="my-custom-class"
+            header={'Términos y condiciones'}
+        
+            message={'¿Aceptas los terminos y condiciones?'}
+            buttons={[{
+                text:"Si",
+                role:"confirm",
+                handler:() =>{aceptoTerminos()}
+            
+            },
+            {
+                text:"No",
+                role:"cancel"
+            }
+        
+        ]}
+        />
+
+
         </IonContent>
 
     );
@@ -196,39 +330,5 @@ const formatFecha = (fecha: Date) => {
     }
     return fechaFormateada;
 }
-const share = async () => {
-    const barcode = document.getElementById("barcode");;
-    let canvas = document.createElement('canvas');
-    const context = canvas.getContext('2d');
-    
 
-    const width = barcode.offsetWidth;
-    const height = barcode.offsetHeight;
-  
-    // Establece el tamaño del canvas para que coincida con el div
-    canvas.width = width;
-    canvas.height = height;
-
-    // Copia el contenido del div al canvas
-    const image = new Image();
-    const svg = new Blob([barcode.innerHTML], { type: 'image/svg+xml' });
-    const url = URL.createObjectURL(svg);
-  image.src = url;
-
-    image.onload = () => {
-    // Copiar el contenido de la imagen al canvas
-        context.clearRect(0, 0, width, height);
-        context.drawImage(image, 0, 0, width, height);
-        const imageData = canvas.toDataURL('image/png');
-
-        try {
-             SocialSharing.share('Te envio este regal para que disfrutes :)','Te envio este regal para que disfrutes :)',imageData);
-      
-            console.log('Compartido con éxito');
-          } catch (error) {
-            console.error('Error al compartir:', error);
-          }
-    }
- 
-  };
 export default Cupon;
