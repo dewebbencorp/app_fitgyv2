@@ -1,5 +1,5 @@
 import { IonReactRouter } from "@ionic/react-router";
-import {IonRouterOutlet, IonTabBar, IonTabButton, IonTabs,IonLabel} from "@ionic/react";
+import {IonRouterOutlet, IonTabBar, IonTabButton, IonTabs,IonLabel, IonToolbar} from "@ionic/react";
 import { Redirect,Route } from "react-router";
 import Inicio from "./Inicio";
 import InformacionCliente from "./InformacionCliente";
@@ -17,6 +17,7 @@ import wifi from './img/wifi.png';
 import { useAuth } from "../UserProvider";
 import { useEffect, useState } from "react";
 import Login from './Login'
+import ListaBarcode from "./component_barcode/ListaBarcode";
 
 
 const Home = ()=>{
@@ -39,7 +40,7 @@ console.log(currentURL);
                 <Route exact = {true} path="/login">
                     <Login/>
                 </Route>
-
+                <Route path = "/home/cupon/lista" render = {() =><ListaBarcode/>} exact = {true}/>
             </IonRouterOutlet>
            
             <IonTabs>
@@ -54,6 +55,10 @@ console.log(currentURL);
 
 
                 </IonRouterOutlet>
+
+                <IonToolbar>
+                    fsdefsd
+                </IonToolbar>
                 <IonTabBar  className="iontab" slot="bottom">
                     <IonTabButton tab="inicio" href="/home/inicio">
                         <img className="imgHome" src={home}/>
@@ -93,6 +98,7 @@ console.log(currentURL);
 
 
                 </IonTabBar>
+               
 
 
 

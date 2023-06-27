@@ -1,10 +1,13 @@
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay } from "swiper";
+import {useState} from 'react';
 // Import Swiper styles
 import 'swiper/css';
 import './css/noticias.css'
 const Noticias = () =>{
+
+    const [fotos,setFoto] = useState([]);
 
     return(
         <div className="noticias">

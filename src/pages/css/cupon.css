@@ -32,12 +32,16 @@
     color:var(--naranja1);
 }
 
-#btn_generar{
+#btn_generar,#btn_listar{
 
     text-align: center;
 
     
 }
+#btn_listar{
+    margin-top: 1.5rem;
+}
+
 
 #nombreBeneficiario ion-input{
     --background:white;

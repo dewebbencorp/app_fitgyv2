@@ -6,11 +6,13 @@ import { useAuth } from './../UserProvider';
 import html2canvas from 'html2canvas';
 import cupon from './img/cupon.png'
 import compartir from './img/compartir.png';
+import { useHistory } from 'react-router';
 import './css/cupon.css';
+import ListaBarcode from "./component_barcode/ListaBarcode";
 
 
 const Cupon = () => {
-    
+    const history = useHistory();
     const { user } = useAuth();
     const [codigo, setCodigo] = useState('');
     const [beneficiario, setBeneficiario] = useState('');
@@ -19,6 +21,7 @@ const Cupon = () => {
     const [showAlertCondiciones, setShowAlertCondiciones] = useState(false);
     const [showProgress, setShowProgress] = useState(false);
     const [showModal, setShowModal] = useState<boolean>(false);
+    const [showListaCodigos ,setShowListaCodigos] = useState<boolean>(false); 
     const [fechaFormateada, setFechaFormateada] = useState('');
     const [anuncio, setAnuncio] = useState('');
     const [progressTerminos, setProgressTerminos] = useState(false);
@@ -195,6 +198,10 @@ const Cupon = () => {
         
                         <IonButton onClick={crearCodigoBarras} ><img src={cupon} width="10%" /> &nbsp; Generar</IonButton>
                     </div>
+
+                    <div id="btn_listar">
+                    <IonButton onClick = {() => setShowListaCodigos(true)} > Códigos generados </IonButton>
+                    </div>
                  </div>
                 
                 
@@ -238,7 +245,10 @@ const Cupon = () => {
             </IonModal>
 
 
-
+            <IonModal isOpen={showListaCodigos}>
+                        <ListaBarcode/>
+                        <IonButton onClick={()=>setShowListaCodigos(false)}>Cerrar</IonButton>
+            </IonModal>
 
 
             <IonAlert
