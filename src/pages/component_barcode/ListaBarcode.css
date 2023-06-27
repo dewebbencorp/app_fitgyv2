@@ -1,0 +1,25 @@
+
+
+.tituloBarras{
+    margin-left: 3rem;
+}
+.tabla{
+   margin-left: 3rem;
+    font-weight: 600;
+    font-size: 1.2rem;
+}
+.cabecera{
+   position:fixed; 
+   z-index: 10;
+   background-color: #1c1c1c;
+   width: 100%;
+    
+}
+.lista-codigos ion-list{
+    
+    margin-top:7.5rem;
+}
+.lista-codigos ion-item{
+    
+    --border-color:white;
+}
