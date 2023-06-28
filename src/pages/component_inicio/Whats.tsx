@@ -8,7 +8,7 @@ const Whats = ()=>{
             <div className="fondoWhats">
                 <img src={fw}/>
                 </div>
-            <div className="whats"> <img src={w}/></div>
+            <div className="whats"> <img src={w} onClick={()=>window.location.href="whatsapp://send?phone=9983641651"}/></div>
         </div>
     );
 }

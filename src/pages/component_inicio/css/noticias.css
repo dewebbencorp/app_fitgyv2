@@ -2,14 +2,18 @@
 
 .noticias{
     margin-top: 3rem;
-    margin-left: 2rem;
+
 }
 .noticias h4{
     text-align: left;
     letter-spacing: 4px;
-    font-size: 1.8rem;
+    margin-left: 1.5rem;
+    font-size: 2rem;
 }
-.slide{
-    border:1px solid white;
-    height:15rem;
+.swiper{
+    text-align: center;
+}
+.slide img{
+    width:70%;
+    
 }

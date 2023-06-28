@@ -1,13 +1,43 @@
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay } from "swiper";
-import {useState} from 'react';
+import {useState,useEffect} from 'react';
 // Import Swiper styles
 import 'swiper/css';
 import './css/noticias.css'
 const Noticias = () =>{
 
-    const [fotos,setFoto] = useState([]);
+    const [fotos,setFoto] = useState<{Img:string,texto:string}[]>([]);
+    const urlFoto ="https://187.188.16.29:4431/webservice-app/anuncios/";
+    const url = "https://187.188.16.29:4431/webservice-app2/controllers/getNoticias.php";
+    useEffect(()=>{
+
+        fetch(url, {
+            method: 'GET', // or 'PUT'
+             // data can be `string` or {object}!
+           
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }).then(res => res.json())
+            .then(data => {
+              
+                console.log(data);
+                setFoto(data);
+              
+                
+                // Manejar la respuesta del servidor
+              
+
+          
+
+            })
+            .catch(error => console.error('Error:', error))
+            .then(response => console.log('Success:', response));
+    },[]);
+
+
+
 
     return(
         <div className="noticias">
@@ -15,19 +45,23 @@ const Noticias = () =>{
                  <h4 className='kenyan'><i> NOTICIAS </i></h4>
 
                  <Swiper
+                 className='swiper'
                 spaceBetween={50}
-                slidesPerView={3}
+                slidesPerView={1}
                 autoplay={{
-                    delay: 2500,
+                    delay: 3000,
                     disableOnInteraction: false,
                   }}
                   modules={[Autoplay]}
              
+
             >
-                <SwiperSlide className='slide'>Slide 1</SwiperSlide>
-                <SwiperSlide className='slide'>Slide 2</SwiperSlide>
-                <SwiperSlide className='slide'>Slide 3</SwiperSlide>
-                <SwiperSlide className='slide'>Slide 4</SwiperSlide>
+          
+          {fotos.map((item,index) =>(
+                    <SwiperSlide className='slide' key={index}><img src={urlFoto+item.Img}/></SwiperSlide>
+                ))}
+             
+              
                 
             </Swiper>
           
