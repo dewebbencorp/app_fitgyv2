@@ -20,7 +20,9 @@
   
 }
 .itemInfo1 img{
-  width:40%;
+  width:10rem;
+  height:10rem;
+  border-radius: 70%;
   position:relative;
   left:1rem;
   bottom:5.5rem;

@@ -17,7 +17,8 @@ import wifi from './img/wifi.png';
 import { useAuth } from "../UserProvider";
 import { useEffect, useState } from "react";
 import Login from './Login'
-import ListaBarcode from "./component_barcode/ListaBarcode";
+
+import EditarDatos from "./component_datos/EditarDatos";
 
 
 const Home = ()=>{
@@ -40,7 +41,8 @@ console.log(currentURL);
                 <Route exact = {true} path="/login">
                     <Login/>
                 </Route>
-                <Route path = "/home/cupon/lista" render = {() =><ListaBarcode/>} exact = {true}/>
+   
+              
             </IonRouterOutlet>
            
             <IonTabs>
@@ -51,14 +53,12 @@ console.log(currentURL);
                     <Route path ="/home/fitbar" render={()=><Fitbar/> } exact = {true}/>
                     <Route path ="/home/cupon" render = {() =><Cupon/>} exact = {true}/>
                     <Route path = "/home/wifi" render = {() =><Wifi/>} exact = {true} />
-                  
+                    <Route path = "/home/perfil/editar-datos" render = {() =><EditarDatos/>} exact = {true}/>
 
 
                 </IonRouterOutlet>
 
-                <IonToolbar>
-                    fsdefsd
-                </IonToolbar>
+               
                 <IonTabBar  className="iontab" slot="bottom">
                     <IonTabButton tab="inicio" href="/home/inicio">
                         <img className="imgHome" src={home}/>

@@ -12,7 +12,7 @@ import ListaBarcode from "./component_barcode/ListaBarcode";
 
 
 const Cupon = () => {
-    const history = useHistory();
+    
     const { user } = useAuth();
     const [codigo, setCodigo] = useState('');
     const [beneficiario, setBeneficiario] = useState('');

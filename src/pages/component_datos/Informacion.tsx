@@ -3,7 +3,10 @@ import icono from './img/i_pencil.png';
 import './css/Informacion.css';
 import { useAuth } from '../../UserProvider';
 import { useEffect, useState } from 'react';
+import { useHistory } from 'react-router-dom';
 const Informacion = () =>{
+    const urlFoto = "https://187.188.16.29:4431/webservice-app2/assets/avatars-users/";
+    const history = useHistory();
     const {user} = useAuth();
     const [nombre,setNombre] = useState<string>();
    useEffect(()=>{
@@ -18,7 +21,7 @@ const Informacion = () =>{
                 
                 <div className="container">
                     <div className="itemInfo1 itemInfo">
-                       <img src={foto}/>
+                       <img src={urlFoto+user?.imgAvatar}/>
                     </div>
                 
                   
@@ -28,7 +31,7 @@ const Informacion = () =>{
                     </div>
                
                 <div className="itemInfo3 itemInfo">
-                <img src={icono}/>
+                <img src={icono} onClick={()=>history.push('/home/perfil/editar-datos')}/>
                 </div>
 
                 </div>
