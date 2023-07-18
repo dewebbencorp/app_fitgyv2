@@ -1,7 +1,7 @@
 import { Camera,CameraResultType, CameraSource } from '@capacitor/camera';
 import { useAuth } from './../../UserProvider';
 import { useEffect,useState } from 'react';
-import { IonAvatar } from '@ionic/react';
+
 import './css/subirImagen.css';
 const SubirImagen = () =>{
 

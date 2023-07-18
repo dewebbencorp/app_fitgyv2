@@ -19,7 +19,7 @@ import { useEffect, useState } from "react";
 import Login from './Login'
 
 import EditarDatos from "./component_datos/EditarDatos";
-
+import OperacionTarjetas from './component_inicio/OperacionTarjetas';
 
 const Home = ()=>{
     const currentURL = window.location.href;
@@ -49,6 +49,7 @@ console.log(currentURL);
                 <IonRouterOutlet>
                     <Redirect exact path="/home" to="/home/inicio"/>
                     <Route path ="/home/inicio" render={()=><Inicio />} exact ={true} />
+                    <Route path ="/home/inicio/tarjetas" render={()=><OperacionTarjetas />} exact ={true} />
                     <Route path ="/home/perfil" render={()=><InformacionCliente/>} exact ={true} />
                     <Route path ="/home/fitbar" render={()=><Fitbar/> } exact = {true}/>
                     <Route path ="/home/cupon" render = {() =><Cupon/>} exact = {true}/>

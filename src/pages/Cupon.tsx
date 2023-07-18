@@ -6,7 +6,7 @@ import { useAuth } from './../UserProvider';
 import html2canvas from 'html2canvas';
 import cupon from './img/cupon.png'
 import compartir from './img/compartir.png';
-import { useHistory } from 'react-router';
+
 import './css/cupon.css';
 import ListaBarcode from "./component_barcode/ListaBarcode";
 
