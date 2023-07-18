@@ -1,0 +1,64 @@
+
+.datosContacto{
+    
+  
+    padding-left: 2rem;
+}
+
+.datosContacto ion-input{
+    --background:white;
+    --color:black;
+     width:90%;
+    --border-radius:50px;  
+    margin-bottom: 1rem;
+    margin-top:0.5rem;
+   text-align: center;
+}
+
+.datosContacto ion-label{
+    font-size: 1.2rem;
+    margin-left: 0.5rem;
+    
+    
+    
+}
+#avatar{
+    text-align: center;
+    margin-top: 0rem;
+}
+#guardarDatos,#actualizarContrasena{
+    text-align: center;
+}
+.contraseña{
+    margin-top:3rem;
+    padding-left: 2rem;
+
+}
+.contraseña ion-input{
+    --background:white;
+    --color:black;
+     width:90%;
+    --border-radius:50px;  
+    margin-bottom: 1rem;
+    margin-top:0.5rem;
+   text-align: center;
+}
+.contraseña ion-label{
+    font-size: 1.2rem;
+    margin-left: 0.5rem;
+        
+}
+#actualizarContrasena{
+    margin-left:2rem;
+   
+}
+#cerrarModalContrasena{
+    margin-top: 2em;
+    margin-left: 4rem;
+    width: 60%;
+}
+#flechaAtras{
+    margin-left: 1rem;
+    margin-top: 1rem;
+  
+}

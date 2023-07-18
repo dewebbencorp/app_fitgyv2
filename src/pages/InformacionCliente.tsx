@@ -1,4 +1,4 @@
-import { IonContent, IonLabel } from "@ionic/react";
+import { IonContent, IonLabel,IonInput } from "@ionic/react";
 import Informacion from './component_datos/Informacion'
 import Puntos from './component_datos/Puntos';
 import './css/informacionCliente.css';
@@ -11,11 +11,12 @@ const InformacionCliente  = ()=>{
     return(
         <IonContent>
           <Informacion/>
-          <MiCuenta/>
+    
           <Puntos/>
           <AgendarCita/>
           <ClienteMembresia/>
             <CerrarSesion />
+     
            
         </IonContent>
 
