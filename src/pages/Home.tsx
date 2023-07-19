@@ -20,6 +20,7 @@ import Login from './Login'
 
 import EditarDatos from "./component_datos/EditarDatos";
 import OperacionTarjetas from './component_inicio/OperacionTarjetas';
+import { ListFood } from "../components/FoodList";
 
 const Home = () => {
     const currentURL = window.location.href;
@@ -52,6 +53,7 @@ const Home = () => {
                     <Route path="/home/inicio/tarjetas" render={() => <OperacionTarjetas />} exact={true} />
                     <Route path="/home/perfil" render={() => <InformacionCliente />} exact={true} />
                     <Route path="/home/fitbar" render={() => <Fitbar />} exact={true} />
+                    <Route path="/home/fitbar/food/:id" render={() => <ListFood  />} exact={true} />
                     <Route path="/home/cupon" render={() => <Cupon />} exact={true} />
                     <Route path="/home/wifi" render={() => <Wifi />} exact={true} />
                     <Route path="/home/perfil/editar-datos" render={() => <EditarDatos />} exact={true} />

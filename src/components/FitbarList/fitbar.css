@@ -1,5 +1,5 @@
-.main-contaier{
-    margin-bottom: 5rem;
+.main-contaier {
+  margin-bottom: 5rem;
 }
 
 .card-container {
@@ -10,10 +10,9 @@
 
 .card {
   display: flex;
-  justify-content: space-evenly;;
+  justify-content: space-evenly;
 }
 .card-description {
-  
   text-align: left;
 }
 .title {
@@ -37,6 +36,7 @@
   overflow: hidden;
 }
 .icon_type_food {
-  width: 19%;
-border-radius: 7rem;
+  width: 4rem;
+  border-radius: 7rem;
 }
+

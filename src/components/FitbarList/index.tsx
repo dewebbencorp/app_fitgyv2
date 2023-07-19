@@ -1,5 +1,7 @@
+import { ListFood } from '../FoodList';
 import './fitbar.css'
-import { IonContent } from '@ionic/react';
+import { useHistory } from 'react-router-dom';
+import { IonContent, IonRouterLink } from '@ionic/react';
 
 
 const data = [
@@ -61,17 +63,21 @@ const data = [
 ]
 
 export const FitbarList = () => {
-
+    const history = useHistory();
+    const handleDivClick = (id) => {
+        history.push(`/home/fitbar/food/${id}`);
+    };
     return (
 
         <>
-
             <IonContent >
 
-                <div className="main-contaier">
+                <div className="main-contaier" >
                     {data.map(type_food => (
 
-                        <div className="card-container" key={type_food.id}>
+
+                        <div className="card-container" onClick={() => handleDivClick(type_food.id)} key={type_food.id} >
+
                             <div className="card">
                                 <img className="icon_type_food" src={type_food.img_url} />
                                 <div className="card-description">
@@ -85,9 +91,12 @@ export const FitbarList = () => {
                             </div>
 
 
+
                         </div>
 
+
                     ))}
+
                 </div>
 
             </IonContent >
