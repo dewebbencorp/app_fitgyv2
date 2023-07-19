@@ -6,14 +6,14 @@ import { ProductoCategorias } from '../../interfaces';
 
 export const FitbarList = () => {
     const history = useHistory();
-    const handleDivClick = (id) => {
+    const handleDivClick = (id: number) => {
         history.push(`/home/fitbar/food/${id}`);
     };
 
     const { data, loading, error, detaiError } = UseFecth('getCategorias.php');
 
     const categorias: ProductoCategorias[] = data
-    console.log(categorias);
+
 
     return (
 
@@ -30,7 +30,11 @@ export const FitbarList = () => {
                         <div className="card-container" onClick={() => handleDivClick(type_food.id_categoria)} key={type_food.id_categoria} >
 
                             <div className="card">
-                                <img className="icon_type_food" src={type_food.media_url} />
+
+                                <div className='img-container'>
+                                    <img className="icon_type_food" src={type_food.media_url} />
+
+                                </div>
                                 <div className="card-description">
                                     <h1 className='title'>
                                         {type_food.nombre}
