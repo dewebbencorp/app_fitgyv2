@@ -7,7 +7,6 @@ const Fitbar = () => {
             <h1>Fitbar</h1>
             <FitbarList />
         </>
-
     );
 }
 

@@ -1,6 +1,9 @@
+.main-contaier{
+    margin-bottom: 5rem;
+}
+
 .card-container {
   border: 1px solid orangered;
-  padding: 0.1rem;
   margin: 1rem;
   border-radius: 1rem;
 }
@@ -10,20 +13,21 @@
   justify-content: space-evenly;;
 }
 .card-description {
-  margin-left: 0Srem;
+  
   text-align: left;
 }
 .title {
   font-family: "Times New Roman", Times, serif;
   font-style: italic;
-  font-size: 20px;
+  font-size: 17px;
   text-align: left;
+  color: orangered;
 }
 
 .description {
   font-family: "Times New Roman", Times, serif;
   font-style: italic;
-  font-size: 15px;
+  font-size: 13px;
   text-align: left;
 }
 .limit-text {
@@ -33,6 +37,6 @@
   overflow: hidden;
 }
 .icon_type_food {
-  width: 2.5rem;
-  clip-path: circle(40%);
+  width: 19%;
+border-radius: 7rem;
 }
