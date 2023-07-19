@@ -2,7 +2,7 @@ import { IonBackButton, IonButtons, IonToolbar, IonTitle } from "@ionic/react";
 import './foodList.css'
 import { useParams } from "react-router";
 
-const data = [
+const data2 = [
     {
         "id": 1,
         "name": "Batidos",
@@ -35,6 +35,7 @@ const data = [
     },
 ]
 
+
 export const ListFood = () => {
     const { id } = useParams();
     return (
@@ -49,7 +50,7 @@ export const ListFood = () => {
 
             <div className="card-container-h">
 
-                {data.map(food => (
+                {data2.map(food => (
                     <div className="card-h" key={food.id}>
                         <div className="card-content">
                             <img className="card-img" src={food.img_url} />

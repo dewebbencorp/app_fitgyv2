@@ -36,7 +36,16 @@
   overflow: hidden;
 }
 .icon_type_food {
-  width: 4rem;
+  width: 10% !important;
+  height: 10%;
   border-radius: 7rem;
+}
+
+.error{
+  font-family: "Times New Roman", Times, serif;
+  font-style: italic;
+  font-size: 17px;
+  text-align: left;
+  margin-top: 1rem;
 }
 
