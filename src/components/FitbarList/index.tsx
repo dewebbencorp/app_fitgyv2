@@ -89,9 +89,6 @@ export const FitbarList = () => {
                                     </h2>
                                 </div>
                             </div>
-
-
-
                         </div>
 
 

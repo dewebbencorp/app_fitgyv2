@@ -1,0 +1,11 @@
+
+.card-container-h {
+    border: 1px solid orangered;
+    margin: 1rem;
+    border-radius: 1rem;
+  }
+  
+  .card-h {
+    display: flex;
+    justify-content: space-evenly;
+  }

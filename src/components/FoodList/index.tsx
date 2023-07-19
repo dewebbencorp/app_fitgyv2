@@ -1,4 +1,5 @@
 import { IonBackButton, IonButtons, IonToolbar, IonTitle } from "@ionic/react";
+import './foodList.css'
 import { useParams } from "react-router";
 
 export const ListFood = () => {
@@ -11,9 +12,29 @@ export const ListFood = () => {
                     <IonBackButton defaultHref="//home/fitbar" />
                 </IonButtons>
             </IonToolbar>
+            <h1>Menu</h1>
+
+            <div className="card-container-h">
+                <div className="card-h">
+
+                    <h3>id_food = {id}</h3>
+
+                </div>
 
 
-            <h3>id_food = {id}</h3>
+            </div>
+
+            <div className="card-container-h">
+                <div className="card-h">
+
+                    <h3>id_food = {id}</h3>
+
+                </div>
+
+
+            </div>
+
+
         </>
     )
 }
