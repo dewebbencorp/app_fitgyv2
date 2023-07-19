@@ -4,7 +4,7 @@ import { Redirect,Route } from "react-router";
 import Inicio from "./Inicio";
 import InformacionCliente from "./InformacionCliente";
 
-import Fitbar from "./Fitbar";
+import Fitbar from "./Fitbar/Fitbar";
 import Cupon from "./Cupon";
 import Wifi from "./Wifi";
 import './css/Home.css';

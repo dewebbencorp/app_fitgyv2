@@ -75,7 +75,7 @@ export const AuthProvider: React.FC <Props>=( {children} ) => {
             }
             else{
               setAlerta(data.mensaje);
-              setRedireecionar(false);
+              setRedireecionar(true);
             }
           })
           .catch(error => console.error('Error:', error))
