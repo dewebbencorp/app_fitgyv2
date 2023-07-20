@@ -1,71 +1,29 @@
-.card-container-h {
-  height: 27rem;
+.food-container {
   display: flex;
-  overflow-x: auto;
-}
-
-.card-container-h::-webkit-scrollbar {
-  width: 0;
-}
-.card-h {
-  display: flex;
-  flex-direction: column; /* Alinea los elementos verticalmente */
-  height: 25rem;
-  min-width: 10rem;
-  padding: 0.2rem;
-  text-align: center;
-  background-color: #ff4804;
-  margin-right: 2rem;
-  margin-top: 2rem;
-  border-top-left-radius: 7rem;
-  border-top-right-radius: 7rem;
-  border-bottom-left-radius: 7rem;
-  border-bottom-right-radius: 7rem;
-}
-.card-h .card-content {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
   align-items: center;
-  padding: 0.5rem;
+  flex-direction: column;
+  background-color: var(--ion-tab-bar-background) !important;
+  margin-top: 4rem;
+  border-radius: 8rem;;
+  height: 33rem;
+  width: 12rem;
 }
-.card-img {
-  width: 10rem;
-  clip-path: circle(50% at center);
-}
-
-.card-h .card-text {
-  flex-grow: 1; /* Permite que el contenido de card-text ocupe el resto del espacio vertical */
+.image-container-food {
   display: flex;
-  text-align: center;
+  align-items: center;
   flex-direction: column;
-  justify-content: center;
+  width: 15rem;
+  height: 15rem;
+  background-color: rgb(223, 213, 202);
+  clip-path: circle(40% at center);
+  padding: 2rem;
 }
-.text-categoria {
-  display: flex; /* Crea un contenedor flexible para los elementos de categoría */
-  flex-direction: column; /* Alinea los elementos verticalmente */
+.image-food {
+  width: 11rem;
+  height: 11rem;
 }
-.title {
-  margin: 0;
-  font-family: "Times New Roman", Times, serif;
-  font-style: italic;
-  font-size: 17px;
-  text-align: left;
-  color: white;
-}
-
-.sub-title {
-    margin-bottom: 1rem;
-    font-family: "Times New Roman", Times, serif;
-    font-style: italic;
-    font-size: 15px;
-    text-align: left;
-    color: rgb(243, 235, 233);
-  }
-
-.price {
-  font-family: "Times New Roman", Times, serif;
-  flex-direction: column;
-  font-weight: bold;
-  font-size: 3rem;
+.title-list-food {
+  font-family: var(--poppins);
+  font-size: 3.5rem;
+  color: var(--ion-tab-bar-background);
 }

@@ -3,6 +3,8 @@ import './foodList.css'
 import { useParams } from "react-router";
 import { UseFecthPost } from "../../api/post";
 import { PoroductoPorCategoria, ProductoCategorias } from "../../interfaces";
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
 
 
 export const ListFood = () => {
@@ -12,10 +14,10 @@ export const ListFood = () => {
         id_Categoria: id,
     };
 
-    const { data, error, detaiError } = UseFecthPost(request)
+    const { loading, error, detaiError, data } = UseFecthPost(request)
 
     console.log(data);
-    const producto : PoroductoPorCategoria[] = data
+    const producto: PoroductoPorCategoria[] = data
 
     return (
         <>
@@ -25,30 +27,51 @@ export const ListFood = () => {
                     <IonBackButton defaultHref="//home/fitbar" />
                 </IonButtons>
             </IonToolbar>
-            <h1>Menu</h1>
+            <h1 className="title-list-food">Menu</h1>
+            {loading && <div>Cargando...</div>}
 
-            <div className="card-container-h">
+
+            <Swiper
+                className='swiper'
+                spaceBetween={50}
+                slidesPerView={2}
+            >
 
                 {producto?.map(food => (
-                    <div className="card-h" key={food.id_producto}>
-                        <div className="card-content">
-                            <img className="card-img" src={food.media_url} />
+                    <>
 
-                        </div>
+                        <SwiperSlide className='slide' key={food.id_producto}>
 
-                        <div className="card-text">
-                            <div className="text-categoria">
-                                <h1 className="sub-title">{food.categoria}</h1>
-                                <h1 className="title"> {food.nombreProducto}</h1>
+                            <div className="food-container">
+                                <div className="image-container-food">
+                                    <img className="image-food" src={food.media_url} />
+                                </div>
+
+
+                                <h2>{food.categoria}</h2>
+                                <h2>{food.nombreProducto}</h2>
+                                <h1>
+                                    $ {food.costo}
+                                </h1>
+
                             </div>
-                            <h5 className="price">$ {food.costo}</h5>
-                        </div>
-                    </div>
-                ))}
+                        </SwiperSlide>
+
+
+                    </>
+
+
+                ))
+
+                }
 
 
 
-            </div>
+
+            </Swiper>
+
+
+
 
 
 
