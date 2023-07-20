@@ -46,14 +46,13 @@
 }
 .icon_type_food {
   width: 2.5rem;
-  height: 3rem;
-  border-radius: 7rem;
+  height: 3.5rem;
 }
 
 .icon-container {
   background-image: url("./images/bg_icon_list.png");
   background-position: center;
-  background-size: 3.5rem;
+  background-size: 3.7rem;
   background-repeat: no-repeat;
   padding: 0.7rem;
   margin: 0rem;
