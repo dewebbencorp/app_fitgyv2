@@ -31,9 +31,8 @@ export const FitbarList = () => {
 
                             <div className="card">
 
-                                <div className='img-container'>
+                                <div className='icon-container'>
                                     <img className="icon_type_food" src={type_food.media_url} />
-
                                 </div>
                                 <div className="card-description">
                                     <h1 className='title'>
