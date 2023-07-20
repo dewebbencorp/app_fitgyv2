@@ -1,5 +1,5 @@
 import './fitbar.css'
-import { UseFecth } from '../../api';
+import { UseFecth } from '../../api/get';
 import { useHistory } from 'react-router-dom';
 import { IonContent, IonRouterLink } from '@ionic/react';
 import { ProductoCategorias } from '../../interfaces';

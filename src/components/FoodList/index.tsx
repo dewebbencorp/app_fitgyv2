@@ -1,6 +1,7 @@
 import { IonBackButton, IonButtons, IonToolbar, IonTitle } from "@ionic/react";
 import './foodList.css'
 import { useParams } from "react-router";
+import { UseFecthPost } from "../../api/post";
 
 const data2 = [
     {
@@ -38,6 +39,16 @@ const data2 = [
 
 export const ListFood = () => {
     const { id } = useParams();
+
+    const request = {
+        id_Categoria: id,
+    };
+
+    const { data, error, detaiError } = UseFecthPost(request)
+
+    console.log(data);
+
+
     return (
         <>
             <IonToolbar>

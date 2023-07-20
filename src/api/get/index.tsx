@@ -20,7 +20,7 @@ export const UseFecth = (END: string) => {
             .finally(() => setLoading(false));
     }, []);
 
-    return { data, loading, error, detaiError, setData };
+    return { data, loading, error, detaiError };
 };
 
 export const useFecthAwait = async (END: string) => {
