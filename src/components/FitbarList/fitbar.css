@@ -12,23 +12,24 @@
   display: flex;
   justify-content: left;
   padding-left: 1rem;
-  padding-right: 1rem;
+  padding-right: 0.7rem;
 }
 .card-description {
   text-align: left;
   margin-left: 1rem;
   margin-top: 0.8rem;
+  margin-bottom: 0.5rem;
 }
 .title {
   font-family: var(--poppins) !important;
-  font-size: 1.5rem !important;
+  font-size: 1.3rem !important;
   text-align: left;
   color: #ff4804 !important;
 }
 
 .description {
   font-family: var(--poppins) !important;
-  font-size: 1rem;
+  font-size: 0.9rem;
   text-align: left;
 }
 .title,
@@ -45,14 +46,14 @@
 }
 .icon_type_food {
   width: 2.5rem;
-  height: 4rem;
+  height: 3rem;
   border-radius: 7rem;
 }
 
 .icon-container {
   background-image: url("./images/bg_icon_list.png");
   background-position: center;
-  background-size: 4rem;
+  background-size: 3.5rem;
   background-repeat: no-repeat;
   padding: 0.7rem;
   margin: 0rem;
