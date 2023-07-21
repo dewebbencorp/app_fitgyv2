@@ -47,7 +47,7 @@ const Noticias = () =>{
                  <Swiper
                  className='swiper'
                 spaceBetween={50}
-                slidesPerView={2}
+                slidesPerView={1}
                 autoplay={{
                     delay: 3000,
                     disableOnInteraction: false,

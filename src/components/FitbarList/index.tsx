@@ -39,7 +39,7 @@ export const FitbarList = () => {
                                         {type_food.nombre}
                                     </h1>
                                     <h2 className='description limit-text '>
-                                        {type_food.descripcion.slice(0, 35) + '...'}
+                                        {type_food.descripcion.slice(0, 105) + '...'}
                                     </h2>
                                 </div>
                             </div>

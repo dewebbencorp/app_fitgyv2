@@ -1,4 +1,6 @@
 .main-contaier {
+  margin-left: 2rem;
+  margin-right: 2rem;
   margin-bottom: 5rem;
 }
 
@@ -22,14 +24,14 @@
 }
 .title {
   font-family: var(--poppins) !important;
-  font-size: 1.3rem !important;
+  font-size: 1rem !important;
   text-align: left;
   color: #ff4804 !important;
 }
 
 .description {
   font-family: var(--poppins) !important;
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   text-align: left;
 }
 .title,
@@ -46,13 +48,13 @@
 }
 .icon_type_food {
   width: 2.5rem;
-  height: 3.5rem;
+  height: 3rem;
 }
 
 .icon-container {
   background-image: url("./images/bg_icon_list.png");
   background-position: center;
-  background-size: 3.7rem;
+  background-size: 3.5rem;
   background-repeat: no-repeat;
   padding: 0.7rem;
   margin: 0rem;
