@@ -10,6 +10,7 @@ body{
     --ion-background-color: #1c1c1c;
     --ion-text-color: #ffffff;
     --ion-tab-bar-background: #ff4804;
+    --ion-text-orange-color: #ff9104;
 }
 .kenyan{
     font-family: var(--kenyan);
