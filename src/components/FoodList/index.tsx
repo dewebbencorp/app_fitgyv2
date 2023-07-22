@@ -57,6 +57,11 @@ export const ListFood = () => {
                 </div>
 
                 <div className="description-list-food">
+                  <h1 style={{ fontSize: "0.4rem", letterSpacing: "0.2rem", margin: '0' }}>
+                    {" "}
+                    • • • • • •{" "}
+                  </h1>
+
                   <h2 className="text-categoria">{food.categoria}</h2>
                   <h1 className="text-name-food">{food.nombreProducto}</h1>
                 </div>
