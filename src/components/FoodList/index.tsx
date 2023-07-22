@@ -47,7 +47,7 @@ export const ListFood = () => {
       <h1 className="title-list-food">Menu</h1>
       {loading && <div>Cargando...</div>}
 
-      <Swiper className="swiper" spaceBetween={150} slidesPerView={2}>
+      <Swiper className="swiper" spaceBetween={90} slidesPerView={2}>
         {producto?.map((food) => (
           <>
             <SwiperSlide className="slide" key={food.id_producto}>

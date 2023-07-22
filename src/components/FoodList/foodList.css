@@ -3,7 +3,9 @@
   align-items: center;
   flex-direction: column;
   background: linear-gradient(#ff9104, #f52204);
-  margin-top: 4rem;
+  margin-top: 3rem;
+  margin-bottom: 0rem;
+  margin-left: 3rem;
   border-radius: 8rem;
   padding-left: 1rem;
   padding-right: 1rem;
