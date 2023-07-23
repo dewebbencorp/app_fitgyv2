@@ -3,7 +3,12 @@
   margin-right: 2rem;
   margin-bottom: 5rem;
 }
-
+.head-info{
+  height: 16rem;
+  margin-top: 0;
+  background: linear-gradient(180deg, #FF9104 0%, #FF9104 0%, #F52204 98%);
+  border-bottom-left-radius: 4rem;
+}
 .card-container {
   border: 1px solid orangered;
   margin: 1rem;
