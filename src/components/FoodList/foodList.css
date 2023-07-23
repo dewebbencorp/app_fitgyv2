@@ -78,4 +78,6 @@
   text-orientation: mixed;
   font-size: 1rem;
   margin: 0;
+  letter-spacing: 0.1rem;
+  transform: scalex(-1); 
 }

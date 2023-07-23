@@ -30,7 +30,7 @@ export const ListFood = () => {
   const producto: PoroductoPorCategoria[] = data;
 
   const history = useHistory();
-  let mxn = "MXN";
+  
   const handleBackClick = () => {
     history.goBack();
   };
@@ -74,9 +74,9 @@ export const ListFood = () => {
                 </div>
                 <div className="price-container">
                   <h1 className="text-price-food">
-                     {"$" + food.costo.slice(0, -3)}
+                    {"$" + food.costo.slice(0, -3)}
                   </h1>
-                  <h1 className="vertical-text">{mxn}</h1>
+                  <h1 className="vertical-text">ИXM</h1>
                 </div>
               </div>
             </SwiperSlide>
