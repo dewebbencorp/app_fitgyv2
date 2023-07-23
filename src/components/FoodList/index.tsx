@@ -30,7 +30,7 @@ export const ListFood = () => {
   const producto: PoroductoPorCategoria[] = data;
 
   const history = useHistory();
-
+  let mxn = "MXN";
   const handleBackClick = () => {
     history.goBack();
   };
@@ -44,10 +44,11 @@ export const ListFood = () => {
           </IonButton>
         </IonButtons>
       </IonToolbar>
-      <h1 className="title-list-food">Menu</h1>
+      <h1 className="title-list-food">The Fit Bar</h1>
+      <h1 className="sub-title-list-food">Menu</h1>
       {loading && <div>Cargando...</div>}
 
-      <Swiper className="swiper" spaceBetween={90} slidesPerView={2}>
+      <Swiper className="swiper" spaceBetween={0} slidesPerView={1.5}>
         {producto?.map((food) => (
           <>
             <SwiperSlide className="slide" key={food.id_producto}>
@@ -57,7 +58,13 @@ export const ListFood = () => {
                 </div>
 
                 <div className="description-list-food">
-                  <h1 style={{ fontSize: "0.4rem", letterSpacing: "0.2rem", margin: '0' }}>
+                  <h1
+                    style={{
+                      fontSize: "0.4rem",
+                      letterSpacing: "0.2rem",
+                      margin: "0",
+                    }}
+                  >
                     {" "}
                     • • • • • •{" "}
                   </h1>
@@ -65,7 +72,12 @@ export const ListFood = () => {
                   <h2 className="text-categoria">{food.categoria}</h2>
                   <h1 className="text-name-food">{food.nombreProducto}</h1>
                 </div>
-                <h1 className="text-price-food">$ {food.costo}</h1>
+                <div className="price-container">
+                  <h1 className="text-price-food">
+                     {"$" + food.costo.slice(0, -3)}
+                  </h1>
+                  <h1 className="vertical-text">{mxn}</h1>
+                </div>
               </div>
             </SwiperSlide>
           </>
