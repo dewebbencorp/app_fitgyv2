@@ -15,7 +15,9 @@ export const FoodDetail = () => {
   console.log(id);
 
   const history = useHistory();
-
+  const addToCart = (data: ProductoDetalle) => {
+    console.log(data);
+  };
   const handleBackClick = () => {
     history.goBack();
   };
@@ -69,13 +71,15 @@ export const FoodDetail = () => {
                 </div>
               </h1>
             </div>
-            <div className="car-options-container">
-              <button className="btn-container">
+            <div className="car-options-container"> 
+              <button className="btn-container"  onClick={() => addToCart(food)}>
                 <img src={car_img} className="car-img" />
                 <div className="btn-info">Agregar al cariito</div>
               </button>
 
-              <img className="car" src={car_img} />
+              <button style={{ backgroundColor: "var(--ion-transparent)" }}>
+                <img className="car" src={car_img} />
+              </button>
             </div>
           </div>
         </>
