@@ -29,11 +29,12 @@ export const FoodDetail = () => {
   );
   const food: ProductoDetalle = data[0];
 
-  const sendWhatsAppMessage = (message : ProductoDetalle) => {
-
-    const data : string = `Producto: ${message.nombreProducto}, Descripcion ${message.descripcion} ` 
-    const url = `https://api.whatsapp.com/send?phone=${9981797450}&text=${encodeURIComponent(data)}`;
-    InAppBrowser.create(url, '_system');
+  const sendWhatsAppMessage = (message: ProductoDetalle) => {
+    const data: string = `Producto: ${message.nombreProducto}, Descripcion ${message.descripcion} `;
+    const url = `https://api.whatsapp.com/send?phone=${9981797450}&text=${encodeURIComponent(
+      data
+    )}`;
+    InAppBrowser.create(url, "_system");
   };
 
   return (
@@ -73,13 +74,23 @@ export const FoodDetail = () => {
                     <h5>{food.categoria}</h5>
                   </div>
                   <div className="description-food">
-                    <p>{food.descripcion}</p>
+                    <h5>
+                      {food.descripcion ?? (
+                        <div>
+                          Lorem, ipsum dolor sit amet consectetur adipisicing
+                          elit. Unde, eligendi?
+                        </div>
+                      )}
+                    </h5>
                   </div>
                 </div>
               </h1>
             </div>
-            <div className="car-options-container"> 
-              <button className="btn-container"  onClick={() => sendWhatsAppMessage(food)}>
+            <div className="car-options-container">
+              <button
+                className="btn-container"
+                onClick={() => sendWhatsAppMessage(food)}
+              >
                 <img src={car_img} className="car-img" />
                 <div className="btn-info">Agregar al cariito</div>
               </button>

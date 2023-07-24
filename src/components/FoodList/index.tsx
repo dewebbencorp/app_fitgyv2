@@ -66,26 +66,28 @@ export const ListFood = () => {
                   <img className="image-food" src={food.media_url} />
                 </div>
 
-                <div className="description-list-food">
-                  <h1
-                    style={{
-                      fontSize: "0.4rem",
-                      letterSpacing: "0.2rem",
-                      margin: "0",
-                    }}
-                  >
-                    {" "}
-                    • • • • • •{" "}
-                  </h1>
+                <div className="description-info-container">
+                  <div className="description-list-food">
+                    <h1
+                      style={{
+                        fontSize: "0.4rem",
+                        letterSpacing: "0.2rem",
+                        margin: "0",
+                      }}
+                    >
+                      {" "}
+                      • • • • • •{" "}
+                    </h1>
 
-                  <h2 className="text-categoria">{food.categoria}</h2>
-                  <h1 className="text-name-food">{food.nombreProducto}</h1>
-                </div>
-                <div className="price-container">
-                  <h1 className="text-price-food">
-                    {"$" + food.costo.slice(0, -3)}
-                  </h1>
-                  <h1 className="vertical-text">ИXM</h1>
+                    <h2 className="text-categoria">{food.categoria}</h2>
+                    <h1 className="text-name-food">{food.nombreProducto}</h1>
+                  </div>
+                  <div className="price-container">
+                    <h1 className="text-price-food">
+                      {"$" + food.costo.slice(0, -3)}
+                    </h1>
+                    <h1 className="vertical-text">ИXM</h1>
+                  </div>
                 </div>
               </div>
             </SwiperSlide>
