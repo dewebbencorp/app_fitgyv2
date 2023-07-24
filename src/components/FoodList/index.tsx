@@ -15,7 +15,6 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { useHistory } from "react-router-dom";
 
 import "swiper/css";
-import { h } from "ionicons/dist/types/stencil-public-runtime";
 
 export const ListFood = () => {
   const { id } = useParams();
@@ -24,20 +23,26 @@ export const ListFood = () => {
     id_Categoria: id,
   };
 
-  const { loading, error, detaiError, data } = UseFecthPost(request);
+  const { loading, error, detaiError, data } = UseFecthPost(
+    request,
+    "getCategoria_producto.php"
+  );
 
-  console.log(data);
   const producto: PoroductoPorCategoria[] = data;
 
   const history = useHistory();
-  
+
   const handleBackClick = () => {
     history.goBack();
   };
 
+  const handleDetailClick = (id: number) => {
+    history.push(`/home/fitbar/food/detail/${id}`);
+  };
+
   return (
     <>
-      <IonToolbar>
+      <IonToolbar key={1}>
         <IonButtons slot="start">
           <IonButton onClick={() => handleBackClick()}>
             <HiChevronLeft style={{ fontSize: "2rem" }} />
@@ -51,7 +56,11 @@ export const ListFood = () => {
       <Swiper className="swiper" spaceBetween={0} slidesPerView={1.5}>
         {producto?.map((food) => (
           <>
-            <SwiperSlide className="slide" key={food.id_producto}>
+            <SwiperSlide
+              key={food.id_producto}
+              className="slide"
+              onClick={() => handleDetailClick(food.id_producto)}
+            >
               <div className="food-container">
                 <div className="image-container-food">
                   <img className="image-food" src={food.media_url} />
