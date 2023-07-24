@@ -1,8 +1,14 @@
-.main-container-food{
- 
- padding: 2rem;
+.main-container-food {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  padding: 2rem;
 }
-
+.container-food {
+  /*TODO*/
+}
 .food-image-container {
   display: flex;
   flex-direction: column;
@@ -12,7 +18,7 @@
 
 .img-food-detail {
   width: 100%;
-  background: url('./images/bg_food_detail.png');
+  background: url("./images/bg_food_detail.png");
   background-position: center;
   background-size: 18rem;
   background-repeat: no-repeat;
@@ -20,8 +26,61 @@
 }
 
 .food-description-container {
-    font-family: var(--poppins);
+  font-family: var(--poppins);
+  display: flex;
+  height: 15rem;
+  flex-direction: column;
+  align-items: start;
 }
-.title-food{
-  background-color: blue;
+.title-food {
+  /*TODO*/
+  font-weight: bold;
+}
+
+.categoria-food {
+  display: flex;
+  flex-direction: column;
+}
+
+.categoria-food h5 {
+  font-size: 0.9rem;
+  margin: 0rem;
+}
+
+.description-food {
+  font-size: 1rem;
+  font-family: "Times New Roman", Times, serif;
+  line-height: 1.5; 
+}
+
+.car-options-container {
+  display: flex;
+  width: 100%;
+  margin: 1rem;
+  justify-content: space-between;
+}
+.car {
+  height: 3rem;
+  padding: 0.5rem;
+  background-color: var(--ion-tab-bar-background);
+  clip-path: circle(50%);
+}
+.btn-container {
+  width: 10rem;
+  height: 1.5rem;
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--ion-button-orange);
+  padding: 0.5rem;
+  border-radius: 5rem;
+}
+.btn-info {
+  font-size: 1rem;
+  font-family: "Times New Roman", Times, serif;
+}
+.car-img {
+  width: 15%;
+  margin-right: 0.5rem;
 }
