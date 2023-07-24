@@ -9,15 +9,15 @@
   border-radius: 8rem;
   padding-left: 1rem;
   padding-right: 1rem;
-  height: 27rem;
-  width: 13rem;
+  height: 25rem;
+  width: 11rem;
 }
 .image-container-food {
   display: flex;
   align-items: center;
   flex-direction: column;
-  width: 15rem;
-  height: 15rem;
+  width: 12rem;
+  height: 12rem;
   background-color: #fdb382;
   clip-path: circle(40% at center);
   padding: 2rem;

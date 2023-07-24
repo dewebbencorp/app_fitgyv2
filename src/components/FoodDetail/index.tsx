@@ -5,6 +5,7 @@ import { UseFecthPost } from "../../api/post";
 import { ProductoDetalle } from "../../interfaces";
 import car_img from "./images/img_car.png";
 import "./foodetail.css";
+import { InAppBrowser } from "@ionic-native/in-app-browser";
 
 export const FoodDetail = () => {
   const { id } = useParams();
@@ -27,7 +28,13 @@ export const FoodDetail = () => {
     "getProducto.php"
   );
   const food: ProductoDetalle = data[0];
-  console.log(food);
+
+  const sendWhatsAppMessage = (message : ProductoDetalle) => {
+
+    const data : string = `Producto: ${message.nombreProducto}, Descripcion ${message.descripcion} ` 
+    const url = `https://api.whatsapp.com/send?phone=${9981797450}&text=${encodeURIComponent(data)}`;
+    InAppBrowser.create(url, '_system');
+  };
 
   return (
     <>
@@ -72,7 +79,7 @@ export const FoodDetail = () => {
               </h1>
             </div>
             <div className="car-options-container"> 
-              <button className="btn-container"  onClick={() => addToCart(food)}>
+              <button className="btn-container"  onClick={() => sendWhatsAppMessage(food)}>
                 <img src={car_img} className="car-img" />
                 <div className="btn-info">Agregar al cariito</div>
               </button>
