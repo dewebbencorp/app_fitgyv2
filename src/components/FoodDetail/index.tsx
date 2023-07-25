@@ -6,21 +6,25 @@ import { ProductoDetalle } from "../../interfaces";
 import car_img from "./images/img_car.png";
 import "./foodetail.css";
 import { InAppBrowser } from "@ionic-native/in-app-browser";
+import {
+  CapacitorSQLite,
+  SQLiteDBConnection,
+} from "@capacitor-community/sqlite";
+import { useSQLiteDB } from "../../database";
+import { useEffect } from "react";
 
 export const FoodDetail = () => {
   const { id } = useParams();
-
+  const history = useHistory();
   const request = {
     id_Producto: id,
   };
-  console.log(id);
-
-  const history = useHistory();
-  const addToCart = (data: ProductoDetalle) => {
-    console.log(data);
-  };
   const handleBackClick = () => {
     history.goBack();
+  };
+
+  const addToCart = (data: ProductoDetalle) => {
+    console.log(data);
   };
 
   const { data, loading, error, detaiError } = UseFecthPost(
@@ -37,6 +41,46 @@ export const FoodDetail = () => {
     InAppBrowser.create(url, "_system");
   };
 
+  // DATABASE
+
+  // hook for sqlite db
+  const { performSQLAction, initialized } = useSQLiteDB();
+  // SELECT
+  useEffect(() => {
+    loadData();
+  }, [initialized]);
+  const loadData = async () => {
+    try {
+      // query db
+      performSQLAction(async (db: SQLiteDBConnection | undefined) => {
+        const respSelect = await db?.query(`SELECT * FROM orders;`);
+        console.log(respSelect?.values);
+      });
+    } catch (error) {
+      alert((error as Error).message);
+    }
+  };
+
+  // INSERT
+
+  const addItem = async (data: ProductoDetalle) => {
+    try {
+      // add test record to db
+      performSQLAction(async (db: SQLiteDBConnection | undefined) => {
+        await db?.query(
+          `INSERT INTO orders (name_client, name_product,price )
+        VALUES (?,?,?);`,
+          [data.nombreProducto, "sebas", 250.32]
+        );
+
+        // update ui
+        const respSelect = await db?.query(`SELECT * FROM orders;`);
+        console.log(respSelect?.values);
+      });
+    } catch (error) {
+      alert((error as Error).message);
+    }
+  };
   return (
     <>
       <IonToolbar>
@@ -87,15 +131,12 @@ export const FoodDetail = () => {
               </h1>
             </div>
             <div className="car-options-container">
-              <button
-                className="btn-container"
-                onClick={() => sendWhatsAppMessage(food)}
-              >
+              <button className="btn-container" onClick={() => addItem(food)}>
                 <img src={car_img} className="car-img" />
                 <div className="btn-info">Agregar al cariito</div>
               </button>
 
-              <button style={{ backgroundColor: "var(--ion-transparent)" }}>
+              <button style={{ backgroundColor: "var(--ion-transparent)" }}  onClick={() => loadData()} >
                 <img className="car" src={car_img} />
               </button>
             </div>
