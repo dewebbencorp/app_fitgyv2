@@ -5,14 +5,6 @@ import { UseFecthPost } from "../../api/post";
 import { ProductoDetalle } from "../../interfaces";
 import car_img from "./images/img_car.png";
 import "./foodetail.css";
-import { InAppBrowser } from "@ionic-native/in-app-browser";
-import {
-  CapacitorSQLite,
-  SQLiteDBConnection,
-} from "@capacitor-community/sqlite";
-import { useSQLiteDB } from "../../database";
-import { useEffect } from "react";
-
 export const FoodDetail = () => {
   const { id } = useParams();
   const history = useHistory();
@@ -33,54 +25,6 @@ export const FoodDetail = () => {
   );
   const food: ProductoDetalle = data[0];
 
-  const sendWhatsAppMessage = (message: ProductoDetalle) => {
-    const data: string = `Producto: ${message.nombreProducto}, Descripcion ${message.descripcion} `;
-    const url = `https://api.whatsapp.com/send?phone=${9981797450}&text=${encodeURIComponent(
-      data
-    )}`;
-    InAppBrowser.create(url, "_system");
-  };
-
-  // DATABASE
-
-  // hook for sqlite db
-  const { performSQLAction, initialized } = useSQLiteDB();
-  // SELECT
-  useEffect(() => {
-    loadData();
-  }, [initialized]);
-  const loadData = async () => {
-    try {
-      // query db
-      performSQLAction(async (db: SQLiteDBConnection | undefined) => {
-        const respSelect = await db?.query(`SELECT * FROM orders;`);
-        console.log(respSelect?.values);
-      });
-    } catch (error) {
-      alert((error as Error).message);
-    }
-  };
-
-  // INSERT
-
-  const addItem = async (data: ProductoDetalle) => {
-    try {
-      // add test record to db
-      performSQLAction(async (db: SQLiteDBConnection | undefined) => {
-        await db?.query(
-          `INSERT INTO orders (name_client, name_product,price )
-        VALUES (?,?,?);`,
-          [data.nombreProducto, "sebas", 250.32]
-        );
-
-        // update ui
-        const respSelect = await db?.query(`SELECT * FROM orders;`);
-        console.log(respSelect?.values);
-      });
-    } catch (error) {
-      alert((error as Error).message);
-    }
-  };
   return (
     <>
       <IonToolbar>
@@ -131,12 +75,12 @@ export const FoodDetail = () => {
               </h1>
             </div>
             <div className="car-options-container">
-              <button className="btn-container" onClick={() => addItem(food)}>
+              <button className="btn-container">
                 <img src={car_img} className="car-img" />
                 <div className="btn-info">Agregar al cariito</div>
               </button>
 
-              <button style={{ backgroundColor: "var(--ion-transparent)" }}  onClick={() => loadData()} >
+              <button style={{ backgroundColor: "var(--ion-transparent)" }}>
                 <img className="car" src={car_img} />
               </button>
             </div>

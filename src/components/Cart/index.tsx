@@ -1,11 +1,10 @@
-export const Cart = ()=>{
 
+export const Cart = () => {
+ 
 
-    return(
-
-        <>
-        <h1>Hello cart</h1>
-        
-        </>
-    )
-}
+  return (
+    <>
+      <h1>Hello cart</h1>
+    </>
+  );
+};
