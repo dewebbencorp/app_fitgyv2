@@ -18,4 +18,14 @@ export interface ProductoDetalle {
   categoria: string;
   descripcion: string;
   media_url: string;
+  costo: number;
+}
+
+/* SQLite  */
+
+export interface order {
+  id_order: number;
+  name_client: string;
+  complements: string;
+  price: number;
 }

@@ -5,18 +5,18 @@ import { UseFecthPost } from "../../api/post";
 import { ProductoDetalle } from "../../interfaces";
 import car_img from "./images/img_car.png";
 import "./foodetail.css";
+import { useSQLiteDB } from "../../database";
+import { SQLiteDBConnection } from "@capacitor-community/sqlite";
 export const FoodDetail = () => {
   const { id } = useParams();
   const history = useHistory();
+  const { performSQLAction, initialized } = useSQLiteDB();
   const request = {
     id_Producto: id,
   };
+
   const handleBackClick = () => {
     history.goBack();
-  };
-
-  const addToCart = (data: ProductoDetalle) => {
-    console.log(data);
   };
 
   const goToCart = () => {
@@ -27,6 +27,25 @@ export const FoodDetail = () => {
     request,
     "getProducto.php"
   );
+
+  const addToCart = async (data: ProductoDetalle) => {
+    try {
+      // add test record to db
+      performSQLAction(async (db: SQLiteDBConnection | undefined) => {
+        await db?.query(
+          `INSERT INTO orders ( name_product, price, name_client )
+          VALUES (?,?,?);`,
+          [data.nombreProducto, data.costo, "sebas"]
+        );
+        
+        const respSelect = await db?.query(`SELECT * FROM orders;`);
+        console.log(respSelect?.values);
+      });
+    } catch (error) {
+      alert((error as Error).message);
+    }
+  };
+
   const food: ProductoDetalle = data[0];
 
   return (
@@ -81,7 +100,9 @@ export const FoodDetail = () => {
             <div className="car-options-container">
               <button className="btn-container">
                 <img src={car_img} className="car-img" />
-                <div className="btn-info">Agregar al cariito</div>
+                <div className="btn-info" onClick={() => addToCart(food)}>
+                  Agregar al cariito
+                </div>
               </button>
 
               <button
