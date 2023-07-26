@@ -1,20 +1,25 @@
-import {
+/*import {
   CapacitorSQLite,
   SQLiteDBConnection,
 } from "@capacitor-community/sqlite";
 import { useSQLiteDB } from "../../database";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { ProductoDetalle } from "../../interfaces";
 
 // DATABASE
 
+
+
+
+
 // hook for sqlite db
 const { performSQLAction, initialized } = useSQLiteDB();
 // SELECT
+
 useEffect(() => {
-  loadData();
+  loadaData();
 }, [initialized]);
-const loadData = async () => {
+const loadaData = async () => {
   try {
     // query db
     performSQLAction(async (db: SQLiteDBConnection | undefined) => {
@@ -46,3 +51,4 @@ const addItem = async (data: ProductoDetalle) => {
     alert((error as Error).message);
   }
 };
+ */

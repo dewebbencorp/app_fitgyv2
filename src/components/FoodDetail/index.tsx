@@ -19,6 +19,10 @@ export const FoodDetail = () => {
     console.log(data);
   };
 
+  const goToCart = () => {
+    history.push("/home/carrito");
+  };
+
   const { data, loading, error, detaiError } = UseFecthPost(
     request,
     "getProducto.php"
@@ -80,7 +84,10 @@ export const FoodDetail = () => {
                 <div className="btn-info">Agregar al cariito</div>
               </button>
 
-              <button style={{ backgroundColor: "var(--ion-transparent)" }}>
+              <button
+                style={{ backgroundColor: "var(--ion-transparent)" }}
+                onClick={() => goToCart()}
+              >
                 <img className="car" src={car_img} />
               </button>
             </div>
