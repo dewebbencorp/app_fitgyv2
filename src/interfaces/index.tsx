@@ -26,6 +26,18 @@ export interface ProductoDetalle {
 export interface order {
   id_order: number;
   name_client: string;
+  name_product: string;
+  image_url: string;
+  complements: string;
+  price: number;
+}
+
+export interface CartI {
+  id_order: number;
+  total_product: number;
+  total_price: number;
+  name_product: string;
+  image_url: string;
   complements: string;
   price: number;
 }

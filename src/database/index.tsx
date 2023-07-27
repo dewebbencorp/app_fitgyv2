@@ -66,6 +66,7 @@ export const useSQLiteDB = () => {
       id_order INTEGER PRIMARY KEY NOT NULL,
       name_client TEXT NOT NULL,
       name_product TEXT NOT NULL,
+      image_url TEXT NOT NULL,
       complements TEXT NULL,
       price REAL NOT NULL
       );

@@ -1,28 +1,52 @@
 import { useEffect, useState } from "react";
 import { useSQLiteDB } from "../../database";
 import { SQLiteDBConnection } from "@capacitor-community/sqlite";
-import { IonButton, IonButtons, IonToolbar } from "@ionic/react";
+import {
+  IonButton,
+  IonButtons,
+  IonCardContent,
+  IonContent,
+  IonItem,
+  IonLabel,
+  IonList,
+  IonThumbnail,
+  IonToolbar,
+} from "@ionic/react";
 import { HiChevronLeft } from "react-icons/hi2";
 import { useHistory } from "react-router";
-
+import { CartI, order } from "../../interfaces";
+import "./cart.css";
 export const Cart = () => {
   const { performSQLAction, initialized } = useSQLiteDB();
   const history = useHistory();
-  const [items, setItems] = useState<Array<any>>();
+  const [items, setItems] = useState<Array<CartI>>();
 
   // useEffect to load data on component mount
   useEffect(() => {
     setTimeout(() => {
       loadData();
-    },100);
+    }, 100);
   }, []);
 
   const loadData = async () => {
     try {
       // query db
       performSQLAction(async (db: SQLiteDBConnection | undefined) => {
-        const respSelect = await db?.query(`SELECT * FROM orders;`);
-        const result = respSelect?.values;
+        const total = await db?.query(
+          `SELECT 
+          id_order, name_product,
+          price,
+          COUNT(name_product) AS total_product,
+          SUM(price) AS total_price,
+          image_url  
+
+          FROM orders
+          GROUP BY 
+          name_product `
+        );
+        const select = await db?.query(`SELECT  * FROM orders `);
+        console.log(select?.values);
+        const result = total?.values;
         console.log(result);
         if (result != undefined) {
           setItems(result);
@@ -39,29 +63,44 @@ export const Cart = () => {
 
   return (
     <>
-      <IonToolbar>
+      <div className="cart-main-container">
         <IonButtons slot="start">
           <IonButton onClick={() => handleBackClick()}>
             <HiChevronLeft style={{ fontSize: "2rem" }} />
+            <IonLabel>
+              <h5>Mi carrito</h5>
+            </IonLabel>
           </IonButton>
         </IonButtons>
-      </IonToolbar>
-      <h1>Hello cart</h1>
 
-      {/* Render items when available */}
-      {items && (
-        <ul>
-          {items.map((item) => (
-            <li key={item.id_order}>
-              <h1> {item.id_order}</h1>
-              <h2>{item.name_product}</h2>
-            </li>
-          ))}
-        </ul>
-      )}
+        <div className="cart-main">
+          <div className="cart-container">
+            {items &&
+              items.map((food) => (
+                <>
+                  <div className="card-container-food" key={food.id_order}>
+                    <div className="card-food">
+                      <div className="icon-container-food">
+                        <img className="icon_food" src={food.image_url} />
+                      </div>
+                      <div className="card-description-food">
+                        <h1 className="title-food">{food.name_product}</h1>
+                        <h2 className="description-food limit-text ">
+                          <h5>{"$" + food.price}</h5>
+                        </h2>
+                      </div>
+                    </div>
 
-      {/* Button to manually trigger data load */}
-      <button onClick={() => loadData()}>get</button>
+                    <div className="total-product-container">
+                      <h5 className="total-product">{food.total_product}</h5>
+                    </div>
+                  </div>
+                </>
+              ))}
+          </div>
+        </div>
+        <div>pay</div>
+      </div>
     </>
   );
 };
