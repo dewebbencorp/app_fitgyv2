@@ -68,7 +68,8 @@ export const useSQLiteDB = () => {
       name_product TEXT NOT NULL,
       image_url TEXT NOT NULL,
       complements TEXT NULL,
-      price REAL NOT NULL
+      price REAL NOT NULL,
+      date_added DATETIME NOT NULL
       );
     `;
       const respCT = await db?.execute(queryCreateTable);

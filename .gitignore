@@ -7,8 +7,7 @@
 # compiled
 /dist/
 dist/
-android/
-/android/
+
 
 
 # testing

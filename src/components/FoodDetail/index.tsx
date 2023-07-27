@@ -43,7 +43,10 @@ export const FoodDetail = () => {
       });
     } catch (error) {
       alert((error as Error).message);
+    }finally{
+      alert("Producto añadido");
     }
+
   };
 
   const food: ProductoDetalle = data[0];

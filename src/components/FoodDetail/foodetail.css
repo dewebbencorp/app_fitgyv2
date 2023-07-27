@@ -61,14 +61,15 @@
   margin-bottom: 5rem;
 }
 .car {
-  height: 3rem;
+  margin-top: 0.5rem;
+  width: 3rem;
   padding: 0.5rem;
   background-color: var(--ion-tab-bar-background);
   clip-path: circle(50%);
 }
 .btn-container {
-  width: 10rem;
-  height: 1.5rem;
+  width: 12rem;
+  height: 2rem;
   margin-top: 1rem;
   display: flex;
   justify-content: center;
