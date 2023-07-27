@@ -1,3 +1,14 @@
+
+.toolbar{
+  display: flex;
+
+}
+
+.label-title{
+ font-family: var(--poppins); 
+ margin-left: 20%;
+}
+
 .cart-main-container {
   background: linear-gradient(#ff9104, #ec540d) !important;
   height: 60vh;
@@ -9,7 +20,6 @@
   height: 39vh;
   overflow-y: auto;
   padding: 1rem;
-  color: black !important;
 }
 
 .card-container-food {
@@ -18,7 +28,7 @@
   margin: 1rem;
   border-radius: 1rem;
   background-color: aliceblue;
-  box-shadow: 0 0 1rem 0rem rgba(0, 0, 0, 0.719);
+  box-shadow: 0 0 0.5rem 0rem black;
 }
 
 .total-product-container {
@@ -28,6 +38,12 @@
   height: 10vh;
   padding: 1rem;
   background-color: #fdb382;
+  color: black;
+  
+}
+
+.total-product{
+  font-weight: bold;
 }
 
 .card-food {
@@ -40,24 +56,26 @@
 .card-description-food {
   text-align: left;
   margin-left: 1rem;
-  margin-top: 0.8rem;
-  margin-bottom: 0.5rem;
+  margin-top: 1rem;
 }
 .title-food {
   font-size: 0.8rem;
-  font-family: "Times New Roman", Times, serif !important;
-  font-size: 0.7rem !important;
+  color: rgba(0, 0, 0, 0.726);
+  font-size: 0.8rem !important;
   text-align: left;
+ 
 }
 
-.description-food {
-  font-size: 0.8rem;
+.price-food {
+  font-size: 1rem;
   text-align: left;
+  color:black;
+
 }
 .title-food,
-.description-food {
-  margin: 0;
-  padding: 0;
+.price-food {
+  margin: 0 !important;
+  padding: 0 !important;
 }
 
 .limit-text {
@@ -66,17 +84,19 @@
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
-.icon_food {
-  width: 2.5rem;
-  height: 3rem;
-}
+
 
 .icon-container-food {
   background-color: #fdb382;
   clip-path: circle(40%);
-  padding: 0.7rem;
+  padding: 0.8rem;
   margin: 0rem;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.icon_food {
+  width: 2rem;
+  height: 2.5rem;
 }

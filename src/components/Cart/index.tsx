@@ -64,14 +64,15 @@ export const Cart = () => {
   return (
     <>
       <div className="cart-main-container">
-        <IonButtons slot="start">
-          <IonButton onClick={() => handleBackClick()}>
-            <HiChevronLeft style={{ fontSize: "2rem" }} />
-            <IonLabel>
-              <h5>Mi carrito</h5>
-            </IonLabel>
-          </IonButton>
-        </IonButtons>
+        <div className="toolbar">
+          <IonButtons slot="start">
+            <IonButton onClick={() => handleBackClick()}>
+              <HiChevronLeft style={{ fontSize: "2rem" }} />
+            </IonButton>
+          </IonButtons>
+
+          <h1 className="label-title">Mi carrito</h1>
+        </div>
 
         <div className="cart-main">
           <div className="cart-container">
@@ -85,8 +86,8 @@ export const Cart = () => {
                       </div>
                       <div className="card-description-food">
                         <h1 className="title-food">{food.name_product}</h1>
-                        <h2 className="description-food limit-text ">
-                          <h5>{"$" + food.price}</h5>
+                        <h2 className="price-food limit-text ">
+                          {"$" + food.price}
                         </h2>
                       </div>
                     </div>
