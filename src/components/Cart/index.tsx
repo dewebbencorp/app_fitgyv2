@@ -22,7 +22,6 @@ export const Cart = () => {
   const history = useHistory();
   const [items, setItems] = useState<Array<CartI>>();
   const [cart_total, setTotal] = useState<Array<CartTotal>>();
-  
 
   // useEffect to load data on component mount
   useEffect(() => {
@@ -43,11 +42,15 @@ export const Cart = () => {
 
           FROM orders
           GROUP BY 
-          name_product `
+          name_product 
+          ORDER BY
+          date_added DESC;
+          `
         );
         const totalPrice = await db?.query(
           `SELECT  SUM(price) AS total_price FROM orders `
         );
+
         const total_price = totalPrice?.values;
         const result = total_prod?.values;
         /*console.log(result);

@@ -33,9 +33,9 @@ export const FoodDetail = () => {
       // add test record to db
       performSQLAction(async (db: SQLiteDBConnection | undefined) => {
         await db?.query(
-          `INSERT INTO orders ( name_product, price, image_url, name_client )
-          VALUES (?,?,?,?);`,
-          [data.nombreProducto, data.costo, data.media_url,"sebas"]
+          `INSERT INTO orders ( name_product, price, image_url, name_client, date_added )
+          VALUES (?,?,?,?,datetime('now'));`,
+          [data.nombreProducto, data.costo, data.media_url,"sebas" ]
         );
         
         const respSelect = await db?.query(`SELECT * FROM orders;`);
