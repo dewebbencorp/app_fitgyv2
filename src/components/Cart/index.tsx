@@ -13,6 +13,7 @@ import {
   IonToolbar,
 } from "@ionic/react";
 import { HiChevronLeft } from "react-icons/hi2";
+import { BsWhatsapp } from "react-icons/bs";
 import { useHistory } from "react-router";
 import { CartI, CartTotal, order } from "../../interfaces";
 import "./cart.css";
@@ -21,8 +22,8 @@ export const Cart = () => {
   const history = useHistory();
   const [items, setItems] = useState<Array<CartI>>();
   const [cart_total, setTotal] = useState<Array<CartTotal>>();
-
   
+
   // useEffect to load data on component mount
   useEffect(() => {
     setTimeout(() => {
@@ -31,12 +32,7 @@ export const Cart = () => {
   }, []);
 
   const loadData = async () => {
-    /*
-  
-  
-  */
     try {
-      // query db
       performSQLAction(async (db: SQLiteDBConnection | undefined) => {
         const total_prod = await db?.query(
           `SELECT 
@@ -56,7 +52,7 @@ export const Cart = () => {
         const result = total_prod?.values;
         /*console.log(result);
         console.log(total_price); */
-        
+
         if (result != undefined && total_price != undefined) {
           setItems(result);
           setTotal(total_price);
@@ -89,7 +85,7 @@ export const Cart = () => {
             {items &&
               items.map((food) => (
                 <>
-                  <div className="card-container-food" key={food.id_order}>
+                  <div className="card-container-food" key={food.name_product}>
                     <div className="card-food">
                       <div className="icon-container-food">
                         <img className="icon_food" src={food.image_url} />
@@ -110,10 +106,14 @@ export const Cart = () => {
               ))}
           </div>
         </div>
-        <div className="cat-total">
-          <h1>total</h1>
-          <h1>{cart_total[0].total_price}</h1>
+        <div className="cart-total-container">
+          <h4>Total</h4>
+          {cart_total && <h5>{"$" + cart_total[0].total_price}</h5>}
         </div>
+      </div>
+
+      <div className="btn-pay-container">
+        <BsWhatsapp />
       </div>
     </>
   );
