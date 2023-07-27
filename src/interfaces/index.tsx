@@ -41,3 +41,7 @@ export interface CartI {
   complements: string;
   price: number;
 }
+
+export interface CartTotal {
+  total_price: number;
+}

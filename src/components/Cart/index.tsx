@@ -14,13 +14,15 @@ import {
 } from "@ionic/react";
 import { HiChevronLeft } from "react-icons/hi2";
 import { useHistory } from "react-router";
-import { CartI, order } from "../../interfaces";
+import { CartI, CartTotal, order } from "../../interfaces";
 import "./cart.css";
 export const Cart = () => {
   const { performSQLAction, initialized } = useSQLiteDB();
   const history = useHistory();
   const [items, setItems] = useState<Array<CartI>>();
+  const [cart_total, setTotal] = useState<Array<CartTotal>>();
 
+  
   // useEffect to load data on component mount
   useEffect(() => {
     setTimeout(() => {
@@ -29,27 +31,35 @@ export const Cart = () => {
   }, []);
 
   const loadData = async () => {
+    /*
+  
+  
+  */
     try {
       // query db
       performSQLAction(async (db: SQLiteDBConnection | undefined) => {
-        const total = await db?.query(
+        const total_prod = await db?.query(
           `SELECT 
           id_order, name_product,
           price,
           COUNT(name_product) AS total_product,
-          SUM(price) AS total_price,
           image_url  
 
           FROM orders
           GROUP BY 
           name_product `
         );
-        const select = await db?.query(`SELECT  * FROM orders `);
-        console.log(select?.values);
-        const result = total?.values;
-        console.log(result);
-        if (result != undefined) {
+        const totalPrice = await db?.query(
+          `SELECT  SUM(price) AS total_price FROM orders `
+        );
+        const total_price = totalPrice?.values;
+        const result = total_prod?.values;
+        /*console.log(result);
+        console.log(total_price); */
+        
+        if (result != undefined && total_price != undefined) {
           setItems(result);
+          setTotal(total_price);
         }
       });
     } catch (error) {
@@ -85,7 +95,7 @@ export const Cart = () => {
                         <img className="icon_food" src={food.image_url} />
                       </div>
                       <div className="card-description-food">
-                        <h1 className="title-food">{food.name_product}</h1>
+                        <h1 className="title-food-cart">{food.name_product}</h1>
                         <h2 className="price-food limit-text ">
                           {"$" + food.price}
                         </h2>
@@ -100,7 +110,10 @@ export const Cart = () => {
               ))}
           </div>
         </div>
-        <div>pay</div>
+        <div className="cat-total">
+          <h1>total</h1>
+          <h1>{cart_total[0].total_price}</h1>
+        </div>
       </div>
     </>
   );
