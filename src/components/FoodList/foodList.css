@@ -87,3 +87,15 @@
   letter-spacing: 0.1rem;
   transform: scalex(-1);
 }
+
+
+.got-cart {
+  float: right;
+  margin-right: 10px;
+}
+
+.got-cart img {
+  float: right;
+  margin-top: 3rem;
+  margin-right: 10px;
+}

@@ -13,11 +13,16 @@ import { UseFecthPost } from "../../api/post";
 import { PoroductoPorCategoria, ProductoCategorias } from "../../interfaces";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { useHistory } from "react-router-dom";
-
+import car_img from "./../FoodDetail/images/img_car.png";
 import "swiper/css";
 
 export const ListFood = () => {
   const { id } = useParams();
+  const history = useHistory();
+
+  const goToCart = () => {
+    history.push("/home/carrito");
+  };
 
   const request = {
     id_Categoria: id,
@@ -29,8 +34,6 @@ export const ListFood = () => {
   );
 
   const producto: PoroductoPorCategoria[] = data;
-
-  const history = useHistory();
 
   const handleBackClick = () => {
     history.goBack();
@@ -49,6 +52,7 @@ export const ListFood = () => {
           </IonButton>
         </IonButtons>
       </IonToolbar>
+
       <h1 className="title-list-food">The Fit Bar</h1>
       <h1 className="sub-title-list-food">Menu</h1>
       {loading && <div>Cargando...</div>}
@@ -94,6 +98,12 @@ export const ListFood = () => {
           </>
         ))}
       </Swiper>
+
+      {!loading && (
+        <div className="got-cart">
+          <img onClick={() => goToCart()} className="car" src={car_img} />
+        </div>
+      )}
     </>
   );
 };

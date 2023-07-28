@@ -7,6 +7,7 @@ import car_img from "./images/img_car.png";
 import "./foodetail.css";
 import { useSQLiteDB } from "../../database";
 import { SQLiteDBConnection } from "@capacitor-community/sqlite";
+
 export const FoodDetail = () => {
   const { id } = useParams();
   const history = useHistory();
@@ -14,15 +15,15 @@ export const FoodDetail = () => {
   const request = {
     id_Producto: id,
   };
+  const goToCart = () => {
+    history.push("/home/carrito");
+  };
 
   const handleBackClick = () => {
     history.goBack();
   };
 
-  const goToCart = () => {
-    history.push("/home/carrito");
-  };
-
+  
   const { data, loading, error, detaiError } = UseFecthPost(
     request,
     "getProducto.php"
