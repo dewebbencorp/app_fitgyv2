@@ -86,12 +86,12 @@ const Home = () => {
                         titular == false ? <IonTabButton tab="cupon" disabled={true} href="/home/cupon">
                             <img width="25%" src={cupon} />
 
-                            <IonLabel>Cupon </IonLabel>
+                            <IonLabel>Cupón</IonLabel>
                         </IonTabButton> :
                             <IonTabButton tab="cupon" href="/home/cupon">
                                 <img width="25%" src={cupon} />
 
-                                <IonLabel>Cupon </IonLabel>
+                                <IonLabel>Cupón </IonLabel>
                             </IonTabButton>
 
 

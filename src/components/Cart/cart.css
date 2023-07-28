@@ -28,6 +28,14 @@
   box-shadow: 0 0 0.5rem 0rem rgba(0, 0, 0, 0.753);
   transition: transform 0.3s ease;
 }
+
+.btn-add {
+  display: flex;
+  justify-content: space-around;
+  font-size: 1rem;
+}
+
+
 .card-container-food:hover {
   transform: scale(1.1);
   background-color: var(--ion-tab-bar-background);

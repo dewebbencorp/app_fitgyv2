@@ -1,19 +1,10 @@
 import { useEffect, useState } from "react";
 import { useSQLiteDB } from "../../database";
 import { SQLiteDBConnection } from "@capacitor-community/sqlite";
-import {
-  IonButton,
-  IonButtons,
-  IonCardContent,
-  IonContent,
-  IonItem,
-  IonLabel,
-  IonList,
-  IonThumbnail,
-  IonToolbar,
-} from "@ionic/react";
+import { IonButton, IonButtons } from "@ionic/react";
 import { HiChevronLeft } from "react-icons/hi2";
 import { BsWhatsapp } from "react-icons/bs";
+import { GrAdd, GrSubtract } from "react-icons/gr";
 import { useHistory } from "react-router";
 import { CartI, CartTotal, order } from "../../interfaces";
 import "./cart.css";
@@ -95,21 +86,29 @@ export const Cart = () => {
             {items &&
               items.map((food) => (
                 <>
-                  <div className="card-container-food" key={food.name_product}>
-                    <div className="card-food">
-                      <div className="icon-container-food">
-                        <img className="icon_food" src={food.image_url} />
+                  <div key={food.name_product}>
+                    <div className="card-container-food">
+                      <div className="card-food">
+                        <div className="icon-container-food">
+                          <img className="icon_food" src={food.image_url} />
+                        </div>
+                        <div className="card-description-food">
+                          <h1 className="title-food-cart">
+                            {food.name_product}
+                          </h1>
+                          <h2 className="price-food limit-text ">
+                            {"$" + food.price}
+                          </h2>
+                        </div>
                       </div>
-                      <div className="card-description-food">
-                        <h1 className="title-food-cart">{food.name_product}</h1>
-                        <h2 className="price-food limit-text ">
-                          {"$" + food.price}
-                        </h2>
+
+                      <div className="total-product-container">
+                        <h5 className="total-product">{food.total_product}</h5>
                       </div>
                     </div>
-
-                    <div className="total-product-container">
-                      <h5 className="total-product">{food.total_product}</h5>
+                    <div className="btn-add">
+                      <GrSubtract className="subtract-icon" />{" "}
+                      <GrAdd className="add-icon" />
                     </div>
                   </div>
                 </>

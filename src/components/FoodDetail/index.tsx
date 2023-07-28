@@ -105,7 +105,7 @@ export const FoodDetail = () => {
               <button className="btn-container">
                 <img src={car_img} className="car-img" />
                 <div className="btn-info" onClick={() => addToCart(food)}>
-                  Agregar al cariito
+                  Agregar al carrito
                 </div>
               </button>
 

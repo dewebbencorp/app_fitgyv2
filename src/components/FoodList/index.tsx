@@ -77,7 +77,7 @@ export const ListFood = () => {
       </IonToolbar>
     
       <h1 className="title-list-food">The Fit Bar</h1>
-      <h1 className="sub-title-list-food">Menu</h1>
+      <h1 className="sub-title-list-food">MENÚ</h1>
       {loading && <div>Cargando...</div>}
 
       <Swiper className="swiper" spaceBetween={0} slidesPerView={1.5}>
