@@ -39,7 +39,7 @@
   height: 12rem;
   background-color: #fdb382;
   clip-path: circle(42% at center);
-  padding: 2.5rem;
+  padding: 2rem;
 }
 
 .image-container-food-paddin{
@@ -50,7 +50,7 @@
   height: 12rem;
   background-color: #fdb382;
   clip-path: circle(42% at center);
-  padding: 2rem;
+  padding: 1rem;
 }
 
 .image-container-food-3{
@@ -72,6 +72,7 @@
   height: 12em;
   background-color: #fdb382;
   clip-path: circle(42% at center);
+  padding: 2rem;
 }
 
 .image-container-food-4 img{

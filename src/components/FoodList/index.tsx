@@ -101,7 +101,7 @@ export const ListFood = () => {
                 )}
 
                 {food.id_categoria == 7 && (
-                  <div className="image-container-food-3">
+                  <div className="image-container-food-4">
                     <img className="image-food" src={food.media_url} />
                   </div>
                 )}
