@@ -139,6 +139,7 @@
 }
 
 .btn-pay-container {
+
   display: flex;
   width: 100%;
   justify-content: center;
@@ -146,14 +147,23 @@
   bottom: 3rem;
 }
 
+
+.btn-whats-container{
+  display: flex;
+  background-color: #ec540d;
+  border-radius: 1rem;
+  transition: transform 0.3s ease;
+  
+}
+.text-got{
+  font-size: 0.9rem;
+}
 .btn-whats {
   font-size: 3rem;
-  background-color: var(--ion-tab-bar-background);
-  clip-path: circle(50%);
-  padding: 0.7rem;
-  transition: transform 0.3s ease;
+  padding: 0.9rem;
+  
 }
 
-.btn-whats:hover {
+.btn-whats-container:hover {
   transform: scale(1.1);
 }

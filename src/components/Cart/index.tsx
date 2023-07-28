@@ -123,10 +123,10 @@ export const Cart = () => {
       </div>
 
       <div className="btn-pay-container">
-        <BsWhatsapp
-          className="btn-whats"
-          onClick={() => sendWhatsAppMessage(items ?? [], totaL)}
-        />
+        <div className="btn-whats-container">
+          <h5 className="text-got">Pedir por WhatsApp</h5>
+          <BsWhatsapp className="btn-whats" onClick={() => sendWhatsAppMessage(items ?? [], totaL)} />
+        </div>
       </div>
     </>
   );

@@ -9,7 +9,7 @@ export const sendWhatsAppMessage = (message: CartI[], total: number) => {
     data += `${item.name_product}, cantidad = ${item.total_product}\n\n `;
   }
 
-  const order: string = `Productos:\n\n ${data}\n Total a pagar:  $${total}`;
+  const order: string = `Productos:\n\n ${data}`;
 
 
   const confirmMessage = `¿Deseas enviar el pedido por WhatsApp?\n\n${order}`;
