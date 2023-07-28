@@ -16,7 +16,7 @@
 
 .add-to-cart {
   position: absolute;
-  top: 10rem; 
+  top: 10rem;
   margin-left: 7rem;
   transform: translate(50%, -50%); /* Centra el elemento en su contenedor */
   background-color: white;
@@ -31,10 +31,6 @@
   padding: 0.7rem;
 }
 
-
-
-
-
 .image-container-food {
   display: flex;
   align-items: center;
@@ -42,17 +38,62 @@
   width: 12rem;
   height: 12rem;
   background-color: #fdb382;
-  clip-path: circle(40% at center);
+  clip-path: circle(42% at center);
+  padding: 2.5rem;
+}
+
+.image-container-food-paddin{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 12rem;
+  height: 12rem;
+  background-color: #fdb382;
+  clip-path: circle(42% at center);
   padding: 2rem;
 }
-.image-food {
-  width: 1rem;
-  height: 51rem;
+
+.image-container-food-3{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 12rem;
+  height: 12em;
+  background-color: #fdb382;
+  clip-path: circle(42% at center);
+  padding: 1rem;
 }
 
+.image-container-food-4{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 12rem;
+  height: 12em;
+  background-color: #fdb382;
+  clip-path: circle(42% at center);
+}
 
+.image-container-food-4 img{
+  width: 100%;
+  object-fit: cover;
+}
 
-.description-info-container{
+.image-container-food-paddin img{
+  width: 100%;
+  object-fit: cover;
+}
+
+.image-container-food-3 img{
+  width: 100%;
+  object-fit: cover;
+}
+.image-container-food img {
+  width: 100%;
+  object-fit: cover;
+}
+
+.description-info-container {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -113,12 +154,10 @@
   transform: scalex(-1);
 }
 
-
 .got-cart {
   float: right;
   margin-right: 2rem;
   margin-bottom: 2rem;
-  
 }
 
 .got-cart img {

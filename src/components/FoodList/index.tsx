@@ -1,15 +1,9 @@
-import {
-  IonButtons,
-  IonToolbar,
-  IonButton,
-} from "@ionic/react";
+import { IonButtons, IonToolbar, IonButton } from "@ionic/react";
 import "./foodList.css";
 import { HiChevronLeft } from "react-icons/hi2";
 import { useParams } from "react-router";
 import { UseFecthPost } from "../../api/post";
-import {
-  ProductoPorCategoria,
-} from "../../interfaces";
+import { ProductoPorCategoria } from "../../interfaces";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { useHistory } from "react-router-dom";
 import car_img from "./../FoodDetail/images/img_car.png";
@@ -71,11 +65,11 @@ export const ListFood = () => {
       <IonToolbar key={1}>
         <IonButtons slot="start">
           <IonButton onClick={() => handleBackClick()}>
-          <HiChevronLeft style={{ fontSize: "2rem" }} />
+            <HiChevronLeft style={{ fontSize: "2rem" }} />
           </IonButton>
         </IonButtons>
       </IonToolbar>
-    
+
       <h1 className="title-list-food">The Fit Bar</h1>
       <h1 className="sub-title-list-food">MENÚ</h1>
       {loading && <div>Cargando...</div>}
@@ -88,9 +82,38 @@ export const ListFood = () => {
                 className="food-container"
                 onClick={() => handleDetailClick(food.id_producto)}
               >
-                <div className="image-container-food">
-                  <img className="image-food" src={food.media_url} />
-                </div>
+                {food.id_categoria == 1 && (
+                  <div className="image-container-food-paddin">
+                    <img className="image-food" src={food.media_url} />
+                  </div>
+                )}
+
+                {food.id_categoria == 2 && (
+                  <div className="image-container-food-paddin">
+                    <img className="image-food" src={food.media_url} />
+                  </div>
+                )}
+
+                {food.id_categoria == 3 && (
+                  <div className="image-container-food-4">
+                    <img className="image-food" src={food.media_url} />
+                  </div>
+                )}
+
+                {food.id_categoria == 7 && (
+                  <div className="image-container-food-3">
+                    <img className="image-food" src={food.media_url} />
+                  </div>
+                )}
+
+                {food.id_categoria !== 1 &&
+                  food.id_categoria !== 2 &&
+                  food.id_categoria !== 3 &&
+                  food.id_categoria !== 7 && (
+                    <div className="image-container-food">
+                      <img className="image-food" src={food.media_url} />
+                    </div>
+                  )}
 
                 <div className="description-info-container">
                   <div className="description-list-food">
