@@ -3,10 +3,10 @@
   margin-right: 2rem;
   margin-bottom: 5rem;
 }
-.head-info{
-  height: 16rem;
+.header-info{
+  height: 17rem;
   margin-top: 0;
-  background: linear-gradient(180deg, #FF9104 0%, #FF9104 0%, #F52204 98%);
+  background: linear-gradient(#ff7d04, #ec540d) !important;
   border-bottom-left-radius: 4rem;
 }
 .card-container {

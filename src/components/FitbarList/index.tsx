@@ -16,6 +16,12 @@ export const FitbarList = () => {
 
   return (
     <>
+      <div className="header-info">
+        <h1>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur autem
+          distinctio animi ipsum omnis?
+        </h1>
+      </div>
       <IonContent>
         {loading && <div>Cargando...</div>}
         {error && (
