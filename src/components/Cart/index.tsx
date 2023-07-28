@@ -17,6 +17,7 @@ import { BsWhatsapp } from "react-icons/bs";
 import { useHistory } from "react-router";
 import { CartI, CartTotal, order } from "../../interfaces";
 import "./cart.css";
+import { sendWhatsAppMessage } from "./senMessage";
 export const Cart = () => {
   const { performSQLAction, initialized } = useSQLiteDB();
   const history = useHistory();
@@ -69,7 +70,13 @@ export const Cart = () => {
   const handleBackClick = () => {
     history.goBack();
   };
-
+  {
+    cart_total && <h5>{"$" + cart_total[0].total_price}</h5>;
+  }
+  let totaL = 0;
+  if (cart_total) {
+    totaL = cart_total[0].total_price;
+  }
   return (
     <>
       <div className="cart-main-container">
@@ -107,16 +114,20 @@ export const Cart = () => {
                   </div>
                 </>
               ))}
+            {!items && <div> no have producst</div>}
           </div>
         </div>
         <div className="cart-total-container">
           <h4>Total</h4>
-          {cart_total && <h5>{"$" + cart_total[0].total_price}</h5>}
+          <h5> {"$" + totaL}</h5>
         </div>
       </div>
 
       <div className="btn-pay-container">
-        <BsWhatsapp />
+        <BsWhatsapp
+          className="btn-whats"
+          onClick={() => sendWhatsAppMessage(items ?? [], totaL)}
+        />
       </div>
     </>
   );
