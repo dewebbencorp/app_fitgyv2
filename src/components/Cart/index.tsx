@@ -106,10 +106,13 @@ export const Cart = () => {
                         <h5 className="total-product">{food.total_product}</h5>
                       </div>
                     </div>
+                    {/*
                     <div className="btn-add">
+                     
                       <GrSubtract className="subtract-icon" />{" "}
                       <GrAdd className="add-icon" />
-                    </div>
+                      
+                    </div> */}
                   </div>
                 </>
               ))}
@@ -122,10 +125,13 @@ export const Cart = () => {
         </div>
       </div>
 
-      <div className="btn-pay-container">
+      <div
+        className="btn-pay-container"
+        onClick={() => sendWhatsAppMessage(items ?? [], totaL)}
+      >
         <div className="btn-whats-container">
           <h5 className="text-got">Pedir por WhatsApp</h5>
-          <BsWhatsapp className="btn-whats" onClick={() => sendWhatsAppMessage(items ?? [], totaL)} />
+          <BsWhatsapp className="btn-whats" />
         </div>
       </div>
     </>
