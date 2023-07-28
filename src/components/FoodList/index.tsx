@@ -1,10 +1,7 @@
 import {
-  IonBackButton,
   IonButtons,
   IonToolbar,
-  IonTitle,
   IonButton,
-  IonIcon,
 } from "@ionic/react";
 import "./foodList.css";
 import { HiChevronLeft } from "react-icons/hi2";
@@ -12,8 +9,6 @@ import { useParams } from "react-router";
 import { UseFecthPost } from "../../api/post";
 import {
   ProductoPorCategoria,
-  ProductoCategorias,
-  ProductoDetalle,
 } from "../../interfaces";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { useHistory } from "react-router-dom";
@@ -76,11 +71,11 @@ export const ListFood = () => {
       <IonToolbar key={1}>
         <IonButtons slot="start">
           <IonButton onClick={() => handleBackClick()}>
-            <HiChevronLeft style={{ fontSize: "2rem" }} />
+          <HiChevronLeft style={{ fontSize: "2rem" }} />
           </IonButton>
         </IonButtons>
       </IonToolbar>
-
+    
       <h1 className="title-list-food">The Fit Bar</h1>
       <h1 className="sub-title-list-food">Menu</h1>
       {loading && <div>Cargando...</div>}
