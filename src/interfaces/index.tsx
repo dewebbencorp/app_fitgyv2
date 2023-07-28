@@ -5,7 +5,7 @@ export interface ProductoCategorias {
   media_url: string;
 }
 
-export interface PoroductoPorCategoria {
+export interface ProductoPorCategoria {
   id_producto: number;
   id_categoria: number;
   nombreProducto: string;
