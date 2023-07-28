@@ -9,15 +9,15 @@
   border-radius: 8rem;
   padding-left: 1rem;
   padding-right: 1rem;
-  height: 25rem;
+  height: 23rem;
   width: 11rem;
   position: relative;
 }
 
 .add-to-cart {
   position: absolute;
-  top: 50%; 
-  right: 30%;
+  top: 47%; 
+  margin-left: 7rem;
   transform: translate(50%, -50%); /* Centra el elemento en su contenedor */
   background-color: white;
   clip-path: circle(40%);
