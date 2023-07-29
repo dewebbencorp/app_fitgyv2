@@ -1,13 +1,23 @@
-import { IonButton, IonContent, IonInput, IonLabel } from "@ionic/react";
+import { IonButton, IonContent, IonInput } from "@ionic/react";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
 import logo from "./images/logo.png";
 import "./login.css";
 import { useForm } from "react-hook-form";
+import { UseFecthPost } from "../../api/post";
+import { Asociado, LoginError } from "../../interfaces";
+import { addUser } from "../../store/userSlice";
+import { useHistory } from "react-router-dom";
 export const Login = () => {
+  const [request, setRequest] = useState({});
+  const [error, setError] = useState<LoginError>();
+  const dispatch = useDispatch();
+  const history = useHistory();
   const {
     register,
     handleSubmit,
     formState: { errors },
+    watch,
   } = useForm({
     defaultValues: {
       email: "",
@@ -17,7 +27,31 @@ export const Login = () => {
   console.log(errors);
   const onSubmit = handleSubmit((data) => {
     console.log(data);
+    setRequest(data);
   });
+
+  const { data } = UseFecthPost(request, "login.php");
+
+  const response: Asociado = data;
+
+  const auth = (esSocio: number, err: any, response: Asociado) => {
+    if (esSocio === 1) {
+      console.log("SI ES SOCIO");
+      console.log(response);
+      
+      dispatch(addUser(response));
+      history.push("/home")
+    } else if (!error) {
+      console.log("NO ES SOCIO");
+      console.log(err);
+      setError(err);
+    }
+  };
+
+  if (data.length !== 0) {
+    console.log("Es socio : " + JSON.stringify(response.esSocio));
+    auth(response.esSocio, response, response);
+  }
 
   return (
     <IonContent>
@@ -28,6 +62,9 @@ export const Login = () => {
 
         <div id="login">
           <form onSubmit={onSubmit}>
+            <h5 style={{ width: "400px" }}>
+              {error && <span>{error.mensaje}</span>}
+            </h5>
             <label>Correo Electrónico:</label>
             <IonInput
               type="email"

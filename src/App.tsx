@@ -12,7 +12,6 @@ import {
 } from "@ionic/react";
 import { IonReactRouter } from "@ionic/react-router";
 
-
 import Home from "./pages/Home";
 
 /* Core CSS required for Ionic components to work properly */
@@ -22,35 +21,28 @@ import "@ionic/react/css/core.css";
 import "@ionic/react/css/normalize.css";
 import "@ionic/react/css/structure.css";
 import "@ionic/react/css/typography.css";
-
 /* Optional CSS utils that can be commented out */
-
 /* Theme variables */
 import "./theme/main.css";
-import { AuthProvider } from "./UserProvider";
 import { SignIn } from "./pages/SignIn/SigIn";
-
-
 
 setupIonicReact();
 
 const App: React.FC = () => (
   <IonApp>
-    <AuthProvider>
-      <IonReactRouter>
-        <IonRouterOutlet>
-          <Route exact path="/login">
-            <SignIn/>
-          </Route>
-          <Route exact path="/Home">
-            <Home />
-          </Route>
-          <Route exact path="/">
-            <Redirect to="/login" />
-          </Route>
-        </IonRouterOutlet>
-      </IonReactRouter>
-    </AuthProvider>
+    <IonReactRouter>
+      <IonRouterOutlet>
+        <Route exact path="/login">
+          <SignIn />
+        </Route>
+        <Route exact path="/Home">
+          <Home />
+        </Route>
+        <Route exact path="/">
+          <Redirect to="/login" />
+        </Route>
+      </IonRouterOutlet>
+    </IonReactRouter>
   </IonApp>
 );
 

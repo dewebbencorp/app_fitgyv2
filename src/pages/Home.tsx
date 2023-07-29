@@ -24,6 +24,7 @@ import wifi from "./img/wifi.png";
 import { useAuth } from "../UserProvider";
 import { useEffect, useState } from "react";
 
+
 import EditarDatos from "./component_datos/EditarDatos";
 import OperacionTarjetas from "./component_inicio/OperacionTarjetas";
 import { ListFood } from "../components/FoodList";
@@ -82,7 +83,7 @@ const Home = () => {
           <Route path="/home/carrito" render={() => <Cart />} exact={true} />
           <Route path="/home/cupon" render={() => <Cupon />} exact={true} />
           <Route path="/home/wifi" render={() => <Wifi />} exact={true} />
-
+          
           <Route
             path="/home/perfil/editar-datos"
             render={() => <EditarDatos />}
@@ -103,8 +104,7 @@ const Home = () => {
             <img width="70%" src={fitbar} />
           </IonTabButton>
 
-          {/*
-          titular == false ? (
+          {/*titular == false ? (
             <IonTabButton tab="cupon" disabled={true} href="/home/cupon">
               <img width="25%" src={cupon} />
 
@@ -116,8 +116,7 @@ const Home = () => {
 
               <IonLabel>Cupón </IonLabel>
             </IonTabButton>
-          )
-          */}
+          ) */}
 
           <IonTabButton tab="wifi" href="/home/wifi">
             <img width="45%" src={wifi} />

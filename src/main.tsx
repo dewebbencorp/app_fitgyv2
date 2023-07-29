@@ -1,8 +1,9 @@
-
 import React from "react";
 import { createRoot } from "react-dom/client";
 import App from "./App";
 import { initializeSQLite } from "./database/config";
+import { Provider } from "react-redux";
+import{ store} from './store'
 
 window.addEventListener("DOMContentLoaded", async () => {
   try {
@@ -13,9 +14,9 @@ window.addEventListener("DOMContentLoaded", async () => {
     const container = document.getElementById("root");
     const root = createRoot(container!);
     root.render(
-      <React.StrictMode>
+      <Provider store={store}>
         <App />
-      </React.StrictMode>
+      </Provider>
     );
   } catch (e) {
     console.log(e);

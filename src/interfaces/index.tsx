@@ -20,6 +20,28 @@ export interface ProductoDetalle {
   media_url: string;
   costo: number;
 }
+export interface Asociado {
+  Clav_Asociado: number;
+  passedit: number;
+  Nombre_Asociado: string;
+  Telefono: string;
+  TipoMembresia: string;
+  Apellidos: string;
+  CorreoE: string;
+  NombreMem: string;
+  imgAvatar: string;
+  fechaO: string;
+  titular: number;
+  esSocio: number;
+  puntos: number;
+  vencio: number;
+  diasRestantes: number;
+}
+
+export interface LoginError{
+  mensaje: string
+  esSocio: 0
+}
 
 /* SQLite  */
 
