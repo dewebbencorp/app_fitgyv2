@@ -21,9 +21,12 @@ import "@ionic/react/css/core.css";
 import "@ionic/react/css/normalize.css";
 import "@ionic/react/css/structure.css";
 import "@ionic/react/css/typography.css";
+
 /* Optional CSS utils that can be commented out */
+
 /* Theme variables */
 import "./theme/main.css";
+import { AuthProvider } from "./UserProvider";
 import { SignIn } from "./pages/SignIn/SigIn";
 
 setupIonicReact();
@@ -35,7 +38,7 @@ const App: React.FC = () => (
         <Route exact path="/login">
           <SignIn />
         </Route>
-        <Route exact path="/Home">
+        <Route  path="/Home">
           <Home />
         </Route>
         <Route exact path="/">

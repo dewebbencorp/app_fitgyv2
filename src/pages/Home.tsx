@@ -35,11 +35,7 @@ const Home = () => {
 
   return (
     <IonReactRouter>
-      <IonRouterOutlet>
-        <Route exact={true} path="/login">
-          <SignIn />
-        </Route>
-      </IonRouterOutlet>
+      
 
       <IonTabs>
         <IonRouterOutlet>
