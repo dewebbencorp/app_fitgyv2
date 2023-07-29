@@ -1,0 +1,94 @@
+.main-container-food {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  padding: 2rem;
+}
+.container-food {
+  /*TODO*/
+}
+.food-image-container {
+  display: flex;
+  justify-content: center;
+  margin-top: -4rem;
+  margin-left: 2rem;
+  margin-right: 2rem;
+  background: url("./images/bg_food_detail.png");
+  background-position: center;
+  background-size: 15rem;
+  background-repeat: no-repeat;
+  width: 15rem; /* Tamaño del contenedor */
+  height: 15rem; /* Tamaño del contenedor */
+}
+
+.img-food-detail {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  padding: 2rem;
+}
+
+.food-description-container {
+  font-family: var(--poppins);
+  display: flex;
+  height: 15rem;
+  flex-direction: column;
+  align-items: start;
+}
+.title-food {
+  /*TODO*/
+  font-weight: bold;
+}
+
+.categoria-food {
+  display: flex;
+  flex-direction: column;
+}
+
+.categoria-food h5 {
+  font-size: 0.9rem;
+  margin: 0rem;
+}
+
+.description-food {
+  font-size: 1rem;
+  font-family: "Times New Roman", Times, serif;
+  line-height: 1.5;
+}
+
+.car-options-container {
+  display: flex;
+  width: 100%;
+  margin: 1rem;
+  justify-content: space-between;
+  margin-bottom: 5rem;
+}
+.car {
+  margin-top: 0.5rem;
+  width: 3rem;
+  padding: 0.5rem;
+  background-color: var(--ion-tab-bar-background);
+  clip-path: circle(50%);
+}
+.btn-container {
+  width: 12rem;
+  height: 2rem;
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--ion-button-orange);
+  padding: 0.5rem;
+  border-radius: 5rem;
+}
+.btn-info {
+  font-size: 1rem;
+  font-family: "Times New Roman", Times, serif;
+}
+.car-img {
+  width: 15%;
+  margin-right: 0.5rem;
+}
