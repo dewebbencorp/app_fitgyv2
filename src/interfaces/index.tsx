@@ -21,6 +21,7 @@ export interface ProductoDetalle {
   costo: number;
 }
 export interface Asociado {
+  user: any;
   Clav_Asociado: number;
   passedit: number;
   Nombre_Asociado: string;

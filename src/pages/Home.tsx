@@ -21,8 +21,6 @@ import fitbar from "./img/fitbar.png";
 import cupon from "./img/cupon.png";
 import wifi from "./img/wifi.png";
 
-import { useAuth } from "../UserProvider";
-import { useEffect, useState } from "react";
 
 
 import EditarDatos from "./component_datos/EditarDatos";
@@ -33,20 +31,8 @@ import { Cart } from "../components/Cart";
 import { SignIn } from "./SignIn/SigIn";
 
 const Home = () => {
-  /*
-  const currentURL = window.location.href;
-  console.log(currentURL);
-  const [titular, setTitular] = useState<boolean>();
-  const { user } = useAuth();
-  useEffect(() => {
-    if (user != null) {
-      setTitular(user.titular);
-    }
-    console.log(titular);
-  }, [user, setTitular]);
+ 
 
-  
-  */
   return (
     <IonReactRouter>
       <IonRouterOutlet>

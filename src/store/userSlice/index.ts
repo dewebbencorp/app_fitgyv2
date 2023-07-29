@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import { Asociado } from "../../interfaces";
 
 const initialState: Asociado = {
@@ -17,13 +17,14 @@ const initialState: Asociado = {
   puntos: 0,
   vencio: 0,
   diasRestantes: 0,
+  user: undefined
 };
 
 export const userSlice = createSlice({
   name: "user",
   initialState,
   reducers: {
-    addUser: (state, action) => {
+    addUser: (state: Asociado, action: PayloadAction<Asociado>) => {
       const aso: Asociado = action.payload;
       return { ...state, ...aso };
     },

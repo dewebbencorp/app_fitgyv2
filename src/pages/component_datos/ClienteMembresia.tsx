@@ -1,9 +1,11 @@
 
+import { Asociado } from '../../interfaces';
 import './css/clienteMembresia.css'
-import { useAuth } from '../../UserProvider';
+import {useSelector} from "react-redux"
+
 import { useEffect,useState } from 'react';
 const ClienteMembresia = () =>{
-    const {user} = useAuth();
+    const user: Asociado = useSelector((state) => state.user);
     const [fechaVencimiento,setFechaVencimiento] = useState<string>();
     useEffect(()=>{
         let fechaPrev = user?.fechaO;
