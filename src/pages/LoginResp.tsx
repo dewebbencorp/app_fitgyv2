@@ -1,42 +1,37 @@
-import { useState, useEffect } from 'react';
-import './css/login.css';
-import logo from './img/logo.png';
-import { IonButton, IonContent, IonInput, IonLabel } from '@ionic/react';
-import { useHistory } from 'react-router';
-import { useAuth } from '../UserProvider';
+import { useState, useEffect } from "react";
+import "./css/login.css";
+import logo from "./img/logo.png";
+import { IonButton, IonContent, IonInput, IonLabel } from "@ionic/react";
+import { useHistory } from "react-router";
+import { useAuth } from "../UserProvider";
 
-
-
-
-const Login = () => {
+const LoginResp = () => {
   const currentURL = window.location.href;
   console.log(currentURL);
   const history = useHistory();
-  const { login, alerta, redireccionar,salir } = useAuth();
-  const [email, setEmail] = useState<string>('');
-  const [password, setPassword] = useState<string>('');
+  const { login, alerta, redireccionar, salir } = useAuth();
+  const [email, setEmail] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
 
   //console.log(email);
   const [isTouched, setIsTouched] = useState(false);
   const [isValid, setIsValid] = useState<boolean>();
 
-
-  if(salir == true){
+  if (salir == true) {
     console.log("La aplicacion cerro sesión");
     location.reload();
-  }
-  else{
+  } else {
     console.log("La aplicacion no cerro sesión");
   }
   useEffect(() => {
-    const ionTabs = document.querySelector('ion-tabs');
+    const ionTabs = document.querySelector("ion-tabs");
     if (ionTabs) {
-      ionTabs.style.display = 'none';
+      ionTabs.style.display = "none";
     }
 
     return () => {
       if (ionTabs) {
-        ionTabs.style.display = 'flex';
+        ionTabs.style.display = "flex";
       }
     };
   }, []);
@@ -52,38 +47,32 @@ const Login = () => {
 
     setIsValid(undefined);
 
-    if (value === '') return;
+    if (value === "") return;
 
     //validateEmail(value) !== null ? setIsValid(true) : setIsValid(false);
     if (validateEmail(value) !== null) {
       setEmail(value);
       setIsValid(true);
-    }
-    else {
+    } else {
       setIsValid(false);
     }
-
   };
 
   const markTouched = () => {
     setIsTouched(true);
   };
 
-
-
   const iniciarSesion = () => {
     login(email, password);
     console.log("login");
     console.log(redireccionar);
     console.log(alerta);
-  }
+  };
   useEffect(() => {
     console.log("Entre");
     console.log(redireccionar);
     if (redireccionar) {
-
-
-      history.push('/home');
+      history.push("/home");
     }
   }, [redireccionar, history]);
   /*const iniciarSesion = (e:Event)=>{
@@ -120,45 +109,31 @@ const Login = () => {
   }*/
 
   return (
-
-
     <IonContent>
       <img id="logo" src={logo} />
 
-      <div id='login'>
+      <div id="login">
         <span id="alerta">{alerta}</span>
         <form>
-          <IonLabel className='labelLogin' >Usuario</IonLabel>
-          <IonInput
-            className={`${isValid && 'ion-valid'} ${isValid === false && 'ion-invalid'} ${isTouched && 'ion-touched'}`}
-
-            type="email"
-            id="usuario"
-            helperText="Enter a valid email"
-            errorText="Invalid email"
-            onIonChange={(event) => validate(event)}
-            onIonBlur={() => markTouched()}
-
-          />
+          <IonLabel className="labelLogin">Usuario</IonLabel>
+          <IonInput />
           <br />
-          <IonLabel className='labelLogin'>Contraseña</IonLabel>
+          <IonLabel className="labelLogin">Contraseña</IonLabel>
           <IonInput
             type="password"
             id="password"
             value={password}
-            onIonInput={(e:any) => { setPassword(e.target.value) }}
-
+            onIonInput={(e: any) => {
+              setPassword(e.target.value);
+            }}
           />
-          <IonButton expand="full" className="btn_login" onClick={iniciarSesion} >Iniciar sesión</IonButton>
-
+          <IonButton expand="full" className="btn_login">
+            Iniciar sesión
+          </IonButton>
         </form>
       </div>
     </IonContent>
-
-
   );
+};
 
-
-}
-
-export default Login;
+export default LoginResp;

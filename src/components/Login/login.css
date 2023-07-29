@@ -1,0 +1,35 @@
+.login-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100vh;
+  width: 100vw;
+}
+
+.logo-container {
+  display: flex;
+  justify-content: center;
+}
+#logo {
+  width: 15rem;
+}
+#login {
+  margin-top: 2rem;
+}
+
+#login ion-input {
+  margin-top: 1rem;
+  --background: white;
+  --color: black;
+}
+#login form {
+  padding: 2rem;
+}
+
+.btn_login {
+  margin-top: 1.4rem;
+}
+#alerta {
+  margin-left: 2rem !important;
+  color: #c91717;
+}
