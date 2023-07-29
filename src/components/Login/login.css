@@ -5,7 +5,9 @@
   height: 100vh;
   width: 100vw;
 }
-
+.laberLogin{
+  color: blue;
+}
 .logo-container {
   display: flex;
   justify-content: center;
@@ -19,6 +21,7 @@
 
 #login ion-input {
   margin-top: 1rem;
+  margin-bottom: 1rem;
   --background: white;
   --color: black;
 }
@@ -32,4 +35,10 @@
 #alerta {
   margin-left: 2rem !important;
   color: #c91717;
+}
+
+span {
+  display: block;
+  color: tomato;
+  font-size: x-small;
 }
