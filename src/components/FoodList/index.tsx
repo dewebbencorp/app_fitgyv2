@@ -82,38 +82,13 @@ export const ListFood = () => {
                 className="food-container"
                 onClick={() => handleDetailClick(food.id_producto)}
               >
-                {food.id_categoria == 1 && (
-                  <div className="image-container-food-paddin">
+              
+                  <div className="image-container-food">
                     <img className="image-food" src={food.media_url} />
                   </div>
-                )}
+                
 
-                {food.id_categoria == 2 && (
-                  <div className="image-container-food-paddin">
-                    <img className="image-food" src={food.media_url} />
-                  </div>
-                )}
-
-                {food.id_categoria == 3 && (
-                  <div className="image-container-food-4">
-                    <img className="image-food" src={food.media_url} />
-                  </div>
-                )}
-
-                {food.id_categoria == 7 && (
-                  <div className="image-container-food-4">
-                    <img className="image-food" src={food.media_url} />
-                  </div>
-                )}
-
-                {food.id_categoria !== 1 &&
-                  food.id_categoria !== 2 &&
-                  food.id_categoria !== 3 &&
-                  food.id_categoria !== 7 && (
-                    <div className="image-container-food">
-                      <img className="image-food" src={food.media_url} />
-                    </div>
-                  )}
+               
 
                 <div className="description-info-container">
                   <div className="description-list-food">
