@@ -62,6 +62,13 @@ export const ListFood = () => {
 
   return (
     <>
+      {error && (
+        <div>
+          <h1>Error:</h1>
+          <pre>{JSON.stringify(detaiError, null, 2)}</pre>
+        </div>
+      )}
+
       <IonToolbar key={1}>
         <IonButtons slot="start">
           <IonButton onClick={() => handleBackClick()}>

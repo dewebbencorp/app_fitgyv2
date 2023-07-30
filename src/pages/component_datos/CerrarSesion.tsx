@@ -1,26 +1,20 @@
 import { IonButton } from "@ionic/react";
-import './css/cerrarSesion.css';
-import { useAuth } from "../../UserProvider";
-import { useEffect } from "react";
-import {useHistory} from 'react-router';
-const CerrarSesion = () =>{
-    const history = useHistory();
-    const {logout,salir} = useAuth();
+import "./css/cerrarSesion.css";
+import { useHistory } from "react-router";
+import { Asociado } from "../../interfaces";
+import { useSelector } from "react-redux";
+const CerrarSesion = () => {
+  const history = useHistory();
+  const user: Asociado = useSelector((state: Asociado) => state.user);
 
-    useEffect(()=>{
-        if(salir == true){
-            history.replace("/login");
-        }
-    },[salir,history]);
-    const cerrarSesion=() =>{
-        logout();
-    }
-    
-    return(
-        <div className="btn_cerrarSesion">
-            <IonButton onClick={cerrarSesion}>Cerrar sesión</IonButton>
+  const cerrarSesion = () => {
+    /* TODO*/
+  };
 
-        </div>
-    );
-} 
+  return (
+    <div className="btn_cerrarSesion">
+      <IonButton onClick={cerrarSesion}>Cerrar sesión</IonButton>
+    </div>
+  );
+};
 export default CerrarSesion;

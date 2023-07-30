@@ -1,6 +1,6 @@
 import "./fitbar.css";
 import { UseFecth } from "../../api/get";
-import { useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { IonContent, IonRouterLink } from "@ionic/react";
 import { ProductoCategorias } from "../../interfaces";
 
@@ -38,6 +38,7 @@ export const FitbarList = () => {
         */}
         <div className="main-contaier">
           {categorias?.map((type_food) => (
+            
             <div
               className="card-container"
               onClick={() => handleDivClick(type_food.id_categoria)}
@@ -57,6 +58,8 @@ export const FitbarList = () => {
             </div>
           ))}
         </div>
+
+        
       </IonContent>
     </>
   );
