@@ -1,5 +1,5 @@
 import { IonButton, IonContent, IonInput } from "@ionic/react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import logo from "./images/logo.png";
 import "./login.css";
@@ -8,11 +8,20 @@ import { UseFecthPost } from "../../api/post";
 import { Asociado, LoginError } from "../../interfaces";
 import { addUser } from "../../store/userSlice";
 import { useHistory } from "react-router-dom";
+import { useSelector } from "react-redux/es/hooks/useSelector";
 export const Login = () => {
   const [request, setRequest] = useState({});
   const [error, setError] = useState<LoginError>();
   const dispatch = useDispatch();
   const history = useHistory();
+
+  const user: Asociado = useSelector((state: Asociado) => state.user);
+
+  useEffect(() => {
+    if (user.esSocio === 1) {
+      history.push("/home");
+    }
+  });
   const {
     register,
     handleSubmit,
@@ -38,9 +47,9 @@ export const Login = () => {
     if (esSocio === 1) {
       console.log("SI ES SOCIO");
       console.log(response);
-      
+
       dispatch(addUser(response));
-      history.push("/home")
+      history.push("/home");
     } else if (!error) {
       console.log("NO ES SOCIO");
       console.log(err);
@@ -48,10 +57,18 @@ export const Login = () => {
     }
   };
 
-  if (data.length !== 0) {
-    console.log("Es socio : " + JSON.stringify(response.esSocio));
-    auth(response.esSocio, response, response);
-  }
+  useEffect(() => {
+    if (data.length !== 0) {
+      console.log("Es socio : " + JSON.stringify(response.esSocio));
+      auth(response.esSocio, response, response);
+    }
+  }, [response.esSocio]);
+
+  useEffect(() => {
+    if (user.esSocio === 1) {
+      history.push("/home");
+    }
+  });
 
   return (
     <IonContent>

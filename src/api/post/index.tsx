@@ -15,6 +15,8 @@ export const UseFecthPost = (request: {}, END: string) => {
     };
 
     if (!isObjectEmpty(request)) {
+      console.log("ESTO ES UNA PETICION");
+      
       fetch(BASE_URL + END, {
         method: "POST",
         headers: {

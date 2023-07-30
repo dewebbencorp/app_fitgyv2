@@ -21,8 +21,6 @@ import fitbar from "./img/fitbar.png";
 import cupon from "./img/cupon.png";
 import wifi from "./img/wifi.png";
 
-
-
 import EditarDatos from "./component_datos/EditarDatos";
 import OperacionTarjetas from "./component_inicio/OperacionTarjetas";
 import { ListFood } from "../components/FoodList";
@@ -31,16 +29,15 @@ import { Cart } from "../components/Cart";
 import { SignIn } from "./SignIn/SigIn";
 
 const Home = () => {
- 
-
-  return (
-    <IonReactRouter>
+  return {
+    /*
+  <IonReactRouter>
       
 
       <IonTabs>
         <IonRouterOutlet>
-          <Redirect exact path="/home" to="/home/inicio" />
-          <Route path="/home/inicio" render={() => <Inicio />} exact={true} />
+          <Redirect exact path="/hom" to="/home/inicio" />
+          <Route path="/home/ino" render={() => <Inicio />} exact={true} />
           <Route
             path="/home/inicio/tarjetas"
             render={() => <OperacionTarjetas />}
@@ -98,7 +95,7 @@ const Home = () => {
 
               <IonLabel>Cupón </IonLabel>
             </IonTabButton>
-          ) */}
+          ) }
 
           <IonTabButton tab="wifi" href="/home/wifi">
             <img width="45%" src={wifi} />
@@ -107,7 +104,11 @@ const Home = () => {
         </IonTabBar>
       </IonTabs>
     </IonReactRouter>
-  );
+
+
+
+*/
+  };
 };
 
 export default Home;
