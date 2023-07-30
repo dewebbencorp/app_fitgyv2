@@ -6,7 +6,6 @@ import {
   IonTabs,
 } from "@ionic/react";
 
-import Inicio from "../Inicio";
 import { Redirect, Route, useLocation } from "react-router";
 import { useSelector } from "react-redux/es/hooks/useSelector";
 import { Asociado } from "../../interfaces";
