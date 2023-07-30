@@ -18,26 +18,24 @@ const Tarjeta = () => {
     }
   }, [user, setTitular]);
   return (
-    <IonContent>
-      <div className="btn_tarjeta">
-        {titular !==1  ? (
-          <IonButton disabled={true} fill="outline">
-            <img src={tarjeta} />
-            <span> Tarjeta </span>
-          </IonButton>
-        ) : (
-          <IonButton
-            fill="outline"
-            onClick={() => {
-              history.push("/home/inicio/tarjetas");
-            }}
-          >
-            <img src={tarjeta} />
-            <span> Tarjeta </span>
-          </IonButton>
-        )}
-      </div>
-    </IonContent>
+    <div className="btn_tarjeta">
+      {titular !== 1 ? (
+        <IonButton disabled={true} fill="outline">
+          <img src={tarjeta} />
+          <span> Tarjeta </span>
+        </IonButton>
+      ) : (
+        <IonButton
+          fill="outline"
+          onClick={() => {
+            history.push("/home/inicio/tarjetas");
+          }}
+        >
+          <img src={tarjeta} />
+          <span> Tarjeta </span>
+        </IonButton>
+      )}
+    </div>
   );
 };
 
