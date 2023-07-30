@@ -10,12 +10,12 @@ import Barcode from "react-barcode";
 import { useState, useEffect, useRef } from "react";
 import { SocialSharing } from "@ionic-native/social-sharing";
 import html2canvas from "html2canvas";
-import cupon from "./Home/img/cupon.png";
-import compartir from "./Home/img/compartir.png";
-import "./css/cupon.css";
-import ListaBarcode from "./component_barcode/ListaBarcode";
+import cupon from "./../../pages/Home/img/cupon.png";
+import compartir from "./../../pages//Home/img/compartir.png";
+import "./cupon.css";
+import ListaBarcode from "../../pages/component_barcode/ListaBarcode";
 import { useSelector } from "react-redux/es/hooks/useSelector";
-import { Asociado } from "../interfaces";
+import { Asociado } from "../../interfaces";
 
 export const Cupon = () => {
   const user: Asociado = useSelector((state: Asociado) => state.user);

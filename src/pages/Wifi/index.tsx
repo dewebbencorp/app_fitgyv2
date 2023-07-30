@@ -1,7 +1,7 @@
 import { IonContent } from "@ionic/react";
-import wifiPrincipal from "./Home/img/wifi_principal.png";
+import wifiPrincipal from "../Home/img/wifi_principal.png";
 import { useState } from "react";
-import "./css/wifi.css";
+import "./wifi.css";
 export const Wifi = () => {
   const [nombreRed, setNombreRed] = useState("");
   const [password, setPassword] = useState("");

@@ -7,12 +7,11 @@ import {
 } from "@ionic/react";
 
 import Inicio from "../Inicio";
-import InformacionCliente from "../InformacionCliente";
 import { Redirect, Route, useLocation } from "react-router";
 import { useSelector } from "react-redux/es/hooks/useSelector";
 import { Asociado } from "../../interfaces";
-import { Cupon } from "../Cupon";
-import { Wifi } from "./../Wifi";
+import { Cupon } from "../../components/Cupon";
+import { Wifi } from "../Wifi";
 import { Fitbar } from "../Fitbar/Fitbar";
 import "./home.css";
 import { Cart } from "../../components/Cart";
@@ -25,6 +24,8 @@ import cupon from "./img/cupon.png";
 import wifi from "./img/wifi.png";
 import EditarDatos from "../component_datos/EditarDatos";
 import OperacionTarjetas from "../component_inicio/OperacionTarjetas";
+import { Profile } from "../Profile";
+import { Welcome } from "../Welcome";
 export const Home = () => {
   const user: Asociado = useSelector((state: Asociado) => state.user);
   const location = useLocation();
@@ -35,9 +36,13 @@ export const Home = () => {
     <>
       <IonTabs>
         <IonRouterOutlet>
-          <Route exact path="/home/inicio" component={Inicio} />
-          <Route exact path="/home/inicio/tarjetas" component={OperacionTarjetas} />
-          <Route exact path="/home/perfil" component={InformacionCliente} />
+          <Route exact path="/home/inicio" component={Welcome} />
+          <Route
+            exact
+            path="/home/inicio/tarjetas"
+            component={OperacionTarjetas}
+          />
+          <Route exact path="/home/perfil" component={Profile} />
           <Route
             exact
             path="/home/perfil/editar-datos"
