@@ -53,6 +53,7 @@ export const Home = () => {
           <Route path="/home/fitbar/food/detail/:id" component={FoodDetail} />
           <Route exact path="/home/cupon" component={Cupon} />
           <Route exact path="/home/wifi" component={Wifi} />
+          <Route exact path="/home/carrito" component={Cart} />
           <Route exact path="/home">
             <Redirect to="/home/inicio" />
           </Route>
