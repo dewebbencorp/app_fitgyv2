@@ -25,7 +25,7 @@ export const ListFood = () => {
     id_Categoria: id,
   };
 
-  const { loading, error, detaiError, data } = UseFecthPost(
+  const { loading, detailError, error, data } = UseFecthPost(
     request,
     "getCategoria_producto.php"
   );
@@ -65,7 +65,7 @@ export const ListFood = () => {
       {error && (
         <div>
           <h1>Error:</h1>
-          <pre>{JSON.stringify(detaiError, null, 2)}</pre>
+          <pre>{JSON.stringify(detailError, null, 2)}</pre>
         </div>
       )}
 
