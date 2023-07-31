@@ -20,7 +20,9 @@ export const ListFood = () => {
   const { id } = useParams();
   const history = useHistory();
   const { performSQLAction, initialized } = useSQLiteDB();
-
+  const handleDetailClick = (id: number) => {
+    history.push(`/home/fitbar/food/detail/${id}`);
+  };
   const goToCart = () => {
     history.push("/home/carrito");
   };
@@ -43,10 +45,6 @@ export const ListFood = () => {
 
   const handleBackClick = () => {
     history.goBack();
-  };
-
-  const handleDetailClick = (id: number) => {
-    history.push(`/home/fitbar/food/detail/${id}`);
   };
 
   const addToCart = async (data: ProductoPorCategoria) => {
@@ -85,11 +83,12 @@ export const ListFood = () => {
       <Swiper className="swiper" spaceBetween={0} slidesPerView={1.5}>
         {producto?.map((food) => (
           <>
-            <SwiperSlide key={food.id_producto} className="slide">
-              <div
-                className="food-container"
-                onClick={() => handleDetailClick(food.id_producto)}
-              >
+            <SwiperSlide
+              key={food.id_producto}
+              className="slide"
+              onClick={() => handleDetailClick(food.id_producto)}
+            >
+              <div className="food-container">
                 {food.id_categoria == 5 && (
                   <div className="image-container-food-2">
                     <img className="image-food" src={food.media_url} />

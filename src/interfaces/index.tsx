@@ -21,6 +21,7 @@ export interface ProductoDetalle {
   descripcion: string;
   media_url: string;
   costo: number;
+  detail_food: any;
 }
 export interface Asociado {
   user: any;
