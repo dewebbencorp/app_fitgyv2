@@ -5,7 +5,8 @@ const initialState: ProductoCategorias = {
   id_categoria: 0,
   nombre: "",
   descripcion: "",
-  media_url: ""
+  media_url: "",
+  types_food: undefined
 };
 
 export const typeFoodSlice = createSlice({

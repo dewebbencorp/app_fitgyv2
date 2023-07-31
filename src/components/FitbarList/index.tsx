@@ -23,10 +23,10 @@ export const FitbarList = () => {
     history.push(`/home/fitbar/food/${id}`);
   };
 
-  const valoresFood = Object.values(food);
+  const Food = Object.values(food);
 
   // Filtrar los elementos que cumplen con la interfaz ProductoCategorias
-  const categorias: ProductoCategorias[] = valoresFood.filter(
+  const categorias: ProductoCategorias[] = Food.filter(
     (item) =>
       typeof item === "object" && item !== null && "id_categoria" in item
   );

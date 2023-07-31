@@ -11,6 +11,10 @@ import add_img from "./images/img_add.png";
 import "swiper/css";
 import { useSQLiteDB } from "../../database";
 import { SQLiteDBConnection } from "@capacitor-community/sqlite";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { AnyAction, ThunkDispatch } from "@reduxjs/toolkit";
+import { postFoodByType } from "../../repository/Food";
 
 export const ListFood = () => {
   const { id } = useParams();
@@ -21,16 +25,21 @@ export const ListFood = () => {
     history.push("/home/carrito");
   };
 
-  const request = {
-    id_Categoria: id,
-  };
-
-  const { loading, detailError, error, data } = UseFecthPost(
-    request,
-    "getCategoria_producto.php"
+  const foodByType: ProductoPorCategoria = useSelector(
+    (state: ProductoPorCategoria) => state.food_by_tye
   );
 
-  const producto: ProductoPorCategoria[] = data;
+  const dispatch: ThunkDispatch<any, void, AnyAction> = useDispatch();
+  useEffect(() => {
+    dispatch(postFoodByType(id));
+  }, [dispatch]);
+
+  const data = Object.values(foodByType);
+
+  const producto: ProductoPorCategoria[] = data.filter(
+    (item) =>
+      typeof item === "object" && item !== null && "id_categoria" in item
+  );
 
   const handleBackClick = () => {
     history.goBack();
@@ -62,13 +71,6 @@ export const ListFood = () => {
 
   return (
     <>
-      {error && (
-        <div>
-          <h1>Error:</h1>
-          <pre>{JSON.stringify(detailError, null, 2)}</pre>
-        </div>
-      )}
-
       <IonToolbar key={1}>
         <IonButtons slot="start">
           <IonButton onClick={() => handleBackClick()}>
@@ -79,7 +81,6 @@ export const ListFood = () => {
 
       <h1 className="title-list-food">The Fit Bar</h1>
       <h1 className="sub-title-list-food">MENÚ</h1>
-      {loading && <div>Cargando...</div>}
 
       <Swiper className="swiper" spaceBetween={0} slidesPerView={1.5}>
         {producto?.map((food) => (
@@ -134,7 +135,7 @@ export const ListFood = () => {
         ))}
       </Swiper>
 
-      {!loading && (
+      {producto && (
         <div className="got-cart">
           <img onClick={() => goToCart()} className="car" src={car_img} />
         </div>

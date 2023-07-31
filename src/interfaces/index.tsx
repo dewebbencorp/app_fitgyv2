@@ -13,6 +13,7 @@ export interface ProductoPorCategoria {
   categoria: string;
   media_url: string;
   costo: number;
+  food_by_tye: any
 }
 export interface ProductoDetalle {
   nombreProducto: string;
