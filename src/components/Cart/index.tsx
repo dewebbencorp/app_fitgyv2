@@ -9,11 +9,14 @@ import { useHistory } from "react-router";
 import { CartI, CartTotal, order } from "../../interfaces";
 import "./cart.css";
 import { sendWhatsAppMessage } from "./senMessage";
+import { Repo } from "../../repository/test";
 export const Cart = () => {
   const { performSQLAction, initialized } = useSQLiteDB();
   const history = useHistory();
   const [items, setItems] = useState<Array<CartI>>();
   const [cart_total, setTotal] = useState<Array<CartTotal>>();
+  
+
 
   // useEffect to load data on component mount
   useEffect(() => {
