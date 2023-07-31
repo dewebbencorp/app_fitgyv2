@@ -6,9 +6,10 @@ import "./login.css";
 import { useForm } from "react-hook-form";
 import { UseFecthPost } from "../../api/post";
 import { Asociado, LoginError } from "../../interfaces";
-import { addUser } from "../../store/userSlice";
+import { addUser } from "../../store/slices/userSlice";
 import { useHistory } from "react-router-dom";
 import { useSelector } from "react-redux/es/hooks/useSelector";
+
 export const Login = () => {
   const [request, setRequest] = useState({});
   const [error, setError] = useState<LoginError>();

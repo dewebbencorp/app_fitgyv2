@@ -3,6 +3,7 @@ export interface ProductoCategorias {
   nombre: string;
   descripcion: string;
   media_url: string;
+  types_food: any
 }
 
 export interface ProductoPorCategoria {

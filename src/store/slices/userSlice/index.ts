@@ -1,5 +1,5 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
-import { Asociado } from "../../interfaces";
+import { Asociado } from "../../../interfaces";
 
 const initialState: Asociado = {
   Nombre_Asociado: "",
