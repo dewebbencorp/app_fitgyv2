@@ -3,6 +3,7 @@ export interface ProductoCategorias {
   nombre: string;
   descripcion: string;
   media_url: string;
+  types_food: any
 }
 
 export interface ProductoPorCategoria {
@@ -12,6 +13,7 @@ export interface ProductoPorCategoria {
   categoria: string;
   media_url: string;
   costo: number;
+  food_by_tye: any
 }
 export interface ProductoDetalle {
   nombreProducto: string;
@@ -19,6 +21,30 @@ export interface ProductoDetalle {
   descripcion: string;
   media_url: string;
   costo: number;
+  detail_food: any;
+}
+export interface Asociado {
+  user: any;
+  Clav_Asociado: number;
+  passedit: number;
+  Nombre_Asociado: string;
+  Telefono: string;
+  TipoMembresia: string;
+  Apellidos: string;
+  CorreoE: string;
+  NombreMem: string;
+  imgAvatar: string;
+  fechaO: string;
+  titular: number;
+  esSocio: number;
+  puntos: number;
+  vencio: number;
+  diasRestantes: number;
+}
+
+export interface LoginError{
+  mensaje: string
+  esSocio: 0
 }
 
 /* SQLite  */

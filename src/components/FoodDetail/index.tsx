@@ -7,6 +7,10 @@ import car_img from "./images/img_car.png";
 import "./foodetail.css";
 import { useSQLiteDB } from "../../database";
 import { SQLiteDBConnection } from "@capacitor-community/sqlite";
+import { AnyAction, ThunkDispatch } from "@reduxjs/toolkit";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { postFoodDetail } from "../../repository/Food";
 
 export const FoodDetail = () => {
   const { id } = useParams();
@@ -23,12 +27,6 @@ export const FoodDetail = () => {
     history.goBack();
   };
 
-  
-  const { data, loading, error, detaiError } = UseFecthPost(
-    request,
-    "getProducto.php"
-  );
-
   const addToCart = async (data: ProductoDetalle) => {
     try {
       // add test record to db
@@ -36,21 +34,28 @@ export const FoodDetail = () => {
         await db?.query(
           `INSERT INTO orders ( name_product, price, image_url, name_client, date_added )
           VALUES (?,?,?,?,datetime('now'));`,
-          [data.nombreProducto, data.costo, data.media_url,"sebas" ]
+          [data.nombreProducto, data.costo, data.media_url, "sebas"]
         );
-        
+
         const respSelect = await db?.query(`SELECT * FROM orders;`);
         console.log(respSelect?.values);
       });
     } catch (error) {
       alert((error as Error).message);
-    }finally{
+    } finally {
       alert("Producto añadido");
     }
-
   };
+  const foodi: ProductoDetalle = useSelector(
+    (state: ProductoDetalle) => state.detail_food
+  );
 
-  const food: ProductoDetalle = data[0];
+  const dispatch: ThunkDispatch<any, void, AnyAction> = useDispatch();
+  useEffect(() => {
+    dispatch(postFoodDetail(id));
+  }, [dispatch]);
+
+  const food: ProductoDetalle = foodi[0];
 
   return (
     <>
@@ -62,13 +67,6 @@ export const FoodDetail = () => {
         </IonButtons>
       </IonToolbar>
 
-      {loading && <div>Cargando...</div>}
-      {error && (
-        <div>
-          {" "}
-          <h1>Error :</h1> {detaiError.toString()}
-        </div>
-      )}
       {food && (
         <>
           <div className="main-container-food">

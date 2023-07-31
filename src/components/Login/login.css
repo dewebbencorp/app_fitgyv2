@@ -1,0 +1,44 @@
+.login-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100vh;
+  width: 100vw;
+}
+.laberLogin{
+  color: blue;
+}
+.logo-container {
+  display: flex;
+  justify-content: center;
+}
+#logo {
+  width: 15rem;
+}
+#login {
+  margin-top: 2rem;
+}
+
+#login ion-input {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  --background: white;
+  --color: black;
+}
+#login form {
+  padding: 2rem;
+}
+
+.btn_login {
+  margin-top: 1.4rem;
+}
+#alerta {
+  margin-left: 2rem !important;
+  color: #c91717;
+}
+
+span {
+  display: block;
+  color: tomato;
+  font-size: x-small;
+}

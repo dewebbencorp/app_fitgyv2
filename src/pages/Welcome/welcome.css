@@ -1,0 +1,18 @@
+.head-info-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.welcome-logo {
+  margin-top: 1rem;
+  width: 30%;
+}
+.welcome-video {
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.welcome-video iframe {
+  width: 330px;
+  height: 200px;
+}
