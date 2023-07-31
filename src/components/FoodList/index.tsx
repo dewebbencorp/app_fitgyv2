@@ -2,7 +2,6 @@ import { IonButtons, IonToolbar, IonButton } from "@ionic/react";
 import "./foodList.css";
 import { HiChevronLeft } from "react-icons/hi2";
 import { useParams } from "react-router";
-import { UseFecthPost } from "../../api/post";
 import { ProductoPorCategoria } from "../../interfaces";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { useHistory } from "react-router-dom";
@@ -20,6 +19,7 @@ export const ListFood = () => {
   const { id } = useParams();
   const history = useHistory();
   const { performSQLAction, initialized } = useSQLiteDB();
+  initialized;
   const handleDetailClick = (id: number) => {
     history.push(`/home/fitbar/food/detail/${id}`);
   };
@@ -86,9 +86,9 @@ export const ListFood = () => {
             <SwiperSlide
               key={food.id_producto}
               className="slide"
-              onClick={() => handleDetailClick(food.id_producto)}
+             
             >
-              <div className="food-container">
+              <div className="food-container"  onClick={() => handleDetailClick(food.id_producto)}>
                 {food.id_categoria == 5 && (
                   <div className="image-container-food-2">
                     <img className="image-food" src={food.media_url} />

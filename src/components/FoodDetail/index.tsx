@@ -46,6 +46,7 @@ export const FoodDetail = () => {
       alert("Producto añadido");
     }
   };
+  
   const foodi: ProductoDetalle = useSelector(
     (state: ProductoDetalle) => state.detail_food
   );
