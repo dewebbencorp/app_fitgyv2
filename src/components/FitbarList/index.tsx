@@ -7,15 +7,25 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchTypesFood } from "../../repository/Food";
 import { AnyAction, ThunkDispatch } from "@reduxjs/toolkit";
 import { useHistory } from "react-router";
+import { Repo } from "../../repository/test";
 
 export const FitbarList = () => {
+
+  Repo();
+
+
+
+
   const food: ProductoCategorias = useSelector(
     (state: ProductoCategorias) => state.types_food
   );
 
   const dispatch: ThunkDispatch<any, void, AnyAction> = useDispatch();
   useEffect(() => {
-    dispatch(fetchTypesFood());
+    //dispatch(fetchTypesFood());
+
+
+
   }, [dispatch]);
 
   const history = useHistory();
