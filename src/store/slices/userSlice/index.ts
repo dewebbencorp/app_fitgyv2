@@ -1,7 +1,8 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import { Asociado } from "../../../interfaces";
+import { setAndPersistDbUserState } from "../../userService";
 
-const initialState: Asociado = {
+const EmptyUsetState: Asociado = {
   Nombre_Asociado: "",
   CorreoE: "",
   Clav_Asociado: 0,
@@ -22,14 +23,23 @@ const initialState: Asociado = {
 
 export const userSlice = createSlice({
   name: "user",
-  initialState,
+  initialState: localStorage.getItem('user_data') ? JSON.parse(localStorage.getItem('user_data') as string) : EmptyUsetState,
+  
   reducers: {
     addUser: (state: Asociado, action: PayloadAction<Asociado>) => {
-      const aso: Asociado = action.payload;
-      return { ...state, ...aso };
+      setAndPersistDbUserState(action.payload)
+      return action.payload
     },
+    removeUser: () =>{
+      localStorage.removeItem('user_data')
+      return EmptyUsetState
+    }
+
+
   },
 });
 
-export const { addUser } = userSlice.actions;
+
+
+export const { addUser, removeUser } = userSlice.actions;
 export default userSlice.reducer;

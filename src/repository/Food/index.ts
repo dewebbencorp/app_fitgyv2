@@ -3,7 +3,7 @@ import { Dispatch } from "redux";
 import { addFoodTypes } from "../../store/slices/typeFoodSlice";
 import { addFoodByType } from "../../store/slices/foodByTypeSlice";
 import { addDetailFood } from "../../store/slices/detailFood";
-import { Repo } from "../test";
+
 
 export const fetchTypesFood =
   () =>

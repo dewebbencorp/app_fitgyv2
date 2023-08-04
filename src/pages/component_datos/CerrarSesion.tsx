@@ -1,14 +1,15 @@
 import { IonButton } from "@ionic/react";
 import "./css/cerrarSesion.css";
 import { useHistory } from "react-router";
-import { Asociado } from "../../interfaces";
-import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { removeUser } from "../../store/slices/userSlice";
 const CerrarSesion = () => {
   const history = useHistory();
-  const user: Asociado = useSelector((state: Asociado) => state.user);
-
+ 
+const dispatch = useDispatch();
   const cerrarSesion = () => {
-    /* TODO*/
+    dispatch(removeUser())
+    history.replace('/');
   };
 
   return (
@@ -18,3 +19,4 @@ const CerrarSesion = () => {
   );
 };
 export default CerrarSesion;
+

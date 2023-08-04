@@ -6,16 +6,16 @@ import "./login.css";
 import { useForm } from "react-hook-form";
 import { UseFecthPost } from "../../api/post";
 import { Asociado, LoginError } from "../../interfaces";
-import { addUser } from "../../store/slices/userSlice";
 import { useHistory } from "react-router-dom";
 import { useSelector } from "react-redux/es/hooks/useSelector";
+import { addUser } from "../../store/slices/userSlice";
 
 export const Login = () => {
   const [request, setRequest] = useState({});
-  const [error, setError] = useState<LoginError>();
-  const dispatch = useDispatch();
+  const [error, setError] = useState<LoginError>();;
   const history = useHistory();
-
+  const dispatch = useDispatch();
+  
   const user: Asociado = useSelector((state: Asociado) => state.user);
 
   useEffect(() => {
@@ -48,8 +48,8 @@ export const Login = () => {
     if (esSocio === 1) {
       console.log("SI ES SOCIO");
       console.log(response);
-
-      dispatch(addUser(response));
+    
+      dispatch(addUser(response))
       history.push("/home");
     } else if (!error) {
       console.log("NO ES SOCIO");

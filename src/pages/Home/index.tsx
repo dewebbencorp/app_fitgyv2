@@ -31,67 +31,74 @@ export const Home = () => {
 
   console.log(location.pathname);
 
+
+
   return (
     <>
-      <IonTabs>
-        <IonRouterOutlet>
-          <Route exact path="/home/inicio" component={Welcome} />
-          <Route
-            exact
-            path="/home/inicio/tarjetas"
-            component={OperacionTarjetas}
-          />
-          <Route exact path="/home/perfil" component={Profile} />
-          <Route
-            exact
-            path="/home/perfil/editar-datos"
-            component={EditarDatos}
-          />
-          <Route exact path="/home/fitbar" component={Fitbar} />
-          <Route exact path="/home/fitbar/food/:id" component={ListFood} />
-          <Route exact path="/home/fitbar/food/detail/:id" component={FoodDetail} />
-          <Route exact path="/home/cupon" component={Cupon} />
-          <Route exact path="/home/wifi" component={Wifi} />
-          <Route exact path="/home/carrito" component={Cart} />
-          <Route exact path="/home">
-            <Redirect to="/home/inicio" />
-          </Route>
-        </IonRouterOutlet>
-        <IonTabBar className="iontab" slot="bottom">
-          <IonTabButton tab="inicio" href="/home/inicio">
-            <img className="imgHome" src={home} />
-            <IonLabel>Home</IonLabel>
-          </IonTabButton>
 
-          <IonTabButton tab="perfil" href="/home/perfil">
-            <img width="30%" src={perfil} />
-            <IonLabel>Perfil</IonLabel>
-          </IonTabButton>
-
-          <IonTabButton tab="fitbar" href="/home/fitbar">
-            <img width="70%" src={fitbar} />
-            <IonLabel>Fitbar</IonLabel>
-          </IonTabButton>
-
-          {user.titular == 0 ? (
-            <IonTabButton tab="cupon" disabled={true} href="/home/cupon">
-              <img width="25%" src={cupon} />
-              <IonLabel>Cupón</IonLabel>
+      {location.pathname !== "/" &&  location.pathname !== "/fitbar/food/" &&(
+        <IonTabs>
+          <IonRouterOutlet>
+            <Route exact path="/home/inicio" component={Welcome} />
+            <Route
+              exact
+              path="/home/inicio/tarjetas"
+              component={OperacionTarjetas}
+            />
+            <Route exact path="/home/perfil" component={Profile} />
+            <Route
+              exact
+              path="/home/perfil/editar-datos"
+              component={EditarDatos}
+            />
+            <Route exact path="/home/fitbar" component={Fitbar} />
+            <Route exact path="/home/fitbar/food/:id" component={ListFood} />
+            <Route exact path="/home/fitbar/food/detail/:id" component={FoodDetail} />
+            <Route exact path="/home/cupon" component={Cupon} />
+            <Route exact path="/home/wifi" component={Wifi} />
+            <Route exact path="/home/carrito" component={Cart} />
+            <Route exact path="/home">
+              <Redirect to="/home/inicio" />
+            </Route>
+          </IonRouterOutlet>
+          <IonTabBar className="iontab" slot="bottom">
+            <IonTabButton tab="inicio" href="/home/inicio">
+              <img className="imgHome" src={home} />
+              <IonLabel>Home</IonLabel>
             </IonTabButton>
-          ) : (
-            <IonTabButton tab="cupon" href="/home/cupon">
-              <img width="25%" src={cupon} />
 
-              <IonLabel>Cupón </IonLabel>
+            <IonTabButton tab="perfil" href="/home/perfil">
+              <img width="30%" src={perfil} />
+              <IonLabel>Perfil</IonLabel>
             </IonTabButton>
-          )}
 
-          <IonTabButton tab="wifi" href="/home/wifi">
-            <img width="45%" src={wifi} />
-            <IonLabel>Wifi</IonLabel>
-          </IonTabButton>
-        </IonTabBar>
-      </IonTabs>
+            <IonTabButton tab="fitbar" href="/home/fitbar">
+              <img width="70%" src={fitbar} />
+              <IonLabel>Fitbar</IonLabel>
+            </IonTabButton>
+
+            {user.titular == 0 ? (
+              <IonTabButton tab="cupon" disabled={true} href="/home/cupon">
+                <img width="25%" src={cupon} />
+                <IonLabel>Cupón</IonLabel>
+              </IonTabButton>
+            ) : (
+              <IonTabButton tab="cupon" href="/home/cupon">
+                <img width="25%" src={cupon} />
+
+                <IonLabel>Cupón </IonLabel>
+              </IonTabButton>
+            )}
+
+            <IonTabButton tab="wifi" href="/home/wifi">
+              <img width="45%" src={wifi} />
+              <IonLabel>Wifi</IonLabel>
+            </IonTabButton>
+          </IonTabBar>
+        </IonTabs>
+
+      )}
+
     </>
   );
 };
