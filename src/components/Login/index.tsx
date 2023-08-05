@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import logo from "./images/logo.png";
 import "./login.css";
 import { useForm } from "react-hook-form";
-import { UseFecthPost } from "../../api/post";
+import { UseFecthPost } from "../../auth/post";
 import { Asociado, LoginError } from "../../interfaces";
 import { useHistory } from "react-router-dom";
 import { useSelector } from "react-redux/es/hooks/useSelector";

@@ -13,7 +13,7 @@ import { SQLiteDBConnection } from "@capacitor-community/sqlite";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { AnyAction, ThunkDispatch } from "@reduxjs/toolkit";
-import { postFoodByType } from "../../repository/Food";
+import { postFoodByType } from "../../axios/Food";
 
 export const ListFood = () => {
   const { id } = useParams();

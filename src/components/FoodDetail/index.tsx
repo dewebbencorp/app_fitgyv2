@@ -1,7 +1,6 @@
 import { IonButton, IonButtons, IonToolbar } from "@ionic/react";
 import { HiChevronLeft } from "react-icons/hi2";
 import { useHistory, useParams } from "react-router";
-import { UseFecthPost } from "../../api/post";
 import { ProductoDetalle } from "../../interfaces";
 import car_img from "./images/img_car.png";
 import "./foodetail.css";
@@ -10,7 +9,7 @@ import { SQLiteDBConnection } from "@capacitor-community/sqlite";
 import { AnyAction, ThunkDispatch } from "@reduxjs/toolkit";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import { postFoodDetail } from "../../repository/Food";
+import { postFoodDetail } from "../../axios/Food";
 
 export const FoodDetail = () => {
   const { id } = useParams();
