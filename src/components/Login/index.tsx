@@ -9,18 +9,19 @@ import { Asociado, LoginError } from "../../interfaces";
 import { useHistory } from "react-router-dom";
 import { useSelector } from "react-redux/es/hooks/useSelector";
 import { addUser } from "../../store/slices/userSlice";
+import { Loading } from "../LoadScreen";
 
 export const Login = () => {
   const [request, setRequest] = useState({});
   const [error, setError] = useState<LoginError>();;
   const history = useHistory();
   const dispatch = useDispatch();
-  
+
   const user: Asociado = useSelector((state: Asociado) => state.user);
 
   useEffect(() => {
     if (user.esSocio === 1) {
-      history.push("/home");
+       history.replace("/home");
     }
   });
   const {
@@ -34,13 +35,15 @@ export const Login = () => {
       password: "",
     },
   });
-  console.log(errors);
+
   const onSubmit = handleSubmit((data) => {
     console.log(data);
     setRequest(data);
   });
 
-  const { data } = UseFecthPost(request, "login.php");
+  const { data, loading } = UseFecthPost(request, "login.php");
+
+
 
   const response: Asociado = data;
 
@@ -48,12 +51,11 @@ export const Login = () => {
     if (esSocio === 1) {
       console.log("SI ES SOCIO");
       console.log(response);
-    
+
       dispatch(addUser(response))
-      history.push("/home");
+      history.replace("/home");
     } else if (!error) {
       console.log("NO ES SOCIO");
-      console.log(err);
       setError(err);
     }
   };
@@ -65,63 +67,65 @@ export const Login = () => {
     }
   }, [response.esSocio]);
 
-  useEffect(() => {
-    if (user.esSocio === 1) {
-      history.push("/home");
-    }
-  });
+
 
   return (
     <IonContent>
-      <div className="login-container">
-        <div className="logo-container">
-          <img id="logo" src={logo} alt="Logo" />
-        </div>
 
-        <div id="login">
-          <form onSubmit={onSubmit}>
-            <h5 style={{ width: "400px" }}>
-              {error && <span>{error.mensaje}</span>}
-            </h5>
-            <label>Correo Electrónico:</label>
-            <IonInput
-              type="email"
-              {...register("email", {
-                required: {
-                  value: true,
-                  message: "Correo es requerido",
-                },
-                pattern: {
-                  value: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
-                  message: "Correo no válido",
-                },
-              })}
-            />
-            {errors.email && <span>{errors.email.message}</span>}
+      {
+        user.esSocio === 1 ? <Loading /> : (<div className="login-container">
+          <div className="logo-container">
+            <img id="logo" src={logo} alt="Logo" />
+          </div>
 
-            <label>Contraseña</label>
-            <IonInput
-              type="password"
-              id="password"
-              {...register("password", {
-                required: {
-                  value: true,
-                  message: "La contraseña es requerida",
-                },
-                minLength: {
-                  value: 6,
-                  message: "Contraseña debe ser mayor a 6 caracteres",
-                },
-              })}
-            />
-            {errors.password && <span>{errors.password.message}</span>}
+          <div id="login">
+            <form onSubmit={onSubmit}>
+              <h5 style={{ width: "400px" }}>
+                {error && <span>{error.mensaje}</span>}
+              </h5>
+              <label>Correo Electrónico:</label>
+              <IonInput
+                type="email"
+                {...register("email", {
+                  required: {
+                    value: true,
+                    message: "Correo es requerido",
+                  },
+                  pattern: {
+                    value: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
+                    message: "Correo no válido",
+                  },
+                })}
+              />
+              {errors.email && <span>{errors.email.message}</span>}
+              <label>Contraseña</label>
+              <IonInput
+                type="password"
+                id="password"
+                {...register("password", {
+                  required: {
+                    value: true,
+                    message: "La contraseña es requerida",
+                  },
+                  minLength: {
+                    value: 6,
+                    message: "Contraseña debe ser mayor a 6 caracteres",
+                  },
+                })}
+              />
+              {errors.password && <span>{errors.password.message} </span>}
 
-            <IonButton expand="full" type="submit" className="btn_login">
-              Iniciar sesión
-            </IonButton>
-          </form>
-        </div>
-      </div>
+              <IonButton expand="full" type="submit" className="btn_login">
+                Iniciar sesión
+              </IonButton>
+            </form>
+          </div>
+          {loading && (
+            <Loading />
+          )}
+        </div>)
+      }
+
     </IonContent>
   );
 };
