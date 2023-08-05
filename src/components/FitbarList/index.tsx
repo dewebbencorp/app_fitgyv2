@@ -1,5 +1,5 @@
 import "./fitbar.css";
-import { IonContent, IonRouterLink } from "@ionic/react";
+import { IonContent, IonProgressBar, IonRouterLink } from "@ionic/react";
 import { ProductoCategorias } from "../../interfaces";
 import { useEffect } from "react";
 
@@ -34,14 +34,22 @@ export const FitbarList = () => {
 
   return (
     <>
-      <div className="header-info">
-        <h1>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur autem
-          distinctio animi ipsum omnis?
-        </h1>
-      </div>
+
       <IonContent>
-      
+        <div className="header-info-container">
+          <div className="header-info">
+            <h2 className="header-title-1">
+              Realiza tu pedido a través de
+            </h2>
+            <span className="progresbar-line">
+              <IonProgressBar value={1} color="light" className="custom-pg" />
+            </span>
+
+            <h1 className="header-title-2">
+              WhatsApp
+            </h1>
+          </div>
+        </div>
         <div className="main-contaier">
           {categorias?.map((type_food) => (
             <div
@@ -66,4 +74,6 @@ export const FitbarList = () => {
       </IonContent>
     </>
   );
+
+
 };
