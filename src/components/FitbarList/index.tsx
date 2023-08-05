@@ -41,12 +41,7 @@ export const FitbarList = () => {
         </h1>
       </div>
       <IonContent>
-        {/*
-        
-        <div className="head-info">
-          <h1>Cargo automatico</h1>
-        </div>
-        */}
+      
         <div className="main-contaier">
           {categorias?.map((type_food) => (
             <div

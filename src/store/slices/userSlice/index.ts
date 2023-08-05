@@ -1,6 +1,6 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import { Asociado } from "../../../interfaces";
-import { setAndPersistDbUserState } from "../../userService";
+import { setAndPersistDbUserState } from "../../services/user";
 
 const EmptyUsetState: Asociado = {
   Nombre_Asociado: "",
@@ -18,28 +18,26 @@ const EmptyUsetState: Asociado = {
   puntos: 0,
   vencio: 0,
   diasRestantes: 0,
-  user: undefined
+  user: undefined,
 };
 
 export const userSlice = createSlice({
   name: "user",
-  initialState: localStorage.getItem('user_data') ? JSON.parse(localStorage.getItem('user_data') as string) : EmptyUsetState,
-  
+  initialState: localStorage.getItem("user_data")
+    ? JSON.parse(localStorage.getItem("user_data") as string)
+    : EmptyUsetState,
+
   reducers: {
     addUser: (state: Asociado, action: PayloadAction<Asociado>) => {
-      setAndPersistDbUserState(action.payload)
-      return action.payload
+      setAndPersistDbUserState(action.payload);
+      return action.payload;
     },
-    removeUser: () =>{
-      localStorage.removeItem('user_data')
-      return EmptyUsetState
-    }
-
-
+    removeUser: () => {
+      localStorage.removeItem("user_data");
+      return EmptyUsetState;
+    },
   },
 });
-
-
 
 export const { addUser, removeUser } = userSlice.actions;
 export default userSlice.reducer;
