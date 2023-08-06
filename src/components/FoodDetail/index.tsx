@@ -12,14 +12,12 @@ import { useEffect } from "react";
 import { postFoodDetail } from "../../axios/Food";
 
 export const FoodDetail = () => {
-  const { id } = useParams();
+  
   const history = useHistory();
   const { performSQLAction, initialized } = useSQLiteDB();
-  const request = {
-    id_Producto: id,
-  };
+
   const goToCart = () => {
-    history.push("/home/carrito");
+    history.push("/carrito");
   };
 
   const handleBackClick = () => {
@@ -52,7 +50,7 @@ export const FoodDetail = () => {
 
   const dispatch: ThunkDispatch<any, void, AnyAction> = useDispatch();
   useEffect(() => {
-    dispatch(postFoodDetail(id));
+    dispatch(postFoodDetail(1));
   }, [dispatch]);
 
   const food: ProductoDetalle = foodi[0];

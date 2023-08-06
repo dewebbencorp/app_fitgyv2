@@ -31,7 +31,7 @@ export const postFoodByType =
   (id: number) =>
   (dispatch: Dispatch<any>): Promise<void> => {
     const postData = {
-      id_Categoria: id,
+      id_Categoria: `${id}`,
     };
 
     return axios
@@ -40,6 +40,8 @@ export const postFoodByType =
         postData
       )
       .then((response) => {
+        console.log(response.data);
+        
         dispatch(addFoodByType(response.data));
       })
       .catch((error) => console.log(error));

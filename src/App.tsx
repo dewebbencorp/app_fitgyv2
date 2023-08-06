@@ -13,6 +13,9 @@ import "./theme/main.css";
 /* Components */
 import { SignIn } from "./pages/SignIn/SigIn";
 import { Home } from "./pages/Home";
+import { ListFood } from "./components/FoodList";
+import { FoodDetail } from "./components/FoodDetail";
+import { Cart } from "./components/Cart";
 
 setupIonicReact();
 
@@ -22,6 +25,9 @@ const App: React.FC = () => (
       <IonRouterOutlet>
         <Route path="/" exact component={SignIn} />
         <Route path="/home" component={Home} />
+        <Route exact path="/fitbar/food/" component={ListFood} />
+        <Route exact path="/fitbar/food/detail/" component={FoodDetail} />
+        <Route exact path="/carrito" component={Cart} />
       </IonRouterOutlet>
     </IonReactRouter>
   </IonApp>

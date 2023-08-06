@@ -7,3 +7,5 @@ export const saveTypesFood = (typeFoodData: ProductoCategorias) => {
     JSON.stringify({ ...{ id: 1 }, ...typeFoodData })
   );
 };
+
+

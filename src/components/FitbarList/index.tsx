@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { AnyAction, ThunkDispatch } from "@reduxjs/toolkit";
 import { useHistory } from "react-router";
 import { fetchTypesFood } from "../../axios/Food";
+import { goToFoodByType } from "../../store/slices/params";
 
 export const FitbarList = () => {
 
@@ -21,7 +22,8 @@ export const FitbarList = () => {
 
   const history = useHistory();
   const handleDivClick = (id: number) => {
-    history.push(`/home/fitbar/food/${id}`);
+    dispatch(goToFoodByType(id))
+    history.push(`/fitbar/food/`);
   };
 
   const Food = Object.values(food);

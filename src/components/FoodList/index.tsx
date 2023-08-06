@@ -1,7 +1,6 @@
 import { IonButtons, IonToolbar, IonButton } from "@ionic/react";
 import "./foodList.css";
 import { HiChevronLeft } from "react-icons/hi2";
-import { useParams } from "react-router";
 import { ProductoPorCategoria } from "../../interfaces";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { useHistory } from "react-router-dom";
@@ -16,24 +15,33 @@ import { AnyAction, ThunkDispatch } from "@reduxjs/toolkit";
 import { postFoodByType } from "../../axios/Food";
 
 export const ListFood = () => {
-  const { id } = useParams();
-  const history = useHistory();
-  const { performSQLAction, initialized } = useSQLiteDB();
-  initialized;
-  const handleDetailClick = (id: number) => {
-    history.push(`/home/fitbar/food/detail/${id}`);
-  };
-  const goToCart = () => {
-    history.push("/home/carrito");
-  };
-
   const foodByType: ProductoPorCategoria = useSelector(
     (state: ProductoPorCategoria) => state.food_by_tye
   );
 
+  const id_type_food: number = useSelector(
+    (state) => state.set_id_param
+  );
+
+
+
+
+  const history = useHistory();
+  const { performSQLAction, initialized } = useSQLiteDB();
+  initialized;
+  const handleDetailClick = (id: number) => {
+
+    history.push(`/fitbar/food/detail`);
+  };
+  const goToCart = () => {
+    history.push("/carrito");
+  };
+
+
+
   const dispatch: ThunkDispatch<any, void, AnyAction> = useDispatch();
   useEffect(() => {
-    dispatch(postFoodByType(id));
+    dispatch(postFoodByType(id_type_food));
   }, [dispatch]);
 
   const data = Object.values(foodByType);
@@ -69,76 +77,73 @@ export const ListFood = () => {
 
   return (
     <>
-      <IonToolbar key={1}>
-        <IonButtons slot="start">
-          <IonButton onClick={() => handleBackClick()}>
-            <HiChevronLeft style={{ fontSize: "2rem" }} />
-          </IonButton>
-        </IonButtons>
-      </IonToolbar>
+
+      <HiChevronLeft onClick={() => handleBackClick()} style={{ fontSize: "2rem", marginBottom: "0rem" }} />
 
       <h1 className="title-list-food">The Fit Bar</h1>
       <h1 className="sub-title-list-food">MENÚ</h1>
 
-      <Swiper className="swiper" spaceBetween={0} slidesPerView={1.5}>
-        {producto?.map((food) => (
-          <>
-            <SwiperSlide
-              key={food.id_producto}
-              className="slide"
-             
-            >
-              <div className="food-container"  onClick={() => handleDetailClick(food.id_producto)}>
-                {food.id_categoria == 5 && (
-                  <div className="image-container-food-2">
-                    <img className="image-food" src={food.media_url} />
-                  </div>
-                )}
+      <div className="main-fl-container">
+        <Swiper className="swiper" spaceBetween={50} slidesPerView={1}>
+          {producto?.map((food) => (
+            <>
+              <SwiperSlide
+                key={food.id_producto}
+                className="slide"
 
-                {food.id_categoria !== 5 && (
-                  <div className="image-container-food">
-                    <img className="image-food" src={food.media_url} />
-                  </div>
-                )}
+              >
+                <div className="food-container" onClick={() => handleDetailClick(food.id_producto)}>
+                  {food.id_categoria == 5 && (
+                    <div className="image-container-food-2">
+                      <img className="image-food" src={food.media_url} />
+                    </div>
+                  )}
 
-                <div className="description-info-container">
-                  <div className="description-list-food">
-                    <h1
-                      style={{
-                        fontSize: "0.4rem",
-                        letterSpacing: "0.2rem",
-                        margin: "0",
-                      }}
-                    >
-                      {" "}
-                      • • • • • •{" "}
-                    </h1>
+                  {food.id_categoria !== 5 && (
+                    <div className="image-container-food">
+                      <img className="image-food" src={food.media_url} />
+                    </div>
+                  )}
 
-                    <h2 className="text-categoria">{food.categoria}</h2>
-                    <h1 className="text-name-food">{food.nombreProducto}</h1>
-                  </div>
-                  <div className="price-container">
-                    <h1 className="text-price-food">
-                      {"$" + food.costo.slice(0, -3)}
-                    </h1>
-                    <h1 className="vertical-text">ИXM</h1>
+                  <div className="description-info-container">
+                    <div className="description-list-food">
+                      <h1
+                        style={{
+                          fontSize: "0.4rem",
+                          letterSpacing: "0.2rem",
+                          margin: "0",
+                        }}
+                      >
+                        {" "}
+                        • • • • • •{" "}
+                      </h1>
+                      <h1 className="text-name-food">{food.nombreProducto}</h1>
+                    </div>
+                    <div className="price-container">
+                      <h1 className="text-price-food">
+                        {"$" + food.costo.slice(0, -3)}
+                      </h1>
+                      <h1 className="vertical-text">ИXM</h1>
+                    </div>
                   </div>
                 </div>
-              </div>
 
-              <div className="add-to-cart">
-                <img src={add_img} onClick={() => addToCart(food)} />
-              </div>
-            </SwiperSlide>
-          </>
-        ))}
-      </Swiper>
+                <div className="add-to-cart">
+                  <img src={add_img} onClick={() => addToCart(food)} />
+                </div>
+              </SwiperSlide>
+            </>
+          ))}
+        </Swiper>
 
-      {producto && (
-        <div className="got-cart">
-          <img onClick={() => goToCart()} className="car" src={car_img} />
-        </div>
-      )}
+        {producto && (
+          <div className="got-cart">
+            <img onClick={() => goToCart()} className="car" src={car_img} />
+          </div>
+        )}
+
+      </div>
+
     </>
   );
 };
