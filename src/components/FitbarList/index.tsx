@@ -23,7 +23,7 @@ export const FitbarList = () => {
   const history = useHistory();
   const handleDivClick = (id: number) => {
     dispatch(goToFoodByType(id))
-    history.push(`/fitbar/food/`);
+    history.push(`/home/fitbar/food/`);
   };
 
   const Food = Object.values(food);

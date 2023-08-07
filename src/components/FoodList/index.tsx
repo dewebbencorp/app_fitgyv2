@@ -31,10 +31,10 @@ export const ListFood = () => {
   initialized;
   const handleDetailClick = (id: number) => {
 
-    history.push(`/fitbar/food/detail`);
+    history.push(`/home/fitbar/food/detail`);
   };
   const goToCart = () => {
-    history.push("/carrito");
+    history.push("/home/carrito");
   };
 
 
@@ -52,7 +52,8 @@ export const ListFood = () => {
   );
 
   const handleBackClick = () => {
-    history.goBack();
+
+    history.goBack()
   };
 
   const addToCart = async (data: ProductoPorCategoria) => {

@@ -19,17 +19,17 @@
 .add-to-cart {
   position: absolute;
   top: 23vh;
-  margin-left: 34vh;
+  margin-left: 32vh;
   background-color: white;
-  clip-path: circle(40%);
+  clip-path: circle(25%);
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 .add-to-cart img {
-  width: 8vh;
-  padding: 2vh;
+  width: 1vh;
+  padding: 3vh;
 }
 
 .image-container-food {
