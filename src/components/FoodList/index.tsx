@@ -57,7 +57,7 @@ export const ListFood = () => {
 
 
     window.location.href = '/home/fitbar'
-    history.replace('/home/fitbar')
+    
   };
 
   const addToCart = async (data: ProductoPorCategoria) => {
@@ -80,9 +80,7 @@ export const ListFood = () => {
     }
   };
 
-  console.log("TEST AQUIIII");
-
-  console.log(foodByType[0].id_categoria);
+ 
 
 
   return (
