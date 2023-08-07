@@ -3,7 +3,7 @@ import "./foodList.css";
 import { HiChevronLeft } from "react-icons/hi2";
 import { ProductoPorCategoria } from "../../interfaces";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { useHistory } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import car_img from "./../FoodDetail/images/img_car.png";
 import add_img from "./images/img_add.png";
 import "swiper/css";
@@ -19,29 +19,24 @@ export const ListFood = () => {
     (state: ProductoPorCategoria) => state.food_by_tye
   );
 
-  const id_type_food: number = useSelector(
-    (state) => state.set_id_param
-  );
-
-
+  const { id } = useParams()
 
 
   const history = useHistory();
   const { performSQLAction, initialized } = useSQLiteDB();
   initialized;
   const handleDetailClick = (id: number) => {
-
-    history.push(`/home/fitbar/food/detail`);
+    window.location.href = `/fitbar/food/detail/`
   };
   const goToCart = () => {
-    history.push("/home/carrito");
+    history.push("/carrito");
   };
 
 
 
   const dispatch: ThunkDispatch<any, void, AnyAction> = useDispatch();
   useEffect(() => {
-    dispatch(postFoodByType(id_type_food));
+    dispatch(postFoodByType(id));
   }, [dispatch]);
 
   const data = Object.values(foodByType);
@@ -53,8 +48,8 @@ export const ListFood = () => {
 
   const handleBackClick = () => {
 
-    
-    window.location.href ='/home/fitbar'
+
+    window.location.href = '/home/fitbar'
     history.replace('/home/fitbar')
   };
 

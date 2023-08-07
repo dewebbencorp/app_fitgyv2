@@ -22,8 +22,8 @@ export const FitbarList = () => {
 
   const history = useHistory();
   const handleDivClick = (id: number) => {
-    dispatch(goToFoodByType(id))
-    history.push(`/home/fitbar/food/`);
+   
+    history.push(`/fitbar/food/${id}`);
   };
 
   const Food = Object.values(food);

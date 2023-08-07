@@ -36,7 +36,7 @@ export const Home = () => {
   return (
     <>
 
-      {location.pathname !== "/" && location.pathname !== "/fitbar/food" && location.pathname !== "/fitbar/food/detail" && (
+      {!location.pathname.startsWith("/fitbar/food/") && !location.pathname.startsWith("/carrito") && (
         <IonTabs>
           <IonRouterOutlet>
             <Route exact path="/home/inicio" component={Welcome} />
@@ -52,19 +52,13 @@ export const Home = () => {
               component={EditarDatos}
             />
             <Route exact path="/home/fitbar" component={Fitbar} />
-            <Route exact path="/home/fitbar/food/">
-            <Redirect to="/fitbar/food" />
 
-            </Route>
-            <Route exact path="/home/fitbar/food/detail/" component={FoodDetail} />
-            <Route exact path="/home/carrito" component={Cart} />
             <Route exact path="/home/cupon" component={Cupon} />
             <Route exact path="/home/wifi" component={Wifi} />
             <Route exact path="/home">
               <Redirect to="/home/inicio" />
             </Route>
           </IonRouterOutlet>
-          
           <IonTabBar className="iontab" slot="bottom">
             <IonTabButton tab="inicio" href="/home/inicio">
               <img className="imgHome" src={home} />
