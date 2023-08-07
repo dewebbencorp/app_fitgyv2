@@ -60,7 +60,7 @@ export const FoodDetail = () => {
       <IonToolbar>
         <IonButtons slot="start">
           <IonButton onClick={() => handleBackClick()}>
-            <HiChevronLeft style={{ fontSize: "3.5rem" }} />
+            <HiChevronLeft style={{ fontSize: "3.2rem" }} />
           </IonButton>
         </IonButtons>
       </IonToolbar>

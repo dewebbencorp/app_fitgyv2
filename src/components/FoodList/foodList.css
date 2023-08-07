@@ -11,7 +11,7 @@
   margin-bottom: 0rem;
   margin-left: 32vw;
   border-radius: 26vw;
-  height: 65vh;
+  height: 64vh;
   width: 29vh;
   position: relative;
 }
@@ -132,7 +132,7 @@
 }
 
 .got-cart {
-  margin-top: 7vh;
+  margin-top: 2vh;
   margin-bottom: 7vh;
   float: right;
   margin-right: 2rem;

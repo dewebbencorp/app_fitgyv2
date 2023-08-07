@@ -10,13 +10,14 @@ import "swiper/css";
 import { useSQLiteDB } from "../../database";
 import { SQLiteDBConnection } from "@capacitor-community/sqlite";
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { AnyAction, ThunkDispatch } from "@reduxjs/toolkit";
 import { postFoodByType } from "../../axios/Food";
 import { Loading } from "../LoadScreen";
 
 export const ListFood = () => {
-  const foodByType: ProductoPorCategoria = useSelector(
+  const [showLoading, setShowLoading] = useState(true);
+  const foodByType:  any = useSelector(
     (state: ProductoPorCategoria) => state.food_by_tye
   );
 
@@ -38,8 +39,13 @@ export const ListFood = () => {
   const dispatch: ThunkDispatch<any, void, AnyAction> = useDispatch();
   useEffect(() => {
     dispatch(postFoodByType(id));
+
+    setTimeout(() => {
+      setShowLoading(false);
+    }, 5000);
   }, [dispatch]);
 
+  
   const data = Object.values(foodByType);
 
   const producto: ProductoPorCategoria[] = data.filter(
@@ -76,20 +82,21 @@ export const ListFood = () => {
 
   console.log("TEST AQUIIII");
 
-  console.log(producto);
+  console.log(foodByType[0].id_categoria);
 
 
   return (
     <>
 
-      <HiChevronLeft onClick={() => handleBackClick()} style={{ fontSize: "3.5rem", marginBottom: "0rem" }} />
+      <HiChevronLeft onClick={() => handleBackClick()} style={{ fontSize: "3.2rem", marginBottom: "0rem" }} />
 
       <h1 className="title-list-food">The Fit Bar</h1>
       <h1 className="sub-title-list-food">MENÚ</h1>
-      {producto.length === 0 && <Loading />}
+      {foodByType[0].id_categoria != id &&  showLoading && <Loading />}
+
       <div className="main-fl-container">
         <Swiper className="swiper" spaceBetween={50} slidesPerView={1}>
-          {producto?.map((food) => (
+          {producto[0].id_categoria != id ? <div>You need an internet connection!  </div> : (producto?.map((food) => (
             <>
               <SwiperSlide
                 key={food.id_producto}
@@ -97,6 +104,9 @@ export const ListFood = () => {
 
               >
                 <div className="food-container" onClick={() => handleDetailClick(food.id_producto)}>
+
+
+
                   {food.id_categoria == 5 && (
                     <div className="image-container-food-2">
                       <img className="image-food" src={food.media_url} />
@@ -137,10 +147,12 @@ export const ListFood = () => {
                 </div>
               </SwiperSlide>
             </>
-          ))}
+          )))}
+
+
         </Swiper>
 
-        {producto && (
+        {producto.length > 0 && producto[0].id_categoria == id && (
           <div className="got-cart">
             <img onClick={() => goToCart()} className="car" src={car_img} />
           </div>
