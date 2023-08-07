@@ -53,7 +53,9 @@ export const ListFood = () => {
 
   const handleBackClick = () => {
 
-    history.goBack()
+    
+    window.location.href ='/home/fitbar'
+    history.replace('/home/fitbar')
   };
 
   const addToCart = async (data: ProductoPorCategoria) => {
