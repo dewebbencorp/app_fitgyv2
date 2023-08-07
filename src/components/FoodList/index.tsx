@@ -13,6 +13,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { AnyAction, ThunkDispatch } from "@reduxjs/toolkit";
 import { postFoodByType } from "../../axios/Food";
+import { Loading } from "../LoadScreen";
 
 export const ListFood = () => {
   const foodByType: ProductoPorCategoria = useSelector(
@@ -73,14 +74,19 @@ export const ListFood = () => {
     }
   };
 
+  console.log("TEST AQUIIII");
+
+  console.log(producto);
+
+
   return (
     <>
 
-      <HiChevronLeft onClick={() => handleBackClick()} style={{ fontSize: "2rem", marginBottom: "0rem" }} />
+      <HiChevronLeft onClick={() => handleBackClick()} style={{ fontSize: "3.5rem", marginBottom: "0rem" }} />
 
       <h1 className="title-list-food">The Fit Bar</h1>
       <h1 className="sub-title-list-food">MENÚ</h1>
-
+      {producto.length === 0 && <Loading />}
       <div className="main-fl-container">
         <Swiper className="swiper" spaceBetween={50} slidesPerView={1}>
           {producto?.map((food) => (

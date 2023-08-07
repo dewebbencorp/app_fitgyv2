@@ -35,7 +35,6 @@ export const Home = () => {
 
   return (
     <>
-
       {!location.pathname.startsWith("/fitbar/food/") && !location.pathname.startsWith("/carrito") && (
         <IonTabs>
           <IonRouterOutlet>

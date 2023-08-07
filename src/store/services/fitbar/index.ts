@@ -1,4 +1,4 @@
-import { ProductoCategorias } from "../../../interfaces";
+import { ProductoCategorias, ProductoPorCategoria } from "../../../interfaces";
 
 export const saveTypesFood = (typeFoodData: ProductoCategorias) => {
   localStorage.removeItem("types_food");
@@ -8,4 +8,7 @@ export const saveTypesFood = (typeFoodData: ProductoCategorias) => {
   );
 };
 
-
+export const savefoodByType = (foodByData: ProductoPorCategoria ) => {
+  localStorage.removeItem("food_by_type");
+  localStorage.setItem("food_by_type", JSON.stringify(foodByData));
+};
