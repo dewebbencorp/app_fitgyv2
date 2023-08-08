@@ -1,4 +1,5 @@
-import { IonButton, IonButtons, IonContent, IonToolbar } from "@ionic/react";
+import { IonContent } from "@ionic/react";
+import { Toaster, toast } from 'react-hot-toast';
 import { HiChevronLeft } from "react-icons/hi2";
 import { useHistory, useParams } from "react-router";
 import { ProductoDetalle } from "../../interfaces";
@@ -8,11 +9,12 @@ import { useSQLiteDB } from "../../database";
 import { SQLiteDBConnection } from "@capacitor-community/sqlite";
 import { AnyAction, ThunkDispatch } from "@reduxjs/toolkit";
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { postFoodDetail } from "../../axios/Food";
+import { Loading } from "../LoadScreen";
 
 export const FoodDetail = () => {
-
+  const [loading, setLoadig] = useState(true)
   const history = useHistory();
   const { id } = useParams()
   const { performSQLAction, initialized } = useSQLiteDB();
@@ -39,7 +41,19 @@ export const FoodDetail = () => {
     } catch (error) {
       alert((error as Error).message);
     } finally {
-      alert("Producto añadido");
+      toast.success('Producto añadido', {
+        duration: 2000,
+        position: "top-center",
+        style: {
+          marginTop: '1rem',
+          borderRadius: '10px',
+          background: 'white',
+          color: 'blach',
+          fontSize: '.8em',
+          fontFamily: 'var(--poppins)',
+          fontStyle: 'italic'
+        }
+      })
     }
   };
 
@@ -49,31 +63,35 @@ export const FoodDetail = () => {
 
   const dispatch: ThunkDispatch<any, void, AnyAction> = useDispatch();
   useEffect(() => {
+
     dispatch(postFoodDetail(id));
+    setTimeout(() => {
+      setLoadig(false)
+    }, 500);
+
+
   }, [dispatch]);
 
   const food: ProductoDetalle = foodi[0];
 
+
+
   return (
     <>
-
-
+      <Toaster />
       <HiChevronLeft onClick={() => handleBackClick()} style={{ fontSize: "3.2rem", marginBottom: "0rem" }} />
-
-
-
+      {loading && <Loading />}
       {food && (
         <IonContent>
           <div className="main-container-food" key={food.costo}>
-            {food.categoria === 'BATIDOS' || food.categoria === 'HOTCAKES Y AVENA' || food.categoria === 'SANDWICHES' ? 
-            <div className="food-image-container-2">
-              <img className="img-food-detail" src={food.media_url} />
-            </div> : <div className="food-image-container">
-              <img className="img-food-detail" src={food.media_url} />
-            </div>}
+            {food.categoria === 'BATIDOS' || food.categoria === 'HOTCAKES Y AVENA' || food.categoria === 'SANDWICHES' ?
+              <div className="food-image-container-2">
+                <img className="img-food-detail" src={food.media_url} />
+              </div> : <div className="food-image-container">
+                <img className="img-food-detail" src={food.media_url} />
+              </div>}
             <div className="container-food">
               <h1>
-
                 <div className="food-description-container">
                   <div className="title-food">
                     {" "}

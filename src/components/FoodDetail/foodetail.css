@@ -6,6 +6,9 @@
   justify-content: space-evenly;
   padding: 1rem;
   margin-bottom: 1vh;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeAndSlide 1s ease-out forwards;
 }
 .container-food {
   width: 100%;

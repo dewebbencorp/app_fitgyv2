@@ -1,5 +1,7 @@
 .main-fl-container {
-  /*TODO*/
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeAndSlide 0.1s ease-out forwards;
 }
 
 .food-container {
@@ -15,8 +17,6 @@
   width: 29vh;
   position: relative;
 }
-
-
 
 .add-to-cart {
   position: absolute;
