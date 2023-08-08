@@ -7,12 +7,10 @@ import { addDetailFood } from "../../store/slices/detailFood";
 export const fetchTypesFood =
   () =>
   (dispatch: Dispatch<any>): Promise<void> => {
-    
-    const typesFoodData = localStorage.getItem('types_food');
+    const typesFoodData = localStorage.getItem("types_food");
 
     if (typesFoodData) {
-
-      return Promise.resolve(); 
+      return Promise.resolve();
     }
 
     return axios
@@ -21,11 +19,10 @@ export const fetchTypesFood =
       )
       .then((response) => {
         dispatch(addFoodTypes(response.data));
-        localStorage.setItem('types_food', JSON.stringify(response.data));
+        localStorage.setItem("types_food", JSON.stringify(response.data));
       })
       .catch((error) => console.log(error));
   };
-
 
 export const postFoodByType =
   (id: number) =>
@@ -40,8 +37,6 @@ export const postFoodByType =
         postData
       )
       .then((response) => {
-        console.log(response.data);
-        
         dispatch(addFoodByType(response.data));
       })
       .catch((error) => console.log(error));
@@ -60,8 +55,6 @@ export const postFoodDetail =
         postData
       )
       .then((response) => {
-        console.log(response.data);
-
         dispatch(addDetailFood(response.data));
       })
       .catch((error) => console.log(error));

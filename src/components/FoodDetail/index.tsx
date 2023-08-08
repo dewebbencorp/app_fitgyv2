@@ -12,8 +12,9 @@ import { useEffect } from "react";
 import { postFoodDetail } from "../../axios/Food";
 
 export const FoodDetail = () => {
-  
+
   const history = useHistory();
+  const { id } = useParams()
   const { performSQLAction, initialized } = useSQLiteDB();
 
   const goToCart = () => {
@@ -43,14 +44,14 @@ export const FoodDetail = () => {
       alert("Producto añadido");
     }
   };
-  
+
   const foodi: ProductoDetalle = useSelector(
     (state: ProductoDetalle) => state.detail_food
   );
 
   const dispatch: ThunkDispatch<any, void, AnyAction> = useDispatch();
   useEffect(() => {
-    dispatch(postFoodDetail(1));
+    dispatch(postFoodDetail(id));
   }, [dispatch]);
 
   const food: ProductoDetalle = foodi[0];

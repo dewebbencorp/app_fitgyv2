@@ -28,7 +28,7 @@ export const ListFood = () => {
   const { performSQLAction, initialized } = useSQLiteDB();
   initialized;
   const handleDetailClick = (id: number) => {
-    window.location.href = `/fitbar/food/detail/`
+    window.location.href = `/fitbar/food/detail/${id}`
   };
   const goToCart = () => {
     history.push("/carrito");
@@ -90,11 +90,11 @@ export const ListFood = () => {
 
       <h1 className="title-list-food">The Fit Bar</h1>
       <h1 className="sub-title-list-food">MENÚ</h1>
-      {foodByType[0].id_categoria != id &&  showLoading && <Loading />}
+      { foodByType && foodByType[0].id_categoria != id &&  showLoading && <Loading />}
 
       <div className="main-fl-container">
         <Swiper className="swiper" spaceBetween={50} slidesPerView={1}>
-          {producto[0].id_categoria != id ? <div>You need an internet connection!  </div> : (producto?.map((food) => (
+          {producto[0]?.id_categoria != id ? <div>You need an internet connection!  </div> : (producto?.map((food) => (
             <>
               <SwiperSlide
                 key={food.id_producto}

@@ -1,22 +1,28 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
-import {  ProductoDetalle } from "../../../interfaces";
+import { ProductoDetalle } from "../../../interfaces";
+import { saveDetail } from "../../services/fitbar";
 
-const initialState:  ProductoDetalle = {
-    nombreProducto: "",
-    categoria: "",
-    descripcion: "",
-    media_url: "",
-    costo: 0,
-    detail_food: undefined
+const EmptyDetail: ProductoDetalle = {
+  nombreProducto: "",
+  categoria: "",
+  descripcion: "",
+  media_url: "",
+  costo: 0,
+  detail_food: undefined,
 };
 
 export const detailFood = createSlice({
   name: "foodDetail",
-  initialState,
+  initialState: localStorage.getItem("detail_food")
+  ? JSON.parse(localStorage.getItem("detail_food") as string)
+  : EmptyDetail,
   reducers: {
-    addDetailFood: (state: ProductoDetalle , action: PayloadAction<ProductoDetalle>) => {
-      const food: ProductoDetalle = action.payload;
-      return { ...state, ...food };
+    addDetailFood: (
+      state: ProductoDetalle,
+      action: PayloadAction<ProductoDetalle>
+    ) => {
+      saveDetail(action.payload);
+      return action.payload;
     },
   },
 });
