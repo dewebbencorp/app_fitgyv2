@@ -7,7 +7,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { AnyAction, ThunkDispatch } from "@reduxjs/toolkit";
 import { useHistory } from "react-router";
 import { fetchTypesFood } from "../../axios/Food";
-import { goToFoodByType } from "../../store/slices/params";
 
 export const FitbarList = () => {
 

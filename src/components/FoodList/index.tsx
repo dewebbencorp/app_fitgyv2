@@ -17,7 +17,7 @@ import { Loading } from "../LoadScreen";
 
 export const ListFood = () => {
   const [showLoading, setShowLoading] = useState(true);
-  const foodByType:  any = useSelector(
+  const foodByType: any = useSelector(
     (state: ProductoPorCategoria) => state.food_by_tye
   );
 
@@ -45,7 +45,7 @@ export const ListFood = () => {
     }, 5000);
   }, [dispatch]);
 
-  
+
   const data = Object.values(foodByType);
 
   const producto: ProductoPorCategoria[] = data.filter(
@@ -57,7 +57,7 @@ export const ListFood = () => {
 
 
     window.location.href = '/home/fitbar'
-    
+
   };
 
   const addToCart = async (data: ProductoPorCategoria) => {
@@ -80,7 +80,7 @@ export const ListFood = () => {
     }
   };
 
- 
+
 
 
   return (
@@ -90,7 +90,7 @@ export const ListFood = () => {
 
       <h1 className="title-list-food">The Fit Bar</h1>
       <h1 className="sub-title-list-food">MENÚ</h1>
-      { foodByType && foodByType[0].id_categoria != id &&  showLoading && <Loading />}
+      {foodByType[0]?.id_categoria != id && showLoading && <Loading />}
 
       <div className="main-fl-container">
         <Swiper className="swiper" spaceBetween={50} slidesPerView={1}>
@@ -105,13 +105,30 @@ export const ListFood = () => {
 
 
 
+
+                  {food.id_categoria == 4 && (
+                    <div className="image-container-food-2">
+                      <img className="image-food" src={food.media_url} />
+                    </div>
+                  )}
                   {food.id_categoria == 5 && (
                     <div className="image-container-food-2">
                       <img className="image-food" src={food.media_url} />
                     </div>
                   )}
+                  {food.id_categoria == 6 && (
+                    <div className="image-container-food-2">
+                      <img className="image-food" src={food.media_url} />
+                    </div>
+                  )}
 
-                  {food.id_categoria !== 5 && (
+                  {food.id_categoria == 7 && (
+                    <div className="image-container-food-2">
+                      <img className="image-food" src={food.media_url} />
+                    </div>
+                  )}
+
+                  {food.id_categoria !== 5 && food.id_categoria !== 4 && food.id_categoria !== 6 && food.id_categoria !== 7 && (
                     <div className="image-container-food">
                       <img className="image-food" src={food.media_url} />
                     </div>

@@ -6,12 +6,14 @@ export const Loading = () => {
         <>
 
                 <div className="loading-indicator-login">
+
                     <HashLoader
                         color={"var(--ion-tab-bar-background)"}
                         loading={true}
                         speedMultiplier={3}
                         size={80}
                     />
+
                 </div>
             
         </>
