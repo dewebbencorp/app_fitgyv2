@@ -108,8 +108,8 @@ export const Login = () => {
                     message: "La contraseña es requerida",
                   },
                   minLength: {
-                    value: 6,
-                    message: "Contraseña debe ser mayor a 6 caracteres",
+                    value: 3,
+                    message: "Contraseña debe ser mayor a 3 caracteres",
                   },
                 })}
               />

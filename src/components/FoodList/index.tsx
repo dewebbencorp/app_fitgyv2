@@ -1,19 +1,22 @@
-import { IonButtons, IonToolbar, IonButton } from "@ionic/react";
-import "./foodList.css";
+
+
 import { HiChevronLeft } from "react-icons/hi2";
-import { ProductoPorCategoria } from "../../interfaces";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { useHistory, useParams } from "react-router-dom";
-import car_img from "./../FoodDetail/images/img_car.png";
-import add_img from "./images/img_add.png";
-import "swiper/css";
-import { useSQLiteDB } from "../../database";
+import { Toaster, toast } from 'react-hot-toast';
 import { SQLiteDBConnection } from "@capacitor-community/sqlite";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { AnyAction, ThunkDispatch } from "@reduxjs/toolkit";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { useHistory, useParams } from "react-router-dom";
+import { ProductoPorCategoria } from "../../interfaces";
+import { useSQLiteDB } from "../../database";
 import { postFoodByType } from "../../axios/Food";
 import { Loading } from "../LoadScreen";
+import car_img from "./../FoodDetail/images/img_car.png";
+import add_img from "./images/img_add.png";
+
+import "./foodList.css";
+import "swiper/css";
 
 export const ListFood = () => {
   const [showLoading, setShowLoading] = useState(true);
@@ -69,14 +72,23 @@ export const ListFood = () => {
           VALUES (?,?,?,?,datetime('now'));`,
           [data.nombreProducto, data.costo, data.media_url, "sebas"]
         );
-
-        const respSelect = await db?.query(`SELECT * FROM orders;`);
-        console.log(respSelect?.values);
       });
     } catch (error) {
       alert((error as Error).message);
     } finally {
-      alert("Producto añadido");
+      toast.success('Producto añadido', {
+        duration: 2000,
+        position: "top-center",
+        style: {
+          marginTop: '1rem',
+          borderRadius: '10px',
+          background: 'white',
+          color: 'blach',
+          fontSize: '.8em',
+          fontFamily: 'var(--poppins)',
+          fontStyle: 'italic'
+        }
+      })
     }
   };
 
@@ -85,7 +97,7 @@ export const ListFood = () => {
 
   return (
     <>
-
+      <Toaster />
       <HiChevronLeft onClick={() => handleBackClick()} style={{ fontSize: "3.2rem", marginBottom: "0rem" }} />
 
       <h1 className="title-list-food">The Fit Bar</h1>
