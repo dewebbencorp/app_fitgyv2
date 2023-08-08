@@ -118,33 +118,14 @@ export const ListFood = () => {
 
 
 
-                  {food.id_categoria == 4 && (
+                  {food.id_categoria == 4 || food.id_categoria == 5 || food.id_categoria == 6 || food.id_categoria == 7 ? (
                     <div className="image-container-food-2">
                       <img className="image-food" src={food.media_url} />
                     </div>
-                  )}
-                  {food.id_categoria == 5 && (
-                    <div className="image-container-food-2">
-                      <img className="image-food" src={food.media_url} />
-                    </div>
-                  )}
-                  {food.id_categoria == 6 && (
-                    <div className="image-container-food-2">
-                      <img className="image-food" src={food.media_url} />
-                    </div>
-                  )}
+                  ) : <div className="image-container-food">
+                    <img className="image-food" src={food.media_url} />
+                  </div>}
 
-                  {food.id_categoria == 7 && (
-                    <div className="image-container-food-2">
-                      <img className="image-food" src={food.media_url} />
-                    </div>
-                  )}
-
-                  {food.id_categoria !== 5 && food.id_categoria !== 4 && food.id_categoria !== 6 && food.id_categoria !== 7 && (
-                    <div className="image-container-food">
-                      <img className="image-food" src={food.media_url} />
-                    </div>
-                  )}
 
                   <div className="description-info-container">
                     <div className="description-list-food">
