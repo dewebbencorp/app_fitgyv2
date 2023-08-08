@@ -1,4 +1,4 @@
-import { IonButton, IonButtons, IonToolbar } from "@ionic/react";
+import { IonButton, IonButtons, IonContent, IonToolbar } from "@ionic/react";
 import { HiChevronLeft } from "react-icons/hi2";
 import { useHistory, useParams } from "react-router";
 import { ProductoDetalle } from "../../interfaces";
@@ -35,8 +35,6 @@ export const FoodDetail = () => {
           [data.nombreProducto, data.costo, data.media_url, "sebas"]
         );
 
-        const respSelect = await db?.query(`SELECT * FROM orders;`);
-        console.log(respSelect?.values);
       });
     } catch (error) {
       alert((error as Error).message);
@@ -58,22 +56,24 @@ export const FoodDetail = () => {
 
   return (
     <>
-      <IonToolbar>
-        <IonButtons slot="start">
-          <IonButton onClick={() => handleBackClick()}>
-            <HiChevronLeft style={{ fontSize: "3.2rem" }} />
-          </IonButton>
-        </IonButtons>
-      </IonToolbar>
+
+
+      <HiChevronLeft onClick={() => handleBackClick()} style={{ fontSize: "3.2rem", marginBottom: "0rem" }} />
+
+
 
       {food && (
-        <>
-          <div className="main-container-food">
+        <IonContent>
+          <div className="main-container-food" key={food.costo}>
+            {food.categoria === 'BATIDOS' || food.categoria === 'HOTCAKES Y AVENA' || food.categoria === 'SANDWICHES' ? 
+            <div className="food-image-container-2">
+              <img className="img-food-detail" src={food.media_url} />
+            </div> : <div className="food-image-container">
+              <img className="img-food-detail" src={food.media_url} />
+            </div>}
             <div className="container-food">
               <h1>
-                <div className="food-image-container">
-                  <img className="img-food-detail" src={food.media_url} />
-                </div>
+
                 <div className="food-description-container">
                   <div className="title-food">
                     {" "}
@@ -114,8 +114,10 @@ export const FoodDetail = () => {
               </button>
             </div>
           </div>
-        </>
+        </IonContent>
       )}
+
+
     </>
   );
 };
