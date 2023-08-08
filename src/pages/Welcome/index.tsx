@@ -24,7 +24,6 @@ export const Welcome = () => {
         </div>
 
         <Noticias />
-        <News />
         <CodigoQR />
         <Tarjeta />
         <Whats />
