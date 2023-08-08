@@ -1,7 +1,8 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import {  ProductoPorCategoria } from "../../../interfaces";
+import { savefoodByType } from "../../services/fitbar";
 
-const initialState:  ProductoPorCategoria = {
+const EmptyFoodByType:  ProductoPorCategoria = {
     id_producto: 0,
     id_categoria: 0,
     nombreProducto: "",
@@ -13,11 +14,13 @@ const initialState:  ProductoPorCategoria = {
 
 export const foodByTypeSlice = createSlice({
   name: "food",
-  initialState,
+  initialState:localStorage.getItem("food_by_type")
+  ? JSON.parse(localStorage.getItem("food_by_type") as string)
+  : EmptyFoodByType ,
   reducers: {
     addFoodByType: (state: ProductoPorCategoria , action: PayloadAction<ProductoPorCategoria>) => {
-      const food: ProductoPorCategoria = action.payload;
-      return { ...state, ...food };
+      savefoodByType(action.payload)
+      return action.payload
     },
   },
 });

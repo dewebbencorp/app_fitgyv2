@@ -4,7 +4,7 @@ const BASE_URL = "https://187.188.16.29:4431/webservice-app2/Controllers/";
 
 export const UseFecthPost = (request: {}, END: string) => {
   const [data, setData] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
   const [detailError, setErrorDetail] = useState([]);
 
@@ -16,6 +16,7 @@ export const UseFecthPost = (request: {}, END: string) => {
 
     if (!isObjectEmpty(request)) {
       console.log("ESTO ES UNA PETICION");
+      setLoading(true)
       fetch(BASE_URL + END, {
         method: "POST",
         headers: {

@@ -1,19 +1,57 @@
 .main-contaier {
-  margin-left: 2rem;
-  margin-right: 2rem;
-  margin-bottom: 20rem;
+  margin-left: 3vh;
+  margin-right: 3vh;
 }
-.header-info{
-  height: 14rem;
-  margin-top: 0;
+
+
+.header-info-container{
+  height: 28vh;
   background: linear-gradient(#ff7d04, #ec540d) !important;
   border-bottom-left-radius: 4rem;
+  font-family: var(--poppins);
+  padding: 2vh;
+  
+}
+.header-info{
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+
+.header-title-1{
+  font-size: 1.8em;
+}
+.progresbar-line{
+  display: flex;
+  justify-content: center;
+  margin-left: 9vh;
+  margin-right: 9vh;
+}
+.custom-pg{
+  height: 0.2em;
+}
+.header-title-2{
+  font-style: italic;
+  margin-top: 0;
+  font-size: 2.5em;
+  font-weight: bold;
 }
 
 .card-container {
   border: 1px solid orangered;
   margin: 1rem;
-  border-radius: 1rem;
+  border-radius: 1rem; 
+
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeAndSlide 0.1s ease-out forwards;
+}
+
+
+
+.card:nth-child(n) {
+  animation-delay: calc(0.2s * (n - 1));
 }
 
 .card {
@@ -30,14 +68,14 @@
 }
 .title {
   font-family: var(--poppins) !important;
-  font-size: 1rem !important;
+  font-size: 1em !important;
   text-align: left;
   color: #ff4804 !important;
 }
 
 .description {
   font-family: var(--poppins) !important;
-  font-size: 0.8rem;
+  font-size: 0.8em;
   text-align: left;
 }
 .title,
@@ -53,14 +91,14 @@
   overflow: hidden;
 }
 .icon_type_food {
-  width: 3rem;
-  height: 3rem;
+  width: 6vh;
+  height: 6vh;
 }
 
 .icon-container {
   background-image: url("./images/bg_icon_list.png");
   background-position: center;
-  background-size: 3.5rem;
+  background-size: 7vh;
   background-repeat: no-repeat;
   padding: 0.7rem;
   margin: 0rem;

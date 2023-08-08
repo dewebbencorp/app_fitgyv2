@@ -1,12 +1,12 @@
 import "./fitbar.css";
-import { IonContent, IonRouterLink } from "@ionic/react";
+import { IonContent, IonProgressBar, IonRouterLink } from "@ionic/react";
 import { ProductoCategorias } from "../../interfaces";
 import { useEffect } from "react";
 
 import { useDispatch, useSelector } from "react-redux";
 import { AnyAction, ThunkDispatch } from "@reduxjs/toolkit";
 import { useHistory } from "react-router";
-import { fetchTypesFood } from "../../repository/Food";
+import { fetchTypesFood } from "../../axios/Food";
 
 export const FitbarList = () => {
 
@@ -21,7 +21,8 @@ export const FitbarList = () => {
 
   const history = useHistory();
   const handleDivClick = (id: number) => {
-    history.push(`/home/fitbar/food/${id}`);
+   
+    history.push(`/fitbar/food/${id}`);
   };
 
   const Food = Object.values(food);
@@ -34,19 +35,22 @@ export const FitbarList = () => {
 
   return (
     <>
-      <div className="header-info">
-        <h1>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur autem
-          distinctio animi ipsum omnis?
-        </h1>
-      </div>
+
       <IonContent>
-        {/*
-        
-        <div className="head-info">
-          <h1>Cargo automatico</h1>
+        <div className="header-info-container">
+          <div className="header-info">
+            <h2 className="header-title-1">
+              Realiza tu pedido a través de
+            </h2>
+            <span className="progresbar-line">
+              <IonProgressBar value={1} color="light" className="custom-pg" />
+            </span>
+
+            <h1 className="header-title-2">
+              WhatsApp
+            </h1>
+          </div>
         </div>
-        */}
         <div className="main-contaier">
           {categorias?.map((type_food) => (
             <div
@@ -71,4 +75,6 @@ export const FitbarList = () => {
       </IonContent>
     </>
   );
+
+
 };

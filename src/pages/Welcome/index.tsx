@@ -5,6 +5,7 @@ import Tarjeta from "../component_inicio/Tarjeta";
 import Whats from "../component_inicio/Whats";
 import logo from "../../components/Login/images/logo.png";
 import "./welcome.css";
+import { News } from "../../components/News";
 
 export const Welcome = () => {
   return (

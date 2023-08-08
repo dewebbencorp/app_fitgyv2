@@ -1,7 +1,7 @@
-import { IonButton, IonButtons, IonToolbar } from "@ionic/react";
+import { IonContent } from "@ionic/react";
+import { Toaster, toast } from 'react-hot-toast';
 import { HiChevronLeft } from "react-icons/hi2";
 import { useHistory, useParams } from "react-router";
-import { UseFecthPost } from "../../api/post";
 import { ProductoDetalle } from "../../interfaces";
 import car_img from "./images/img_car.png";
 import "./foodetail.css";
@@ -9,18 +9,18 @@ import { useSQLiteDB } from "../../database";
 import { SQLiteDBConnection } from "@capacitor-community/sqlite";
 import { AnyAction, ThunkDispatch } from "@reduxjs/toolkit";
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
-import { postFoodDetail } from "../../repository/Food";
+import { useEffect, useState } from "react";
+import { postFoodDetail } from "../../axios/Food";
+import { Loading } from "../LoadScreen";
 
 export const FoodDetail = () => {
-  const { id } = useParams();
+  const [loading, setLoadig] = useState(true)
   const history = useHistory();
+  const { id } = useParams()
   const { performSQLAction, initialized } = useSQLiteDB();
-  const request = {
-    id_Producto: id,
-  };
+
   const goToCart = () => {
-    history.push("/home/carrito");
+    history.push("/carrito");
   };
 
   const handleBackClick = () => {
@@ -37,45 +37,61 @@ export const FoodDetail = () => {
           [data.nombreProducto, data.costo, data.media_url, "sebas"]
         );
 
-        const respSelect = await db?.query(`SELECT * FROM orders;`);
-        console.log(respSelect?.values);
       });
     } catch (error) {
       alert((error as Error).message);
     } finally {
-      alert("Producto añadido");
+      toast.success('Producto añadido', {
+        duration: 2000,
+        position: "top-center",
+        style: {
+          marginTop: '1rem',
+          borderRadius: '10px',
+          background: 'white',
+          color: 'blach',
+          fontSize: '.8em',
+          fontFamily: 'var(--poppins)',
+          fontStyle: 'italic'
+        }
+      })
     }
   };
-  
+
   const foodi: ProductoDetalle = useSelector(
     (state: ProductoDetalle) => state.detail_food
   );
 
   const dispatch: ThunkDispatch<any, void, AnyAction> = useDispatch();
   useEffect(() => {
+
     dispatch(postFoodDetail(id));
+    setTimeout(() => {
+      setLoadig(false)
+    }, 500);
+
+
   }, [dispatch]);
 
   const food: ProductoDetalle = foodi[0];
 
+
+
   return (
     <>
-      <IonToolbar>
-        <IonButtons slot="start">
-          <IonButton onClick={() => handleBackClick()}>
-            <HiChevronLeft style={{ fontSize: "2rem" }} />
-          </IonButton>
-        </IonButtons>
-      </IonToolbar>
-
+      <Toaster />
+      <HiChevronLeft onClick={() => handleBackClick()} style={{ fontSize: "3.2rem", marginBottom: "0rem" }} />
+      {loading && <Loading />}
       {food && (
-        <>
-          <div className="main-container-food">
+        <IonContent>
+          <div className="main-container-food" key={food.costo}>
+            {food.categoria === 'BATIDOS' || food.categoria === 'HOTCAKES Y AVENA' || food.categoria === 'SANDWICHES' ?
+              <div className="food-image-container-2">
+                <img className="img-food-detail" src={food.media_url} />
+              </div> : <div className="food-image-container">
+                <img className="img-food-detail" src={food.media_url} />
+              </div>}
             <div className="container-food">
               <h1>
-                <div className="food-image-container">
-                  <img className="img-food-detail" src={food.media_url} />
-                </div>
                 <div className="food-description-container">
                   <div className="title-food">
                     {" "}
@@ -116,8 +132,10 @@ export const FoodDetail = () => {
               </button>
             </div>
           </div>
-        </>
+        </IonContent>
       )}
+
+
     </>
   );
 };
