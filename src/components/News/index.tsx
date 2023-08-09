@@ -38,13 +38,13 @@ export const News = () => {
                 <div >
                     {fotos.map((item, index) => (
                         <SwiperSlide className='slide' key={index}>
-                            <img className="news-phono" src={baseFolder + item.Img} onClick= {()=> setActiveModal(true, baseFolder+item.Img)} />
+                            <img className="news-phono" src={baseFolder + item.Img} onClick={() => setActiveModal(true, baseFolder + item.Img)} />
                         </SwiperSlide>
                     ))}
                 </div>
             </Swiper>
 
-            {showModal && <FullScreenImage Image = {fullImage} />}
+            {showModal && <FullScreenImage Image={fullImage} />}
         </div>
     );
 }
