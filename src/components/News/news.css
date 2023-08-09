@@ -1,10 +1,31 @@
-.news-container{
-    background-color: rgb(12, 12, 12);
-    padding: 1rem;
+.news-container {
+  background-color: rgb(12, 12, 12);
+  padding: 1rem;
 }
 
-.news-phono{ 
-    width:  15vh;
-    height: 30vh;
-    border-radius: 1rem;
+.news-phono {
+  width: 15vh;
+  height: 30vh;
+  border-radius: 1rem;
+  object-fit: cover;
+}
+
+.full-image-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  background-color: black;
+  z-index: 3;
+}
+
+.full-image-container button{
+  margin-top: 2rem;
+  font-size: 1rem;
 }

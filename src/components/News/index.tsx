@@ -28,24 +28,29 @@ export const News = () => {
     }, []);
 
     return (
-        <div className='news-container'>
-            <h4 className='kenyan'><i> NOTICIAS </i></h4>
-            <h1>{showModal ? <h1>existe</h1>: <h1>no existee</h1>}</h1>
-            <Swiper
-                className='swiper'
-                spaceBetween={0}
-                slidesPerView={2.5}
-            >
-                <div >
-                    {fotos.map((item, index) => (
-                        <SwiperSlide className='slide' key={index}>
-                            <img className="news-phono" src={baseFolder + item.Img} onClick={() => setActiveModal(true, baseFolder + item.Img)} />
-                        </SwiperSlide>
-                    ))}
-                </div>
-            </Swiper>
+        <>
+            <div className='news-container'>
+                <h4 className='kenyan'><i> NOTICIAS </i></h4>
 
+                <Swiper
+                    className='swiper'
+                    spaceBetween={0}
+                    slidesPerView={2.5}
+                >
+                    <div >
+                        {fotos.map((item, index) => (
+                            <SwiperSlide className='slide' key={index}>
+                                <img className="news-phono" src={baseFolder + item.Img} onClick={() => setActiveModal(true, baseFolder + item.Img)} />
+                            </SwiperSlide>
+                        ))}
+                    </div>
+                </Swiper>
+
+
+            </div>
             {showModal && <FullScreenImage Image={fullImage} setModal={setModal} />}
-        </div>
+
+
+        </>
     );
 }

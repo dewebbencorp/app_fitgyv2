@@ -1,4 +1,5 @@
-
+import { IonModal } from "@ionic/react"
+import "./news.css"
 
 export const FullScreenImage = ({ Image, setModal }: any) => {
 
@@ -6,9 +7,15 @@ export const FullScreenImage = ({ Image, setModal }: any) => {
         setModal(false)
     }
     return (<>
-        <h1>hello full screen </h1>
-        <img src={Image} />
+        <IonModal isOpen={true}>
+            <div className="full-image-container">
 
-        <button onClick={close}>cerrar x</button>
+                <img src={Image} />
+                <button onClick={close}>Cerrar x</button>
+
+            </div>
+        </IonModal>
+
+
     </>)
 }
