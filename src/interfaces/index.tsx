@@ -48,6 +48,12 @@ export interface LoginError{
   esSocio: 0
 }
 
+export interface NewsData{
+  Img: string 
+  Texto: string
+  news_dta: any
+}
+
 /* SQLite  */
 
 export interface order {

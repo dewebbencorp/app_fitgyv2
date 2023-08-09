@@ -4,6 +4,7 @@ import typeFoodReducer from "./slices/typeFoodSlice";
 import foodByTyoeReducer from "./slices/foodByTypeSlice";
 import detailFoodReducer from "./slices/detailFood";
 import setIdParamaSlice from "./slices/params";
+import newsReducer from "./slices/newsData";
 
 export const store = configureStore({
   reducer: {
@@ -12,5 +13,6 @@ export const store = configureStore({
     food_by_tye: foodByTyoeReducer,
     detail_food: detailFoodReducer,
     set_id_param: setIdParamaSlice,
+    news_dta: newsReducer,
   },
 });
