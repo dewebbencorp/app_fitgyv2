@@ -30,6 +30,7 @@ export const News = () => {
     return (
         <div className='news-container'>
             <h4 className='kenyan'><i> NOTICIAS </i></h4>
+            <h1>{showModal ? <h1>existe</h1>: <h1>no existee</h1>}</h1>
             <Swiper
                 className='swiper'
                 spaceBetween={0}
@@ -44,7 +45,7 @@ export const News = () => {
                 </div>
             </Swiper>
 
-            {showModal && <FullScreenImage Image={fullImage} />}
+            {showModal && <FullScreenImage Image={fullImage} setModal={setModal} />}
         </div>
     );
 }
