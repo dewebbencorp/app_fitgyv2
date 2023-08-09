@@ -16,10 +16,11 @@ export interface ProductoPorCategoria {
   food_by_tye: any
 }
 export interface ProductoDetalle {
-  nombreProducto: string;
+  id_producto: number
+  nombre: string;
   categoria: string;
-  descripcion: string;
-  media_url: string;
+  Descripcion: string;
+  img_url: string;
   costo: number;
   detail_food: any;
 }

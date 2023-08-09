@@ -34,7 +34,7 @@ export const FoodDetail = () => {
         await db?.query(
           `INSERT INTO orders ( name_product, price, image_url, name_client, date_added )
           VALUES (?,?,?,?,datetime('now'));`,
-          [data.nombreProducto, data.costo, data.media_url, "sebas"]
+          [data.nombre, data.costo, data.img_url, "sebas"]
         );
 
       });
@@ -86,16 +86,16 @@ export const FoodDetail = () => {
           <div className="main-container-food" key={food.costo}>
             {food.categoria === 'BATIDOS' || food.categoria === 'HOTCAKES Y AVENA' || food.categoria === 'SANDWICHES' ?
               <div className="food-image-container-2">
-                <img className="img-food-detail" src={food.media_url} />
+                <img className="img-food-detail" src={food.img_url} />
               </div> : <div className="food-image-container">
-                <img className="img-food-detail" src={food.media_url} />
+                <img className="img-food-detail" src={food.img_url} />
               </div>}
             <div className="container-food">
               <h1>
                 <div className="food-description-container">
                   <div className="title-food">
                     {" "}
-                    <h1>{food.nombreProducto}</h1>{" "}
+                    <h1>{food.nombre}</h1>{" "}
                   </div>
                   <div className="categoria-food">
                     <h5 style={{ color: "var(--ion-tab-bar-background)" }}>
@@ -105,7 +105,7 @@ export const FoodDetail = () => {
                   </div>
                   <div className="description-food">
                     <h5>
-                      {food.descripcion ?? (
+                      {food.Descripcion ?? (
                         <div>
                           Lorem, ipsum dolor sit amet consectetur adipisicing
                           elit. Unde, eligendi?

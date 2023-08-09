@@ -136,6 +136,7 @@ export const ListFood = () => {
                         {" "}
                         • • • • • •{" "}
                       </h1>
+                      <h1 className="text-categoria">{food.categoria}</h1>
                       <h1 className="text-name-food">{food.nombreProducto}</h1>
                     </div>
                     <div className="price-container">
