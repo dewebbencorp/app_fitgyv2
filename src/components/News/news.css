@@ -1,0 +1,10 @@
+.news-container{
+    background-color: rgb(12, 12, 12);
+    padding: 1rem;
+}
+
+.news-phono{ 
+    width:  15vh;
+    height: 30vh;
+    border-radius: 1rem;
+}
