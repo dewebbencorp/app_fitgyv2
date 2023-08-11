@@ -28,9 +28,9 @@ export const News = () => {
     }, []);
 
     return (
-        <>
+        <><h4 className='kenyan'><i> NOTICIAS </i></h4>
+
             <div className='news-container'>
-                <h4 className='kenyan'><i> NOTICIAS </i></h4>
 
                 <Swiper
                     className='swiper'
