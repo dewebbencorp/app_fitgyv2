@@ -1,29 +1,37 @@
-.whatsContainer{
+.whatsContainer {
+  position: absolute;
+  top: 10rem;
+  min-height: 2vh;
+  z-index: 10;
+}
 
-    position:relative;
-    top: 10rem;
-    
-    min-height: 2vh;
+.fondoWhats img {
+  position: fixed;
+  right: 0;
+  width: 12%;
+  top: 84.5vh;
+  margin-right: 0.5rem;
+}
 
-
+.whats img {
+  width: 8%;
+  position: fixed;
+  right: 0;
+  margin-right: 1rem;
+  top: 85vh;
 }
 
 
 
-.fondoWhats img
-{
-    position:fixed;
-    left:21.5rem;
-    width:12%;
-    top:44rem;
-}
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: portrait) {
+ 
 
-.whats img{
-    width:8%;
-   position: fixed;
-   left:22rem;
-   top:44.5rem;
-
+    .whats img {
+        width: 8%;
+        position: fixed;
+        right: 0;
+        margin-right: 1.5rem;
+        top: 85vh;
+      }
    
-   
-}
+   }

@@ -16,10 +16,11 @@ export interface ProductoPorCategoria {
   food_by_tye: any
 }
 export interface ProductoDetalle {
-  nombreProducto: string;
+  id_producto: number
+  nombre: string;
   categoria: string;
-  descripcion: string;
-  media_url: string;
+  Descripcion: string;
+  img_url: string;
   costo: number;
   detail_food: any;
 }
@@ -45,6 +46,12 @@ export interface Asociado {
 export interface LoginError{
   mensaje: string
   esSocio: 0
+}
+
+export interface NewsData{
+  Img: string 
+  Texto: string
+  news_dta: any
 }
 
 /* SQLite  */

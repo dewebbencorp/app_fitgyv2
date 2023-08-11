@@ -23,7 +23,8 @@ export const Welcome = () => {
           </div>
         </div>
 
-        <Noticias />
+        <News />
+
         <CodigoQR />
         <Tarjeta />
         <Whats />

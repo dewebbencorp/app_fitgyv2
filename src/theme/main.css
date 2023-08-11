@@ -11,6 +11,7 @@ body {
   --ion-tab-bar-background: #ff4804;
   --ion-text-orange-color: #ff9104;
   --ion-button-orange: #FF6831;
+  --ion-gray-background: #444242;
 }
 .kenyan {
   font-family: var(--kenyan);
