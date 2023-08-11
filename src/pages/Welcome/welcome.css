@@ -10,9 +10,12 @@
 .welcome-video {
   margin-top: 2rem;
   text-align: center;
+  width: 100%;
+  height: 30vh;
+
 }
 
 .welcome-video iframe {
-  width: 330px;
-  height: 200px;
+  width: inherit;
+  height: inherit;
 }

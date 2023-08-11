@@ -1,4 +1,4 @@
-import { IonButton, IonContent } from "@ionic/react";
+import { IonButton } from "@ionic/react";
 import { useHistory } from "react-router";
 import { useEffect, useState } from "react";
 import tarjeta from "./img/tarjeta.png";
