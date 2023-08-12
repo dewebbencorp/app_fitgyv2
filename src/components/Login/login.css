@@ -1,3 +1,7 @@
+.dot-container {
+  /* TODO */
+}
+
 .login-container {
   position: relative;
   display: flex;
@@ -5,35 +9,64 @@
   justify-content: center;
   height: 100vh;
   width: 100vw;
+  z-index: 9999;
 }
 
-
-.laberLogin {
-  color: blue;
+.card-login-container {
+  background-color: rgba(0, 0, 0, 0.808);
+  border-radius: 2rem;
+  margin: 1rem;
 }
+
 .logo-container {
   display: flex;
   justify-content: center;
 }
 #logo {
-  width: 15rem;
-}
-#login {
-  margin-top: 2rem;
+  margin-top: 2vh;
+  width: 15vh;
 }
 
 #login ion-input {
+  border: 2px solid orangered;
+  border-radius: 1rem;
   margin-top: 1rem;
   margin-bottom: 1rem;
-  --background: white;
-  --color: black;
-}
-#login form {
-  padding: 2rem;
 }
 
-.btn_login {
+#login ion-input ::placeholder {
+  color: white;
+  text-align: center;
+}
+
+#login form {
+  padding: 8vw;
+}
+
+.btn_login-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   margin-top: 1.4rem;
+  font-family: var(--poppins);
+  font-size: 1em;
+}
+
+.btn_login-container span {
+  font-family: var(--poppins);
+  font-size: 0.8em;
+  color: white;
+  margin: 0.5rem;
+}
+.btn_login-container span:hover {
+  color: orangered;
+}
+.btn_login {
+  font-size: var(--poppins);
+  background-color: orangered;
+  width: 19vh;
+  padding: 1vh;
+  border-radius: 1rem;
 }
 #alerta {
   margin-left: 2rem !important;
