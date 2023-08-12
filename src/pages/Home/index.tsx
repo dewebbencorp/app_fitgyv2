@@ -13,9 +13,6 @@ import { Cupon } from "../../components/Cupon";
 import { Wifi } from "../Wifi";
 import { Fitbar } from "../Fitbar/Fitbar";
 import "./home.css";
-import { Cart } from "../../components/Cart";
-import { ListFood } from "../../components/FoodList";
-import { FoodDetail } from "../../components/FoodDetail";
 import home from "./img/home.png";
 import perfil from "./img/perfil.png";
 import fitbar from "./img/fitbar.png";
@@ -25,17 +22,24 @@ import EditarDatos from "../component_datos/EditarDatos";
 import OperacionTarjetas from "../component_inicio/OperacionTarjetas";
 import { Profile } from "../Profile";
 import { Welcome } from "../Welcome";
+import { useEffect } from "react";
 export const Home = () => {
   const user: Asociado = useSelector((state: Asociado) => state.user);
   const location = useLocation();
+  
 
   console.log(location.pathname);
-
+    useEffect(() => {
+      if(!user.Nombre_Asociado){
+        window.location.href = '/login'
+      }
+    }, [])
+    
 
 
   return (
     <>
-      {!location.pathname.startsWith("/fitbar/food/") && !location.pathname.startsWith("/carrito") &&!location.pathname.startsWith("/login") && (
+      {user.Nombre_Asociado && !location.pathname.startsWith("/fitbar/food/") && !location.pathname.startsWith("/carrito") &&!location.pathname.startsWith("/login") && (
         <IonTabs>
           <IonRouterOutlet>
             <Route exact path="/home/inicio" component={Welcome} />

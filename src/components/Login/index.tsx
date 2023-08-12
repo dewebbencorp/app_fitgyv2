@@ -23,6 +23,8 @@ export const Login = () => {
     if (user.esSocio === 1) {
       history.replace("/home");
     }
+
+   
   });
   const {
     register,
@@ -56,6 +58,7 @@ export const Login = () => {
       history.replace("/home");
     } else if (!error) {
       console.log("NO ES SOCIO");
+      history.replace("/login");
       setError(err);
     }
   };
@@ -72,67 +75,69 @@ export const Login = () => {
   return (
     <IonContent>
 
-      {
-        user.esSocio === 1 ? <Loading /> : (
-          <div className="login-container">
-            <div className="card-login-container">
-              <div className="logo-container">
-                <img id="logo" src={logo} alt="Logo" />
+      <div className="dot-container">
+        {
+          user.esSocio === 1 ? <Loading /> : (
+            <div className="login-container">
+              <div className="card-login-container">
+                <div className="logo-container">
+                  <img id="logo" src={logo} alt="Logo" />
+                </div>
+
+                <div id="login">
+                  <form onSubmit={onSubmit}>
+                    <h5 style={{ width: "400px" }}>
+                      {error && <span>{error.mensaje}</span>}
+                    </h5>
+
+                    <IonInput
+                      placeholder="Correo"
+                      type="email"
+                      {...register("email", {
+                        required: {
+                          value: true,
+                          message: "Correo es requerido",
+                        },
+                        pattern: {
+                          value: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
+                          message: "Correo no válido",
+                        },
+                      })}
+                    />
+                    {errors.email && <span>{errors.email.message}</span>}
+                    <IonInput
+                      placeholder="Contraseña"
+                      type="password"
+                      id="password"
+                      {...register("password", {
+                        required: {
+                          value: true,
+                          message: "La contraseña es requerida",
+                        },
+                        minLength: {
+                          value: 3,
+                          message: "Contraseña debe ser mayor a 3 caracteres",
+                        },
+                      })}
+                    />
+                    {errors.password && <span>{errors.password.message} </span>}
+
+                    <div className="btn_login-container">
+                      <button type="submit" className="btn_login">
+                        Entrar
+                      </button>
+                      <span>Olvidé mi contraseña</span>
+                    </div>
+
+                  </form>
+                </div>
               </div>
-
-              <div id="login">
-                <form onSubmit={onSubmit}>
-                  <h5 style={{ width: "400px" }}>
-                    {error && <span>{error.mensaje}</span>}
-                  </h5>
-
-                  <IonInput
-                    placeholder="Correo"
-                    type="email"
-                    {...register("email", {
-                      required: {
-                        value: true,
-                        message: "Correo es requerido",
-                      },
-                      pattern: {
-                        value: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
-                        message: "Correo no válido",
-                      },
-                    })}
-                  />
-                  {errors.email && <span>{errors.email.message}</span>}
-                  <IonInput
-                    placeholder="Contraseña"
-                    type="password"
-                    id="password"
-                    {...register("password", {
-                      required: {
-                        value: true,
-                        message: "La contraseña es requerida",
-                      },
-                      minLength: {
-                        value: 3,
-                        message: "Contraseña debe ser mayor a 3 caracteres",
-                      },
-                    })}
-                  />
-                  {errors.password && <span>{errors.password.message} </span>}
-
-                  <div className="btn_login-container">
-                    <button type="submit" className="btn_login">
-                      Entrar
-                    </button>
-                    <span>Olvidé mi contraseña</span>
-                  </div>
-                  
-                </form>
-              </div>
-            </div>
-            {loading && (
-              <Loading />
-            )}
-          </div>)
-      }
+              {loading && (
+                <Loading />
+              )}
+            </div>)
+        }
+      </div>
 
     </IonContent>
   );
