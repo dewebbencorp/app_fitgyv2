@@ -12,9 +12,7 @@
   border-radius: 2rem;
   margin: 1rem;
 }
-.laberLogin {
-  color: blue;
-}
+
 .logo-container {
   display: flex;
   justify-content: center;
@@ -37,7 +35,7 @@
 }
 
 #login form {
-  padding: 2rem;
+  padding: 8vw;
 }
 
 .btn_login-container {
@@ -54,6 +52,9 @@
   font-size: 0.8em;
   color: white;
   margin: 0.5rem;
+}
+.btn_login-container span:hover {
+  color: orangered;
 }
 .btn_login {
   font-size: var(--poppins);
