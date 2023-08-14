@@ -14,9 +14,14 @@ export const UserProfile = () => {
 
     const dispatch = useDispatch();
     const cerrarSesion = () => {
-        dispatch(removeUser())
-        history.replace('/');
-        App.exitApp();
+
+        const shouldSendMessage = window.confirm('Estas seguro que deseas salir?');
+
+        if (shouldSendMessage) {
+            dispatch(removeUser())
+            history.replace('/');
+            App.exitApp();
+        }
     };
     return (<>
 

@@ -6,14 +6,14 @@
 
 .head-containaer-1 {
   width: 100%;
-  height: 12vh;
+  height: 15vh;
   background-color: var(--ion-tab-bar-background);
 }
 
 .head-containaer-2 {
   position: relative;
   width: 100%;
-  height: 12vh;
+  height: 15vh;
   background-color: white;
 }
 .pencil {
@@ -28,7 +28,7 @@
   position: absolute;
   display: flex;
   justify-content: left;
-  width: 22vw;
+  width: 29vw;
   height: 13vh;
   margin-top: -6vh;
   margin-left: 1rem;
@@ -43,9 +43,10 @@
   position: absolute;
   color: black;
   font-size: 0.9em;
-  margin-left: 1rem;
+  margin-left: 7vw;
   bottom: 2vh;
   font-style: italic;
+  top: 5vh;
 }
 
 .my-account {
@@ -106,7 +107,7 @@ h3 {
   align-items: center;
   padding: 1.1rem;
   justify-content: center;
-  width: 70%;
+  width: 90%;
   background-color: var(--ion-tab-bar-background);
   border-radius: 0.3rem;
 }
@@ -124,7 +125,7 @@ h3 {
 }
 
 .memberships {
-  margin-top: 4vh;
+  margin-top: 8vh;
 }
 
 .memberships h1 {
@@ -142,11 +143,12 @@ h3 {
   display: flex;
   justify-content: center;
   border-radius: 0.5rem;
+  font-family: var(--poppins);
 }
 
 .btn-close {
   position: absolute;
-  bottom: 3vh;
+  bottom: 5vh;
   font-size: 0.9em;
   display: flex;
   align-items: center;
