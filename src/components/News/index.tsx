@@ -38,11 +38,20 @@ export const News = () => {
                     slidesPerView={2.5}
                 >
                     <div >
-                        {fotos.map((item, index) => (
-                            <SwiperSlide className='slide' key={index}>
-                                <img className="news-phono" src={baseFolder + item.Img} onClick={() => setActiveModal(true, baseFolder + item.Img)} />
-                            </SwiperSlide>
-                        ))}
+                        {fotos.length > 0 ? (
+                            fotos.map((item, index) => (
+                                <SwiperSlide className='slide' key={index}>
+                                    <img
+                                        className="news-phono"
+                                        src={baseFolder + item.Img}
+                                        onClick={() => setActiveModal(true, baseFolder + item.Img)}
+                                    />
+                                </SwiperSlide>
+                            ))
+                        ) : (
+                            <p>No hay imágenes disponibles.</p>
+                        )}
+
                     </div>
                 </Swiper>
 
