@@ -158,3 +158,57 @@ h3 {
   background-color: var(--ion-tab-bar-background);
   border-radius: 0.3rem;
 }
+
+/* UPDATEpROFILE*/
+.btn-close-update-container {
+  display: flex;
+  justify-content: right;
+  margin: 3vw;
+}
+.btn-close-update {
+  font-size: 2em;
+}
+.title-up {
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  border-radius: 1.5vw;
+  width: 70%;
+  height: 6vh;
+  background-color: var(--ion-tab-bar-background);
+  font-size: 1.3em;
+  font-family: var(--poppins);
+}
+.input-up-container {
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+}
+input {
+  height: 4vh;
+  border: 1px solid orangered;
+  border-radius: 0.2rem;
+  background-color: var(--transparent);
+}
+
+.change-pass-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 5vh;
+}
+
+.add-card-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.add-card-container h5 {
+  font-size: 1em;
+  margin-left: 3vw;
+}
+.change-pass-container h5 {
+  font-size: 1em;
+  margin-left: 3vw;
+}
