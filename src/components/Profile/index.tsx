@@ -5,11 +5,13 @@ import points from './images/ponts.png'
 import schedule from './images/schedule.png'
 import { IonContent } from "@ionic/react";
 import { useHistory } from "react-router";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { removeUser } from "../../store/slices/userSlice";
 import { App } from "@capacitor/app";
+import { Asociado } from "../../interfaces";
 export const UserProfile = () => {
-
+    const user: Asociado = useSelector((state: Asociado) => state.user);
+    let basefolder = "https://187.188.16.29:4431/webservice-app2/assets/avatars-users/";
     const history = useHistory();
 
     const dispatch = useDispatch();
@@ -23,6 +25,10 @@ export const UserProfile = () => {
             App.exitApp();
         }
     };
+
+
+
+
     return (<>
 
         <IonContent>
@@ -31,10 +37,10 @@ export const UserProfile = () => {
                 <div className='head-containaer-1'></div>
                 <div className="head-containaer-2" >
                     <div className="profile-data-container">
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRRmGQNAHlUAEePOTE4GBTp9HjjNODjwBKZNw&usqp=CAU" className="profile-image" />
+                        <img src={basefolder+user.imgAvatar} className="profile-image" />
                     </div>
                     <GiPencil className="pencil" />
-                    <h1 className="user-name ">User name</h1>
+                    <h1 className="user-name ">{`${user.Nombre_Asociado} ${user.Apellidos}`}</h1>
                 </div>
                 <div className="my-account">
                     <div className="detail-account">
@@ -51,7 +57,7 @@ export const UserProfile = () => {
                         <img className="points-icon" src={points} />
                         <div className="points">
                             <h5>Puntos Disponibles</h5>
-                            <h3 className="kenyan">100</h3>
+                            <h3 className="kenyan">{user.puntos}</h3>
                         </div>
                     </div>
 
