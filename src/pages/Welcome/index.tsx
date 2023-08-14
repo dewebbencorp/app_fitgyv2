@@ -11,6 +11,7 @@ export const Welcome = () => {
   return (
     <>
       <IonContent>
+
         <div className="head-info-container">
           <div className="welcome-logo">
             <img src={logo} />

@@ -26,20 +26,21 @@ import { useEffect } from "react";
 export const Home = () => {
   const user: Asociado = useSelector((state: Asociado) => state.user);
   const location = useLocation();
-  
+
 
   console.log(location.pathname);
-    useEffect(() => {
-      if(!user.Nombre_Asociado){
-        window.location.href = '/login'
-      }
-    }, [])
-    
+  useEffect(() => {
+    if (!user.Nombre_Asociado) {
+      window.location.href = '/login'
+    }
+  }, [])
+
 
 
   return (
     <>
-      {user.Nombre_Asociado && !location.pathname.startsWith("/fitbar/food/") && !location.pathname.startsWith("/carrito") &&!location.pathname.startsWith("/login") && (
+
+      {user.Nombre_Asociado && !location.pathname.startsWith("/fitbar/food/") && !location.pathname.startsWith("/carrito") && !location.pathname.startsWith("/login") && (
         <IonTabs>
           <IonRouterOutlet>
             <Route exact path="/home/inicio" component={Welcome} />
