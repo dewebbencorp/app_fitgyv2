@@ -1,14 +1,17 @@
 import { useEffect, useState } from "react"
 import { TfiReload } from "react-icons/tfi";
 import { FaPlus } from "react-icons/fa";
+import { IonContent, IonInput } from "@ionic/react";
 import "./profile.css"
 import { Asociado } from "../../interfaces";
-import { IonContent, IonInput } from "@ionic/react";
+
 
 interface UpdateProfileProps {
     setModal: (value: boolean) => void;
     user: Asociado;
 }
+
+
 export const UpdateProfile = ({ setModal, user }: UpdateProfileProps) => {
     const backButtonHandler = () => {
         setModal(false); // Cerrar el modal
@@ -66,6 +69,7 @@ export const UpdateProfile = ({ setModal, user }: UpdateProfileProps) => {
 
 
             </div>
+
 
 
         </IonContent>

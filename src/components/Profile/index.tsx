@@ -1,4 +1,5 @@
 import { GiPencil } from "react-icons/gi";
+import { useEffect } from "react"
 import { useState } from "react"
 import { HiChevronRight } from "react-icons/hi2";
 import points from './images/ponts.png'
@@ -12,6 +13,7 @@ import { Asociado } from "../../interfaces";
 import './profile.css'
 import { UpdateProfile } from "./UpdateProfile";
 import { AiOutlineCloseCircle } from "react-icons/ai";
+import { GetDeadLine } from "./GetDeadLine";
 export const UserProfile = () => {
     const [showModal, setModal] = useState(false)
     const user: Asociado = useSelector((state: Asociado) => state.user);
@@ -30,7 +32,13 @@ export const UserProfile = () => {
         }
     };
 
+    const { deadline, calculateDeadline } = GetDeadLine(user.diasRestantes-1 ?? 1 )
 
+
+    useEffect(() => {
+        calculateDeadline()
+
+    }, [])
 
 
     return (<>
@@ -72,7 +80,7 @@ export const UserProfile = () => {
                     </div>
                     <div className="memberships">
                         <h1 className="kenyan">Membresia</h1>
-                        <h2>Valida hasta el 26 de mayo del 2020 </h2>
+                        <h2>Valida hasta el {deadline && deadline} </h2>
                     </div>
                 </div>
 
@@ -91,5 +99,6 @@ export const UserProfile = () => {
             </div>
             <UpdateProfile setModal={setModal} user={user} />
         </IonModal>
+
     </>)
 }
