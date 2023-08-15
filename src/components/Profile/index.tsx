@@ -15,13 +15,18 @@ import { UpdateProfile } from "./UpdateProfile";
 import { AiOutlineCloseCircle } from "react-icons/ai";
 import { GetDeadLine } from "./GetDeadLine";
 import { Camera, CameraResultType, CameraSource } from "@capacitor/camera";
+import { uploadPhono } from "../../axios/User";
+import { log } from "console";
+import { ThunkDispatch } from "redux-thunk";
+import { AnyAction } from "redux";
 export const UserProfile = () => {
     const [showModal, setModal] = useState(false)
+    const [upImg, setUpImg] = useState<string>()
     const user: Asociado = useSelector((state: Asociado) => state.user);
-    let basefolder = "https://187.188.16.29:4431/webservice-app2/assets/avatars-users/";
+    const basefolder = "https://187.188.16.29:4431/webservice-app2/assets/avatars-users/";
     const history = useHistory();
 
-    const dispatch = useDispatch();
+    const dispatch: ThunkDispatch<any, void, AnyAction> = useDispatch();
     const cerrarSesion = () => {
 
         const shouldSendMessage = window.confirm('Estas seguro que deseas salir?');
@@ -50,9 +55,25 @@ export const UserProfile = () => {
             });
 
             const imageBase64 = image.base64String;
-            console.log("AQUII");
 
-            console.log(JSON.stringify((imageBase64)));
+
+            if (imageBase64) {
+                setUpImg(imageBase64)
+            }
+
+        }
+    };
+    const upph = async () => {
+        if (upImg) {
+            try {
+                console.log("SE ESTA SUBIENDO");
+                await dispatch(uploadPhono(upImg, user.Clav_Asociado));
+            } catch (error) {
+                console.error("Error al subir la imagen:", error);
+
+            } finally {
+                window.location.replace("/home/perfil");
+            }
         }
     };
 
@@ -65,8 +86,9 @@ export const UserProfile = () => {
                 <div className='head-containaer-1'></div>
                 <div className="head-containaer-2" >
                     <div className="profile-data-container">
-                        <img src={basefolder + user.imgAvatar} className="profile-image" onClick={openGallery} />
+                        <img src={basefolder + user.imgAvatar} className="profile-image" />
                     </div>
+
                     <GiPencil className="pencil" onClick={() => setModal(true)} />
                     <h1 className="user-name ">{`${user.Nombre_Asociado} ${user.Apellidos}`}</h1>
                 </div>
