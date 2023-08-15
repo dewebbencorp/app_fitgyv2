@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import "./css/subirImagen.css";
 import { useSelector } from "react-redux";
 import { Asociado } from "../../interfaces";
-const SubirImagen = () => {
+ const SubirImagen = () => {
   const user: Asociado = useSelector((state: Asociado) => state.user);
   const [urlFoto, setUrlFoto] = useState<string>("");
 
@@ -74,4 +74,4 @@ const SubirImagen = () => {
     </>
   );
 };
-export default SubirImagen;
+

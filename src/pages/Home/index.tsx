@@ -50,11 +50,7 @@ export const Home = () => {
               component={OperacionTarjetas}
             />
             <Route exact path="/home/perfil" component={Profile} />
-            <Route
-              exact
-              path="/home/perfil/editar-datos"
-              component={EditarDatos}
-            />
+
             <Route exact path="/home/fitbar" component={Fitbar} />
 
             <Route exact path="/home/cupon" component={Cupon} />

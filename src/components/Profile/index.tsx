@@ -14,6 +14,7 @@ import './profile.css'
 import { UpdateProfile } from "./UpdateProfile";
 import { AiOutlineCloseCircle } from "react-icons/ai";
 import { GetDeadLine } from "./GetDeadLine";
+import { Camera, CameraResultType, CameraSource } from "@capacitor/camera";
 export const UserProfile = () => {
     const [showModal, setModal] = useState(false)
     const user: Asociado = useSelector((state: Asociado) => state.user);
@@ -32,13 +33,28 @@ export const UserProfile = () => {
         }
     };
 
-    const { deadline, calculateDeadline } = GetDeadLine(user.diasRestantes-1 ?? 1 )
+    const { deadline, calculateDeadline } = GetDeadLine(user.diasRestantes - 1 ?? 1)
 
 
     useEffect(() => {
         calculateDeadline()
 
     }, [])
+
+    const openGallery = async () => {
+        if (user != null) {
+            const image = await Camera.getPhoto({
+                source: CameraSource.Photos,
+                allowEditing: false,
+                resultType: CameraResultType.Base64,
+            });
+
+            const imageBase64 = image.base64String;
+            console.log("AQUII");
+
+            console.log(JSON.stringify((imageBase64)));
+        }
+    };
 
 
     return (<>
@@ -49,7 +65,7 @@ export const UserProfile = () => {
                 <div className='head-containaer-1'></div>
                 <div className="head-containaer-2" >
                     <div className="profile-data-container">
-                        <img src={basefolder + user.imgAvatar} className="profile-image" />
+                        <img src={basefolder + user.imgAvatar} className="profile-image" onClick={openGallery} />
                     </div>
                     <GiPencil className="pencil" onClick={() => setModal(true)} />
                     <h1 className="user-name ">{`${user.Nombre_Asociado} ${user.Apellidos}`}</h1>
