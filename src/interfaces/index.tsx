@@ -53,6 +53,11 @@ export interface NewsData{
   Texto: string
   news_dta: any
 }
+export interface Cards {
+  numTarjeta: string
+  Activo: number
+  cards: any
+}
 
 /* SQLite  */
 
