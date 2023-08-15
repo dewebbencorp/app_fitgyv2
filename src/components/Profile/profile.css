@@ -148,7 +148,7 @@ h3 {
 
 .btn-close {
   position: absolute;
-  bottom: 5vh;
+  bottom: 3vh;
   font-size: 0.9em;
   display: flex;
   align-items: center;
@@ -182,9 +182,12 @@ h3 {
 .input-up-container {
   display: flex;
   flex-direction: column;
-  padding: 2rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  padding-top: 0.5rem;
 }
-input {
+
+ion-input {
   height: 4vh;
   border: 1px solid orangered;
   border-radius: 0.2rem;
@@ -211,4 +214,23 @@ input {
 .change-pass-container h5 {
   font-size: 1em;
   margin-left: 3vw;
+}
+
+.current-card-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-bottom: 2vh;
+}
+
+.btn-up-dta {
+  font-size: 0.9em;
+  display: flex;
+  align-items: center;
+  padding: 0.5rem;
+  justify-content: center;
+  width: 50%;
+  background-color: var(--ion-tab-bar-background);
+  border-radius: 0.3rem;
 }
