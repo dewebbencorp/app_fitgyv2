@@ -43,7 +43,7 @@ export const Login = () => {
     setRequest(data);
   });
 
-  const { data, loading } = UseFecthPost(request, "login.php");
+  const { data, loading } = UseFecthPost(request, "/login.php");
 
 
 

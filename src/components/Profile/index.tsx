@@ -80,7 +80,7 @@ export const UserProfile = () => {
                     </div>
                     <div className="memberships">
                         <h1 className="kenyan">Membresia</h1>
-                        <h2>Valida hasta el {deadline && deadline} </h2>
+                        <h2>Activa hasta: {deadline && deadline} </h2>
                     </div>
                 </div>
 

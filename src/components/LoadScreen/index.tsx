@@ -5,20 +5,34 @@ export const Loading = () => {
     return (
         <>
 
-                <div className="loading-indicator-login">
+            <div className="loading-indicator-login">
 
-                    <HashLoader
-                        color={"var(--ion-tab-bar-background)"}
-                        loading={true}
-                        speedMultiplier={3}
-                        size={80}
-                    />
+                <HashLoader
+                    color={"var(--ion-tab-bar-background)"}
+                    loading={true}
+                    speedMultiplier={3}
+                    size={80}
+                />
 
-                </div>
-            
+            </div>
+
         </>
 
     )
 
 
+}
+
+export const Loading2 = () => {
+    return (
+        <>
+            <div className="newtons-cradle">
+                <div className="newtons-cradle__dot"></div>
+                <div className="newtons-cradle__dot"></div>
+                <div className="newtons-cradle__dot"></div>
+                <div className="newtons-cradle__dot"></div>
+            </div>
+
+        </>
+    )
 }

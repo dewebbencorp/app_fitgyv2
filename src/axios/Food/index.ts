@@ -3,6 +3,7 @@ import { Dispatch } from "redux";
 import { addFoodTypes } from "../../store/slices/typeFoodSlice";
 import { addFoodByType } from "../../store/slices/foodByTypeSlice";
 import { addDetailFood } from "../../store/slices/detailFood";
+import { BASE_URL } from "../Utils";
 
 export const fetchTypesFood =
   () =>
@@ -14,9 +15,7 @@ export const fetchTypesFood =
     }
 
     return axios
-      .get(
-        "https://187.188.16.29:4431/webservice-app2/controllers/getCategorias.php"
-      )
+      .get(`${BASE_URL}/getCategorias.php`)
       .then((response) => {
         dispatch(addFoodTypes(response.data));
         localStorage.setItem("types_food", JSON.stringify(response.data));
@@ -32,10 +31,7 @@ export const postFoodByType =
     };
 
     return axios
-      .post(
-        "https://187.188.16.29:4431/webservice-app2/Controllers/getCategoria_producto.php",
-        postData
-      )
+      .post(`${BASE_URL}/getCategoria_producto.php`, postData)
       .then((response) => {
         dispatch(addFoodByType(response.data));
       })
@@ -50,10 +46,7 @@ export const postFoodDetail =
     };
 
     return axios
-      .post(
-        "https://187.188.16.29:4431/webservice-app2/Controllers/getProducto.php",
-        postData
-      )
+      .post(`${BASE_URL}/getProducto.php`, postData)
       .then((response) => {
         dispatch(addDetailFood(response.data));
       })

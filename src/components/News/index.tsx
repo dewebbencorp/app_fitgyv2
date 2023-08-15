@@ -7,6 +7,7 @@ import { fetchNewsData } from '../../axios/News';
 import { NewsData } from '../../interfaces';
 import "./news.css"
 import { FullScreenImage } from './fullScreenImage';
+import { Loading2 } from '../LoadScreen';
 
 export const News = () => {
 
@@ -49,7 +50,11 @@ export const News = () => {
                                 </SwiperSlide>
                             ))
                         ) : (
-                            <p>No hay imágenes disponibles.</p>
+                            <div className="l2container">
+                                <h5>Cargando...</h5>
+                                <Loading2 />
+                            </div>
+
                         )}
 
                     </div>
