@@ -7,6 +7,7 @@ import { postCardsList } from "../../axios/Card";
 import { IonModal } from "@ionic/react";
 import { AddCard } from "./AddCard";
 import "./cardsList.css"
+import { AiOutlineCloseCircle } from "react-icons/ai";
 export const CardsList = () => {
     const [showInput, setInput] = useState(false)
     const cardss = useSelector((state: Cards) => state.card_list);
@@ -33,26 +34,18 @@ export const CardsList = () => {
 
                 <div className="card-list-container">
                     {cardss.length > 0 && cardss.map((card: Cards) => (
-
-
-
                         <div key={card.numTarjeta}>
                             <div className="card-number-container">
 
                                 <FaCircle className={card.Activo === 1 ? "far-Icon" : "far-Icon-non-active"} />
                                 {card.numTarjeta} <h5>{card.Activo === 1 ? "(Activa)" : "(Desactivada)"}</h5>
                             </div>
-
-
                         </div>
-
-
                     ))}
                 </div>
             </div>
 
             <IonModal isOpen={showInput}>
-
                 <AddCard setModal={setInput} />
             </IonModal>
         </>

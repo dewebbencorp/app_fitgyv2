@@ -2,6 +2,7 @@ import { IonProgressBar } from "@ionic/react";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import card_img from "./images/card_img.png"
+import { AiOutlineCloseCircle } from "react-icons/ai";
 
 export const AddCard = ({ setModal }: any) => {
     const [request, setRequest] = useState({});
@@ -37,7 +38,10 @@ export const AddCard = ({ setModal }: any) => {
     }, []);
     return (
         <>
-            <button onClick={backButtonHandler}>close</button>
+            <div className="btn-close-update-container" onClick={backButtonHandler}>
+                <AiOutlineCloseCircle className="btn-close-update"  />
+            </div>
+
             <div>
 
 
