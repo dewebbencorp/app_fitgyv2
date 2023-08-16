@@ -1,9 +1,12 @@
 import { useEffect, useState } from "react"
 import { TfiReload } from "react-icons/tfi";
-import { FaPlus } from "react-icons/fa";
+import { FaCircle, FaPlus } from "react-icons/fa";
 import { IonContent, IonInput } from "@ionic/react";
 import "./profile.css"
-import { Asociado } from "../../interfaces";
+import { Asociado, Cards } from "../../interfaces";
+import { useDispatch, useSelector } from "react-redux";
+import { AnyAction, ThunkDispatch } from "@reduxjs/toolkit";
+import { postCardsList } from "../../axios/Card";
 
 
 interface UpdateProfileProps {
@@ -13,6 +16,12 @@ interface UpdateProfileProps {
 
 
 export const UpdateProfile = ({ setModal, user }: UpdateProfileProps) => {
+    const dispatch: ThunkDispatch<any, void, AnyAction> = useDispatch();
+    useEffect(() => {
+        dispatch(postCardsList(user.Clav_Asociado))
+    }, [])
+
+    const cardss = useSelector((state: Cards) => state.card_list);
     const backButtonHandler = () => {
         setModal(false); // Cerrar el modal
     };
@@ -54,12 +63,28 @@ export const UpdateProfile = ({ setModal, user }: UpdateProfileProps) => {
                         <h5>Agregar otra tarjeta</h5>
                     </div>
                     <div className="current-card-container">
-                        <li>
 
-                        </li>
-                        <li>
+                        <div className="card-list-container">
+                            {cardss.length > 0 && cardss.map((card: Cards) => (
 
-                        </li>
+
+
+                                <div key={card.numTarjeta}>
+                                    <div className="card-number-container">
+
+                                        <FaCircle className={card.Activo === 1 ? "far-Icon" : "far-Icon-non-active"} />
+                                        {card.numTarjeta} <h5>{card.Activo === 1 ? "(Activa)" : "(Desactivada)"}</h5>
+                                    </div>
+
+
+                                </div>
+
+
+                            ))}
+                        </div>
+
+
+
                     </div>
                     <div className="btn-close-container" >
                         <button type="submit" className="btn-up-dta" >

@@ -218,7 +218,7 @@ ion-input {
 
 .current-card-container {
   display: flex;
-  justify-content: center;
+  justify-content: left;
   align-items: center;
   flex-direction: column;
   margin-bottom: 2vh;
@@ -235,7 +235,31 @@ ion-input {
   border-radius: 0.3rem;
 }
 
-/* UPLOADPHOTO */
+/* CARD STATE */
 
+.card-list-container {
+  margin-left: 20vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+}
+.card-number-container {
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  font-size: 0.9em;
+}
+.far-Icon {
+  color: var(--ion-tab-bar-background);
+  margin-right: 3vw;
+}
 
-
+.far-Icon-non-active {
+  color: red;
+  margin-right: 3vw;
+}
+.card-number-container h5 {
+  font-size: 0.9em;
+  margin-left: 3vw;
+  color: var(--ion-tab-bar-background);
+}

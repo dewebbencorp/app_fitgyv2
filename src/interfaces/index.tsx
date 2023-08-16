@@ -56,7 +56,7 @@ export interface NewsData{
 export interface Cards {
   numTarjeta: string
   Activo: number
-  cards: any
+  card_list: any
 }
 
 /* SQLite  */
