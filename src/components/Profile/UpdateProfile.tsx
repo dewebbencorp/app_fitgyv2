@@ -4,7 +4,7 @@ import { FaCircle, FaPlus } from "react-icons/fa";
 import { IonContent, IonInput } from "@ionic/react";
 import "./profile.css"
 import { Asociado, Cards } from "../../interfaces";
-import { CardsList } from "../CardsList";
+import { CardsList } from "../CardList";
 
 
 interface UpdateProfileProps {
@@ -14,7 +14,7 @@ interface UpdateProfileProps {
 
 
 export const UpdateProfile = ({ setModal, user }: UpdateProfileProps) => {
-  
+
 
     const backButtonHandler = () => {
         setModal(false); // Cerrar el modal
@@ -35,24 +35,26 @@ export const UpdateProfile = ({ setModal, user }: UpdateProfileProps) => {
 
             <div className="input-up-container">
                 <form>
-                    <h5>Nombre</h5>
+                    <h3>Nombre</h3>
                     <IonInput type="text" value={user.Nombre_Asociado} disabled />
-                    <h5>Apellidos</h5>
+                    <h3>Apellidos</h3>
                     <IonInput type="text" value={user.Apellidos} disabled />
-                    <h5>Correo</h5>
+                    <h3>Correo</h3>
                     <IonInput type="text" value={user.CorreoE} />
-                    <h5>Teléfono</h5>
+                    <h3>Teléfono</h3>
                     <IonInput type="text" name="" id="" value={user.Telefono} />
 
-                    <div className="change-pass-container">
+                    <div className="list-options-container">
+                        <div className="change-pass-container">
 
-                        <TfiReload style={{ fontSize: '1.3em', color: 'orangered', fontWeight: 'bold' }} />
+                            <TfiReload style={{ fontSize: '1.3em', color: 'orangered', fontWeight: 'bold' }} />
 
-                        <h5>Cambiar contraseña</h5>
+                            <h5>Cambiar contraseña</h5>
+                        </div>
+
+                        <CardsList />
                     </div>
-
-                    <CardsList />
-                    <div className="btn-close-container" >
+                    <div className="btn-close-container btn-send-up" >
                         <button type="submit" className="btn-up-dta" >
                             Actualizar datos</button>
                     </div>

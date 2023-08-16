@@ -160,6 +160,7 @@ h3 {
 }
 
 /* UPDATEpROFILE*/
+
 .btn-close-update-container {
   display: flex;
   justify-content: right;
@@ -171,12 +172,12 @@ h3 {
 .title-up {
   display: flex;
   align-items: center;
-  justify-content: left;
+  justify-content: center;
   border-radius: 1.5vw;
   width: 70%;
   height: 6vh;
   background-color: var(--ion-tab-bar-background);
-  font-size: 1.3em;
+  font-size: 1.2em;
   font-family: var(--poppins);
 }
 .input-up-container {
@@ -186,10 +187,15 @@ h3 {
   padding-right: 2rem;
   padding-top: 0.5rem;
 }
-
+form h3{
+  font-size: 0.9em;
+  font-family: var(--poppins);
+  margin-top: 1vh;
+  margin-bottom: 0.5vh;
+}
 ion-input {
-  height: 4vh;
-  border: 1px solid orangered;
+  height: 1vh;
+  border: 0.1vw solid orangered;
   border-radius: 0.2rem;
   background-color: var(--transparent);
 }
@@ -198,7 +204,7 @@ ion-input {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 5vh;
+  margin-top: 2vh;
 }
 
 .add-card-container {
@@ -210,6 +216,13 @@ ion-input {
 .add-card-container h5 {
   font-size: 1em;
   margin-left: 3vw;
+}
+
+.list-options-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  align-items: center;
 }
 .change-pass-container h5 {
   font-size: 1em;
@@ -225,4 +238,8 @@ ion-input {
   width: 50%;
   background-color: var(--ion-tab-bar-background);
   border-radius: 0.3rem;
+}
+
+.btn-send-up {
+  margin-bottom: 5vh;
 }

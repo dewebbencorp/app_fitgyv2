@@ -1,11 +1,14 @@
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux";
-import "./cardsList.css"
 import { Asociado, Cards } from "../../interfaces";
 import { FaCircle, FaPlus } from "react-icons/fa";
 import { AnyAction, ThunkDispatch } from "@reduxjs/toolkit";
 import { postCardsList } from "../../axios/Card";
+import { IonModal } from "@ionic/react";
+import { AddCard } from "./AddCard";
+import "./cardsList.css"
 export const CardsList = () => {
+    const [showInput, setInput] = useState(false)
     const cardss = useSelector((state: Cards) => state.card_list);
     const dispatch: ThunkDispatch<any, void, AnyAction> = useDispatch();
     const user: Asociado = useSelector((state: Asociado) => state.user);
@@ -18,7 +21,7 @@ export const CardsList = () => {
 
         <>
 
-            <div className="add-card-container">
+            <div className="add-card-container" onClick={() => setInput(true)}>
 
                 <FaPlus style={{ fontSize: '1.3em', color: 'orangered', fontWeight: 'bold' }} />
 
@@ -47,6 +50,11 @@ export const CardsList = () => {
                     ))}
                 </div>
             </div>
+
+            <IonModal isOpen={showInput}>
+
+                <AddCard setModal={setInput} />
+            </IonModal>
         </>
     )
 

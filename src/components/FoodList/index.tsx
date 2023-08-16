@@ -40,12 +40,24 @@ export const ListFood = () => {
 
 
   const dispatch: ThunkDispatch<any, void, AnyAction> = useDispatch();
+
+
+  const backButtonHandler = () => {
+    window.location.href = '/home/fitbar'
+  };
+
   useEffect(() => {
     dispatch(postFoodByType(id));
 
     setTimeout(() => {
       setShowLoading(false);
     }, 5000);
+
+
+    document.addEventListener('ionBackButton', backButtonHandler);
+    return () => {
+      document.removeEventListener('ionBackButton', backButtonHandler);
+    };
   }, [dispatch]);
 
 
@@ -57,11 +69,11 @@ export const ListFood = () => {
   );
 
   const handleBackClick = () => {
-
-
     window.location.href = '/home/fitbar'
-
   };
+
+
+
 
   const addToCart = async (data: ProductoPorCategoria) => {
     try {

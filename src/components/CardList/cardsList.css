@@ -18,14 +18,15 @@
     align-items: center;
     justify-content: left;
     font-size: 0.9em;
+    margin-left: 2vw;
   }
   .far-Icon {
-    color: var(--ion-tab-bar-background);
+    color: orangered;
     margin-right: 3vw;
   }
   
   .far-Icon-non-active {
-    color: red;
+    color: rgba(250, 119, 95, 0.911);
     margin-right: 3vw;
   }
   .card-number-container h5 {
