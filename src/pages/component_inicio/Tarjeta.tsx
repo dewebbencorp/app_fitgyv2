@@ -21,7 +21,7 @@ const Tarjeta = () => {
     <div className="btn_tarjeta">
       {titular !== 1 ? (
         <IonButton disabled={true} fill="outline">
-          <img src={tarjeta} />
+          <img src={"#"} />
           <span> Tarjeta </span>
         </IonButton>
       ) : (
@@ -31,7 +31,7 @@ const Tarjeta = () => {
             history.push("/home/inicio/tarjetas");
           }}
         >
-          <img src={tarjeta} />
+          <img src={"#"} />
           <span> Tarjeta </span>
         </IonButton>
       )}
