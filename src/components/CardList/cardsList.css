@@ -6,32 +6,43 @@
   margin-bottom: 2vh;
 }
 
-
 .card-list-container {
-    margin-left: 20vw;
-    display: flex;
-    flex-direction: column;
-    justify-content: left;
-  }
-  .card-number-container {
-    display: flex;
-    align-items: center;
-    justify-content: left;
-    font-size: 0.9em;
-    margin-left: 2vw;
-  }
-  .far-Icon {
-    color: orangered;
-    margin-right: 3vw;
-  }
-  
-  .far-Icon-non-active {
-    color: rgba(250, 119, 95, 0.911);
-    margin-right: 3vw;
-  }
-  .card-number-container h5 {
-    font-size: 0.9em;
-    margin-left: 3vw;
-    color: var(--ion-tab-bar-background);
-  }
-  
+  margin-left: 20vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+}
+.card-number-container {
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  font-size: 0.9em;
+  margin-left: 2vw;
+}
+.far-Icon {
+  color: orangered;
+  margin-right: 3vw;
+}
+
+.far-Icon-non-active {
+  color: rgba(250, 119, 95, 0.911);
+  margin-right: 3vw;
+}
+.card-number-container h5 {
+  font-size: 0.9em;
+  margin-left: 3vw;
+  color: var(--ion-tab-bar-background);
+}
+
+/* ADD CARD INPUT */
+
+.input-card-container {
+  margin-top: 25vh;
+  margin-left: 8vw;
+  margin-right: 8vw;
+  padding: 3rem;
+  display: flex;
+  flex-direction: column;
+  background-color: black;
+  border-radius: 2rem;
+}
