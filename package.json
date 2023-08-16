@@ -31,6 +31,7 @@
     "@types/react-router-dom": "^5.3.3",
     "axios": "^1.4.0",
     "cordova-plugin-x-socialsharing": "^6.0.4",
+    "cropperjs": "^1.5.13",
     "html2canvas": "^1.4.1",
     "ionicons": "^7.0.0",
     "jeep-sqlite": "^2.3.9",

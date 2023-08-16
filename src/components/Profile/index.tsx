@@ -4,7 +4,7 @@ import { useState } from "react"
 import { HiChevronRight } from "react-icons/hi2";
 import points from './images/ponts.png'
 import schedule from './images/schedule.png'
-import { IonContent, IonModal } from "@ionic/react";
+import { IonActionSheet, IonAlert, IonContent, IonModal } from "@ionic/react";
 import { useHistory } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
 import { removeUser } from "../../store/slices/userSlice";
@@ -16,12 +16,13 @@ import { AiOutlineCloseCircle } from "react-icons/ai";
 import { GetDeadLine } from "./GetDeadLine";
 import { Camera, CameraResultType, CameraSource } from "@capacitor/camera";
 import { uploadPhono } from "../../axios/User";
-import { log } from "console";
 import { ThunkDispatch } from "redux-thunk";
 import { AnyAction } from "redux";
+import { Toaster, toast } from 'react-hot-toast';
+
 export const UserProfile = () => {
     const [showModal, setModal] = useState(false)
-    const [upImg, setUpImg] = useState<string>()
+    const [actionSh, setActionSh] = useState(false)
     const user: Asociado = useSelector((state: Asociado) => state.user);
     const basefolder = "https://187.188.16.29:4431/webservice-app2/assets/avatars-users/";
     const history = useHistory();
@@ -41,11 +42,11 @@ export const UserProfile = () => {
     const { deadline, calculateDeadline } = GetDeadLine(user.diasRestantes - 1 ?? 1)
 
 
+
     useEffect(() => {
         calculateDeadline()
 
     }, [])
-
     const openGallery = async () => {
         if (user != null) {
             const image = await Camera.getPhoto({
@@ -58,19 +59,25 @@ export const UserProfile = () => {
 
 
             if (imageBase64) {
-                setUpImg(imageBase64)
+                upph(imageBase64)
             }
 
         }
     };
-    const upph = async () => {
+    const upph = async (upImg: string) => {
         if (upImg) {
             try {
                 console.log("SE ESTA SUBIENDO");
-                await dispatch(uploadPhono(upImg, user.Clav_Asociado));
+                await toast.promise(
+                    dispatch(uploadPhono(upImg, user.Clav_Asociado)),
+                    {
+                        loading: 'Subiendo Foto',
+                        success: 'Foto subida exitosamente',
+                        error: 'Error al subir la foto',
+                    }
+                );
             } catch (error) {
                 console.error("Error al subir la imagen:", error);
-
             } finally {
                 window.location.replace("/home/perfil");
             }
@@ -78,15 +85,17 @@ export const UserProfile = () => {
     };
 
 
+
     return (<>
 
         <IonContent>
+            <Toaster />
 
             <div className="main-ctn">
                 <div className='head-containaer-1'></div>
                 <div className="head-containaer-2" >
                     <div className="profile-data-container">
-                        <img src={basefolder + user.imgAvatar} className="profile-image" />
+                        <img src={basefolder + user.imgAvatar} className="profile-image" onClick={() => setActionSh(true)} />
                     </div>
 
                     <GiPencil className="pencil" onClick={() => setModal(true)} />
@@ -137,6 +146,32 @@ export const UserProfile = () => {
             </div>
             <UpdateProfile setModal={setModal} user={user} />
         </IonModal>
+
+
+        <IonActionSheet
+            isOpen={actionSh}
+            onDidDismiss={() => setActionSh(false)}
+            cssClass="action-sheet"
+            buttons={[
+
+                {
+                    text: 'Seleccionar foto de perfil',
+                    icon: "#",
+                    handler: () => {
+                        openGallery()
+                    },
+                },
+                {
+                    text: 'Cancel',
+                    icon: "#",
+                    role: 'cancel',
+                    handler: () => {
+                        console.log('Cancel clicked');
+                    },
+                },
+            ]}
+        ></IonActionSheet>
+
 
     </>)
 }

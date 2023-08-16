@@ -28,14 +28,14 @@
   position: absolute;
   display: flex;
   justify-content: left;
-  width: 29vw;
-  height: 13vh;
-  margin-top: -6vh;
+  width: 40vw;
+  height: 20vh;
+  margin-top: -10vh;
   margin-left: 1rem;
 }
 
 .profile-image {
-  clip-path: circle(45%);
+  clip-path: circle(40%);
   object-fit: cover;
 }
 
@@ -46,7 +46,7 @@
   margin-left: 7vw;
   bottom: 2vh;
   font-style: italic;
-  top: 5vh;
+  top: 7vh;
 }
 
 .my-account {
@@ -234,3 +234,8 @@ ion-input {
   background-color: var(--ion-tab-bar-background);
   border-radius: 0.3rem;
 }
+
+/* UPLOADPHOTO */
+
+
+
