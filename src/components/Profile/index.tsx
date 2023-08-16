@@ -1,6 +1,5 @@
 import { GiPencil } from "react-icons/gi";
-import { useEffect } from "react"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { HiChevronRight } from "react-icons/hi2";
 import points from './images/ponts.png'
 import schedule from './images/schedule.png'
