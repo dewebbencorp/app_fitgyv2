@@ -18,11 +18,10 @@ import perfil from "./img/perfil.png";
 import fitbar from "./img/fitbar.png";
 import cupon from "./img/cupon.png";
 import wifi from "./img/wifi.png";
-import EditarDatos from "../component_datos/EditarDatos";
-import OperacionTarjetas from "../component_inicio/OperacionTarjetas";
 import { Profile } from "../Profile";
 import { Welcome } from "../Welcome";
 import { useEffect } from "react";
+import { WelcomeCards } from "../../components/CardList/WelcomeCards";
 export const Home = () => {
   const user: Asociado = useSelector((state: Asociado) => state.user);
   const location = useLocation();
@@ -47,7 +46,7 @@ export const Home = () => {
             <Route
               exact
               path="/home/inicio/tarjetas"
-              component={OperacionTarjetas}
+              component={WelcomeCards}
             />
             <Route exact path="/home/perfil" component={Profile} />
 

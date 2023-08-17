@@ -45,10 +45,10 @@ export const AddCard = ({ setModal }: any) => {
             setTimeout(() => {
                 toast.dismiss()
                 if (response.exito) {
-                    toast.success(`Exito :${response.mensaje}`)
+                    toast.success(`Exito : ${response.mensaje}`)
                     reset()
                 } else {
-                    toast.error(`Error :${response.mensaje}`)
+                    toast.error(`Error : ${response.mensaje}`)
                 }
             }, 5000);
 
@@ -115,7 +115,7 @@ export const AddCard = ({ setModal }: any) => {
                         {errors.date && <span>{errors.date.message}</span>}
                         <h5 >Codigo de seguridad</h5>
                         <div className="cvv-container">
-                            <input className="date-deadline-input" placeholder="cvv" type="password" maxLength={3} {...register("cvv", {
+                            <input className="date-deadline-input" placeholder="cvv" type="tel" maxLength={3} {...register("cvv", {
 
                                 minLength: {
                                     value: 3,

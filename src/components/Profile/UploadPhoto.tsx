@@ -7,7 +7,7 @@ interface UpLoadPhotoProps {
     image: string;
 }
 
-export const UploadPhoto = ({ setUp, image }: UpLoadPhotoProps) => {
+ const UploadPhoto = ({ setUp, image }: UpLoadPhotoProps) => {
     const [croppedImage, setCroppedImage] = useState<string | null>(null);
     const cropperRef = useRef<HTMLImageElement | null>(null);
 

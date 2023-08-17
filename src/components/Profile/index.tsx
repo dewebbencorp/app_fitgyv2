@@ -18,7 +18,6 @@ import { uploadPhono } from "../../axios/User";
 import { ThunkDispatch } from "redux-thunk";
 import { AnyAction } from "redux";
 import { Toaster, toast } from 'react-hot-toast';
-import { backgroundImage } from "html2canvas/dist/types/css/property-descriptors/background-image";
 
 export const UserProfile = () => {
     const [showModal, setModal] = useState(false)

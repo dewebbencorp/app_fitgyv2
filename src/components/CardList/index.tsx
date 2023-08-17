@@ -8,6 +8,7 @@ import { IonModal } from "@ionic/react";
 import { AddCard } from "./AddCard";
 import "./cardsList.css"
 import { AiOutlineCloseCircle } from "react-icons/ai";
+import { Loading2 } from "../LoadScreen";
 export const CardsList = () => {
     const [showInput, setInput] = useState(false)
     const cardss = useSelector((state: Cards) => state.card_list);
@@ -20,7 +21,10 @@ export const CardsList = () => {
 
     return (
 
+
         <>
+
+
 
             <div className="add-card-container" onClick={() => setInput(true)}>
 
@@ -31,8 +35,9 @@ export const CardsList = () => {
 
 
             <div className="current-card-container">
-
+                {!cardss[0] && <Loading2 />}
                 <div className="card-list-container">
+
                     {cardss.length > 0 && cardss.map((card: Cards) => (
                         <div key={card.numTarjeta}>
                             <div className="card-number-container">
