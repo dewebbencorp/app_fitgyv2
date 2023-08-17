@@ -1,18 +1,18 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const EmptyTypeFood = {
-  id_categoria: 0,
+const validCardResponse = {
+  mensaje: "",
 };
 
-export const setIdParamaSlice = createSlice({
-  name: "food",
-  initialState: EmptyTypeFood,
+export const setValidateCard = createSlice({
+  name: "vcard",
+  initialState: validCardResponse,
   reducers: {
-    goToFoodByType: (state, action) => {
+    setVCardResponse: (state, action) => {
       return action.payload;
     },
   },
 });
 
-export const { goToFoodByType } = setIdParamaSlice.actions;
-export default setIdParamaSlice.reducer;
+export const { setVCardResponse } = setValidateCard.actions;
+export default setValidateCard.reducer;

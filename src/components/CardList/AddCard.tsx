@@ -7,11 +7,12 @@ import { Asociado, validCard } from "../../interfaces";
 import { useDispatch, useSelector } from "react-redux";
 import { AnyAction, ThunkDispatch } from "@reduxjs/toolkit";
 import { validateCard } from "../../axios/Card";
+import { Toaster, toast } from 'react-hot-toast';
+
 
 export const AddCard = ({ setModal }: any) => {
     const dispatch: ThunkDispatch<any, void, AnyAction> = useDispatch();
     const user: Asociado = useSelector((state: Asociado) => state.user);
-    const [request, setRequest] = useState({});
     const backButtonHandler = () => {
         setModal(false);
     };
@@ -21,18 +22,13 @@ export const AddCard = ({ setModal }: any) => {
         register,
         handleSubmit,
         formState: { errors },
-        watch,
-    } = useForm({
-        defaultValues: {
-            ncard: 0,
-            date: "",
-            cvv: 0
-        },
-    });
+        reset,
+    } = useForm({});
 
-    const onSubmit =  handleSubmit((data)  => {
-        console.log(data);
-        setRequest(data);
+
+
+    const onSubmit = handleSubmit(async (data) => {
+
 
         const card: validCard = {
             claveSocio: user.Clav_Asociado,
@@ -41,8 +37,25 @@ export const AddCard = ({ setModal }: any) => {
             cvv: data.cvv
         };
 
+        try {
+            toast.loading('Validando informacón')
+            const response = await dispatch(validateCard(card));
 
-        dispatch(validateCard(card))
+
+            setTimeout(() => {
+                toast.dismiss()
+                if (response.exito) {
+                    toast.success(`Exito :${response.mensaje}`)
+                    reset()
+                } else {
+                    toast.error(`Error :${response.mensaje}`)
+                }
+            }, 5000);
+
+        } catch (error) {
+            toast.error(`${error}`);
+        }
+
 
     });
 
@@ -54,6 +67,7 @@ export const AddCard = ({ setModal }: any) => {
     }, []);
     return (
         <>
+            <Toaster />
             <div className="btn-close-update-container" onClick={backButtonHandler}>
                 <AiOutlineCloseCircle className="btn-close-update" />
             </div>
@@ -101,7 +115,7 @@ export const AddCard = ({ setModal }: any) => {
                         {errors.date && <span>{errors.date.message}</span>}
                         <h5 >Codigo de seguridad</h5>
                         <div className="cvv-container">
-                            <input className="date-deadline-input" placeholder="cvv" type="tel" maxLength={3} {...register("cvv", {
+                            <input className="date-deadline-input" placeholder="cvv" type="password" maxLength={3} {...register("cvv", {
 
                                 minLength: {
                                     value: 3,
@@ -124,7 +138,6 @@ export const AddCard = ({ setModal }: any) => {
 
                     </form>
 
-                    <div>{request && JSON.stringify(request)}</div>
                 </div>
 
             </div>

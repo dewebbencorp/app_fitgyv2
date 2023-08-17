@@ -19,9 +19,8 @@ export const postCardsList =
       .catch((error) => console.log(error));
   };
 
-export const validateCard =
-  (data: validCard) =>
-  (dispatch: Dispatch<any>): Promise<void> => {
+export const validateCard = (data: validCard) => {
+  return async (): Promise<any> => {
     const postData = {
       claveSocio: data.claveSocio,
       numTarjeta: data.numTarjeta,
@@ -34,23 +33,31 @@ export const validateCard =
       numTarjeta: data.numTarjeta,
     };
 
-    return axios
-      .post(`${BASE_URL}/addTarjeta.php`, postData)
-      .then((response) => {
-        console.log("PRIMER PETICION");
-        const isInserted = response.data.insertado;
+    try {
+      const response1 = await axios.post(
+        `${BASE_URL}/addTarjeta.php`,
+        postData
+      );
 
-        if (isInserted === 1) {
-          setTimeout(() => {
-            axios
-              .post(`${BASE_URL}/confirmarToken.php`, postData2)
-              .then((response) => {
-                console.log("SEGUNDA PETICION");
-                console.log(response.data);
-              })
-              .catch((error) => console.log(error));
-          }, 5000);
-        }
-      })
-      .catch((error) => console.log(error));
+      const isInserted = response1.data.insertado;
+      if (isInserted === 1) {
+        return new Promise(async (resolve, reject) => {
+          // Return a new Promise
+          try {
+            const response2 = await axios.post(
+              `${BASE_URL}/confirmarToken.php`,
+              postData2
+            );
+            resolve(response2.data); // Resolve with the response data
+          } catch (error) {
+            console.log(error);
+            reject(error); // Reject with the error
+          }
+        });
+      }
+    } catch (error) {
+      console.log(error);
+      throw error;
+    }
   };
+};
