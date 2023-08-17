@@ -137,33 +137,25 @@ export const UpdateProfile = ({ setModal, user }: UpdateProfileProps) => {
                         {errors.phone && <span>{errors.phone.message}</span>}
 
                     </div>
-                    <div className="list-options-container">
-                        <div className="change-pass-container" onClick={() => setFieldPw(true)}>
-
-                            <TfiReload style={{ fontSize: '1.3em', color: 'orangered', fontWeight: 'bold' }} />
-
-                            <h5>Cambiar contraseña</h5>
-                        </div>
-
-                        {!showFieldPw && <>
-
-                            <div className="btn-close-container  " style={{ position: "absolute", bottom: '20vh', width: '17rem', marginRight: '1rem' }} >
-                                <button type="submit" className="btn-up-dta" >
-                                    Actualizar datos</button>
-                            </div>
-
-
-                        </>}
+                    <div className="list-options-container" >
+                        
+                            <button type="submit" className="btn-up-dta" >
+                                Actualizar datos</button>
+                        
 
                     </div>
 
                 </form>
-                <CardsList />
+                <div className="change-pass-container" onClick={() => setFieldPw(true)}>
 
-                {showFieldPw && <>
+                    <TfiReload style={{ fontSize: '1.3em', color: 'orangered', fontWeight: 'bold' }} />
+
+                    <h5>Cambiar contraseña</h5>
+                </div>
+                {showFieldPw ? <>
 
 
-                    <ChangePassword setPw={setFieldPw} /></>}
+                    <ChangePassword setPw={setFieldPw} /> </> : <CardsList />}
 
 
             </div>

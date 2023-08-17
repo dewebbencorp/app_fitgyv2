@@ -223,8 +223,8 @@ form h3 {
 .list-options-container {
   display: flex;
   flex-direction: column;
-  justify-content: left;
   align-items: center;
+  margin-top: 3vh;
 }
 .change-pass-container h5 {
   font-size: 1em;
@@ -245,10 +245,6 @@ form h3 {
   transform: translateY(20px);
   animation: fadeAndSlide 0.5s ease-out forwards;
 }
-
-
-  
-
 
 .btn-send-up {
   margin-bottom: 5vh;
