@@ -3,11 +3,17 @@ import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import card_img from "./images/card_img.png"
 import { AiOutlineCloseCircle } from "react-icons/ai";
+import { Asociado, validCard } from "../../interfaces";
+import { useDispatch, useSelector } from "react-redux";
+import { AnyAction, ThunkDispatch } from "@reduxjs/toolkit";
+import { validateCard } from "../../axios/Card";
 
 export const AddCard = ({ setModal }: any) => {
+    const dispatch: ThunkDispatch<any, void, AnyAction> = useDispatch();
+    const user: Asociado = useSelector((state: Asociado) => state.user);
     const [request, setRequest] = useState({});
     const backButtonHandler = () => {
-        setModal(false); // Cerrar el modal
+        setModal(false);
     };
 
 
@@ -18,15 +24,25 @@ export const AddCard = ({ setModal }: any) => {
         watch,
     } = useForm({
         defaultValues: {
-            ncard: "",
+            ncard: 0,
             date: "",
-            cvv: ""
+            cvv: 0
         },
     });
 
-    const onSubmit = handleSubmit((data) => {
+    const onSubmit =  handleSubmit((data)  => {
         console.log(data);
         setRequest(data);
+
+        const card: validCard = {
+            claveSocio: user.Clav_Asociado,
+            numTarjeta: data.ncard,
+            vencimiento: data.date,
+            cvv: data.cvv
+        };
+
+
+        dispatch(validateCard(card))
 
     });
 
@@ -39,7 +55,7 @@ export const AddCard = ({ setModal }: any) => {
     return (
         <>
             <div className="btn-close-update-container" onClick={backButtonHandler}>
-                <AiOutlineCloseCircle className="btn-close-update"  />
+                <AiOutlineCloseCircle className="btn-close-update" />
             </div>
 
             <div>

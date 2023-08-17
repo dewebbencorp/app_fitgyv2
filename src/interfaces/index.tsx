@@ -43,13 +43,13 @@ export interface Asociado {
   diasRestantes: number;
 }
 
-export interface LoginError{
+export interface LoginError {
   mensaje: string
   esSocio: 0
 }
 
-export interface NewsData{
-  Img: string 
+export interface NewsData {
+  Img: string
   Texto: string
   news_dta: any
 }
@@ -57,6 +57,13 @@ export interface Cards {
   numTarjeta: string
   Activo: number
   card_list: any
+}
+
+export interface validCard {
+  claveSocio: number;
+  numTarjeta: number
+  vencimiento: string
+  cvv: number,
 }
 
 /* SQLite  */
