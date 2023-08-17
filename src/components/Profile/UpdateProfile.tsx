@@ -144,10 +144,10 @@ export const UpdateProfile = ({ setModal, user }: UpdateProfileProps) => {
 
                             <h5>Cambiar contraseña</h5>
                         </div>
-                        <CardsList />
+
                         {!showFieldPw && <>
 
-                            <div className="btn-close-container " >
+                            <div className="btn-close-container  " style={{ position: "absolute", bottom: '20vh', width: '17rem', marginRight: '1rem' }} >
                                 <button type="submit" className="btn-up-dta" >
                                     Actualizar datos</button>
                             </div>
@@ -158,6 +158,7 @@ export const UpdateProfile = ({ setModal, user }: UpdateProfileProps) => {
                     </div>
 
                 </form>
+                <CardsList />
 
                 {showFieldPw && <>
 
