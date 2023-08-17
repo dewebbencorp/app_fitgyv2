@@ -1,8 +1,7 @@
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import { TfiReload } from "react-icons/tfi";
 import { IonContent } from "@ionic/react";
 import { Toaster, toast } from 'react-hot-toast';
-import "./profile.css"
 import { Asociado, Cards, ResponseUpdate, UpdateProfile as upprofile } from "../../interfaces";
 import { CardsList } from "../CardList";
 import { useDispatch } from "react-redux";
@@ -10,6 +9,9 @@ import { useForm } from "react-hook-form";
 import { updateProfile } from "../../axios/User";
 import { AnyAction, ThunkDispatch } from "@reduxjs/toolkit";
 import { updateUserFields } from "../../store/slices/userSlice";
+import { ChangePassword } from "./ChangePassword";
+import "./profile.css"
+import { AiOutlineCloseCircle } from "react-icons/ai";
 
 
 interface UpdateProfileProps {
@@ -20,7 +22,7 @@ interface UpdateProfileProps {
 
 export const UpdateProfile = ({ setModal, user }: UpdateProfileProps) => {
 
-
+    const [showFieldPw, setFieldPw] = useState(false)
     const dispatch: ThunkDispatch<any, void, AnyAction> = useDispatch();
     const {
         register,
@@ -113,7 +115,7 @@ export const UpdateProfile = ({ setModal, user }: UpdateProfileProps) => {
                         <input className="n-card-input" type="email"   {...register("email", {
                             required: {
                                 value: true,
-                                message: "Correo es requerido",
+                                message: "*Correo es requerido",
                             },
                             pattern: {
                                 value: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
@@ -127,31 +129,42 @@ export const UpdateProfile = ({ setModal, user }: UpdateProfileProps) => {
 
                             minLength: {
                                 value: 10,
-                                message: 'Ingresa un numero valido '
+                                message: 'Ingresa un teléfono valido '
                             },
                             required: {
                                 value: true,
-                                message: "*El numero es requerido",
+                                message: "*Teléfono es requerido",
                             }
                         })} />
                         {errors.phone && <span>{errors.phone.message}</span>}
 
                     </div>
                     <div className="list-options-container">
-                        <div className="change-pass-container">
+                        <div className="change-pass-container" onClick={() => setFieldPw(true)}>
 
                             <TfiReload style={{ fontSize: '1.3em', color: 'orangered', fontWeight: 'bold' }} />
 
                             <h5>Cambiar contraseña</h5>
                         </div>
-
                         <CardsList />
+                        {!showFieldPw && <>
+
+                            <div className="btn-close-container " >
+                                <button type="submit" className="btn-up-dta" >
+                                    Actualizar datos</button>
+                            </div>
+
+
+                        </>}
+
                     </div>
-                    <div className="btn-close-container btn-send-up" >
-                        <button type="submit" className="btn-up-dta" >
-                            Actualizar datos</button>
-                    </div>
+
                 </form>
+
+                {showFieldPw && <>
+
+
+                    <ChangePassword setPw={setFieldPw} /></>}
 
 
             </div>
