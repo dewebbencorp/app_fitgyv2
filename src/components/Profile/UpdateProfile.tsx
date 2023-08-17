@@ -9,6 +9,7 @@ import { useDispatch } from "react-redux";
 import { useForm } from "react-hook-form";
 import { updateProfile } from "../../axios/User";
 import { AnyAction, ThunkDispatch } from "@reduxjs/toolkit";
+import { updateUserFields } from "../../store/slices/userSlice";
 
 
 interface UpdateProfileProps {
@@ -63,6 +64,8 @@ export const UpdateProfile = ({ setModal, user }: UpdateProfileProps) => {
                 toast.dismiss()
                 toast.success(`Exito : ${res.response}`)
                 reset({ email: '', phone: '' })
+
+                dispatch(updateUserFields({ CorreoE: data.email, Telefono: data.phone }));
             } else {
                 toast.dismiss()
                 toast.error(`Error : ${res.response}`)
