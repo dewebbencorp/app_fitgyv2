@@ -4,12 +4,12 @@ import { SQLiteDBConnection } from "@capacitor-community/sqlite";
 import { IonButton, IonButtons } from "@ionic/react";
 import { HiChevronLeft } from "react-icons/hi2";
 import { BsWhatsapp } from "react-icons/bs";
-import { GrAdd, GrSubtract } from "react-icons/gr";
+
 import { useHistory } from "react-router";
-import { CartI, CartTotal, order } from "../../interfaces";
+import { CartI, CartTotal } from "../../interfaces";
 import "./cart.css";
 import { sendWhatsAppMessage } from "./senMessage";
-import { Repo } from "../../repository/test";
+
 export const Cart = () => {
   const { performSQLAction, initialized } = useSQLiteDB();
   const history = useHistory();

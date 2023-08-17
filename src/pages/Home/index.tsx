@@ -21,7 +21,6 @@ import wifi from "./img/wifi.png";
 import { Profile } from "../Profile";
 import { Welcome } from "../Welcome";
 import { useEffect } from "react";
-import { WelcomeCards } from "../../components/CardList/WelcomeCards";
 export const Home = () => {
   const user: Asociado = useSelector((state: Asociado) => state.user);
   const location = useLocation();
@@ -43,15 +42,8 @@ export const Home = () => {
         <IonTabs>
           <IonRouterOutlet>
             <Route exact path="/home/inicio" component={Welcome} />
-            <Route
-              exact
-              path="/home/inicio/tarjetas"
-              component={WelcomeCards}
-            />
             <Route exact path="/home/perfil" component={Profile} />
-
             <Route exact path="/home/fitbar" component={Fitbar} />
-
             <Route exact path="/home/cupon" component={Cupon} />
             <Route exact path="/home/wifi" component={Wifi} />
             <Route exact path="/home">

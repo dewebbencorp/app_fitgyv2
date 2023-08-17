@@ -43,6 +43,21 @@ export interface Asociado {
   diasRestantes: number;
 }
 
+export interface UpdateProfile {
+
+  claveSocio: number
+  correo: string
+  telefono: string
+
+}
+
+export interface ResponseUpdate {
+
+  response: string
+  status: boolean
+
+}
+
 export interface LoginError {
   mensaje: string
   esSocio: 0

@@ -1,10 +1,14 @@
-import { useEffect, useState } from "react"
+import { useEffect } from "react"
 import { TfiReload } from "react-icons/tfi";
-import { FaCircle, FaPlus } from "react-icons/fa";
-import { IonContent, IonInput } from "@ionic/react";
+import { IonContent } from "@ionic/react";
+import { Toaster, toast } from 'react-hot-toast';
 import "./profile.css"
-import { Asociado, Cards } from "../../interfaces";
+import { Asociado, Cards, ResponseUpdate, UpdateProfile as upprofile } from "../../interfaces";
 import { CardsList } from "../CardList";
+import { useDispatch } from "react-redux";
+import { useForm } from "react-hook-form";
+import { updateProfile } from "../../axios/User";
+import { AnyAction, ThunkDispatch } from "@reduxjs/toolkit";
 
 
 interface UpdateProfileProps {
@@ -15,6 +19,63 @@ interface UpdateProfileProps {
 
 export const UpdateProfile = ({ setModal, user }: UpdateProfileProps) => {
 
+
+    const dispatch: ThunkDispatch<any, void, AnyAction> = useDispatch();
+    const {
+        register,
+        handleSubmit,
+        formState: { errors },
+        reset,
+    } = useForm({
+        defaultValues: {
+            email: user.CorreoE,
+            phone: user.Telefono,
+        }
+    });
+
+    const onSubmit = handleSubmit(async (data) => {
+
+
+        const request: upprofile = {
+            claveSocio: user.Clav_Asociado,
+            correo: data.email,
+            telefono: data.phone
+        };
+
+
+        console.log(request);
+
+
+        try {
+            toast.loading('Enviando datos', {
+                style: {
+                    borderRadius: '10px',
+                    background: '#333',
+                    color: '#fff',
+                }
+            })
+            const res: ResponseUpdate = await dispatch(updateProfile(request));
+
+
+
+
+            if (res.status) {
+                toast.dismiss()
+                toast.success(`Exito : ${res.response}`)
+                reset({ email: '', phone: '' })
+            } else {
+                toast.dismiss()
+                toast.error(`Error : ${res.response}`)
+            }
+
+
+        } catch (error) {
+            toast.error(`${error}`);
+        }
+
+
+
+    });
 
     const backButtonHandler = () => {
         setModal(false); // Cerrar el modal
@@ -27,23 +88,52 @@ export const UpdateProfile = ({ setModal, user }: UpdateProfileProps) => {
             document.removeEventListener('ionBackButton', backButtonHandler);
         };
     }, []);
+
+
+
+
     return (<>
         <IonContent>
+            <Toaster />
             <div className="title-up">
                 Detalles de mi cuenta
             </div>
 
             <div className="input-up-container">
-                <form>
-                    <h3>Nombre</h3>
-                    <IonInput type="text" value={user.Nombre_Asociado} disabled />
-                    <h3>Apellidos</h3>
-                    <IonInput type="text" value={user.Apellidos} disabled />
-                    <h3>Correo</h3>
-                    <IonInput type="text" value={user.CorreoE} />
-                    <h3>Teléfono</h3>
-                    <IonInput type="text" name="" id="" value={user.Telefono} />
+                <form onSubmit={onSubmit}>
+                    <div className="input-container">
+                        <h3>Nombre</h3>
+                        <input className="n-card-input" type="text" value={user.Nombre_Asociado} disabled />
+                        <h3>Apellidos</h3>
+                        <input className="n-card-input" type="text" value={user.Apellidos} disabled />
+                        <h3>Correo</h3>
+                        <input className="n-card-input" type="email"   {...register("email", {
+                            required: {
+                                value: true,
+                                message: "Correo es requerido",
+                            },
+                            pattern: {
+                                value: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
+                                message: "Correo no válido",
+                            },
+                        })} />
 
+                        {errors.email && <span>{errors.email.message}</span>}
+                        <h3>Teléfono</h3>
+                        <input className="n-card-input" type="tel" minLength={10} maxLength={10} {...register("phone", {
+
+                            minLength: {
+                                value: 10,
+                                message: 'Ingresa un numero valido '
+                            },
+                            required: {
+                                value: true,
+                                message: "*El numero es requerido",
+                            }
+                        })} />
+                        {errors.phone && <span>{errors.phone.message}</span>}
+
+                    </div>
                     <div className="list-options-container">
                         <div className="change-pass-container">
 

@@ -7,7 +7,6 @@ import { postCardsList } from "../../axios/Card";
 import { IonModal } from "@ionic/react";
 import { AddCard } from "./AddCard";
 import "./cardsList.css"
-import { AiOutlineCloseCircle } from "react-icons/ai";
 import { Loading2 } from "../LoadScreen";
 export const CardsList = () => {
     const [showInput, setInput] = useState(false)
