@@ -51,6 +51,13 @@ export interface UpdateProfile {
 
 }
 
+export interface RequesChangePassword {
+
+  claveSocio: number
+  newPassword: string
+
+}
+
 export interface ResponseUpdate {
 
   response: string

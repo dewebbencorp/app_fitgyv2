@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import { TfiReload } from "react-icons/tfi";
 import { IonContent } from "@ionic/react";
 import { Toaster, toast } from 'react-hot-toast';
-import { Asociado, Cards, ResponseUpdate, UpdateProfile as upprofile } from "../../interfaces";
+import { Asociado, ResponseUpdate, UpdateProfile as upprofile } from "../../interfaces";
 import { CardsList } from "../CardList";
 import { useDispatch } from "react-redux";
 import { useForm } from "react-hook-form";
@@ -11,8 +11,6 @@ import { AnyAction, ThunkDispatch } from "@reduxjs/toolkit";
 import { updateUserFields } from "../../store/slices/userSlice";
 import { ChangePassword } from "./ChangePassword";
 import "./profile.css"
-import { AiOutlineCloseCircle } from "react-icons/ai";
-
 
 interface UpdateProfileProps {
     setModal: (value: boolean) => void;

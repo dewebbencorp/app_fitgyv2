@@ -106,7 +106,7 @@ export const UserProfile = () => {
                             <h3 className="kenyan">MI CUENTA</h3>
                             <h5>Revisar detalles de mi cuenta</h5>
                         </div>
-                        <HiChevronRight style={{ fontSize: "2rem", marginTop: "0.5rem", zIndex: "1" }} />
+                       
                     </div>
 
                     <h3 className="kenyan" style={{ fontSize: '1.7em' }}>CLIENTE PREMIUM</h3>

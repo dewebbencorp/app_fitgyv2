@@ -1,7 +1,13 @@
 import { useForm } from "react-hook-form";
-import "./profile.css"
+import { Toaster, toast } from 'react-hot-toast';
 import { AiOutlineCloseCircle } from "react-icons/ai";
+import { RequesChangePassword, ResponseUpdate } from "../../interfaces";
+import "./profile.css"
+import { changePassword } from "../../axios/User";
+import { AnyAction, ThunkDispatch } from "@reduxjs/toolkit";
+import { useDispatch } from "react-redux";
 export const ChangePassword = ({ setPw }: any) => {
+    const dispatch: ThunkDispatch<any, void, AnyAction> = useDispatch();
     const {
         register,
         handleSubmit,
@@ -17,28 +23,67 @@ export const ChangePassword = ({ setPw }: any) => {
 
     const onSubmit = handleSubmit(async (data) => {
 
-        reset()
-        console.log(data.password);
 
-    })
+        const request: RequesChangePassword = {
+            claveSocio: 655,
+            newPassword: data.password
+        };
+
+
+        console.log(request);
+
+
+        try {
+            toast.loading('Enviando datos', {
+                style: {
+                    borderRadius: '10px',
+                    background: '#333',
+                    color: '#fff',
+                }
+            })
+            const res: ResponseUpdate = await dispatch(changePassword(request));
+
+
+
+
+            if (res.status) {
+                toast.dismiss()
+                toast.success(`Exito : ${res.response}`)
+                reset()
+
+            } else {
+                toast.dismiss()
+                toast.error(`Error : ${res.response}`)
+            }
+
+
+        } catch (error) {
+            toast.error(`${error}`);
+        }finally{
+            setPw(false)
+        }
+
+
+
+    });
 
 
     return (
         <>
-
+            <Toaster />
             <div className="ch-password-container">
-                <div style={{ display: 'flex', justifyContent: 'end',  marginBottom:'0rem' }}>
+                <div style={{ display: 'flex', justifyContent: 'end', marginBottom: '0rem' }}>
                     <AiOutlineCloseCircle className="btn-close-update" onClick={() => setPw(false)} />
                 </div>
 
-               
+
                 <div className="input-up-container" >
 
                     <form onSubmit={onSubmit}>
-                   
+
                         <div className="input-container">
-                        <h3 style={{textAlign: 'center', fontFamily:'var(--poppins)', fontSize:'1em'}}> INTRODUCE TU NUEVA CONTRASEÑA</h3>
-                            
+                            <h3 style={{ textAlign: 'center', fontFamily: 'var(--poppins)', fontSize: '1em' }}> INTRODUCE TU NUEVA CONTRASEÑA</h3>
+
                             <input
                                 className="n-card-input"
                                 type="password"
