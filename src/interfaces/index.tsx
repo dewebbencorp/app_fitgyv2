@@ -24,6 +24,15 @@ export interface ProductoDetalle {
   costo: number;
   detail_food: any;
 }
+
+export interface ProductosPorPuntos {
+  id_producto: number
+  nombre: string,
+  costo: number,
+  id_categoria: number,
+  img_url: string,
+  Descripcion: string
+}
 export interface Asociado {
   user: any;
   Clav_Asociado: number;

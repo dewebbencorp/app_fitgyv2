@@ -1,9 +1,8 @@
 import { GiPencil } from "react-icons/gi";
 import { useEffect, useState } from "react"
-import { HiChevronRight } from "react-icons/hi2";
 import points from './images/ponts.png'
 import schedule from './images/schedule.png'
-import { IonActionSheet, IonAlert, IonContent, IonModal } from "@ionic/react";
+import { IonActionSheet, IonContent, IonModal } from "@ionic/react";
 import { useHistory } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
 import { removeUser } from "../../store/slices/userSlice";
@@ -85,6 +84,10 @@ export const UserProfile = () => {
 
 
 
+    const gotPp = () => {
+        window.location.href = '/pp'
+    }
+
     return (<>
 
         <IonContent>
@@ -106,12 +109,12 @@ export const UserProfile = () => {
                             <h3 className="kenyan">MI CUENTA</h3>
                             <h5>Revisar detalles de mi cuenta</h5>
                         </div>
-                       
+
                     </div>
 
                     <h3 className="kenyan" style={{ fontSize: '1.7em' }}>CLIENTE PREMIUM</h3>
 
-                    <div className="ponits-container">
+                    <div className="ponits-container" onClick={() => gotPp()}>
                         <img className="points-icon" src={points} />
                         <div className="points">
                             <h5>Puntos Disponibles</h5>

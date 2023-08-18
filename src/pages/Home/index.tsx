@@ -38,7 +38,7 @@ export const Home = () => {
   return (
     <>
 
-      {user.Nombre_Asociado && !location.pathname.startsWith("/fitbar/food/") && !location.pathname.startsWith("/carrito") && !location.pathname.startsWith("/login") && (
+      {user.Nombre_Asociado && !location.pathname.startsWith("/fitbar/food/") && !location.pathname.startsWith("/carrito") && !location.pathname.startsWith("/login") && !location.pathname.startsWith("/pp") && (
         <IonTabs>
           <IonRouterOutlet>
             <Route exact path="/home/inicio" component={Welcome} />
