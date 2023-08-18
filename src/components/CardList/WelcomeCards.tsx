@@ -18,9 +18,12 @@ export const WelcomeCards = ({ setModal }: any) => {
             <AiOutlineCloseCircle className="btn-close-update" />
         </div>
 
-        <div className="input-card-container">
-            <h1>Tarjetas</h1>
-            <CardsList />
+        <div className="WC-container">
+            <h1 style={{ fontFamily: 'var(--poppins)', fontSize: '1.7em', marginTop:'5vh',marginBottom:'3vh' }}>Agrega una nueva tarjeta</h1>
+            <div style={{ paddingRight: '2rem' }}>
+
+                <CardsList />
+            </div>
         </div>
     </>)
 }

@@ -190,13 +190,17 @@ h3 {
 }
 
 .input-container {
-  margin-top: 5vh;
+  margin-top: 2.5rem;
   padding-left: 4vw;
   padding-right: 4vw;
 }
 
+.input-container input {
+  height: 2.5rem;
+}
+
 form h3 {
-  font-size: 0.9em;
+  font-size: 1em;
   font-family: var(--poppins);
   margin-top: 1vh;
   margin-bottom: 0.5vh;

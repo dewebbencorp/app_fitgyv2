@@ -73,7 +73,8 @@ export const UpdateProfile = ({ setModal, user }: UpdateProfileProps) => {
 
 
         } catch (error) {
-            toast.error(`${error}`);
+            toast.dismiss()
+            toast.error(`${error.message}`);
         }
 
 
