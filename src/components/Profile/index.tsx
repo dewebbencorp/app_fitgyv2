@@ -28,7 +28,7 @@ export const UserProfile = () => {
     const dispatch: ThunkDispatch<any, void, AnyAction> = useDispatch();
     const cerrarSesion = () => {
 
-        const shouldSendMessage = window.confirm('Estas seguro que deseas salir?');
+        const shouldSendMessage = window.confirm('Salir?');
 
         if (shouldSendMessage) {
             dispatch(removeUser())
@@ -62,26 +62,43 @@ export const UserProfile = () => {
 
         }
     };
+
     const upph = async (upImg: string) => {
         if (upImg) {
             try {
                 console.log("SE ESTA SUBIENDO");
-                await toast.promise(
-                    dispatch(uploadPhono(upImg, user.Clav_Asociado)),
-                    {
-                        loading: 'Subiendo Foto',
-                        success: 'Foto subida exitosamente',
-                        error: 'Error al subir la foto',
+                toast.loading('Subiendo foto', {
+                    style: {
+                        borderRadius: '10px',
+                        background: '#333',
+                        color: '#fff',
                     }
-                );
-            } catch (error) {
+                })
+
+                const ph = await dispatch(uploadPhono(upImg, user.Clav_Asociado));
+                if (ph) {
+                    toast.dismiss()
+                    toast.success('Foto actualizada')
+                    setTimeout(() => {
+                        window.location.replace("/home/perfil")
+                    }, 500);
+                }
+
+
+
+
+            } catch (error : any) {
+
+                toast.dismiss()
+                toast.error(`${error.message}`)
                 console.error("Error al subir la imagen:", error);
             } finally {
-                window.location.replace("/home/perfil");
+                //
+
+
             }
         }
-    };
-
+    }
 
 
     const gotPp = () => {

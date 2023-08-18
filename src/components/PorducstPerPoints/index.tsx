@@ -6,6 +6,7 @@ import { Asociado, ProductosPorPuntos } from '../../interfaces';
 import { producsPerPoints } from '../../axios/Food';
 import { IonContent } from '@ionic/react';
 import { HiChevronLeft } from 'react-icons/hi2';
+import { Loading2 } from '../LoadScreen';
 
 
 export const PP = () => {
@@ -49,7 +50,8 @@ export const PP = () => {
                     <h3>¿Ya tienes planes para tus puntos?</h3>
 
                 </div>
-                {!dta && <>Something went wrong   {":( "}</>}
+                {!dta && <> Cargando... <Loading2 /></>}
+
                 {dta?.map(products =>
 
                     <>

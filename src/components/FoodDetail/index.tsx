@@ -49,7 +49,7 @@ export const FoodDetail = () => {
           borderRadius: '10px',
           background: 'white',
           color: 'blach',
-          fontSize: '.8em',
+          fontSize: '0.8em',
           fontFamily: 'var(--poppins)',
           fontStyle: 'italic'
         }
@@ -57,7 +57,7 @@ export const FoodDetail = () => {
     }
   };
 
-  const foodi: ProductoDetalle = useSelector(
+  const foodi: any = useSelector(
     (state: ProductoDetalle) => state.detail_food
   );
 
@@ -107,8 +107,7 @@ export const FoodDetail = () => {
                     <h5>
                       {food.Descripcion ?? (
                         <div>
-                          Lorem, ipsum dolor sit amet consectetur adipisicing
-                          elit. Unde, eligendi?
+                          {food.nombre}
                         </div>
                       )}
                     </h5>
