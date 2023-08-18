@@ -93,13 +93,13 @@
   clip-path: circle(50%);
 }
 .btn-container {
-  width: 12rem;
-  height: 2rem;
+  width: 80vw;
+  height: 8vh;
   margin-top: 1rem;
   display: flex;
-  justify-content: center;
+  justify-content: left;
   align-items: center;
-  background-color: var(--ion-button-orange);
+  background-color: var(--ion-transparent);
   padding: 0.5rem;
   border-radius: 5rem;
 }

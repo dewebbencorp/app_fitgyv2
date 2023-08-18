@@ -4,6 +4,7 @@ import { HiChevronLeft } from "react-icons/hi2";
 import { useHistory, useParams } from "react-router";
 import { ProductoDetalle } from "../../interfaces";
 import car_img from "./images/img_car.png";
+import add_to_cart from "./../FoodList/images/img_add.png"
 import "./foodetail.css";
 import { useSQLiteDB } from "../../database";
 import { SQLiteDBConnection } from "@capacitor-community/sqlite";
@@ -123,7 +124,7 @@ export const FoodDetail = () => {
             </div>
             <div className="car-options-container">
               <button className="btn-container">
-                <img src={car_img} className="car-img" />
+                <img src={add_to_cart} className="car-img shimmer-template" />
                 <div className="btn-info" onClick={() => addToCart(food)}>
                   Agregar al carrito
                 </div>
@@ -132,7 +133,7 @@ export const FoodDetail = () => {
                 style={{ backgroundColor: "var(--ion-transparent)" }}
                 onClick={() => goToCart()}
               >
-                 
+
                 <img className="car" src={car_img} />
               </button>
             </div>

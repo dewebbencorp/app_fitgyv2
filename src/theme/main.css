@@ -39,24 +39,25 @@ ion-tabs {
 
 /* shimmer template*/
 
-.shimmer-example {
-  width: inherit;
-  height: inherit;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(255, 255, 255, 0.2),
-    transparent
-  );
-  background-size: 200% 100%;
-  animation: shimmerAnimation 5s linear infinite;
+.shimmer-template {
+  padding: 0.5rem;
+  clip-path: circle(50% at center);
+background-color: white;
+  animation: shimmerAnimation 2s ease-in-out  alternate-reverse infinite;
 }
 
 @keyframes shimmerAnimation {
   0% {
     background-position: -200% 0;
+    opacity: 0.6;
+  }
+  50% {
+    background-position: 200% 0;
+    opacity: 1;
   }
   100% {
-    background-position: 200% 0;
+    background-position: -200% 0;
+    opacity: 0.6;
   }
 }
+
