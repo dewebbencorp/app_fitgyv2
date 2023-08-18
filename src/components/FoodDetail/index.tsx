@@ -13,6 +13,9 @@ import { useEffect, useState } from "react";
 import { postFoodDetail } from "../../axios/Food";
 import { Loading } from "../LoadScreen";
 
+
+
+
 export const FoodDetail = () => {
   const [loading, setLoadig] = useState(true)
   const history = useHistory();
@@ -79,6 +82,8 @@ export const FoodDetail = () => {
   return (
     <>
       <Toaster />
+
+
       <HiChevronLeft onClick={() => handleBackClick()} style={{ fontSize: "3.2rem", marginBottom: "0rem" }} />
       {loading && <Loading />}
       {food && (
@@ -108,6 +113,7 @@ export const FoodDetail = () => {
                       {food.Descripcion ?? (
                         <div>
                           {food.nombre}
+
                         </div>
                       )}
                     </h5>
@@ -122,16 +128,18 @@ export const FoodDetail = () => {
                   Agregar al carrito
                 </div>
               </button>
-
               <button
                 style={{ backgroundColor: "var(--ion-transparent)" }}
                 onClick={() => goToCart()}
               >
+                 
                 <img className="car" src={car_img} />
               </button>
             </div>
           </div>
+
         </IonContent>
+
       )}
 
 

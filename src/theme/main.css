@@ -10,7 +10,7 @@ body {
   --ion-text-color: #ffffff;
   --ion-tab-bar-background: #ff4804;
   --ion-text-orange-color: #ff9104;
-  --ion-button-orange: #FF6831;
+  --ion-button-orange: #ff6831;
   --ion-gray-background: #444242;
 }
 .kenyan {
@@ -37,3 +37,26 @@ ion-tabs {
   }
 }
 
+/* shimmer template*/
+
+.shimmer-example {
+  width: inherit;
+  height: inherit;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  background-size: 200% 100%;
+  animation: shimmerAnimation 5s linear infinite;
+}
+
+@keyframes shimmerAnimation {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}

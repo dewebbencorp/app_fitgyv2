@@ -160,7 +160,7 @@ export const ListFood = () => {
                   </div>
                 </div>
 
-                <div className="add-to-cart">
+                <div className="add-to-cart ">
                   <img src={add_img} onClick={() => addToCart(food)} />
                 </div>
               </SwiperSlide>
