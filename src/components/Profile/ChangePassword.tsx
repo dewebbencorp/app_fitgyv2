@@ -59,7 +59,7 @@ export const ChangePassword = ({ setPw }: any) => {
 
         } catch (error) {
             toast.error(`${error}`);
-        }finally{
+        } finally {
             setPw(false)
         }
 
@@ -72,12 +72,13 @@ export const ChangePassword = ({ setPw }: any) => {
         <>
             <Toaster />
             <div className="ch-password-container">
-                <div style={{ display: 'flex', justifyContent: 'end', marginBottom: '0rem' }}>
+                <div style={{ display: 'flex', justifyContent: 'end', marginTop: '0rem' }}>
                     <AiOutlineCloseCircle className="btn-close-update" onClick={() => setPw(false)} />
                 </div>
 
 
-                <div className="input-up-container" >
+                <div className="input-up-container"  >
+
 
                     <form onSubmit={onSubmit}>
 
@@ -120,7 +121,7 @@ export const ChangePassword = ({ setPw }: any) => {
 
                         </div>
                         <div className="btn-close-container " style={{
-                            marginTop: '5vh',
+                            marginTop: '2vh',
                             marginBottom: '5vh'
                         }} >
                             <button type="submit" className="btn-up-dta" >

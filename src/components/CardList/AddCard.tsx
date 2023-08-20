@@ -68,14 +68,15 @@ export const AddCard = ({ setModal }: any) => {
     return (
         <>
             <Toaster />
-            <div className="btn-close-update-container" onClick={backButtonHandler}>
-                <AiOutlineCloseCircle className="btn-close-update" />
-            </div>
 
             <div>
 
 
                 <div className="input-card-container">
+                    <div style={{ display: 'flex', justifyContent: 'end', marginBottom: '0rem' }}>
+                        <AiOutlineCloseCircle className="btn-close-update" onClick={backButtonHandler} />
+                    </div>
+
                     <form onSubmit={onSubmit}>
                         <h2>Nueva tarjeta</h2>
 

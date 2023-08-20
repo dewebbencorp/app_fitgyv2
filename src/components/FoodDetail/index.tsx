@@ -124,10 +124,8 @@ export const FoodDetail = () => {
             </div>
             <div className="car-options-container">
               <button className="btn-container">
-                <img src={add_to_cart} className="car-img shimmer-template" />
-                <div className="btn-info" onClick={() => addToCart(food)}>
-                  Agregar al carrito
-                </div>
+                <img src={add_to_cart} className="car-img shimmer-template" onClick={() => addToCart(food)} />
+
               </button>
               <button
                 style={{ backgroundColor: "var(--ion-transparent)" }}

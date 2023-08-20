@@ -139,10 +139,10 @@ export const UpdateProfile = ({ setModal, user }: UpdateProfileProps) => {
 
                     </div>
                     <div className="list-options-container" >
-                        
-                            <button type="submit" className="btn-up-dta" >
-                                Actualizar datos</button>
-                        
+
+                        <button type="submit" className="btn-up-dta" >
+                            Actualizar datos</button>
+
 
                     </div>
 
@@ -157,6 +157,8 @@ export const UpdateProfile = ({ setModal, user }: UpdateProfileProps) => {
 
 
                     <ChangePassword setPw={setFieldPw} /> </> : <CardsList />}
+
+           
 
 
             </div>

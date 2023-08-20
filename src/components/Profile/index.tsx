@@ -1,4 +1,4 @@
-import { GiPencil } from "react-icons/gi";
+import { PiPencilSimple } from "react-icons/pi";
 import { useEffect, useState } from "react"
 import points from './images/ponts.png'
 import schedule from './images/schedule.png'
@@ -17,6 +17,7 @@ import { uploadPhono } from "../../axios/User";
 import { ThunkDispatch } from "redux-thunk";
 import { AnyAction } from "redux";
 import { Toaster, toast } from 'react-hot-toast';
+import { close, cloudUpload } from 'ionicons/icons';
 
 export const UserProfile = () => {
     const [showModal, setModal] = useState(false)
@@ -87,7 +88,7 @@ export const UserProfile = () => {
 
 
 
-            } catch (error : any) {
+            } catch (error: any) {
 
                 toast.dismiss()
                 toast.error(`${error.message}`)
@@ -117,15 +118,17 @@ export const UserProfile = () => {
                         <img src={basefolder + user.imgAvatar} className="profile-image" onClick={() => setActionSh(true)} />
                     </div>
 
-                    <GiPencil className="pencil" onClick={() => setModal(true)} />
+
                     <h1 className="user-name ">{`${user.Nombre_Asociado} ${user.Apellidos}`}</h1>
                 </div>
                 <div className="my-account">
                     <div className="detail-account">
                         <div className="detail-title">
-                            <h3 className="kenyan">MI CUENTA</h3>
-                            <h5>Revisar detalles de mi cuenta</h5>
+                            <h3 className="kenyan">Perfil</h3>
+                            <h5>¡Actualiza tu infomación!</h5>
                         </div>
+
+                        <PiPencilSimple className="pencil" onClick={() => setModal(true)} />
 
                     </div>
 
@@ -175,18 +178,16 @@ export const UserProfile = () => {
 
                 {
                     text: 'Seleccionar foto de perfil',
-                    icon: "#",
+                    icon: cloudUpload,
+                    role: '',
                     handler: () => {
                         openGallery()
                     },
                 },
                 {
-                    text: 'Cancel',
-                    icon: "#",
-                    role: 'cancel',
-                    handler: () => {
-                        console.log('Cancel clicked');
-                    },
+                    text: 'Cancelar',
+                    icon: close,
+                    role: 'cancel'
                 },
             ]}
         ></IonActionSheet>
