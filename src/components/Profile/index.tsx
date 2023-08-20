@@ -18,8 +18,12 @@ import { ThunkDispatch } from "redux-thunk";
 import { AnyAction } from "redux";
 import { Toaster, toast } from 'react-hot-toast';
 import { close, cloudUpload } from 'ionicons/icons';
+import { SendWh } from "../SendWh";
+
 
 export const UserProfile = () => {
+
+
     const [showModal, setModal] = useState(false)
     const [actionSh, setActionSh] = useState(false)
     const user: Asociado = useSelector((state: Asociado) => state.user);
@@ -39,7 +43,7 @@ export const UserProfile = () => {
     };
 
     const { deadline, calculateDeadline } = GetDeadLine(user.diasRestantes - 1 ?? 1)
-
+    let INBODY_MESSAGE = `Hola mi nombre es ${user.Nombre_Asociado} ${user.Apellidos}, me gustaria saber como puedo agendar un inbody`
 
 
     useEffect(() => {
@@ -142,7 +146,7 @@ export const UserProfile = () => {
                         </div>
                     </div>
 
-                    <div className="btn-add-inbody-container">
+                    <div className="btn-add-inbody-container" onClick={() => SendWh(INBODY_MESSAGE)}>
                         <div className="btn-add-inbody">
                             <img className="schedule-icon" src={schedule} />
                             <h5>Agendar Inbody</h5></div>
