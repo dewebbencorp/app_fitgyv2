@@ -2,6 +2,7 @@ import { Dispatch } from "react";
 import { addDetailFood } from "../../store/slices/detailFood";
 import axios from "axios";
 import { setNewsData } from "../../store/services/news";
+import { BASE_URL } from "../Utils";
 
 export const fetchNewsData =
   () =>
@@ -13,9 +14,7 @@ export const fetchNewsData =
     }
 
     return axios
-      .get(
-        "https://187.188.16.29:4431/webservice-app2/controllers/getNoticias.php"
-      )
+      .get(`${BASE_URL}/getNoticias.php`)
       .then((response) => {
         console.log("NEWSDATA");
 

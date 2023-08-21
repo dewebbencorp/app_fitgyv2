@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
+import { BASE_URL } from "../../axios/Utils";
 
-const BASE_URL = "https://187.188.16.29:4431/webservice-app2/Controllers/";
+
 
 export const UseFecthPost = (request: {}, END: string) => {
   const [data, setData] = useState([]);

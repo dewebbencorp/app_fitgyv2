@@ -1,31 +1,29 @@
-.contenidoTarjetas{
-    background-color: white ;
-    color:#232323;
-    border-radius: 10px;
-    padding:1rem;
-    width: 90%;
-    margin-top: 15rem;
-    margin-left: 1.4rem;
+.contenidoTarjetas {
+  
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  
+  background-color: black;
+  height: 50vh;
 }
 
-.contenidoTarjetas ion-button{
-    margin-top: 5rem;
-    margin-left: 5rem;
+.contenidoTarjetas ion-button {
+  margin-top: 5rem;
+  margin-left: 5rem;
 }
-.altaTarjetas ion-input{
-    background-color: white;
-    color:black;
-    text-align: center;
+.altaTarjetas ion-input {
+  background-color: white;
+  color: black;
+  text-align: center;
 }
-#btn_guardarTarjeta
-{
-   margin-left:7rem;
+#btn_guardarTarjeta {
+  margin-left: 7rem;
 }
 #alertaTarjeta {
-    font-weight: 600;
-    color:red;
+  font-weight: 600;
+  color: red;
 }
-#btn_salir{
-    margin-left:8rem;
+#btn_salir {
+  margin-left: 8rem;
 }
-

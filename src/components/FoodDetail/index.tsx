@@ -1,9 +1,10 @@
-import { IonContent } from "@ionic/react";
+import { IonCheckbox, IonContent, IonItem, IonToggle } from "@ionic/react";
 import { Toaster, toast } from 'react-hot-toast';
 import { HiChevronLeft } from "react-icons/hi2";
 import { useHistory, useParams } from "react-router";
+import { RiSubtractFill } from 'react-icons/ri';
 import { ProductoDetalle } from "../../interfaces";
-import car_img from "./images/img_car.png";
+
 import "./foodetail.css";
 import { useSQLiteDB } from "../../database";
 import { SQLiteDBConnection } from "@capacitor-community/sqlite";
@@ -12,12 +13,36 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { postFoodDetail } from "../../axios/Food";
 import { Loading } from "../LoadScreen";
+import { BsPlus } from "react-icons/bs";
+
+
+
 
 export const FoodDetail = () => {
   const [loading, setLoadig] = useState(true)
+  const [total, setTotal] = useState<number>(1)
+  const [checkboxValues, setCheckboxValues] = useState({});
   const history = useHistory();
   const { id } = useParams()
   const { performSQLAction, initialized } = useSQLiteDB();
+
+  const options = [
+    'Arroz',
+    'Salsa italiana',
+    'Pimienta',
+    'Zanahoria',
+    // Agrega más opciones aquí si es necesario
+  ];
+
+
+
+  const handleCheckboxChange = (event) => {
+    const { name, checked } = event.target;
+    setCheckboxValues((prevValues) => ({
+      ...prevValues,
+      [name]: checked,
+    }));
+  };
 
   const goToCart = () => {
     history.push("/carrito");
@@ -27,15 +52,24 @@ export const FoodDetail = () => {
     history.goBack();
   };
 
-  const addToCart = async (data: ProductoDetalle) => {
+  const addToCart = async (data: ProductoDetalle, total: number, complements: any) => {
     try {
       // add test record to db
       performSQLAction(async (db: SQLiteDBConnection | undefined) => {
-        await db?.query(
-          `INSERT INTO orders ( name_product, price, image_url, name_client, date_added )
-          VALUES (?,?,?,?,datetime('now'));`,
-          [data.nombre, data.costo, data.img_url, "sebas"]
-        );
+
+
+        for (let i = 0; total - 1 >= i; i++) {
+
+          console.log(" soy un el numero", i, "de ", total);
+
+          await db?.query(
+            `INSERT INTO orders ( name_product, price, image_url, name_client, date_added )
+            VALUES (?,?,?,?,datetime('now'));`,
+            [data.nombre, data.costo, data.img_url, "dev"]
+          );
+
+        }
+        setTotal(1)
 
       });
     } catch (error) {
@@ -49,7 +83,7 @@ export const FoodDetail = () => {
           borderRadius: '10px',
           background: 'white',
           color: 'blach',
-          fontSize: '.8em',
+          fontSize: '0.8em',
           fontFamily: 'var(--poppins)',
           fontStyle: 'italic'
         }
@@ -57,7 +91,7 @@ export const FoodDetail = () => {
     }
   };
 
-  const foodi: ProductoDetalle = useSelector(
+  const foodi: any = useSelector(
     (state: ProductoDetalle) => state.detail_food
   );
 
@@ -74,11 +108,14 @@ export const FoodDetail = () => {
 
   const food: ProductoDetalle = foodi[0];
 
+  console.log(checkboxValues);
 
 
   return (
     <>
       <Toaster />
+
+
       <HiChevronLeft onClick={() => handleBackClick()} style={{ fontSize: "3.2rem", marginBottom: "0rem" }} />
       {loading && <Loading />}
       {food && (
@@ -90,7 +127,7 @@ export const FoodDetail = () => {
               </div> : <div className="food-image-container">
                 <img className="img-food-detail" src={food.img_url} />
               </div>}
-            <div className="container-food">
+            <div >
               <h1>
                 <div className="food-description-container">
                   <div className="title-food">
@@ -107,8 +144,8 @@ export const FoodDetail = () => {
                     <h5>
                       {food.Descripcion ?? (
                         <div>
-                          Lorem, ipsum dolor sit amet consectetur adipisicing
-                          elit. Unde, eligendi?
+                          {food.nombre}
+
                         </div>
                       )}
                     </h5>
@@ -116,26 +153,68 @@ export const FoodDetail = () => {
                 </div>
               </h1>
             </div>
-            <div className="car-options-container">
-              <button className="btn-container">
-                <img src={car_img} className="car-img" />
-                <div className="btn-info" onClick={() => addToCart(food)}>
-                  Agregar al carrito
-                </div>
-              </button>
 
-              <button
-                style={{ backgroundColor: "var(--ion-transparent)" }}
-                onClick={() => goToCart()}
-              >
-                <img className="car" src={car_img} />
-              </button>
-            </div>
+
           </div>
+
+
+        {/*
+          {options.map((option) => (
+
+            <div className="add-complement-container">
+              <p> {option}</p>
+              <input
+                type="checkbox"
+                name={option}
+                checked={checkboxValues[option] || false}
+                onChange={handleCheckboxChange}
+                className="checkbox-input"
+              />
+
+            </div>
+
+
+
+          ))}
+
+
+        
+        */}
+
+          <div className="car-options-container">
+            <div className="btn-container">
+
+              {total > 1 ? <RiSubtractFill style={{ fontSize: '2em' }} onClick={() => setTotal(total - 1)} /> : <RiSubtractFill style={{ fontSize: '2em', opacity: '0.5' }} />}
+              <p style={{ marginLeft: '4vw', fontSize: '1em' }} > {total}</p>
+              < BsPlus style={{ fontSize: '2em', marginLeft: '4vw' }} onClick={() => setTotal(total + 1)} />
+            </div>
+
+            <div className="add-to-cart-detail" onClick={() => addToCart(food, total, checkboxValues)}>
+
+              <p>
+                Agregar
+              </p>
+              <p>MX${food.costo * total}</p>
+            </div>
+
+          </div>
+
         </IonContent>
+
       )}
 
 
     </>
   );
 };
+
+
+/*
+
+ <button
+                style={{ backgroundColor: "var(--ion-transparent)" }}
+                onClick={() => goToCart()}
+              >
+                <img className="car" src={car_img} />
+              </button>
+*/

@@ -1,13 +1,16 @@
-import { IonButton } from "@ionic/react";
+import { IonButton, IonModal } from "@ionic/react";
 import { useHistory } from "react-router";
 import { useEffect, useState } from "react";
-import tarjeta from "./img/tarjeta.png";
+import tarjeta from "./../../components/CardList/images/card_img.png";
 import "./css/tarjeta.css";
 import { useSelector } from "react-redux";
 import { Asociado } from "../../interfaces";
+import { AddCard } from "../../components/CardList/AddCard";
+import { CardsList } from "../../components/CardList";
+import { WelcomeCards } from "../../components/CardList/WelcomeCards";
 
 const Tarjeta = () => {
-  const history = useHistory();
+  const [showModal, setModal] = useState(false)
   const user: Asociado = useSelector((state: Asociado) => state.user);
 
   const [titular, setTitular] = useState<number>();
@@ -28,13 +31,17 @@ const Tarjeta = () => {
         <IonButton
           fill="outline"
           onClick={() => {
-            history.push("/home/inicio/tarjetas");
+            setModal(true)
           }}
         >
           <img src={tarjeta} />
           <span> Tarjeta </span>
         </IonButton>
       )}
+
+      <IonModal isOpen={showModal}>
+        <WelcomeCards setModal={setModal}/>
+      </IonModal>
     </div>
   );
 };

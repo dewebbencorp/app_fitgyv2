@@ -16,6 +16,7 @@ import { Home } from "./pages/Home";
 import { ListFood } from "./components/FoodList";
 import { FoodDetail } from "./components/FoodDetail";
 import { Cart } from "./components/Cart";
+import { PP } from "./components/PorducstPerPoints";
 
 setupIonicReact();
 
@@ -25,13 +26,13 @@ const App: React.FC = () => (
       <IonRouterOutlet>
         <Route path="/" exact>
           <Redirect to="/login" />
-
         </Route>
         <Route path="/login" component={SignIn} />
         <Route path="/home" component={Home} />
         <Route path="/fitbar/food/:id" component={ListFood} />
         <Route path="/fitbar/food/detail/:id" component={FoodDetail} />
         <Route path="/carrito" component={Cart} />
+        <Route path="/pp" component={PP} />
       </IonRouterOutlet>
     </IonReactRouter>
   </IonApp>

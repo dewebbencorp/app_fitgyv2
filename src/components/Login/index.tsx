@@ -43,7 +43,7 @@ export const Login = () => {
     setRequest(data);
   });
 
-  const { data, loading } = UseFecthPost(request, "login.php");
+  const { data, loading } = UseFecthPost(request, "/login.php");
 
 
 
@@ -84,13 +84,13 @@ export const Login = () => {
                   <img id="logo" src={logo} alt="Logo" />
                 </div>
 
-                <div id="login">
+                <div id="login" className="input-lg" >
                   <form onSubmit={onSubmit}>
                     <h5 style={{ width: "400px" }}>
                       {error && <span>{error.mensaje}</span>}
                     </h5>
 
-                    <IonInput
+                    <input
                       placeholder="Correo"
                       type="email"
                       {...register("email", {
@@ -105,7 +105,7 @@ export const Login = () => {
                       })}
                     />
                     {errors.email && <span>{errors.email.message}</span>}
-                    <IonInput
+                    <input
                       placeholder="Contraseña"
                       type="password"
                       id="password"

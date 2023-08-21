@@ -7,10 +7,11 @@
 }
 body {
   --ion-background-color: #1c1c1c;
+  --ion-background-color-2: #000000;
   --ion-text-color: #ffffff;
   --ion-tab-bar-background: #ff4804;
   --ion-text-orange-color: #ff9104;
-  --ion-button-orange: #FF6831;
+  --ion-button-orange: #ff6831;
   --ion-gray-background: #444242;
 }
 .kenyan {
@@ -37,3 +38,35 @@ ion-tabs {
   }
 }
 
+@keyframes fadeIn {
+  from {
+    transform: scaleY(0);
+  }
+  to {
+    transform: scaleY(1);
+  }
+}
+
+/* shimmer template*/
+
+.shimmer-template {
+  padding: 0.5rem;
+  clip-path: circle(50% at center);
+  background-color: white;
+  animation: shimmerAnimation 2s ease-in-out alternate-reverse infinite;
+}
+
+@keyframes shimmerAnimation {
+  0% {
+    background-position: -200% 0;
+    opacity: 0.6;
+  }
+  50% {
+    background-position: 200% 0;
+    opacity: 1;
+  }
+  100% {
+    background-position: -200% 0;
+    opacity: 0.6;
+  }
+}

@@ -24,6 +24,15 @@ export interface ProductoDetalle {
   costo: number;
   detail_food: any;
 }
+
+export interface ProductosPorPuntos {
+  id_producto: number
+  nombre: string,
+  costo: number,
+  id_categoria: number,
+  img_url: string,
+  Descripcion: string
+}
 export interface Asociado {
   user: any;
   Clav_Asociado: number;
@@ -43,15 +52,49 @@ export interface Asociado {
   diasRestantes: number;
 }
 
-export interface LoginError{
+export interface UpdateProfile {
+
+  claveSocio: number
+  correo: string
+  telefono: string
+
+}
+
+export interface RequesChangePassword {
+
+  claveSocio: number
+  newPassword: string
+
+}
+
+export interface ResponseUpdate {
+
+  response: string
+  status: boolean
+
+}
+
+export interface LoginError {
   mensaje: string
   esSocio: 0
 }
 
-export interface NewsData{
-  Img: string 
+export interface NewsData {
+  Img: string
   Texto: string
   news_dta: any
+}
+export interface Cards {
+  numTarjeta: string
+  Activo: number
+  card_list: any
+}
+
+export interface validCard {
+  claveSocio: number;
+  numTarjeta: number
+  vencimiento: string
+  cvv: number,
 }
 
 /* SQLite  */

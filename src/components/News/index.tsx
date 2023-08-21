@@ -7,6 +7,7 @@ import { fetchNewsData } from '../../axios/News';
 import { NewsData } from '../../interfaces';
 import "./news.css"
 import { FullScreenImage } from './fullScreenImage';
+import { Loading2 } from '../LoadScreen';
 
 export const News = () => {
 
@@ -38,11 +39,24 @@ export const News = () => {
                     slidesPerView={2.5}
                 >
                     <div >
-                        {fotos.map((item, index) => (
-                            <SwiperSlide className='slide' key={index}>
-                                <img className="news-phono" src={baseFolder + item.Img} onClick={() => setActiveModal(true, baseFolder + item.Img)} />
-                            </SwiperSlide>
-                        ))}
+                        {fotos.length > 0 ? (
+                            fotos.map((item, index) => (
+                                <SwiperSlide className='slide' key={index}>
+                                    <img
+                                        className="news-phono"
+                                        src={baseFolder + item.Img}
+                                        onClick={() => setActiveModal(true, baseFolder + item.Img)}
+                                    />
+                                </SwiperSlide>
+                            ))
+                        ) : (
+                            <div className="l2container">
+                                <h5>Cargando...</h5>
+                                <Loading2 />
+                            </div>
+
+                        )}
+
                     </div>
                 </Swiper>
 

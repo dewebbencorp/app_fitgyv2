@@ -18,44 +18,32 @@ import perfil from "./img/perfil.png";
 import fitbar from "./img/fitbar.png";
 import cupon from "./img/cupon.png";
 import wifi from "./img/wifi.png";
-import EditarDatos from "../component_datos/EditarDatos";
-import OperacionTarjetas from "../component_inicio/OperacionTarjetas";
 import { Profile } from "../Profile";
 import { Welcome } from "../Welcome";
 import { useEffect } from "react";
 export const Home = () => {
   const user: Asociado = useSelector((state: Asociado) => state.user);
   const location = useLocation();
-  
+
 
   console.log(location.pathname);
-    useEffect(() => {
-      if(!user.Nombre_Asociado){
-        window.location.href = '/login'
-      }
-    }, [])
-    
+  useEffect(() => {
+    if (!user.Nombre_Asociado) {
+      window.location.href = '/login'
+    }
+  }, [])
+
 
 
   return (
     <>
-      {user.Nombre_Asociado && !location.pathname.startsWith("/fitbar/food/") && !location.pathname.startsWith("/carrito") &&!location.pathname.startsWith("/login") && (
+
+      {user.Nombre_Asociado && !location.pathname.startsWith("/fitbar/food/") && !location.pathname.startsWith("/carrito") && !location.pathname.startsWith("/login") && !location.pathname.startsWith("/pp") && (
         <IonTabs>
           <IonRouterOutlet>
             <Route exact path="/home/inicio" component={Welcome} />
-            <Route
-              exact
-              path="/home/inicio/tarjetas"
-              component={OperacionTarjetas}
-            />
             <Route exact path="/home/perfil" component={Profile} />
-            <Route
-              exact
-              path="/home/perfil/editar-datos"
-              component={EditarDatos}
-            />
             <Route exact path="/home/fitbar" component={Fitbar} />
-
             <Route exact path="/home/cupon" component={Cupon} />
             <Route exact path="/home/wifi" component={Wifi} />
             <Route exact path="/home">

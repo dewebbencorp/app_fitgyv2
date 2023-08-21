@@ -2,16 +2,13 @@ import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import { setNewsData } from "../../services/news";
 import { NewsData } from "../../../interfaces";
 
-const EmptyNews: any = {
-  Img: "",
-  Texto: "",
-};
+const emptyNewsData: NewsData[] = [];
 
 export const newsDataSlice = createSlice({
   name: "news",
   initialState: localStorage.getItem("news_data")
     ? JSON.parse(localStorage.getItem("news_data") as string)
-    : EmptyNews,
+    : emptyNewsData,
   reducers: {
     addNewsData: (state, action: PayloadAction<NewsData>) => {
       setNewsData(action.payload);

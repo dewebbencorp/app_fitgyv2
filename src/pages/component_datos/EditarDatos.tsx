@@ -15,8 +15,8 @@ import {
 } from "@ionic/react";
 
 import "./css/editarDatos.css";
-import { useAuth } from "../../UserProvider";
-import SubirImagen from "./SubirImagen";
+
+
 import { useState, useRef } from "react";
 import { useHistory } from "react-router";
 import FlechaAtras from "./FlechaAtras";

@@ -1,6 +1,6 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import { Asociado } from "../../../interfaces";
-import { setAndPersistDbUserState } from "../../services/user";
+import { setAndPersistDbUserState, updateUserState } from "../../services/user";
 
 const EmptyUsetState: Asociado = {
   Nombre_Asociado: "",
@@ -32,6 +32,15 @@ export const userSlice = createSlice({
       setAndPersistDbUserState(action.payload);
       return action.payload;
     },
+    updateUserFields: (
+      state: Asociado,
+      action: PayloadAction<Partial<Asociado>>
+    ) => {
+      const updatedState = { ...state, ...action.payload };
+      updateUserState(updatedState);
+      return updatedState;
+    },
+
     removeUser: () => {
       localStorage.removeItem("user_data");
       return EmptyUsetState;
@@ -39,5 +48,5 @@ export const userSlice = createSlice({
   },
 });
 
-export const { addUser, removeUser } = userSlice.actions;
+export const { addUser, removeUser, updateUserFields } = userSlice.actions;
 export default userSlice.reducer;

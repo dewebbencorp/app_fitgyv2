@@ -22,11 +22,15 @@
   position: absolute;
   top: 22vh;
   margin-left: 31vh;
-  background-color: white;
+
   clip-path: circle(25%);
   display: flex;
   justify-content: center;
   align-items: center;
+
+  background-color: white;
+  
+  animation: shimmerAnimation 2s ease-in-out  alternate-reverse infinite;
 }
 
 .add-to-cart img {

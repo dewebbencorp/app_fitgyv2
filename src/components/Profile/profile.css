@@ -1,0 +1,277 @@
+.main-ctn {
+  display: flex;
+  flex-direction: column;
+  font-family: var(--poppins);
+}
+
+.head-containaer-1 {
+  width: 100%;
+  height: 15vh;
+  background-color: var(--ion-tab-bar-background);
+}
+
+.head-containaer-2 {
+  position: relative;
+  width: 100%;
+  height: 15vh;
+  background-color: white;
+}
+.pencil {
+  font-size: 2.4em;
+  color: white;
+  right: 0;
+  bottom: 0;
+  margin-right: 4vw;
+}
+.profile-data-container {
+  position: absolute;
+  display: flex;
+  justify-content: left;
+  width: 40vw;
+  height: 20vh;
+  margin-top: -10vh;
+  margin-left: 1rem;
+}
+
+.profile-image {
+  clip-path: circle(40%);
+  object-fit: cover;
+}
+
+.user-name {
+  position: absolute;
+  color: black;
+  font-size: 1em;
+  margin-left: 5vw;
+  bottom: 2vh;
+  font-style: italic;
+  top: 7vh;
+}
+
+.my-account {
+  font-style: italic;
+  margin: 1rem;
+  margin-top: 2rem;
+}
+
+.detail-account {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 4vh;
+}
+
+.detail-title h5,
+h3 {
+  margin: 0;
+}
+
+.detail-title h5 {
+  font-size: 0.8em;
+}
+.detail-title h3 {
+  font-size: 1.7em;
+}
+.ponits-container {
+  margin-top: 3vh;
+  margin-bottom: 4vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.points-icon {
+  width: 10vw;
+  height: 4.5vh;
+  margin-right: 7vw;
+}
+
+.points h5 {
+  font-size: 0.6em;
+  margin: 0;
+}
+
+.points h3 {
+  margin: 0;
+  font-size: 1.9em;
+}
+
+.btn-add-inbody-container {
+  width: 100%;
+  height: 5vh;
+  display: flex;
+  justify-content: center;
+  border-radius: 0.5rem;
+  margin-bottom: 0;
+  margin-top: 0vh;
+}
+.btn-add-inbody {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 70%;
+  background-color: var(--ion-tab-bar-background);
+  border-radius: 0.7rem;
+}
+
+.btn-add-inbody h5 {
+  font-size: 0.9em;
+}
+
+.schedule-icon {
+  margin-top: 0.1vh;
+  padding: 0.2em;
+  width: 7vw;
+  height: 3vh;
+  margin-right: 2vw;
+}
+
+.memberships {
+  margin-top: 3vh;
+}
+
+.memberships h1 {
+  margin-bottom: 0;
+  font-size: 1.7em;
+}
+.memberships h2 {
+  margin-top: 0;
+  font-size: 0.8em;
+}
+
+.btn-close-container {
+  width: 100%;
+  height: 4vh;
+  display: flex;
+  justify-content: center;
+  border-radius: 0.5rem;
+  font-family: var(--poppins);
+}
+
+.btn-close {
+  position: absolute;
+  bottom: 3vh;
+  font-size: 0.9em;
+  display: flex;
+  align-items: center;
+  padding: 0.5rem;
+  justify-content: center;
+  width: 40%;
+  background-color: var(--ion-tab-bar-background);
+  border-radius: 0.3rem;
+}
+
+/* UPDATEpROFILE*/
+
+.btn-close-update-container {
+  display: flex;
+  justify-content: right;
+  margin: 3vw;
+}
+
+.btn-close-update {
+  font-size: 2em;
+}
+.title-up {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 1.5vw;
+  width: 70%;
+  height: 6vh;
+  background-color: var(--ion-tab-bar-background);
+  font-size: 1.2em;
+  font-family: var(--poppins);
+}
+.input-up-container {
+  display: flex;
+  flex-direction: column;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  padding-top: 0.5rem;
+}
+
+.input-container {
+  margin-top: 2.5rem;
+  padding-left: 4vw;
+  padding-right: 4vw;
+}
+
+.input-container input {
+  height: 2.5rem;
+}
+
+form h3 {
+  font-size: 1em;
+  font-family: var(--poppins);
+  margin-top: 1vh;
+  margin-bottom: 0.5vh;
+}
+
+.change-pass-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2vh;
+}
+
+.add-card-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.add-card-container h5 {
+  font-size: 1em;
+  margin-left: 3vw;
+}
+
+.list-options-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 3vh;
+}
+.change-pass-container h5 {
+  font-size: 1em;
+  margin-left: 3vw;
+}
+
+.btn-up-dta {
+  font-size: 0.9em;
+  display: flex;
+  align-items: center;
+  padding: 0.5rem;
+  justify-content: center;
+  width: 50%;
+  height: 2.5rem;
+  background-color: var(--ion-tab-bar-background);
+  border-radius: 1rem;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeAndSlide 0.5s ease-out forwards;
+}
+
+.btn-send-up {
+  margin-bottom: 5vh;
+}
+
+/* CHANGE PASSWORD*/
+
+.ch-password-container {
+  position: absolute;
+  top: 15vh;
+  margin-left: 8vw;
+  margin-right: 8vw;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: black;
+  border-radius: 1rem;
+  height: 20rem;
+  margin-bottom: 5vh;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeAndSlide 0.5s ease-out forwards;
+}
