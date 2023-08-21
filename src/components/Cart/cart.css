@@ -7,19 +7,27 @@
   margin-left: 20%;
 }
 
+
+
 .cart-main-container {
   background: linear-gradient(#ff7d04, #ec540d) !important;
-  height: 29rem;
+  transform-origin: top;
+  transform: scaleY(0);
   border-bottom-left-radius: 1rem;
   border-bottom-right-radius: 1rem;
+  overflow: hidden;
+  animation: fadeIn 0.5s ease forwards;
 }
+
+
 .cart-main {
-  height: 19rem;
+  max-height: 31rem;
   overflow-y: auto;
   padding: 1rem;
 }
 
 .card-container-food {
+  position: relative;
   display: flex;
   justify-content: space-between;
   margin: 1rem;
@@ -27,14 +35,11 @@
   background-color: #ffffff;
   box-shadow: 0 0 0.5rem 0rem rgba(0, 0, 0, 0.753);
   transition: transform 0.3s ease;
+  
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeAndSlide 0.5s ease-out forwards;
 }
-
-.btn-add {
-  display: flex;
-  justify-content: space-around;
-  font-size: 1rem;
-}
-
 
 .card-container-food:hover {
   transform: scale(1.1);
@@ -47,6 +52,31 @@
 
 .card-container-food:hover .icon-container-food {
   background-color: bisque;
+}
+
+.btn-options-container {
+  position: absolute;
+  display: flex;
+  justify-content: space-around;
+  font-size: 1.5rem;
+  visibility: visible;
+  right: -4vw;
+  bottom: 0;
+  top: -2vh;
+  visibility: hidden;
+}
+
+.card-container-food:hover .btn-options-container {
+  visibility: visible;
+}
+
+.btn-delete-order {
+  background-color: bisque;
+  font-size: 2em;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  color: red;
+  clip-path: circle(25% at center);
 }
 
 .total-product-container {
@@ -69,6 +99,7 @@
   justify-content: left;
   padding-left: 1rem;
   padding-right: 0.7rem;
+  
 }
 
 .card-description-food {
@@ -94,6 +125,15 @@
   padding: 0 !important;
 }
 
+.card-container-food:hover .price-food {
+  color: white;
+}
+.card-container-food:hover .title-food-cart {
+  color: white;
+}
+.card-container-food:hover .total-product {
+  color: var(--ion-tab-bar-background);
+}
 .limit-text {
   display: -webkit-box;
   -webkit-line-clamp: 2;
@@ -139,7 +179,6 @@
 }
 
 .btn-pay-container {
-
   display: flex;
   width: 100%;
   justify-content: center;
@@ -147,21 +186,19 @@
   bottom: 3rem;
 }
 
-
-.btn-whats-container{
+.btn-whats-container {
   display: flex;
   background-color: #ec540d;
   border-radius: 0.5rem;
   transition: transform 0.3s ease;
   font-family: var(--poppins);
 }
-.text-got{
+.text-got {
   font-size: 0.9rem;
 }
 .btn-whats {
   font-size: 3rem;
   padding: 0.9rem;
-  
 }
 
 .btn-whats-container:hover {

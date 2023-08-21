@@ -136,7 +136,7 @@ export const UserProfile = () => {
 
                     </div>
 
-                    <h3 className="kenyan" style={{ fontSize: '1.7em' }}>CLIENTE PREMIUM</h3>
+                    <h3 className="kenyan" style={{ fontSize: '1.7em' }}>Cliente premium</h3>
 
                     <div className="ponits-container" onClick={() => gotPp()}>
                         <img className="points-icon" src={points} />

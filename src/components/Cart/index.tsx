@@ -9,13 +9,14 @@ import { useHistory } from "react-router";
 import { CartI, CartTotal } from "../../interfaces";
 import "./cart.css";
 import { sendWhatsAppMessage } from "./senMessage";
+import { AiFillDelete } from "react-icons/ai";
 
 export const Cart = () => {
   const { performSQLAction, initialized } = useSQLiteDB();
   const history = useHistory();
   const [items, setItems] = useState<Array<CartI>>();
   const [cart_total, setTotal] = useState<Array<CartTotal>>();
-  
+
 
 
   // useEffect to load data on component mount
@@ -48,13 +49,42 @@ export const Cart = () => {
 
         const total_price = totalPrice?.values;
         const result = total_prod?.values;
-        /*console.log(result);
-        console.log(total_price); */
+
+
 
         if (result != undefined && total_price != undefined) {
           setItems(result);
           setTotal(total_price);
         }
+      });
+    } catch (error) {
+      alert((error as Error).message);
+    }
+  };
+
+  const dropData = async (nameProduct: string) => {
+    try {
+      performSQLAction(async (db: SQLiteDBConnection | undefined) => {
+        const drop_order = await db?.query(
+          `DELETE FROM orders
+            WHERE name_product = '${nameProduct}'
+          `
+        );
+
+
+        const result = drop_order;
+        console.log("borrado ->");
+
+        console.log(result);
+
+        setItems([])
+
+        setTimeout(() => {
+          loadData()
+        }, 50);
+
+
+
       });
     } catch (error) {
       alert((error as Error).message);
@@ -103,23 +133,24 @@ export const Cart = () => {
                             {"$" + food.price}
                           </h2>
                         </div>
+
+                        <div className="btn-options-container">
+
+                          <AiFillDelete className="btn-delete-order" onClick={() => dropData(food.name_product)} />
+
+                        </div>
                       </div>
 
                       <div className="total-product-container">
                         <h5 className="total-product">{food.total_product}</h5>
                       </div>
                     </div>
-                    {/*
-                    <div className="btn-add">
-                     
-                      <GrSubtract className="subtract-icon" />{" "}
-                      <GrAdd className="add-icon" />
-                      
-                    </div> */}
+
+
                   </div>
                 </>
               ))}
-            {!items && <div> no have producst</div>}
+            {items && items?.length === 0 && <div> no have producst</div>}
           </div>
         </div>
         <div className="cart-total-container">

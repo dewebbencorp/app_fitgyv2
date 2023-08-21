@@ -37,13 +37,22 @@ ion-tabs {
   }
 }
 
+@keyframes fadeIn {
+  from {
+    transform: scaleY(0);
+  }
+  to {
+    transform: scaleY(1);
+  }
+}
+
 /* shimmer template*/
 
 .shimmer-template {
   padding: 0.5rem;
   clip-path: circle(50% at center);
-background-color: white;
-  animation: shimmerAnimation 2s ease-in-out  alternate-reverse infinite;
+  background-color: white;
+  animation: shimmerAnimation 2s ease-in-out alternate-reverse infinite;
 }
 
 @keyframes shimmerAnimation {
@@ -60,4 +69,3 @@ background-color: white;
     opacity: 0.6;
   }
 }
-
