@@ -158,6 +158,7 @@ export const FoodDetail = () => {
           </div>
 
 
+        {/*
           {options.map((option) => (
 
             <div className="add-complement-container">
@@ -177,6 +178,8 @@ export const FoodDetail = () => {
           ))}
 
 
+        
+        */}
 
           <div className="car-options-container">
             <div className="btn-container">

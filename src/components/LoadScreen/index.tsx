@@ -1,4 +1,4 @@
-import { HashLoader } from "react-spinners"
+import { HashLoader, PuffLoader } from "react-spinners"
 import './loading.css'
 export const Loading = () => {
 
@@ -7,7 +7,7 @@ export const Loading = () => {
 
             <div className="loading-indicator-login">
 
-                <HashLoader
+                <PuffLoader
                     color={"var(--ion-tab-bar-background)"}
                     loading={true}
                     speedMultiplier={3}
