@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./survey.css";
 
 export const Survey = () => {
@@ -8,7 +8,16 @@ export const Survey = () => {
     const handleRadioChange = (event: { target: { value: React.SetStateAction<null>; }; }) => {
         setSelectedValue(event.target.value);
     };
+    const backButtonHandler = () => {
+        setIsVisible(false); // Cerrar el modal
+    };
 
+    useEffect(() => {
+        document.addEventListener('ionBackButton', backButtonHandler);
+        return () => {
+            document.removeEventListener('ionBackButton', backButtonHandler);
+        };
+    }, []);
 
 
     return (

@@ -21,7 +21,7 @@
   padding: 4vw;
   background-color: white;
   border-radius: 1rem;
-  width: 85%;
+  width: 85vw;
   text-align: center;
 
   opacity: 0;
@@ -33,12 +33,14 @@
 .survey-card h1{
     font-size: 1em;
     margin: 0;
+    
 }
 /* starts*/
 
 .rating {
-  display: inline-block;
-
+  display: flex;
+  padding: 1rem;
+  flex-direction: row-reverse;
 }
 
 .rating input {
