@@ -19,7 +19,6 @@ export const News = () => {
     const dispatch: ThunkDispatch<any, void, AnyAction> = useDispatch();
 
     const setActiveModal = (value: boolean, image_url: string) => {
-        console.log(`preview is ${value}`);
         setFullImage(image_url)
         setModal(value)
     }

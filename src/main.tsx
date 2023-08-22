@@ -3,7 +3,8 @@ import { createRoot } from "react-dom/client";
 import App from "./App";
 import { initializeSQLite } from "./database/config";
 import { Provider } from "react-redux";
-import{ store} from './store'
+import { store } from './store'
+import { Survey } from "./components/Survey";
 
 window.addEventListener("DOMContentLoaded", async () => {
   try {
@@ -15,6 +16,8 @@ window.addEventListener("DOMContentLoaded", async () => {
     const root = createRoot(container!);
     root.render(
       <Provider store={store}>
+
+        <Survey/>
         <App />
       </Provider>
     );
