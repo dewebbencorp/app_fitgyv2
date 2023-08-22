@@ -3,9 +3,9 @@ import "./survey.css";
 
 export const Survey = () => {
     const [selectedValue, setSelectedValue] = useState(null);
-    const [isVisible, setIsVisible] = useState(false)
+    const [isVisible, setIsVisible] = useState(true)
 
-    const handleRadioChange = (event) => {
+    const handleRadioChange = (event: { target: { value: React.SetStateAction<null>; }; }) => {
         setSelectedValue(event.target.value);
     };
 

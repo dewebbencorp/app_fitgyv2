@@ -150,7 +150,7 @@ export const Cart = () => {
                   </div>
                 </>
               ))}
-            {items && items?.length === 0 && <div> no have producst</div>}
+            {items && items?.length === 0 && <div> Aun no hay productos</div>}
           </div>
         </div>
         <div className="cart-total-container">
