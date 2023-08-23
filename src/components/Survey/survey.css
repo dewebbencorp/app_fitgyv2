@@ -27,13 +27,11 @@
   opacity: 0;
   transform: translateY(200px);
   animation: fadeAndSlide 0.5s ease-out forwards;
-
 }
 
-.survey-card h1{
-    font-size: 1em;
-    margin: 0;
-    
+.survey-card h1 {
+  font-size: 1em;
+  margin: 0;
 }
 /* starts*/
 

@@ -97,6 +97,11 @@ export interface validCard {
   cvv: number,
 }
 
+export interface Preguntas {
+  id_pregunta: number
+  detalle_pregunta: string
+}
+
 /* SQLite  */
 
 export interface order {
