@@ -7,8 +7,8 @@ import { Asociado, Preguntas, ResponseUpdate } from "../../interfaces";
 import toast, { Toaster } from "react-hot-toast";
 
 export const Survey = () => {
-    const [selectedValue, setSelectedValue] = useState(1);
-    const [isVisible, setIsVisible] = useState(true);
+    const [selectedValue, setSelectedValue] = useState<number>(1);
+    const [isVisible, setIsVisible] = useState(false);
     const [isButtonDisabled, setIsButtonDisabled] = useState(false);
 
     const user: Asociado = useSelector((state: Asociado) => state.user);
@@ -89,7 +89,7 @@ export const Survey = () => {
                             name="rating"
                             id="star5"
                             type="radio"
-                            checked={selectedValue === "5"}
+                            checked={selectedValue === 5}
                             onChange={handleRadioChange}
                         />
                         <label htmlFor="star5"></label>
@@ -98,7 +98,7 @@ export const Survey = () => {
                             name="rating"
                             id="star4"
                             type="radio"
-                            checked={selectedValue === "4"}
+                            checked={selectedValue === 4}
                             onChange={handleRadioChange}
                         />
                         <label htmlFor="star4"></label>
@@ -107,7 +107,7 @@ export const Survey = () => {
                             name="rating"
                             id="star3"
                             type="radio"
-                            checked={selectedValue === "3"}
+                            checked={selectedValue === 3}
                             onChange={handleRadioChange}
                         />
                         <label htmlFor="star3"></label>
@@ -116,7 +116,7 @@ export const Survey = () => {
                             name="rating"
                             id="star2"
                             type="radio"
-                            checked={selectedValue === "2"}
+                            checked={selectedValue === 2}
                             onChange={handleRadioChange}
                         />
                         <label htmlFor="star2"></label>
@@ -125,7 +125,7 @@ export const Survey = () => {
                             name="rating"
                             id="star1"
                             type="radio"
-                            checked={selectedValue === "1"}
+                            checked={selectedValue === 1}
                             onChange={handleRadioChange}
                         />
                         <label htmlFor="star1"></label>
