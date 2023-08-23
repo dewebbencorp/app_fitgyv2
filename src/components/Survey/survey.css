@@ -33,7 +33,24 @@
   font-size: 1em;
   margin: 0;
 }
-/* starts*/
+
+.btn-send-survey {
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  background: var(--ion-background-color-2);
+  color: white;
+  font-family: var(--poppins);
+  font-size: 1em;
+  opacity: 0.7;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.btn-send-survey:hover {
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+/*STARS*/
 
 .rating {
   display: flex;

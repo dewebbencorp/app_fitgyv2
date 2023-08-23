@@ -1,13 +1,16 @@
 import React, { useEffect, useState } from "react";
 import "./survey.css";
 import { useDispatch, useSelector } from "react-redux";
-import { getQuestion } from "../../axios/Survey";
+import { getQuestion, sendSurvey } from "../../axios/Survey";
 import { AnyAction, ThunkDispatch } from "@reduxjs/toolkit";
-import { Asociado, Preguntas } from "../../interfaces";
+import { Asociado, Preguntas, ResponseUpdate } from "../../interfaces";
+import toast, { Toaster } from "react-hot-toast";
 
 export const Survey = () => {
-    const [selectedValue, setSelectedValue] = useState(null);
-    const [isVisible, setIsVisible] = useState(true)
+    const [selectedValue, setSelectedValue] = useState(1);
+    const [isVisible, setIsVisible] = useState(true);
+    const [isButtonDisabled, setIsButtonDisabled] = useState(false);
+
     const user: Asociado = useSelector((state: Asociado) => state.user);
     const question: Preguntas = useSelector((state: any) => state.survey);
     const dispatch: ThunkDispatch<any, void, AnyAction> = useDispatch();
@@ -38,8 +41,6 @@ export const Survey = () => {
         const currentDate = date.getTime();
         const desiredDate = new Date(date);
         desiredDate.setHours(HOURS, MINUTES, SECONDS);
-        console.log(date.getHours());
-
         if (DAYS_TO_RUN.includes(date.getDay()) && date.getDate() === DAY && currentDate <= desiredDate.getTime()) {
             console.log("modal");
 
@@ -50,13 +51,38 @@ export const Survey = () => {
         dispatch(getQuestion(user.Clav_Asociado))
     };
 
+    const sendResponse = async () => {
+
+        setIsButtonDisabled(true)
+
+        toast.loading('Enviando respuesta')
+
+        try {
+            const res: ResponseUpdate = await dispatch(sendSurvey(user.Clav_Asociado, selectedValue, question.id_pregunta))
+            if (res.response) {
+                console.log(res.response);
+                setTimeout(() => {
+                    toast.dismiss()
+                    toast.success(`${res.response}`)
+                    setIsVisible(false)
+                }, 500);
+            }
+        } catch (error) {
+            toast.dismiss()
+            toast.error(`Error ${error}`)
+        }
+
+    }
+
 
 
     return (
         <>
-            {isVisible && <div className="card-container-survey">
+
+            <Toaster />
+            {isVisible && question.detalle_pregunta && <div className="card-container-survey">
                 <div className="survey-card">
-                     {question ?  <h1>{question.detalle_pregunta}</h1>:<h1>Lorem ipsum dolor sit amet.</h1> }
+                    {question ? <h1>{question.detalle_pregunta}</h1> : <h1>Lorem ipsum dolor sit amet.</h1>}
                     <div className="rating">
                         <input
                             value="5"
@@ -104,6 +130,9 @@ export const Survey = () => {
                         />
                         <label htmlFor="star1"></label>
                     </div>
+                    <button className="btn-send-survey" onClick={() => sendResponse()} disabled={isButtonDisabled}>
+                        Enviar
+                    </button>
                 </div>
             </div>
             }
