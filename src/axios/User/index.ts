@@ -78,3 +78,28 @@ export const changePassword =
         });
     });
   };
+
+
+  export const forgotMyPassword =
+  (co:string ) =>
+  (dispatch: Dispatch<any>): Promise<ResponseUpdate> => {
+    const postData = {
+      correo : co,
+    };
+
+    return new Promise<ResponseUpdate>((resolve, reject) => {
+      axios
+        .post(`${BASE_URL}/recuperarContraseña.php`, postData)
+        .then((response) => {
+          const responseData: ResponseUpdate = {
+            response: response.data.response,
+            status: true,
+          };
+          resolve(responseData);
+        })
+        .catch((error) => {
+          console.log(error);
+          reject(error);
+        });
+    });
+  };
