@@ -52,6 +52,7 @@ input::placeholder {
   margin-top: 1.4rem;
   font-family: var(--poppins);
   font-size: 1em;
+  animation: fadeIn 0.5s ease forwards;
 }
 
 .btn_login-container span {
@@ -59,8 +60,15 @@ input::placeholder {
   font-size: 0.8em;
   color: white;
   margin: 0.5rem;
+  border-radius: 1rem;
+  transition: 0.5s;
+  padding: 0.5rem;
 }
 .btn_login-container span:hover {
+  margin-top: 2vh;
+  font-size: 0.9em;
+  border: 1px solid orangered;
+  
   color: orangered;
 }
 .btn_login {
@@ -79,4 +87,11 @@ span {
   display: block;
   color: tomato;
   font-size: x-small;
+}
+
+.reset-pass-container span{
+  display: flex;
+  justify-content: center;
+  font-size: 0.8em;
+  animation: shimmerAnimation 1.5s  infinite;
 }
