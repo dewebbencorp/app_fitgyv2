@@ -5,9 +5,7 @@
   flex-direction: column;
   padding: 5vw;
   margin-bottom: 5vh;
-  opacity: 0;
-  transform: translateY(20px);
-  animation: fadeAndSlide 0.7s ease-out forwards;
+  
 }
 .pp-title {
   display: flex;
@@ -16,6 +14,7 @@
   margin-bottom: 5vh;
   padding-left: 5vw;
   padding-right: 5vw;
+
 }
 .pp-title h1 {
   font-weight: bold;
@@ -86,13 +85,13 @@
   text-overflow: ellipsis;
   -webkit-line-clamp: 1;
   margin: 0;
-  font-size: 0.9em;
+  font-size: 0.6em;
   transition: font-size 0.5s ease;
 }
 
 .pp-card:hover .pp-card-font {
   -webkit-line-clamp: 5;
-  font-size: 1em;
+  font-size: 0.8em;
 }
 
 .pp-card h3 {

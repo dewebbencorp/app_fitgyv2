@@ -1,13 +1,15 @@
 import { useForm } from "react-hook-form";
 import { Toaster, toast } from 'react-hot-toast';
 import { AiOutlineCloseCircle } from "react-icons/ai";
-import { RequesChangePassword, ResponseUpdate } from "../../interfaces";
+import { Asociado, RequesChangePassword, ResponseUpdate } from "../../interfaces";
 import "./profile.css"
 import { changePassword } from "../../axios/User";
 import { AnyAction, ThunkDispatch } from "@reduxjs/toolkit";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { updateUserFields } from "../../store/slices/userSlice";
 export const ChangePassword = ({ setPw }: any) => {
     const dispatch: ThunkDispatch<any, void, AnyAction> = useDispatch();
+    const user: Asociado = useSelector((state: Asociado) => state.user);
     const {
         register,
         handleSubmit,
@@ -25,7 +27,7 @@ export const ChangePassword = ({ setPw }: any) => {
 
 
         const request: RequesChangePassword = {
-            claveSocio: 655,
+            claveSocio: user.Clav_Asociado,
             newPassword: data.password
         };
 
@@ -49,6 +51,7 @@ export const ChangePassword = ({ setPw }: any) => {
             if (res.status) {
                 toast.dismiss()
                 toast.success(`Exito : ${res.response}`)
+                dispatch(updateUserFields({ passedit: 1 }));
                 reset()
 
             } else {
@@ -72,9 +75,9 @@ export const ChangePassword = ({ setPw }: any) => {
         <>
             <Toaster />
             <div className="ch-password-container">
-                <div style={{ display: 'flex', justifyContent: 'end', marginTop: '0rem' }}>
+                {user.passedit === 1 && <div style={{ display: 'flex', justifyContent: 'end', marginTop: '0rem' }}>
                     <AiOutlineCloseCircle className="btn-close-update" onClick={() => setPw(false)} />
-                </div>
+                </div>}
 
 
                 <div className="input-up-container"  >

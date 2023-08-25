@@ -54,24 +54,24 @@ export const postFoodDetail =
       .catch((error) => console.log(error));
   };
 
-  export const producsPerPoints =
+export const producsPerPoints =
   (points: number) =>
   async (dispatch: Dispatch<any>): Promise<ProductosPorPuntos[]> => {
     const postData = {
       puntos: points,
     };
     try {
-      const response = await axios.post(`${BASE_URL}/productosPorPuntos.php`, postData);
-      
-      const responseData: ProductosPorPuntos[] = response.data; // Assuming response.data is an array of products
-      
-      return responseData.map(product => ({
-        id_producto: product.id_producto,
-        nombre: product.nombre,
-        costo: product.costo,
-        id_categoria: product.id_categoria,
-        img_url: product.img_url,
-        Descripcion: product.Descripcion,
+      const response = await axios.post(
+        `${BASE_URL}/productosPorPuntos.php`,
+        postData
+      );
+
+      const responseData = response.data;
+
+      return responseData.map((product: any) => ({
+        clave: product.Clav_Art,
+        costo: parseFloat(product.Precio1),
+        detalle: product.Desc_Art,
       }));
     } catch (error) {
       console.log(error);

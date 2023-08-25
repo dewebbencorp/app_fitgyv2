@@ -1,13 +1,20 @@
 import { useState } from "react"
 import { ChangePassword } from "../Profile/ChangePassword"
+import "./pwd.css"
+import { Asociado } from "../../interfaces"
+import { useSelector } from "react-redux"
+
 
 export const UpdateInitialPass = () => {
-    const [showFieldPw, setFieldPw] = useState(true)
-
+   
+    const user: Asociado = useSelector((state: Asociado) => state.user);
+   
     return (<>
-        <div style={{ position: 'absolute', backgroundColor: '', display: 'flex', top: '20vh', bottom: '0', left: '0', right: '0', zIndex: 12 }}>
-            <ChangePassword setPw={setFieldPw} />
-        </div>
 
+        {user.passedit == 0  && user.Clav_Asociado ? <div className="Initial-pass-container" style={{ marginTop: '10vh' }}>
+            <ChangePassword />
+
+        </div> : <></>
+        }
     </>)
 } 
