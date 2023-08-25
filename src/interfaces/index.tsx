@@ -26,12 +26,11 @@ export interface ProductoDetalle {
 }
 
 export interface ProductosPorPuntos {
-  id_producto: number
-  nombre: string,
-  costo: number,
-  id_categoria: number,
-  img_url: string,
-  Descripcion: string
+
+  clave: number
+  detalle: string
+  costo: number
+
 }
 export interface Asociado {
   user: any;
