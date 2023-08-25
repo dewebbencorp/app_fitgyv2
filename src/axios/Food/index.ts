@@ -4,7 +4,7 @@ import { addFoodTypes } from "../../store/slices/typeFoodSlice";
 import { addFoodByType } from "../../store/slices/foodByTypeSlice";
 import { addDetailFood } from "../../store/slices/detailFood";
 import { BASE_URL } from "../Utils";
-import { ProductosPorPuntos } from "../../interfaces";
+import { ComprasHistorial, ProductosPorPuntos } from "../../interfaces";
 
 export const fetchTypesFood =
   () =>
@@ -72,6 +72,36 @@ export const producsPerPoints =
         clave: product.Clav_Art,
         costo: parseFloat(product.Precio1),
         detalle: product.Desc_Art,
+      }));
+    } catch (error) {
+      console.log(error);
+      throw error;
+    }
+  };
+
+export const purchaseHistory =
+  (clave: number) =>
+  async (dispatch: Dispatch<any>): Promise<ComprasHistorial[]> => {
+    const postData = {
+      clave_asociado: clave,
+    };
+    try {
+      const response = await axios.post(
+        `${BASE_URL}/getHistorialCompras.php`,
+        postData
+      );
+
+      const responseData = response.data;
+
+      return responseData.map((product: any) => ({
+        monto: product.Monto,
+        saldo: product.Saldo,
+        tipo: product.Tipo,
+        ticket: product.No_tick,
+        total: product.Total_P,
+        detalle: product.Desc_Art,
+        cantidad: product.Cant,
+        fecha: product.fechaO,
       }));
     } catch (error) {
       console.log(error);
