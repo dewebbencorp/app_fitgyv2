@@ -30,7 +30,7 @@ export const PP = () => {
 
     const getPp = async () => {
         try {
-            const data = await dispatch(producsPerPoints(150));
+            const data = await dispatch(producsPerPoints(user.puntos));
             setDta(data)
         } catch (error) {
             console.error("Error fetching products:", error);
@@ -55,14 +55,14 @@ export const PP = () => {
                 {dta?.map(products =>
 
                     <>
-                        <div className=" pp-card" key={products.id_producto}>
+                        <div className=" pp-card" key={products.clave}>
                             <div className="pts-container">
                                 <div className="pts">
                                     <h5 className="pts-font">{Math.floor(products.costo)} pts</h5>
                                 </div>
 
                             </div>
-                            <h3 className='pp-card-font' >{products.nombre}</h3>
+                            <h3 className='pp-card-font' >{products.detalle}</h3>
 
                             {Math.floor(products.costo) > user.puntos ?
                                 <h4 className='pp-card-font'>Ya casi es tuyo </h4> : <h4 className='pp-card-font'>Puedes tenerlo</h4>}
