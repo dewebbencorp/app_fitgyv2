@@ -16,6 +16,11 @@
   padding-right: 5vw;
 
 }
+.isActive{
+  margin-top: 2vh;
+  margin-bottom: 1vh;
+  color: var(--naranja1);
+}
 .pp-title h1 {
   font-weight: bold;
 }

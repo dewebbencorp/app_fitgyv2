@@ -32,6 +32,17 @@ export interface ProductosPorPuntos {
   costo: number
 
 }
+
+export interface ComprasHistorial {
+  monto: number
+  saldo: number
+  tipo: string
+  ticket: number
+  total: number
+  detalle: string
+  cantidad: number
+  fecha: string
+}
 export interface Asociado {
   user: any;
   Clav_Asociado: number;
