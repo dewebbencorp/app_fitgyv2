@@ -5,7 +5,7 @@ import { initializeSQLite } from "./database/config";
 import { Provider } from "react-redux";
 import { store } from './store'
 import { Survey } from "./components/Survey";
-import { Initpwd, ResetPass } from "./components/Password";
+import { Initpwd } from "./components/Password";
 
 window.addEventListener("DOMContentLoaded", async () => {
   try {
@@ -17,7 +17,7 @@ window.addEventListener("DOMContentLoaded", async () => {
     const root = createRoot(container!);
     root.render(
       <Provider store={store}>
-        
+        <Initpwd/>
         <Survey />
         <App />
       </Provider>
