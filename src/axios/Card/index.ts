@@ -2,7 +2,7 @@ import axios from "axios";
 import { Dispatch } from "redux";
 import { BASE_URL } from "../Utils";
 import { setCards } from "../../store/slices/cardSlice";
-import { validCard } from "../../interfaces";
+import { ResponseUpdate, validCard } from "../../interfaces";
 
 export const postCardsList =
   (cveSocio: number) =>
@@ -61,3 +61,30 @@ export const validateCard = (data: validCard) => {
     }
   };
 };
+
+export const updateContract =
+  (claveSocio: number, correo: string) =>
+  (dispatch: Dispatch<any>): Promise<ResponseUpdate> => {
+    const postData = {
+      clave_socio: claveSocio,
+      correo: correo
+    };
+
+    return new Promise<ResponseUpdate>((resolve, reject) => {
+      axios
+        .post(`${BASE_URL}/g_contrato/actualizarContrato.php`, postData)
+        .then((response) => {
+          const responseData: ResponseUpdate = {
+            response: response.data.message,
+            status: response.data.success,
+          };
+          resolve(responseData);
+        })
+        .catch((error) => {
+          console.log(error);
+          reject(error);
+        });
+    });
+  };
+
+
