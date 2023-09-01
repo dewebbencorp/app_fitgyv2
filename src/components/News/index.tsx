@@ -28,7 +28,7 @@ export const News = () => {
     }, []);
 
     return (
-        <><h4 className='kenyan'><i> NOTICIAS </i></h4>
+        <><h1 className='kenyan'><i> NOTICIAS </i></h1>
 
             <div className='news-container'>
 

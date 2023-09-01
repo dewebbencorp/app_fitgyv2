@@ -3,7 +3,7 @@ import Noticias from "../component_inicio/Noticias";
 import CodigoQR from "../component_inicio/CodigoQR";
 import Tarjeta from "../component_inicio/Tarjeta";
 import Whats from "../component_inicio/Whats";
-import logo from "../../components/Login/images/logo.png";
+import logo from "./images/logo.png";
 import "./welcome.css";
 import { News } from "../../components/News";
 
