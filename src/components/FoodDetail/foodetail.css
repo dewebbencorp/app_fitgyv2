@@ -4,6 +4,7 @@
   align-items: center;
   justify-content: space-evenly;
   padding: 1rem;
+  padding-top: 10vh;
   opacity: 0;
   font-family: var(--poppins);
   transform: translateY(20px);
@@ -53,6 +54,7 @@
   display: flex;
   flex-direction: column;
   align-items: start;
+  
 }
 .title-food {
   /*TODO*/

@@ -1,7 +1,5 @@
-
-
 import { HiChevronLeft } from "react-icons/hi2";
-import { Toaster, toast } from 'react-hot-toast';
+import { Toaster, toast } from "react-hot-toast";
 import { SQLiteDBConnection } from "@capacitor-community/sqlite";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
@@ -24,26 +22,22 @@ export const ListFood = () => {
     (state: ProductoPorCategoria) => state.food_by_tye
   );
 
-  const { id } = useParams()
-
+  const { id } = useParams();
 
   const history = useHistory();
   const { performSQLAction, initialized } = useSQLiteDB();
   initialized;
   const handleDetailClick = (id: number) => {
-    window.location.href = `/fitbar/food/detail/${id}`
+    window.location.href = `/fitbar/food/detail/${id}`;
   };
   const goToCart = () => {
     history.push("/carrito");
   };
 
-
-
   const dispatch: ThunkDispatch<any, void, AnyAction> = useDispatch();
 
-
   const backButtonHandler = () => {
-    window.location.href = '/home/fitbar'
+    window.location.href = "/home/fitbar";
   };
 
   useEffect(() => {
@@ -53,13 +47,11 @@ export const ListFood = () => {
       setShowLoading(false);
     }, 5000);
 
-
-    document.addEventListener('ionBackButton', backButtonHandler);
+    document.addEventListener("ionBackButton", backButtonHandler);
     return () => {
-      document.removeEventListener('ionBackButton', backButtonHandler);
+      document.removeEventListener("ionBackButton", backButtonHandler);
     };
   }, [dispatch]);
-
 
   const data = Object.values(foodByType);
 
@@ -69,11 +61,8 @@ export const ListFood = () => {
   );
 
   const handleBackClick = () => {
-    window.location.href = '/home/fitbar'
+    window.location.href = "/home/fitbar";
   };
-
-
-
 
   const addToCart = async (data: ProductoPorCategoria) => {
     try {
@@ -88,29 +77,29 @@ export const ListFood = () => {
     } catch (error) {
       alert((error as Error).message);
     } finally {
-      toast.success('Producto añadido', {
+      toast.success("Producto añadido", {
         duration: 2000,
         position: "top-center",
         style: {
-          marginTop: '1rem',
-          borderRadius: '10px',
-          background: 'white',
-          color: 'blach',
-          fontSize: '.8em',
-          fontFamily: 'var(--poppins)',
-          fontStyle: 'italic'
-        }
-      })
+          marginTop: "1rem",
+          borderRadius: "10px",
+          background: "white",
+          color: "blach",
+          fontSize: ".8em",
+          fontFamily: "var(--poppins)",
+          fontStyle: "italic",
+        },
+      });
     }
   };
-
-
-
 
   return (
     <>
       <Toaster />
-      <HiChevronLeft onClick={() => handleBackClick()} style={{ fontSize: "3.2rem", marginBottom: "0rem" }} />
+      <HiChevronLeft
+        onClick={() => handleBackClick()}
+        style={{ fontSize: "3.2rem", marginBottom: "0rem" }}
+      />
 
       <h1 className="title-list-food">The Fit Bar</h1>
       <h1 className="sub-title-list-food">MENÚ</h1>
@@ -118,56 +107,70 @@ export const ListFood = () => {
 
       <div className="main-fl-container">
         <Swiper className="swiper" spaceBetween={50} slidesPerView={1}>
-          {producto[0]?.id_categoria != id ? <div>You need an internet connection!  </div> : (producto?.map((food) => (
-            <>
-              <SwiperSlide
-                key={food.id_producto}
-                className="slide"
+          {producto[0]?.id_categoria != id ? (
+            <div>You need an internet connection! </div>
+          ) : (
+            producto?.map((food) => (
+              <>
+                <SwiperSlide key={food.id_producto} className="slide">
+                  <div
+                    className="food-container"
+                    onClick={() => handleDetailClick(food.id_producto)}
+                  >
+                    {food.id_categoria == 4 ||
+                    food.id_categoria == 5 ||
+                    food.id_categoria == 6 ||
+                    food.id_categoria != 7 ? (
+                      <div className="image-container-food-2">
+                        <img src={food.media_url} />
+                      </div>
+                    ) : (
+                      food.id_categoria != 7 && (
+                        <div className="image-container-food">
+                          <img src={food.media_url} />
+                        </div>
+                      )
+                    )}
 
-              >
-                <div className="food-container" onClick={() => handleDetailClick(food.id_producto)}>
+                    {food.id_categoria == 7 && (
+                      <div className="image-container-food-3">
+                        <img src={food.media_url} />
+                      </div>
+                    )}
 
-                  {food.id_categoria == 4 || food.id_categoria == 5 || food.id_categoria == 6 || food.id_categoria == 7 ? (
-                    <div className="image-container-food-2">
-                      <img className="image-food" src={food.media_url} />
-                    </div>
-                  ) : <div className="image-container-food">
-                    <img className="image-food" src={food.media_url} />
-                  </div>}
-
-
-                  <div className="description-info-container">
-                    <div className="description-list-food">
-                      <h1
-                        style={{
-                          fontSize: "0.4rem",
-                          letterSpacing: "0.2rem",
-                          margin: "0",
-                        }}
-                      >
-                        {" "}
-                        • • • • • •{" "}
-                      </h1>
-                      <h1 className="text-categoria">{food.categoria}</h1>
-                      <h1 className="text-name-food">{food.nombreProducto}</h1>
-                    </div>
-                    <div className="price-container">
-                      <h1 className="text-price-food">
-                        {"$" + food.costo.slice(0, -3)}
-                      </h1>
-                      <h1 className="vertical-text">ИXM</h1>
+                    <div className="description-info-container">
+                      <div className="description-list-food">
+                        <h1
+                          style={{
+                            fontSize: "0.4rem",
+                            letterSpacing: "0.2rem",
+                            margin: "0",
+                          }}
+                        >
+                          {" "}
+                          • • • • • •{" "}
+                        </h1>
+                        <h1 className="text-categoria">{food.categoria}</h1>
+                        <h1 className="text-name-food">
+                          {food.nombreProducto}
+                        </h1>
+                      </div>
+                      <div className="price-container">
+                        <h1 className="text-price-food">
+                          {"$" + food.costo.slice(0, -3)}
+                        </h1>
+                        <h1 className="vertical-text">ИXM</h1>
+                      </div>
                     </div>
                   </div>
-                </div>
 
-                <div className="add-to-cart ">
-                  <img src={add_img} onClick={() => addToCart(food)} />
-                </div>
-              </SwiperSlide>
-            </>
-          )))}
-
-
+                  <div className="add-to-cart ">
+                    <img src={add_img} onClick={() => addToCart(food)} />
+                  </div>
+                </SwiperSlide>
+              </>
+            ))
+          )}
         </Swiper>
 
         {producto.length > 0 && producto[0].id_categoria == id && (
@@ -175,9 +178,7 @@ export const ListFood = () => {
             <img onClick={() => goToCart()} className="car" src={car_img} />
           </div>
         )}
-
       </div>
-
     </>
   );
 };

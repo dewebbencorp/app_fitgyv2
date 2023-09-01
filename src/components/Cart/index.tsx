@@ -15,9 +15,8 @@ export const Cart = () => {
   const { performSQLAction, initialized } = useSQLiteDB();
   const history = useHistory();
   const [items, setItems] = useState<Array<CartI>>();
-  const [cart_total, setTotal] = useState<Array<CartTotal>>();
-
-
+  const [isClear, setClear] = useState(false);
+  const [total, setTotalPrice] = useState(0);
 
   // useEffect to load data on component mount
   useEffect(() => {
@@ -50,11 +49,9 @@ export const Cart = () => {
         const total_price = totalPrice?.values;
         const result = total_prod?.values;
 
-
-
         if (result != undefined && total_price != undefined) {
           setItems(result);
-          setTotal(total_price);
+          setTotalPrice(total_price[0].total_price)
         }
       });
     } catch (error) {
@@ -71,20 +68,16 @@ export const Cart = () => {
           `
         );
 
-
         const result = drop_order;
         console.log("borrado ->");
 
         console.log(result);
 
-        setItems([])
+        setItems([]);
 
         setTimeout(() => {
-          loadData()
+          loadData();
         }, 50);
-
-
-
       });
     } catch (error) {
       alert((error as Error).message);
@@ -94,12 +87,28 @@ export const Cart = () => {
   const handleBackClick = () => {
     history.goBack();
   };
-  {
-    cart_total && <h5>{"$" + cart_total[0].total_price}</h5>;
-  }
-  let totaL = 0;
-  if (cart_total) {
-    totaL = cart_total[0].total_price;
+ 
+  const handleWhatsAppClick = () => {
+    sendWhatsAppMessage(items ?? [], setClear);
+  };
+
+  if (isClear) {
+    setClear(false);
+    try {
+      performSQLAction(async (db: SQLiteDBConnection | undefined) => {
+        const drop_order = await db?.query(`DELETE FROM orders`);
+
+        const result = drop_order;
+
+        if (result?.values?.length == 0) {
+          console.log("BORRAR TODO EL CARRITO");
+          setItems([]);
+          setTotalPrice(0);
+        }
+      });
+    } catch (error) {
+      alert((error as Error).message);
+    }
   }
   return (
     <>
@@ -135,9 +144,10 @@ export const Cart = () => {
                         </div>
 
                         <div className="btn-options-container">
-
-                          <AiFillDelete className="btn-delete-order" onClick={() => dropData(food.name_product)} />
-
+                          <AiFillDelete
+                            className="btn-delete-order"
+                            onClick={() => dropData(food.name_product)}
+                          />
                         </div>
                       </div>
 
@@ -145,8 +155,6 @@ export const Cart = () => {
                         <h5 className="total-product">{food.total_product}</h5>
                       </div>
                     </div>
-
-
                   </div>
                 </>
               ))}
@@ -155,14 +163,11 @@ export const Cart = () => {
         </div>
         <div className="cart-total-container">
           <h4>Total</h4>
-          <h5> {"$" + totaL}</h5>
+          <h5> {"$" + total}</h5>
         </div>
       </div>
 
-      <div
-        className="btn-pay-container"
-        onClick={() => sendWhatsAppMessage(items ?? [], totaL)}
-      >
+      <div className="btn-pay-container" onClick={() => handleWhatsAppClick()}>
         <div className="btn-whats-container">
           <h5 className="text-got">Pedir por WhatsApp</h5>
           <BsWhatsapp className="btn-whats" />

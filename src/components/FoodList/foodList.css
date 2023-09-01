@@ -29,8 +29,8 @@
   align-items: center;
 
   background-color: white;
-  
-  animation: shimmerAnimation 2s ease-in-out  alternate-reverse infinite;
+
+  animation: shimmerAnimation 2s ease-in-out alternate-reverse infinite;
 }
 
 .add-to-cart img {
@@ -64,6 +64,26 @@
   padding: 6vh;
 }
 
+.image-container-food-3 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin-top: 2vh;
+  width: 35vh;
+  height: 30vh;
+  background-color: #fdb382;
+  clip-path: circle(40% at center);
+  padding: 2vw;
+}
+
+.image-container-food-3 img {
+  max-width: 100%;
+  max-height: 90%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+}
 .image-container-food img {
   max-width: 100%;
   max-height: 100%;
