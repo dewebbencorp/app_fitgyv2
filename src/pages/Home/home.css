@@ -1,14 +1,28 @@
-.iontab{
+.iontab {
+  border-top-left-radius: 1.5rem;
+  border-top-right-radius: 1.5rem;
+  height: 9vh;
+  padding-top: 1vh;
+  padding-bottom: 1vh;
+}
+.imgHome {
+  width: 35%;
+}
+ion-tab-button {
+  height: 100%;
+  margin: 1vw;
+  color: white;
+  opacity: 0.7;
+  transition: transform 0.2s ease, opcacity 0.2s ease;
+}
+
+.tab-selected {
+  transform: scale(1.1);
+  opacity: 1;
+  color: white;
   
-    border-radius: 10px;
 }
-.imgHome{
-    width:35%;
-}
-ion-tab-button{
-    color:white;
-}
-.tab-selected{
-    color:#47402e ;
-  
+
+.tab-selected  img{
+  -webkit-animation: ring 3s  ease-in-out forwards;
 }

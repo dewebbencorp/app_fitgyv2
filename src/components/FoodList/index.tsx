@@ -9,12 +9,13 @@ import { useHistory, useParams } from "react-router-dom";
 import { ProductoPorCategoria } from "../../interfaces";
 import { useSQLiteDB } from "../../database";
 import { postFoodByType } from "../../axios/Food";
-import { Loading } from "../LoadScreen";
+import { Loading, LoadingImage } from "../LoadScreen";
 import car_img from "./../FoodDetail/images/img_car.png";
 import add_img from "./images/img_add.png";
 
 import "./foodList.css";
 import "swiper/css";
+import { FadeLoader } from "react-spinners";
 
 export const ListFood = () => {
   const [showLoading, setShowLoading] = useState(true);
@@ -36,21 +37,12 @@ export const ListFood = () => {
 
   const dispatch: ThunkDispatch<any, void, AnyAction> = useDispatch();
 
-  const backButtonHandler = () => {
-    window.location.href = "/home/fitbar";
-  };
-
   useEffect(() => {
     dispatch(postFoodByType(id));
 
     setTimeout(() => {
       setShowLoading(false);
     }, 5000);
-
-    document.addEventListener("ionBackButton", backButtonHandler);
-    return () => {
-      document.removeEventListener("ionBackButton", backButtonHandler);
-    };
   }, [dispatch]);
 
   const data = Object.values(foodByType);
@@ -92,7 +84,10 @@ export const ListFood = () => {
       });
     }
   };
-
+  const [loadImage, setLoadImage] = useState(true);
+  const Loaded = () => {
+    setLoadImage(false);
+  };
   return (
     <>
       <Toaster />
@@ -122,19 +117,22 @@ export const ListFood = () => {
                     food.id_categoria == 6 ||
                     food.id_categoria != 7 ? (
                       <div className="image-container-food-2">
-                        <img src={food.media_url} />
+                        {loadImage && <LoadingImage />}
+                        <img src={food.media_url} onLoad={Loaded} />
                       </div>
                     ) : (
                       food.id_categoria != 7 && (
                         <div className="image-container-food">
-                          <img src={food.media_url} />
+                          {loadImage && <LoadingImage />}
+                          <img src={food.media_url} onLoad={Loaded} />
                         </div>
                       )
                     )}
 
                     {food.id_categoria == 7 && (
                       <div className="image-container-food-3">
-                        <img src={food.media_url} />
+                        {loadImage && <LoadingImage />}
+                        <img src={food.media_url} onLoad={Loaded} />
                       </div>
                     )}
 

@@ -100,3 +100,21 @@
     animation-timing-function: ease-in;
   }
 }
+
+
+/* Loading image*/
+
+.loading-image{
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: baseline;
+  z-index: 22;
+  
+  
+}
+.loading-image div{
+
+  background-color: rgba(0, 0, 0, 0.311);
+  padding: 22vw;
+}

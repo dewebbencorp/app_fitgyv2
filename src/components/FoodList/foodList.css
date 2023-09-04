@@ -39,6 +39,7 @@
 }
 
 .image-container-food {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -52,6 +53,7 @@
 }
 
 .image-container-food-2 {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -65,6 +67,7 @@
 }
 
 .image-container-food-3 {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
