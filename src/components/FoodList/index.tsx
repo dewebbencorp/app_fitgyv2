@@ -84,6 +84,8 @@ export const ListFood = () => {
       });
     }
   };
+
+  
   const [loadImage, setLoadImage] = useState(true);
   const Loaded = () => {
     setLoadImage(false);

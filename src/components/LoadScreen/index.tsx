@@ -39,6 +39,7 @@ export const LoadingImage = () => {
             speedMultiplier={3}
             size={150}
           />
+
         </div>
       </div>
     </>
