@@ -12,23 +12,25 @@ import { addUser } from "../../store/slices/userSlice";
 import { Loading } from "../LoadScreen";
 import { AnyAction, ThunkDispatch } from "@reduxjs/toolkit";
 import { forgotMyPassword } from "../../axios/User";
+import { VIDEO_URL } from "../../axios/Utils";
+import { setVideo } from "../../store/slices/videoLogin";
 
 export const Login = () => {
   const [request, setRequest] = useState({});
-  const [rpIsActive, setRpActive] = useState(false)
-  const [rpResponse, setRpResponse] = useState()
-  const [error, setError] = useState<LoginError>();;
+  const [rpIsActive, setRpActive] = useState(false);
+  const [rpResponse, setRpResponse] = useState();
+  const [error, setError] = useState<LoginError>();
   const history = useHistory();
   const dispatch: ThunkDispatch<any, void, AnyAction> = useDispatch();
 
   const user: Asociado = useSelector((state: Asociado) => state.user);
+  const video_url: any = useSelector((state: any) => state.video);
 
   useEffect(() => {
+    dispatch(setVideo(VIDEO_URL));
     if (user.esSocio === 1) {
       history.replace("/home");
     }
-
-
   });
   const {
     register,
@@ -48,19 +50,13 @@ export const Login = () => {
   });
 
   const resetPass = handleSubmit(async (data) => {
-    reset()
+    reset();
     console.log(data.email);
-    const dta: ResponseUpdate = await dispatch(forgotMyPassword(data.email))
-    setRpResponse(dta.response)
-
-
+    const dta: ResponseUpdate = await dispatch(forgotMyPassword(data.email));
+    setRpResponse(dta.response);
   });
 
-
-
   const { data, loading } = UseFecthPost(request, "/login.php");
-
-
 
   const response: Asociado = data;
 
@@ -69,7 +65,7 @@ export const Login = () => {
       console.log("SI ES SOCIO");
       console.log(response);
 
-      dispatch(addUser(response))
+      dispatch(addUser(response));
       history.replace("/home");
     } else if (!error) {
       console.log("NO ES SOCIO");
@@ -85,22 +81,24 @@ export const Login = () => {
     }
   }, [response.esSocio]);
 
-
-
   return (
     <IonContent>
-
       <div className="dot-container">
-        {
-          user.esSocio === 1 ? <Loading /> : (
-            <div className="login-container">
-              <div className="card-login-container">
-                <div className="logo-container">
-                  <img id="logo" src={logo} alt="Logo" />
-                </div>
+        <div className="video">
+          <video src={video_url} autoPlay loop />
+        </div>
+        {user.esSocio === 1 ? (
+          <Loading />
+        ) : (
+          <div className="login-container">
+            <div className="card-login-container">
+              <div className="logo-container">
+                <img id="logo" src={logo} alt="Logo" />
+              </div>
 
-                <div id="login" className="input-lg" >
-                  {!rpIsActive ? <>
+              <div id="login" className="input-lg">
+                {!rpIsActive ? (
+                  <>
                     <form onSubmit={onSubmit}>
                       <h5 style={{ width: "400px" }}>
                         {error && <span>{error.mensaje}</span>}
@@ -115,7 +113,8 @@ export const Login = () => {
                             message: "Correo es requerido",
                           },
                           pattern: {
-                            value: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
+                            value:
+                              /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
                             message: "Correo no válido",
                           },
                         })}
@@ -136,20 +135,26 @@ export const Login = () => {
                           },
                         })}
                       />
-                      {errors.password && <span>{errors.password.message} </span>}
+                      {errors.password && (
+                        <span>{errors.password.message} </span>
+                      )}
 
                       <div className="btn_login-container">
                         <button type="submit" className="btn_login">
                           Entrar
                         </button>
-                        <span onClick={() => setRpActive(true)}>Olvidé mi contraseña</span>
+                        <span onClick={() => setRpActive(true)}>
+                          Olvidé mi contraseña
+                        </span>
                       </div>
-
                     </form>
-                  </> : <>
+                  </>
+                ) : (
+                  <>
                     <form onSubmit={resetPass}>
                       <div className="reset-pass-container">
-                        <span onClick={() => setRpActive(true)}>{!rpResponse && <>Ingresa tu correo</>}
+                        <span onClick={() => setRpActive(true)}>
+                          {!rpResponse && <>Ingresa tu correo</>}
                           {rpResponse && <>{rpResponse}</>}
                         </span>
                       </div>
@@ -162,36 +167,28 @@ export const Login = () => {
                             message: "Correo es requerido",
                           },
                           pattern: {
-                            value: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
+                            value:
+                              /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
                             message: "Correo no válido",
                           },
                         })}
                       />
 
-
                       <div className="btn_login-container">
                         <button type="submit" className="btn_login">
                           Enviar
                         </button>
-                        <span onClick={() => setRpActive(false)} >Entrar </span>
+                        <span onClick={() => setRpActive(false)}>Entrar </span>
                       </div>
-
                     </form>
-
-                  </>}
-                </div>
+                  </>
+                )}
               </div>
-              {loading && (
-                <Loading />
-              )}
             </div>
-
-
-
-          )
-        }
+            {loading && <Loading />}
+          </div>
+        )}
       </div>
-
     </IonContent>
   );
 };

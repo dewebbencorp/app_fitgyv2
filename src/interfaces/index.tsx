@@ -3,7 +3,7 @@ export interface ProductoCategorias {
   nombre: string;
   descripcion: string;
   media_url: string;
-  types_food: any
+  types_food: any;
 }
 
 export interface ProductoPorCategoria {
@@ -13,10 +13,10 @@ export interface ProductoPorCategoria {
   categoria: string;
   media_url: string;
   costo: number;
-  food_by_tye: any
+  food_by_tye: any;
 }
 export interface ProductoDetalle {
-  id_producto: number
+  id_producto: number;
   nombre: string;
   categoria: string;
   Descripcion: string;
@@ -26,22 +26,20 @@ export interface ProductoDetalle {
 }
 
 export interface ProductosPorPuntos {
-
-  clave: number
-  detalle: string
-  costo: number
-
+  clave: number;
+  detalle: string;
+  costo: number;
 }
 
 export interface ComprasHistorial {
-  monto: number
-  saldo: number
-  tipo: string
-  ticket: number
-  total: number
-  detalle: string
-  cantidad: number
-  fecha: string
+  monto: number;
+  saldo: number;
+  tipo: string;
+  ticket: number;
+  total: number;
+  detalle: string;
+  cantidad: number;
+  fecha: string;
 }
 export interface Asociado {
   user: any;
@@ -63,53 +61,50 @@ export interface Asociado {
 }
 
 export interface UpdateProfile {
-
-  claveSocio: number
-  correo: string
-  telefono: string
-
+  claveSocio: number;
+  correo: string;
+  telefono: string;
 }
 
 export interface RequesChangePassword {
-
-  claveSocio: number
-  newPassword: string
-
+  claveSocio: number;
+  newPassword: string;
 }
 
 export interface ResponseUpdate {
-
-  response: string
-  status: boolean
-
+  response: string;
+  status: boolean;
 }
 
 export interface LoginError {
-  mensaje: string
-  esSocio: 0
+  mensaje: string;
+  esSocio: 0;
 }
 
 export interface NewsData {
-  Img: string
-  Texto: string
-  news_dta: any
+  Img: string;
+  Texto: string;
+  news_dta: any;
+}
+export interface VideoLogin {
+  media_url: string;
 }
 export interface Cards {
-  numTarjeta: string
-  Activo: number
-  card_list: any
+  numTarjeta: string;
+  Activo: number;
+  card_list: any;
 }
 
 export interface validCard {
   claveSocio: number;
-  numTarjeta: number
-  vencimiento: string
-  cvv: number,
+  numTarjeta: number;
+  vencimiento: string;
+  cvv: number;
 }
 
 export interface Preguntas {
-  id_pregunta: number
-  detalle_pregunta: string
+  id_pregunta: number;
+  detalle_pregunta: string;
 }
 
 /* SQLite  */
