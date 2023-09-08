@@ -5,10 +5,11 @@ import "./css/codigoQR.css";
 import qr from "./img/qr.png";
 
 interface Maquina {
-  Clav_art: string;
-  NombreMaquina: string;
-  ImgA: string;
-  Detalle: string;
+  id_maquina: number;
+  nombre_maquina: string;
+  descripcion_maquina: string;
+  video_url: string;
+  status: boolean;
 }
 
 const CodigoQR = () => {
@@ -26,23 +27,22 @@ const CodigoQR = () => {
     setNumMaquina(data.text);
     setShowModal(true);
 
-    let send =({
-            "codigo":data.text
-        });
+    let send = {
+      codigo: data.text,
+    };
 
     let url =
       "https://187.188.16.29:4431/webservice-app2/controllers/detalleMaquina.php";
     fetch(url, {
-      method: "POST", // or 'PUT'
-      body: JSON.stringify(send), // data can be `string` or {object}!
+      method: "POST", 
+      body: JSON.stringify(send), 
       headers: {
         "Content-Type": "application/json",
       },
     })
       .then((res) => res.json())
       .then((data) => {
-        // Manejar la respuesta del servidor
-        setMaquina(data[0]);
+        setMaquina(data);
       })
       .catch((error) => console.error("Error:", error))
       .then((response) => console.log("Success:", response));
@@ -65,15 +65,17 @@ const CodigoQR = () => {
       .then((res) => res.json())
       .then((data) => {
         // Manejar la respuesta del servidor
-        setMaquina(data[0]);
+        setMaquina(data)
       })
       .catch((error) => console.error("Error:", error))
       .then((response) => console.log("Success:", response));
   };
 
+
+
   return (
     <div className="btn_codigoQR">
-      <IonButton fill="outline" onClick={openScanner}>
+      <IonButton fill="outline" onClick={test}>
         <img src={qr} />
         <span className="poppins"> Código QR </span>
       </IonButton>
@@ -83,11 +85,9 @@ const CodigoQR = () => {
         <h2>
           {maquina && (
             <>
-              {maquina.ImgA.includes(".mp4") ? (
-                <video src={BASE_FORLDER + maquina.ImgA} autoPlay />
-              ) : (
-                <img src={BASE_FORLDER + maquina.ImgA} />
-              )}
+              <div>
+              <video  style={{width: '100vw', height:'50vh'}} src={maquina.video_url} autoPlay loop muted/>
+              </div>
             </>
           )}
         </h2>
