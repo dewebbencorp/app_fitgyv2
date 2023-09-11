@@ -34,7 +34,7 @@ export const News = () => {
 
                 <Swiper
                     className='swiper'
-                    spaceBetween={0}
+                    spaceBetween={23}
                     slidesPerView={2.5}
                 >
                     <div >

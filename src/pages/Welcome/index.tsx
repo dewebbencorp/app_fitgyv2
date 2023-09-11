@@ -11,20 +11,21 @@ export const Welcome = () => {
   return (
     <>
       <IonContent>
+        <div className="content">
+          <div className="head-info-container">
+            <div className="welcome-logo">
+              <img src={logo} />
+            </div>
+            <div className="welcome-video">
+              <iframe
+                src="https://www.youtube.com/embed/couK2hOTrno"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              ></iframe>
+            </div>
+          </div>
 
-        <div className="head-info-container">
-          <div className="welcome-logo">
-            <img src={logo} />
-          </div>
-          <div className="welcome-video">
-            <iframe
-              src="https://www.youtube.com/embed/couK2hOTrno"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            ></iframe>
-          </div>
+          <News />
         </div>
-
-        <News />
 
         <CodigoQR />
         <Tarjeta />
