@@ -4,11 +4,7 @@
   animation: fadeAndSlide 0.1s ease-out forwards;
   color: white;
 }
-ion-toolbar {
-  --background: transparent;
-  --color: white;
-  --padding-top: 5vh;
-}
+
 .food-container {
   display: flex;
   align-items: center;

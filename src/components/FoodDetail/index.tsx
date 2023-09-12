@@ -1,4 +1,11 @@
-import { IonCheckbox, IonContent, IonItem, IonToggle } from "@ionic/react";
+import {
+  IonButtons,
+  IonCheckbox,
+  IonContent,
+  IonItem,
+  IonToggle,
+  IonToolbar,
+} from "@ionic/react";
 import { Toaster, toast } from "react-hot-toast";
 import { HiChevronLeft } from "react-icons/hi2";
 import { useHistory, useParams } from "react-router";
@@ -103,10 +110,15 @@ export const FoodDetail = () => {
     <>
       <Toaster />
 
-      <HiChevronLeft
-        onClick={() => handleBackClick()}
-        style={{ fontSize: "3.2rem", marginBottom: "0rem" }}
-      />
+      <IonToolbar>
+        <IonButtons slot="start">
+          <HiChevronLeft
+            onClick={() => handleBackClick()}
+            style={{ fontSize: "3.2rem", marginBottom: "0rem" }}
+          />
+        </IonButtons>
+      </IonToolbar>
+
       {loading && <Loading />}
       {food && (
         <IonContent>
@@ -136,7 +148,14 @@ export const FoodDetail = () => {
                     <h5>{food.categoria}</h5>
                   </div>
                   <div className="description-food">
-                    <h5>{food.Descripcion ?? <div>{food.nombre} Lorem ipsum dolor sit amet consectetur adipisicing.</div>}</h5>
+                    <h5>
+                      {food.Descripcion ?? (
+                        <div>
+                          {food.nombre} Lorem ipsum dolor sit amet consectetur
+                          adipisicing.
+                        </div>
+                      )}
+                    </h5>
                   </div>
                 </div>
               </h1>
