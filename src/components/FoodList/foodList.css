@@ -5,10 +5,9 @@
   color: white;
 }
 ion-toolbar {
-  --background: black;
+  --background: transparent;
   --color: white;
-
-  --padding-top: 7vh;
+  --padding-top: 5vh;
 }
 .food-container {
   display: flex;
