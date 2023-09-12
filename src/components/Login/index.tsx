@@ -1,22 +1,21 @@
-import { IonContent, IonInput } from "@ionic/react";
+import { IonContent } from "@ionic/react";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import logo from "./images/logo.png";
 import "./login.css";
 import { useForm } from "react-hook-form";
-import { UseFecthPost } from "../../auth/post";
 import { Asociado, LoginError, ResponseUpdate } from "../../interfaces";
 import { useHistory } from "react-router-dom";
 import { useSelector } from "react-redux/es/hooks/useSelector";
 import { addUser } from "../../store/slices/userSlice";
 import { Loading } from "../LoadScreen";
 import { AnyAction, ThunkDispatch } from "@reduxjs/toolkit";
-import { forgotMyPassword } from "../../axios/User";
+import { forgotMyPassword, login } from "../../axios/User";
 import { VIDEO_URL } from "../../axios/Utils";
 import { setVideo } from "../../store/slices/videoLogin";
 
 export const Login = () => {
-  const [request, setRequest] = useState({});
+  const [loading, setLoading] = useState(false);
   const [rpIsActive, setRpActive] = useState(false);
   const [rpResponse, setRpResponse] = useState();
   const [error, setError] = useState<LoginError>();
@@ -28,7 +27,7 @@ export const Login = () => {
 
   useEffect(() => {
     dispatch(setVideo(VIDEO_URL));
-    if (user.esSocio === 1) {
+    if (user.status === 1) {
       history.replace("/home");
     }
   });
@@ -44,9 +43,21 @@ export const Login = () => {
     },
   });
 
-  const onSubmit = handleSubmit((data) => {
-    console.log(data);
-    setRequest(data);
+  const onSubmit = handleSubmit(async (data) => {
+    setLoading(true)
+    const dta: any = await dispatch(login(data.email, data.password));
+    if(dta){
+      setLoading(false)
+    }
+    if (dta.status === 1) {
+      console.log(dta);
+      dispatch(addUser(dta));
+      history.replace("/home");
+    } else {
+      console.log(dta.response);
+      setError(dta);
+      history.replace("/login");
+    }
   });
 
   const resetPass = handleSubmit(async (data) => {
@@ -56,38 +67,13 @@ export const Login = () => {
     setRpResponse(dta.response);
   });
 
-  const { data, loading } = UseFecthPost(request, "/login.php");
-
-  const response: Asociado = data;
-
-  const auth = (esSocio: number, err: any, response: Asociado) => {
-    if (esSocio === 1) {
-      console.log("SI ES SOCIO");
-      console.log(response);
-
-      dispatch(addUser(response));
-      history.replace("/home");
-    } else if (!error) {
-      console.log("NO ES SOCIO");
-      history.replace("/login");
-      setError(err);
-    }
-  };
-
-  useEffect(() => {
-    if (data.length !== 0) {
-      console.log("Es socio : " + JSON.stringify(response.esSocio));
-      auth(response.esSocio, response, response);
-    }
-  }, [response.esSocio]);
-
   return (
     <IonContent>
       <div className="dot-container">
         <div className="video">
           <video src={video_url} autoPlay loop />
         </div>
-        {user.esSocio === 1 ? (
+        {user.status === 1 ? (
           <Loading />
         ) : (
           <div className="login-container">
@@ -101,7 +87,7 @@ export const Login = () => {
                   <>
                     <form onSubmit={onSubmit}>
                       <h5 style={{ width: "400px" }}>
-                        {error && <span>{error.mensaje}</span>}
+                        {error && <span>{error.response}</span>}
                       </h5>
 
                       <input

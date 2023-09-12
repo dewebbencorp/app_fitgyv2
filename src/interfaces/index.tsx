@@ -52,12 +52,10 @@ export interface Asociado {
   CorreoE: string;
   NombreMem: string;
   imgAvatar: string;
-  fechaO: string;
-  titular: number;
-  esSocio: number;
+  fecha_vencimiento: string;
+  status: number;
   puntos: number;
-  vencio: number;
-  diasRestantes: number;
+  permisos: number;
 }
 
 export interface UpdateProfile {
@@ -73,12 +71,12 @@ export interface RequesChangePassword {
 
 export interface ResponseUpdate {
   response: string;
-  status: boolean;
+  status: any;
 }
 
 export interface LoginError {
-  mensaje: string;
-  esSocio: 0;
+  response: string;
+  status: any;
 }
 
 export interface NewsData {
