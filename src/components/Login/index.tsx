@@ -44,10 +44,10 @@ export const Login = () => {
   });
 
   const onSubmit = handleSubmit(async (data) => {
-    setLoading(true)
+    setLoading(true);
     const dta: any = await dispatch(login(data.email, data.password));
-    if(dta){
-      setLoading(false)
+    if (dta) {
+      setLoading(false);
     }
     if (dta.status === 1) {
       console.log(dta);
@@ -71,7 +71,7 @@ export const Login = () => {
     <IonContent>
       <div className="dot-container">
         <div className="video">
-          <video src={video_url} autoPlay loop />
+          <video src={VIDEO_URL} autoPlay loop />
         </div>
         {user.status === 1 ? (
           <Loading />
