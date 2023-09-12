@@ -18,7 +18,10 @@ export const Welcome = () => {
             </div>
             <div className="welcome-video">
               <iframe
-                src="https://www.youtube.com/embed/couK2hOTrno"
+                width="560"
+                height="315"
+                src="https://www.youtube.com/embed/couK2hOTrno?si=MmOC3i1kA3GvTljD&amp;controls=0"
+                title="YouTube video player"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               ></iframe>
             </div>

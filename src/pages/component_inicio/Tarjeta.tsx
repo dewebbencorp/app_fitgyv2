@@ -17,12 +17,12 @@ const Tarjeta = () => {
 
   useEffect(() => {
     if (user != null) {
-      setTitular(user.titular);
+      setTitular(user.permisos);
     }
   }, [user, setTitular]);
   return (
     <div className="btn_tarjeta">
-      {titular !== 1 ? (
+      {titular !== 7 ? (
         <IonButton disabled={true} fill="outline">
           <img src={tarjeta} />
           <span> Tarjeta </span>
