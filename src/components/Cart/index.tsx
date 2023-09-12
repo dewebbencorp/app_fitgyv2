@@ -116,9 +116,9 @@ export const Cart = () => {
         <div className="toolbar">
           <IonToolbar>
             <IonButtons slot="start">
-              <IonButton onClick={() => handleBackClick()}>
-                <HiChevronLeft style={{ fontSize: "2.5rem" }} />
-              </IonButton>
+              
+                <HiChevronLeft onClick={() => handleBackClick()} style={{ fontSize: "2.5rem" }} />
+              
             </IonButtons>
             <h1 className="label-title">Mi carrito</h1>
           </IonToolbar>
