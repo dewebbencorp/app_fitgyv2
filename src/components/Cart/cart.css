@@ -70,6 +70,8 @@
   font-size: 1.2em;
   margin-right: 1rem;
   color: red;
+  border-radius: 1rem;
+  background-color: bisque;
 }
 
 .total-product-container {
@@ -193,6 +195,7 @@
 .btn-whats {
   font-size: 3rem;
   padding: 0.9rem;
+  color: white;
 }
 
 .btn-whats-container:hover {
