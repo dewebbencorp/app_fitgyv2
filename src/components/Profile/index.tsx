@@ -165,7 +165,7 @@ export const UserProfile = () => {
 
       <IonModal isOpen={showModal}>
         <div className="btn-close-update-container">
-          <AiOutlineCloseCircle
+        <AiOutlineCloseCircle
             className="btn-close-update"
             onClick={() => setModal(false)}
           />

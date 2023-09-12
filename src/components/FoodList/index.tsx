@@ -16,6 +16,7 @@ import add_img from "./images/img_add.png";
 import "./foodList.css";
 import "swiper/css";
 import { FadeLoader } from "react-spinners";
+import { IonBackButton, IonButtons, IonToolbar } from "@ionic/react";
 
 export const ListFood = () => {
   const [showLoading, setShowLoading] = useState(true);
@@ -85,7 +86,6 @@ export const ListFood = () => {
     }
   };
 
-  
   const [loadImage, setLoadImage] = useState(true);
   const Loaded = () => {
     setLoadImage(false);
@@ -93,12 +93,17 @@ export const ListFood = () => {
   return (
     <>
       <Toaster />
-      <HiChevronLeft
-        onClick={() => handleBackClick()}
-        style={{ fontSize: "3.2rem", marginBottom: "0rem" }}
-      />
 
-      <h1 className="title-list-food">The Fit Bar</h1>
+      <IonToolbar>
+        <IonButtons slot="start">
+          <HiChevronLeft
+            onClick={() => handleBackClick()}
+            style={{ fontSize: "3.2rem", marginBottom: "0rem" }}
+          />
+        </IonButtons>
+      </IonToolbar>
+
+      <h1 className="title-list-food" style={{color:'white'}}>The Fit Bar</h1>
       <h1 className="sub-title-list-food">MENÚ</h1>
       {foodByType[0]?.id_categoria != id && showLoading && <Loading />}
 

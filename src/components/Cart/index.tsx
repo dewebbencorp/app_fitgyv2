@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useSQLiteDB } from "../../database";
 import { SQLiteDBConnection } from "@capacitor-community/sqlite";
-import { IonButton, IonButtons } from "@ionic/react";
+import { IonButton, IonButtons, IonToolbar } from "@ionic/react";
 import { HiChevronLeft } from "react-icons/hi2";
 import { BsWhatsapp } from "react-icons/bs";
 
@@ -51,7 +51,7 @@ export const Cart = () => {
 
         if (result != undefined && total_price != undefined) {
           setItems(result);
-          setTotalPrice(total_price[0].total_price)
+          setTotalPrice(total_price[0].total_price);
         }
       });
     } catch (error) {
@@ -87,7 +87,7 @@ export const Cart = () => {
   const handleBackClick = () => {
     history.goBack();
   };
- 
+
   const handleWhatsAppClick = () => {
     sendWhatsAppMessage(items ?? [], setClear);
   };
@@ -114,13 +114,14 @@ export const Cart = () => {
     <>
       <div className="cart-main-container">
         <div className="toolbar">
-          <IonButtons slot="start">
-            <IonButton onClick={() => handleBackClick()}>
-              <HiChevronLeft style={{ fontSize: "2rem" }} />
-            </IonButton>
-          </IonButtons>
-
-          <h1 className="label-title">Mi carrito</h1>
+          <IonToolbar>
+            <IonButtons slot="start">
+              
+                <HiChevronLeft onClick={() => handleBackClick()} style={{ fontSize: "2.5rem" }} />
+              
+            </IonButtons>
+            <h1 className="label-title">Mi carrito</h1>
+          </IonToolbar>
         </div>
 
         <div className="cart-main">

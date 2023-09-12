@@ -3,7 +3,7 @@ import "./pp.css";
 import { AnyAction, ThunkDispatch } from "@reduxjs/toolkit";
 import { useDispatch, useSelector } from "react-redux";
 import { producsPerPoints } from "../../axios/Food";
-import { IonContent } from "@ionic/react";
+import { IonButtons, IonContent, IonToolbar } from "@ionic/react";
 import { HiChevronLeft } from "react-icons/hi2";
 import { Loading2 } from "../LoadScreen";
 import { Asociado, ProductosPorPuntos } from "../../interfaces";
@@ -42,26 +42,36 @@ export const PP = () => {
       <IonContent>
         {isVisible ? (
           <>
-            <div className="isActive" onClick={() => setIsVisible(false)}>
+            <div className="isActive" style={{marginTop:'4vh'}} onClick={() => setIsVisible(false)}>
               <img src={logo} />
-             <div> <HiChevronLeft/></div>
-             
+              <div>
+                {" "}
+                <HiChevronLeft />
+              </div>
             </div>
             <PchHistory user={user} />
           </>
         ) : (
           <>
-            <HiChevronLeft
-              onClick={() => backButtonHandler()}
-              style={{ fontSize: "3.2rem", marginBottom: "0rem" }}
-            />
+            <IonToolbar>
+              <IonButtons slot="start">
+                <HiChevronLeft
+                  onClick={() => backButtonHandler()}
+                  style={{ fontSize: "3.2rem", marginBottom: "0rem" }}
+                />
+              </IonButtons>
+            </IonToolbar>
+
             <div className="pp-main-container">
               <div className="pp-title">
                 <h1>{user.puntos} PTS</h1>
                 <h3>¿Ya tienes planes para tus puntos?</h3>
 
                 {!isVisible && (
-                  <h3 style={{marginTop: '2vh', color: 'orangered' }} onClick={() => setIsVisible(true)}>
+                  <h3
+                    style={{ marginTop: "2vh", color: "orangered" }}
+                    onClick={() => setIsVisible(true)}
+                  >
                     VER HISTORIAL
                   </h3>
                 )}
