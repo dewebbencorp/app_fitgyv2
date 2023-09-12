@@ -4,7 +4,12 @@
   animation: fadeAndSlide 0.1s ease-out forwards;
   color: white;
 }
+ion-toolbar {
+  --background: transparent;
+  --color: white;
 
+
+}
 .food-container {
   display: flex;
   align-items: center;
@@ -116,7 +121,6 @@
   margin-top: 1vh;
   display: flex;
   flex-direction: column;
-
 }
 .description-list-food {
   display: flex;
