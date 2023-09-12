@@ -113,7 +113,7 @@ input[type="checkbox"]:checked {
   display: flex;
   bottom: 0;
   padding-top: 2vh;
-  padding-bottom: 2vh;
+  padding-bottom: 3vh;
   justify-content: space-between;
   align-items: center;
   background-color: var(--ion-background-color);
@@ -133,7 +133,7 @@ input[type="checkbox"]:checked {
   align-items: center;
   width: 50%;
   font-family: var(--poppins);
-  font-size: 0.8em;
+  font-size: 1em;
   border-radius: 0.5rem;
   margin-right: 3vw;
   background-color: var(--ion-tab-bar-background);
