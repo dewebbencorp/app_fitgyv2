@@ -116,9 +116,10 @@ export const Cart = () => {
         <div className="toolbar">
           <IonToolbar>
             <IonButtons slot="start">
-              
-                <HiChevronLeft onClick={() => handleBackClick()} style={{ fontSize: "2.5rem" }} />
-              
+              <HiChevronLeft
+                onClick={() => handleBackClick()}
+                style={{ fontSize: "2.5rem" }}
+              />
             </IonButtons>
             <h1 className="label-title">Mi carrito</h1>
           </IonToolbar>
@@ -146,7 +147,14 @@ export const Cart = () => {
 
                         <div className="btn-options-container">
                           <AiFillDelete
-                            className="btn-delete-order"
+                            style={{
+                              backgroundColor: "bisque",
+                              fontSize: "2em",
+                              paddingTop: "1rem",
+                              paddingBottom: "1rem",
+                              color: "red",
+                              clipPath: "circle(35% at center)",
+                            }}
                             onClick={() => dropData(food.name_product)}
                           />
                         </div>
