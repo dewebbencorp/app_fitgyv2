@@ -73,11 +73,11 @@
 
 .btn-delete-order {
   background-color: bisque;
-  font-size: 2em;
+  font-size: 2em !important;
   padding-top: 1rem;
   padding-bottom: 1rem;
   color: red;
-  clip-path: circle(25% at center);
+  clip-path: circle(35% at center) !important;
 }
 
 .total-product-container {
