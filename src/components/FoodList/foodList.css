@@ -2,6 +2,7 @@
   opacity: 0;
   transform: translateY(20px);
   animation: fadeAndSlide 0.1s ease-out forwards;
+  color: white;
 }
 
 .food-container {
@@ -112,10 +113,10 @@
 
 .description-info-container {
   width: 23vh;
-  margin-top: 3vh;
+  margin-top: 1vh;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+
 }
 .description-list-food {
   display: flex;
