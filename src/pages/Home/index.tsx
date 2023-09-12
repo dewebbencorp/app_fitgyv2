@@ -66,7 +66,7 @@ export const Home = () => {
               <IonLabel>Fitbar</IonLabel>
             </IonTabButton>
 
-            {user.titular == 0 ? (
+            {user.permisos == 0 ? (
               <IonTabButton tab="cupon" disabled={true} href="/home/cupon">
                 <img width="25%" src={cupon} />
                 <IonLabel>Cupón</IonLabel>

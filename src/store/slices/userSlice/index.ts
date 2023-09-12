@@ -3,22 +3,20 @@ import { Asociado } from "../../../interfaces";
 import { setAndPersistDbUserState, updateUserState } from "../../services/user";
 
 const EmptyUsetState: Asociado = {
-  Nombre_Asociado: "",
-  CorreoE: "",
+  user: undefined,
   Clav_Asociado: 0,
   passedit: 0,
+  Nombre_Asociado: "",
   Telefono: "",
   TipoMembresia: "",
   Apellidos: "",
+  CorreoE: "",
   NombreMem: "",
   imgAvatar: "",
-  fechaO: "",
-  titular: 0,
-  esSocio: 0,
+  fecha_vencimiento: "",
+  status: 0,
   puntos: 0,
-  vencio: 0,
-  diasRestantes: 0,
-  user: undefined,
+  permisos: 0
 };
 
 export const userSlice = createSlice({

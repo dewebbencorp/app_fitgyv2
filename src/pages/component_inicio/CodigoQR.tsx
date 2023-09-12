@@ -75,7 +75,7 @@ const CodigoQR = () => {
 
   return (
     <div className="btn_codigoQR">
-      <IonButton fill="outline" onClick={test}>
+      <IonButton fill="outline" onClick={openScanner}>
         <img src={qr} />
         <span className="poppins"> Código QR </span>
       </IonButton>
