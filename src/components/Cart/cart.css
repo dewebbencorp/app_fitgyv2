@@ -7,8 +7,6 @@
   margin-left: 20%;
 }
 
-
-
 .cart-main-container {
   background: linear-gradient(#ff7d04, #ec540d) !important;
   transform-origin: top;
@@ -18,7 +16,6 @@
   overflow: hidden;
   animation: fadeIn 0.5s ease forwards;
 }
-
 
 .cart-main {
   max-height: 31rem;
@@ -38,8 +35,6 @@
   background-color: #ffffff;
   box-shadow: 0 0 0.5rem 0rem rgba(0, 0, 0, 0.753);
   transition: transform 0.3s ease;
- 
- 
 }
 
 .card-container-food:hover {
@@ -72,12 +67,9 @@
 }
 
 .btn-delete-order {
-  background-color: bisque;
-  font-size: 2em !important;
-  padding-top: 1rem;
-  padding-bottom: 1rem;
+  font-size: 1.2em;
+  margin-right: 1rem;
   color: red;
-  clip-path: circle(35% at center) !important;
 }
 
 .total-product-container {
@@ -100,7 +92,6 @@
   justify-content: left;
   padding-left: 1rem;
   padding-right: 0.7rem;
-  
 }
 
 .card-description-food {
@@ -197,6 +188,7 @@
 .text-got {
   font-size: 0.9rem;
   margin-left: 2vw;
+  color: white;
 }
 .btn-whats {
   font-size: 3rem;
