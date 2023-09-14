@@ -46,7 +46,6 @@ export const Login = () => {
       setLoading(false);
     }
     if (dta.status === 1) {
-      console.log(dta);
       dispatch(addUser(dta));
       history.replace("/home");
     } else {
@@ -62,12 +61,22 @@ export const Login = () => {
     const dta: ResponseUpdate = await dispatch(forgotMyPassword(data.email));
     setRpResponse(dta.response);
   });
+  const [videoLoaded, setVideoLoaded] = useState(false);
 
+  const handleVideoLoaded = () => {
+    setVideoLoaded(true);
+  };
   return (
     <IonContent>
       <div className="dot-container">
         <div className="video">
-          <video src={VIDEO_URL} autoPlay loop />
+          <video
+            src={VIDEO_URL}
+            autoPlay
+            loop
+            onCanPlayThrough={handleVideoLoaded}
+            style={{ display: videoLoaded ? "block" : "none" }}
+          />
         </div>
         {user.status === 1 ? (
           <Loading />

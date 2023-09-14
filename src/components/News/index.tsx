@@ -25,7 +25,7 @@ export const News = () => {
     dispatch(fetchNewsData());
   }, []);
   
-console.log(fotos);
+
 
   return (
     <>
@@ -34,7 +34,7 @@ console.log(fotos);
       </h1>
 
       <div className="news-container">
-        <Swiper className="swiper" spaceBetween={23} slidesPerView={2.5}>
+        <Swiper className="swiper" spaceBetween={15} slidesPerView={2.5}>
           <div>
             {fotos ? (
               fotos.map((item, index) => (
