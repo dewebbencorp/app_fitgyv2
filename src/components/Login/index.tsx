@@ -11,9 +11,7 @@ import { addUser } from "../../store/slices/userSlice";
 import { Loading } from "../LoadScreen";
 import { AnyAction, ThunkDispatch } from "@reduxjs/toolkit";
 import { forgotMyPassword, login } from "../../axios/User";
-import { VIDEO_URL } from "../../axios/Utils";
-import { setVideo } from "../../store/slices/videoLogin";
-
+import VIDEO_URL from "./video/background_login.mp4";
 export const Login = () => {
   const [loading, setLoading] = useState(false);
   const [rpIsActive, setRpActive] = useState(false);
@@ -23,10 +21,8 @@ export const Login = () => {
   const dispatch: ThunkDispatch<any, void, AnyAction> = useDispatch();
 
   const user: Asociado = useSelector((state: Asociado) => state.user);
-  const video_url: any = useSelector((state: any) => state.video);
 
   useEffect(() => {
-    dispatch(setVideo(VIDEO_URL));
     if (user.status === 1) {
       history.replace("/home");
     }

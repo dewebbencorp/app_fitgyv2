@@ -7,7 +7,7 @@ import newsReducer from "./slices/newsData";
 import cardReducer from "./slices/cardSlice";
 import setVCardReducer from "./slices/params";
 import setSurveyReducer from "./slices/questions";
-import videoReducer from "./slices/videoLogin"
+
 export const store = configureStore({
   reducer: {
     user: userReducer,
@@ -18,6 +18,5 @@ export const store = configureStore({
     news_dta: newsReducer,
     card_list: cardReducer,
     survey: setSurveyReducer,
-    video: videoReducer
   },
 });
