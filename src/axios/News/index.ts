@@ -1,8 +1,8 @@
 import { Dispatch } from "react";
 import { addDetailFood } from "../../store/slices/detailFood";
 import axios from "axios";
-import { setNewsData } from "../../store/services/news";
 import { BASE_URL } from "../Utils";
+import { addNewsData } from "../../store/slices/newsData";
 
 export const fetchNewsData =
   () =>
@@ -16,11 +16,11 @@ export const fetchNewsData =
     return axios
       .get(`${BASE_URL}/getNoticias.php`)
       .then((response) => {
-        console.log("NEWSDATA");
-
-        console.log(response.data);
-
-        dispatch(setNewsData(response.data));
+        const responseData = response.data;
+        localStorage.setItem("news_data", JSON.stringify(responseData));
+        dispatch(addNewsData(responseData));
       })
-      .catch((error) => console.log(error));
+      .catch((error) => {
+        console.error(error);
+      });
   };
