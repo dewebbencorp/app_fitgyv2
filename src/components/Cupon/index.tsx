@@ -1,4 +1,5 @@
 import "./cupon.css";
+import cupon_img from "../../pages/Home/img/cupon.png";
 export const Cupon = () => {
   return (
     <>
@@ -19,7 +20,9 @@ export const Cupon = () => {
 
         <div className="btn-generate ">
           <div className="btn-up-dta">
-            <img src="#" /> <p> Generar</p>
+            <div className="btn-cupon-info">
+              <img src={cupon_img} /> <p> Generar</p>
+            </div>
           </div>
         </div>
       </div>

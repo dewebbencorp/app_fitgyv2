@@ -60,3 +60,18 @@ video {
   display: flex;
   justify-content: center;
 }
+
+.btn-cupon-info {
+  display: flex;
+  align-items: center;
+  height: 2vh;
+}
+
+.btn-cupon-info img {
+  width: 6vw;
+  height: 3.5vh;
+  margin-right: 4vw;
+}
+.btn-cupon-info p {
+  font-size: 1.2em;
+}
