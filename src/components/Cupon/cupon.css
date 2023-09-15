@@ -51,16 +51,43 @@ video {
   object-fit: cover;
 }
 
-.btn-generate {
+.btn-generate-container {
   position: absolute;
   left: 0;
   right: 0;
-  bottom: 25vh;
+  bottom: 17vh;
   padding: 1rem;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
 }
 
+.btn-generate-container span {
+  font-family: var(--poppins);
+  font-size: 0.9em;
+  margin-bottom: 1rem;
+  font-size: 0.9em;
+}
+.btn-generate-container .span-m {
+  color: white;
+}
+.btn-generate-container input {
+  margin-bottom: 1rem;
+}
+
+.btn-generate {
+  display: flex;
+  justify-content: center;
+  background-color: var(--ion-tab-bar-background);
+  padding: 0.7rem;
+  border-radius: 0.5rem;
+}
+
+.btn-generate[disabled] {
+  filter: brightness(0.5);
+  color: white;
+  cursor: not-allowed;
+}
 .btn-cupon-info {
   display: flex;
   align-items: center;
