@@ -1,11 +1,30 @@
-import "./cupon.css";
 import cupon_img from "../../pages/Home/img/cupon.png";
 import { useForm } from "react-hook-form";
 import toast, { Toaster } from "react-hot-toast";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { BACKGROUND_CUPON_VIDEO } from "../../constants";
+import { generateCupon } from "../../axios/User";
+import { AnyAction, ThunkDispatch } from "@reduxjs/toolkit";
+import { useDispatch, useSelector } from "react-redux";
+import { Asociado, ResponseUpdate } from "../../interfaces";
+import "./cupon.css";
+import { ShareBarcode } from "./ShareBarcode";
+import {
+  IonButton,
+  IonButtons,
+  IonModal,
+  IonTitle,
+  IonToolbar,
+} from "@ionic/react";
+import { AiOutlineCloseCircle } from "react-icons/ai";
 export const Cupon = () => {
   const [isButtonDisabled, setIsButtonDisabled] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
+  const [code, setCode] = useState("");
+  const dispatch: ThunkDispatch<any, void, AnyAction> = useDispatch();
+
+  const user: Asociado = useSelector((state: Asociado) => state.user);
+  const modal = useRef<HTMLIonModalElement>(null);
   const {
     register,
     handleSubmit,
@@ -20,14 +39,28 @@ export const Cupon = () => {
   const onSubmit = handleSubmit(async (data) => {
     setIsButtonDisabled(true);
     toast.loading("Generando cupon ...");
-    setTimeout(() => {
+    const d: ResponseUpdate = await dispatch(
+      generateCupon(user.Clav_Asociado, data.beneficiario)
+    );
+    if (!d.status) {
       toast.dismiss();
-      toast.success("Cupon generado para: " + data.beneficiario);
+      toast.error("Error al generar el cupon");
       setIsButtonDisabled(false);
-    }, 3000);
-    console.log(data);
+      return;
+    }
+    setCode(d.response);
     reset();
+    toast.dismiss();
+    toast.success("Cupon generado para: " + data.beneficiario);
+    setIsVisible(true);
+    setIsButtonDisabled(false);
   });
+
+  function dismiss() {
+    modal.current?.dismiss;
+    setIsVisible(false);
+  }
+
   return (
     <>
       <Toaster />
@@ -72,6 +105,21 @@ export const Cupon = () => {
           </button>
         </form>
       </div>
+      <IonModal
+        ref={modal}
+        trigger="open-modal"
+        initialBreakpoint={0.7}
+        breakpoints={[1, 0.25, 0.5, 0.75]}
+        isOpen={isVisible}
+      >
+        <div
+          style={{ display: "flex", justifyContent: "end", fontSize: "2rem" }}
+        >
+          <AiOutlineCloseCircle onClick={() => dismiss()} />
+        </div>
+
+        <ShareBarcode code={code} />
+      </IonModal>
     </>
   );
 };

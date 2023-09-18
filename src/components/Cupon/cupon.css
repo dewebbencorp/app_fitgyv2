@@ -102,3 +102,24 @@ video {
 .btn-cupon-info p {
   font-size: 1.2em;
 }
+
+
+/* BARCODE */
+
+.main-barcode{
+  font-family: var(--poppins);
+  display: flex;
+  height: 50vh;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: transparent;
+  gap: 1rem;
+}
+.bar-info{
+  
+  background-color: white;
+  padding: 2rem;
+  border-radius: 1rem;
+  
+}
