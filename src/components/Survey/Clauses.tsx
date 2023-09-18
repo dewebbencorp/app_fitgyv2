@@ -73,9 +73,9 @@ export const Clauses = () => {
                 </p>
               </>
             )}
-            <div style={{ fontSize: "0.7em", marginTop: "1rem" }}>
-              <button className="btn-send-survey">Aceptar </button>{" "}
-              <button className="btn-send-survey"  onClick={salir}>Salir </button>
+            <div style={{ display:'flex',gap:'2rem',fontSize: "0.7em", marginTop: "1rem" }}>
+              <div className="action">Aceptar </div>
+              <div className="action"  onClick={salir}>Salir </div>
             </div>
           </div>
         </div>

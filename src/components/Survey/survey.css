@@ -115,3 +115,24 @@
   border-radius: 1rem;
   overflow-y: auto;
 }
+
+.ver-mas {
+  display: flex;
+  justify-content: center;
+  width: 5rem;
+  border: solid tomato 1px;
+  border-radius: 1rem;
+  font-size: 1em;
+  margin-top: 2vh;
+  animation: shimmerAnimation 1.5s infinite;
+}
+
+.action {
+  display: flex;
+  justify-content: center;
+  width: 5rem;
+  color: tomato;
+  border: solid tomato 1px;
+  border-radius: 1rem;
+  font-size: 1em;
+}
