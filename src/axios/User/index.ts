@@ -132,6 +132,7 @@ export const login =
               puntos: response.data[0].Saldo,
               fecha_vencimiento: response.data[0].FVencimientos.date,
               permisos: response.data[0].permisos,
+              terminos: response.data[0].aceptoTerminos,
             };
 
             resolve(responseData);

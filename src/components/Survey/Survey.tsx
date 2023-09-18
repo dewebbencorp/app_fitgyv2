@@ -78,6 +78,7 @@ export const Survey = () => {
 
     return (
         <>
+      
 
             <Toaster />
             {isVisible && question.detalle_pregunta && <div className="card-container-survey">
