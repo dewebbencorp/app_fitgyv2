@@ -8,7 +8,7 @@ import { HiChevronLeft } from "react-icons/hi2";
 import { Loading2 } from "../LoadScreen";
 import { Asociado, ProductosPorPuntos } from "../../interfaces";
 import { PchHistory } from "./History";
-import logo from "./../../pages/Welcome/images/logo.png";
+import logo from "./../../pages/Welcome/img/logo.png";
 
 export const PP = () => {
   const user: Asociado = useSelector((state: Asociado) => state.user);

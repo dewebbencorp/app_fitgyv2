@@ -19,13 +19,13 @@ import { AnyAction } from "redux";
 import { Toaster, toast } from "react-hot-toast";
 import { close, cloudUpload } from "ionicons/icons";
 import { SendWh } from "../SendWh";
+import { BASE_AVATAR_PROFILE } from "../../constants";
 
 export const UserProfile = () => {
   const [showModal, setModal] = useState(false);
   const [actionSh, setActionSh] = useState(false);
   const user: Asociado = useSelector((state: Asociado) => state.user);
-  const basefolder =
-    "https://187.188.16.29:4431/webservice-app2/assets/avatars-users/";
+
   const history = useHistory();
 
   const dispatch: ThunkDispatch<any, void, AnyAction> = useDispatch();
@@ -107,7 +107,7 @@ export const UserProfile = () => {
           <div className="head-containaer-2">
             <div className="profile-data-container">
               <img
-                src={basefolder + user.imgAvatar}
+                src={BASE_AVATAR_PROFILE + user.imgAvatar}
                 className="profile-image"
                 onClick={() => setActionSh(true)}
               />
@@ -165,7 +165,7 @@ export const UserProfile = () => {
 
       <IonModal isOpen={showModal}>
         <div className="btn-close-update-container">
-        <AiOutlineCloseCircle
+          <AiOutlineCloseCircle
             className="btn-close-update"
             onClick={() => setModal(false)}
           />

@@ -1,10 +1,9 @@
 import { IonContent } from "@ionic/react";
-import Noticias from "../component_inicio/Noticias";
-import CodigoQR from "../component_inicio/CodigoQR";
-import Tarjeta from "../component_inicio/Tarjeta";
-import Whats from "../component_inicio/Whats";
-import logo from "./images/logo.png";
-import "./welcome.css";
+import CodigoQR from "./CodigoQR";
+import Tarjeta from "./Tarjeta";
+import Whats from "./Whats";
+import logo from "./img/logo.png";
+import "./css/welcome.css";
 import { News } from "../../components/News";
 
 export const Welcome = () => {

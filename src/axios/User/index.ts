@@ -150,3 +150,28 @@ export const login =
         });
     });
   };
+
+export const generateCupon =
+  (claveSocio: number, beneficiario: string) =>
+  (dispatch: Dispatch<any>): Promise<ResponseUpdate> => {
+    const postData = {
+      clave_asociado: claveSocio,
+      beneficiario: beneficiario,
+    };
+
+    return new Promise<ResponseUpdate>((resolve, reject) => {
+      axios
+        .post(`${BASE_URL}/generarCupon.php`, postData)
+        .then((response) => {
+          const responseData: ResponseUpdate = {
+            response: response.data.message,
+            status: response.data.generado,
+          };
+          resolve(responseData);
+        })
+        .catch((error) => {
+          console.log(error);
+          reject(error);
+        });
+    });
+  };

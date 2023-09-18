@@ -1,323 +1,125 @@
+import cupon_img from "../../pages/Home/img/cupon.png";
+import { useForm } from "react-hook-form";
+import toast, { Toaster } from "react-hot-toast";
+import { useRef, useState } from "react";
+import { BACKGROUND_CUPON_VIDEO } from "../../constants";
+import { generateCupon } from "../../axios/User";
+import { AnyAction, ThunkDispatch } from "@reduxjs/toolkit";
+import { useDispatch, useSelector } from "react-redux";
+import { Asociado, ResponseUpdate } from "../../interfaces";
+import "./cupon.css";
+import { ShareBarcode } from "./ShareBarcode";
 import {
   IonButton,
-  IonContent,
-  IonInput,
+  IonButtons,
   IonModal,
-  IonAlert,
-  IonProgressBar,
+  IonTitle,
+  IonToolbar,
 } from "@ionic/react";
-import Barcode from "react-barcode";
-import { useState, useEffect, useRef } from "react";
-import { SocialSharing } from "@ionic-native/social-sharing";
-import html2canvas from "html2canvas";
-import cupon from "./../../pages/Home/img/cupon.png";
-import compartir from "./../../pages//Home/img/compartir.png";
-import "./cupon.css";
-import ListaBarcode from "../../pages/component_barcode/ListaBarcode";
-import { useSelector } from "react-redux/es/hooks/useSelector";
-import { Asociado } from "../../interfaces";
-
+import { AiOutlineCloseCircle } from "react-icons/ai";
 export const Cupon = () => {
+  const [isButtonDisabled, setIsButtonDisabled] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
+  const [code, setCode] = useState("");
+  const dispatch: ThunkDispatch<any, void, AnyAction> = useDispatch();
+
   const user: Asociado = useSelector((state: Asociado) => state.user);
-  const [codigo, setCodigo] = useState("");
-  const [beneficiario, setBeneficiario] = useState("");
-  const [aceptaTerminos, setAceptaTerminos] = useState<boolean>();
-  const [showAlert, setShowAlert] = useState(false);
-  const [showAlertCondiciones, setShowAlertCondiciones] = useState(false);
-  const [showProgress, setShowProgress] = useState(false);
-  const [showModal, setShowModal] = useState<boolean>(false);
-  const [showListaCodigos, setShowListaCodigos] = useState<boolean>(false);
-  const [fechaFormateada, setFechaFormateada] = useState("");
-  const [anuncio, setAnuncio] = useState("");
-  const [progressTerminos, setProgressTerminos] = useState(false);
-  const barcode = useRef(null);
+  const modal = useRef<HTMLIonModalElement>(null);
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    reset,
+  } = useForm({
+    defaultValues: {
+      beneficiario: "",
+    },
+  });
 
-  useEffect(() => {
-    const fechaActual = new Date();
-    setFechaFormateada(formatFecha(fechaActual));
-    console.log("alerta condiciones", showAlertCondiciones);
-    let send = {
-      claveSocio: user?.Clav_Asociado,
-    };
-    let url =
-      "https://187.188.16.29:4431/webservice-app2/controllers/getAceptaTerminos.php";
-    fetch(url, {
-      method: "POST", // or 'PUT'
-      // data can be `string` or {object}!
-      body: JSON.stringify(send),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        setAceptaTerminos(data.aceptoTerminos);
-
-        if (aceptaTerminos == false) {
-          setAnuncio("Debes aceptar los términos y condiciones");
-          setShowAlertCondiciones(true);
-        } else {
-          setShowAlertCondiciones(false);
-        }
-        // Manejar la respuesta del servidor
-      })
-      .catch((error) => console.error("Error:", error))
-      .then((response) => console.log("Success:", response));
-  }, [fechaFormateada, aceptaTerminos]);
-
-  const aceptoTerminos = () => {
-    setAnuncio("Aceptando terminos...");
-    setProgressTerminos(true);
-    let send = {
-      claveSocio: user?.Clav_Asociado,
-    };
-    let url =
-      "https://187.188.16.29:4431/webservice-app2/controllers/aceptaTerminos.php";
-    fetch(url, {
-      method: "POST", // or 'PUT'
-      // data can be `string` or {object}!
-      body: JSON.stringify(send),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        setProgressTerminos(false);
-        console.log(data);
-        if (data.valido) {
-          setAceptaTerminos(true);
-        }
-      })
-      .catch((error) => console.error("Error:", error))
-      .then((response) => console.log("Success:", response));
-  };
-  const share = async () => {
-    setShowProgress(true);
-    if (barcode.current) {
-      html2canvas(barcode.current).then(function (canvas) {
-        const img = document.createElement("img");
-        img.src = canvas.toDataURL("image/png");
-
-        try {
-          SocialSharing.share(
-            "Te envio este regalo para que disfrutes :)",
-            "Te envio este regalo para que disfrutes :)",
-            img.src
-          );
-          setShowProgress(false);
-          console.log("Compartido con éxito");
-        } catch (error) {
-          console.error("Error al compartir:", error);
-        }
-      });
+  const onSubmit = handleSubmit(async (data) => {
+    setIsButtonDisabled(true);
+    toast.loading("Generando cupon ...");
+    const d: ResponseUpdate = await dispatch(
+      generateCupon(user.Clav_Asociado, data.beneficiario)
+    );
+    if (!d.status) {
+      toast.dismiss();
+      toast.error("Error al generar el cupon");
+      setIsButtonDisabled(false);
+      return;
     }
-  };
+    setCode(d.response);
+    reset();
+    toast.dismiss();
+    toast.success("Cupon generado para: " + data.beneficiario);
+    setIsVisible(true);
+    setIsButtonDisabled(false);
+  });
 
-  const crearCodigoBarras = () => {
-    if (beneficiario != "") {
-      let send = {
-        beneficiario: beneficiario,
-        claveSocio: user?.Clav_Asociado,
-      };
-      let url =
-        "https://187.188.16.29:4431/webservice-app2/controllers/crearTarjetaRegalo.php";
-      fetch(url, {
-        method: "POST", // or 'PUT'
-        body: JSON.stringify(send), // data can be `string` or {object}!
-        headers: {
-          "Content-Type": "application/json",
-        },
-      })
-        .then((res) => res.json())
-        .then((data) => {
-          console.log(data);
-          // Manejar la respuesta del servidor
-          setCodigo(data.codigo);
-
-          setShowModal(true);
-        })
-        .catch((error) => console.error("Error:", error))
-        .then((response) => console.log("Success:", response));
-    } else {
-      setShowAlert(true);
-    }
-  };
+  function dismiss() {
+    modal.current?.dismiss;
+    setIsVisible(false);
+  }
 
   return (
-    <IonContent>
-      {aceptaTerminos ? (
-        <div className="generaCupon">
-          <div id="barraNaranja"></div>
-
-          <div id="contenedorCupon"></div>
-          <div id="tituloCupon">
-            <h5 className="poppins" id="t_fit">
-              The Fit Bar
-            </h5>
-            <span className="poppins" id="t_cupon">
-              CUPÓN
-            </span>
+    <>
+      <Toaster />
+      <div className="main-cupon-container">
+        <div className="cupon-container">
+          <div className="head-cupon">
+            <h1>The Fit Bar</h1>
+            <h2>MENÚ</h2>
           </div>
-
-          <div id="nombreBeneficiario">
-            <IonInput
-              placeholder="Nombre de beneficiario"
-              value={beneficiario}
-              onIonInput={(e: any) => {
-                setBeneficiario(e.target.value);
-              }}
-            ></IonInput>
-          </div>
-
-          <div id="btn_generar">
-            <IonButton onClick={crearCodigoBarras}>
-              <img src={cupon} width="10%" /> &nbsp; Generar
-            </IonButton>
-          </div>
-
-          <div id="btn_listar">
-            <IonButton onClick={() => setShowListaCodigos(true)}>
-              {" "}
-              Códigos generados{" "}
-            </IonButton>
+          <div className="video-container">
+            <video src={BACKGROUND_CUPON_VIDEO} autoPlay loop />
           </div>
         </div>
-      ) : (
-        <div>
-          <h2 className="poppins" id="anuncio">
-            {anuncio}{" "}
-          </h2>
-        </div>
-      )}
-      {progressTerminos ? (
-        <IonProgressBar
-          className="progress"
-          type="indeterminate"
-          color="light"
-        ></IonProgressBar>
-      ) : (
-        <div></div>
-      )}
+        <form onSubmit={onSubmit} className="btn-generate-container">
+          {errors.beneficiario ? (
+            <span>{errors.beneficiario.message}</span>
+          ) : (
+            <span className="span-m">Ingresa el nombre del beneficiario</span>
+          )}
+          <input
+            type="text"
+            {...register("beneficiario", {
+              required: {
+                value: true,
+                message: "! El nombre es requerido ¡",
+              },
+              minLength: {
+                value: 3,
+                message: "! El nombre debe ser mayor a 3 caracteres ¡",
+              },
+            })}
+          />
 
-      <IonModal isOpen={showModal}>
-        <div ref={barcode} id="barcode">
-          <div id="barraNaranja">
-            <h3 className="poppins">Cupón exitoso</h3>
-            <p className="poppins">{fechaFormateada}</p>
-            <p className="poppins">Beneficiario: {beneficiario}</p>
-          </div>
-          <div id="tarjetaRegalo">
-            <div>
-              <Barcode value={codigo} />
+          <button
+            type="submit"
+            className="btn-generate"
+            disabled={isButtonDisabled}
+          >
+            <div className="btn-cupon-info">
+              <img src={cupon_img} /> <p> Generar</p>
             </div>
-          </div>
+          </button>
+        </form>
+      </div>
+      <IonModal
+        ref={modal}
+        trigger="open-modal"
+        initialBreakpoint={0.7}
+        breakpoints={[1, 0.25, 0.5, 0.75]}
+        isOpen={isVisible}
+      >
+        <div
+          style={{ display: "flex", justifyContent: "end", fontSize: "2rem" }}
+        >
+          <AiOutlineCloseCircle onClick={() => dismiss()} />
         </div>
-        <div id="cerrar">
-          <div id="compartir">
-            <img src={compartir} onClick={share} width="10%" />
-            <p className="poppins">Compartir</p>
-          </div>
-          <IonButton onClick={() => setShowModal(false)}>Cerrar</IonButton>
-        </div>
-        {showProgress ? (
-          <IonProgressBar
-            className="progress"
-            type="indeterminate"
-            color="light"
-          ></IonProgressBar>
-        ) : (
-          <div></div>
-        )}
-      </IonModal>
 
-      <IonModal isOpen={showListaCodigos}>
-        <ListaBarcode />
-        <IonButton onClick={() => setShowListaCodigos(false)}>Cerrar</IonButton>
+        <ShareBarcode code={code} />
       </IonModal>
-
-      <IonAlert
-        isOpen={showAlert}
-        onDidDismiss={() => setShowAlert(false)}
-        cssClass="my-custom-class"
-        header={"Cuidado"}
-        message={"Debe ingresar un beneficiario."}
-        buttons={[
-          {
-            text: "Ok",
-          },
-        ]}
-      />
-      <IonAlert
-        isOpen={showAlertCondiciones}
-        onDidDismiss={() => setShowAlert(false)}
-        cssClass="my-custom-class"
-        header={"Términos y condiciones"}
-        message={"¿Aceptas los terminos y condiciones?"}
-        buttons={[
-          {
-            text: "Si",
-            role: "confirm",
-            handler: () => {
-              aceptoTerminos();
-            },
-          },
-          {
-            text: "No",
-            role: "cancel",
-          },
-        ]}
-      />
-    </IonContent>
+    </>
   );
-};
-
-const formatFecha = (fecha: Date) => {
-  const diaActual = fecha.getDate();
-  const mesActual = fecha.getMonth() + 1;
-  const anioActual = fecha.getFullYear();
-  let fechaFormateada = "";
-  switch (mesActual) {
-    case 1:
-      fechaFormateada = diaActual + " de Enero de " + anioActual;
-      break;
-    case 2:
-      fechaFormateada = diaActual + " de Febrero de " + anioActual;
-      break;
-    case 3:
-      fechaFormateada = diaActual + " de Marzo de " + anioActual;
-      break;
-    case 4:
-      fechaFormateada = diaActual + " de Abril de " + anioActual;
-      break;
-    case 5:
-      fechaFormateada = diaActual + " de Mayo de " + anioActual;
-      break;
-    case 6:
-      fechaFormateada = diaActual + " de Junio de " + anioActual;
-      break;
-    case 7:
-      fechaFormateada = diaActual + " de Julio de " + anioActual;
-      break;
-    case 8:
-      fechaFormateada = diaActual + " de Agosto de " + anioActual;
-      break;
-    case 9:
-      fechaFormateada = diaActual + " de Septiembre de " + anioActual;
-      break;
-    case 10:
-      fechaFormateada = diaActual + " de Octubre de " + anioActual;
-      break;
-    case 11:
-      fechaFormateada = diaActual + " de Noviembre de " + anioActual;
-      break;
-    case 12:
-      fechaFormateada = diaActual + " de Diciembre de " + anioActual;
-      break;
-
-    default:
-      fechaFormateada = "Fecha incorrecta";
-      break;
-  }
-  return fechaFormateada;
 };
