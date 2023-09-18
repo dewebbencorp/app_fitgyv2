@@ -16,7 +16,8 @@ const EmptyUsetState: Asociado = {
   fecha_vencimiento: "",
   status: 0,
   puntos: 0,
-  permisos: 0
+  permisos: 0,
+  terminos: 3
 };
 
 export const userSlice = createSlice({

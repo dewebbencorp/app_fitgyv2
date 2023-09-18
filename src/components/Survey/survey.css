@@ -80,3 +80,38 @@
   color: var(--ion-tab-bar-background);
   transition: color 0.3s;
 }
+
+/* CLAUSE */
+
+.clause-card {
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 1rem;
+  width: 80vw;
+  padding: 1rem;
+}
+
+.clause-card h5 {
+  font-size: 1em;
+  color: black;
+  font-family: var(--poppins);
+}
+
+.clause-card p {
+  color: black;
+  font-family: var(--poppins);
+}
+
+.clause-text {
+  background-color: whitesmoke;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 20vh;
+  padding: 1em;
+  border-radius: 1rem;
+  overflow-y: auto;
+}

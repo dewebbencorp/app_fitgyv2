@@ -56,6 +56,7 @@ export interface Asociado {
   status: number;
   puntos: number;
   permisos: number;
+  terminos: number
 }
 
 export interface UpdateProfile {
