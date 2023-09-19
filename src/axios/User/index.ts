@@ -7,7 +7,53 @@ import {
   ResponseUpdate,
   UpdateProfile,
 } from "../../interfaces";
+export const login =
+  (email: string, password: string) =>
+  (dispatch: Dispatch<any>): Promise<Asociado | ResponseUpdate> => {
+    const postData = {
+      email: email,
+      password: password,
+    };
 
+    return new Promise<Asociado | ResponseUpdate>((resolve, reject) => {
+      axios
+        .post(`${BASE_URL}/login.php`, postData)
+        .then((response) => {
+          if (response.data[0] && response.data[0].status === 1) {
+            const responseData: Asociado = {
+              user: undefined,
+              Clav_Asociado: response.data[0].Clav_Asociado,
+              passedit: response.data[0].passedit,
+              Nombre_Asociado: response.data[0].Nombre_Asociado,
+              Telefono: response.data[0].Telefono,
+              TipoMembresia: response.data[0].TipoMembresia,
+              Apellidos: response.data[0].Apellidos,
+              CorreoE: response.data[0].CorreoE,
+              NombreMem: response.data[0].NombreMembresia,
+              imgAvatar: response.data[0].imgAvatar,
+              status: response.data[0].status,
+              puntos: response.data[0].Saldo,
+              fecha_vencimiento: response.data[0].FVencimientos.date,
+              permisos: response.data[0].permisos,
+              terminos: response.data[0].aceptoTerminos,
+            };
+
+            resolve(responseData);
+          } else if (response.data) {
+            const responseData2: ResponseUpdate = {
+              response: response.data.message,
+              status: response.data.status,
+            };
+
+            resolve(responseData2);
+          }
+        })
+        .catch((error) => {
+          console.log(error);
+          reject(error);
+        });
+    });
+  };
 export const uploadPhono =
   (img: string, cveSocio: number) =>
   (dispatch: Dispatch<any>): Promise<any> => {
@@ -96,54 +142,6 @@ export const forgotMyPassword =
             status: true,
           };
           resolve(responseData);
-        })
-        .catch((error) => {
-          console.log(error);
-          reject(error);
-        });
-    });
-  };
-
-export const login =
-  (email: string, password: string) =>
-  (dispatch: Dispatch<any>): Promise<Asociado | ResponseUpdate> => {
-    const postData = {
-      email: email,
-      password: password,
-    };
-
-    return new Promise<Asociado | ResponseUpdate>((resolve, reject) => {
-      axios
-        .post(`${BASE_URL}/login.php`, postData)
-        .then((response) => {
-          if (response.data[0] && response.data[0].status === 1) {
-            const responseData: Asociado = {
-              user: undefined,
-              Clav_Asociado: response.data[0].Clav_Asociado,
-              passedit: response.data[0].passedit,
-              Nombre_Asociado: response.data[0].Nombre_Asociado,
-              Telefono: response.data[0].Telefono,
-              TipoMembresia: response.data[0].TipoMembresia,
-              Apellidos: response.data[0].Apellidos,
-              CorreoE: response.data[0].CorreoE,
-              NombreMem: response.data[0].NombreMembresia,
-              imgAvatar: response.data[0].imgAvatar,
-              status: response.data[0].status,
-              puntos: response.data[0].Saldo,
-              fecha_vencimiento: response.data[0].FVencimientos.date,
-              permisos: response.data[0].permisos,
-              terminos: response.data[0].aceptoTerminos,
-            };
-
-            resolve(responseData);
-          } else if (response.data) {
-            const responseData2: ResponseUpdate = {
-              response: response.data.message,
-              status: response.data.status,
-            };
-
-            resolve(responseData2);
-          }
         })
         .catch((error) => {
           console.log(error);

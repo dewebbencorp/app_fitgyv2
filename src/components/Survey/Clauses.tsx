@@ -1,11 +1,16 @@
-import { useSelector } from "react-redux";
-import { Asociado } from "../../interfaces";
+import { useDispatch, useSelector } from "react-redux";
+import { Asociado, ResponseUpdate } from "../../interfaces";
 import { useState } from "react"; // Importa el hook useState
 import { App } from "@capacitor/app";
+import { updateContract } from "../../axios/Card";
+import { AnyAction, ThunkDispatch } from "@reduxjs/toolkit";
+import toast, { Toaster } from "react-hot-toast";
+import { updateUserFields } from "../../store/slices/userSlice";
 
 export const Clauses = () => {
+  const dispatch: ThunkDispatch<any, void, AnyAction> = useDispatch();
   const user: Asociado = useSelector((state: Asociado) => state.user);
-
+  const [isButtonDisabled, setIsButtonDisabled] = useState(false);
   const [mostrarContenidoCompleto, setMostrarContenidoCompleto] =
     useState(false);
 
@@ -13,12 +18,26 @@ export const Clauses = () => {
     setMostrarContenidoCompleto(true);
   };
 
-  const salir = () => {
+  const exit = () => {
     App.exitApp();
+  };
+  const updateC = async () => {
+    setIsButtonDisabled(true);
+    toast.loading("Validando infomación...");
+    const contract: ResponseUpdate = await dispatch(
+      updateContract(user.Clav_Asociado, user.CorreoE)
+    );
+    if (contract) {
+      console.log(contract);
+      toast.dismiss();
+      toast.success(`${contract.response}`);
+      dispatch(updateUserFields({ terminos: 1 }));
+    }
   };
 
   return (
     <>
+      <Toaster />
       {user.terminos == 0 && user.Clav_Asociado ? (
         <div className="card-container-survey">
           <div className="clause-card">
@@ -73,9 +92,30 @@ export const Clauses = () => {
                 </p>
               </>
             )}
-            <div style={{ display:'flex',gap:'2rem',fontSize: "0.7em", marginTop: "1rem" }}>
-              <div className="action">Aceptar </div>
-              <div className="action"  onClick={salir}>Salir </div>
+            <div
+              style={{
+                display: "flex",
+                gap: "2rem",
+                fontSize: "0.7em",
+                marginTop: "1rem",
+              }}
+            >
+              <button
+                className="action"
+                style={{ background: "transparent" }}
+                onClick={updateC}
+                disabled={isButtonDisabled}
+              >
+                Aceptar{" "}
+              </button>
+              <button
+                className="action"
+                style={{ background: "transparent" }}
+                onClick={exit}
+                disabled={isButtonDisabled}
+              >
+                Salir{" "}
+              </button>
             </div>
           </div>
         </div>
