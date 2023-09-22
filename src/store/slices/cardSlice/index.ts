@@ -4,7 +4,7 @@ import { Cards } from "../../../interfaces";
 const EmptyCard: Cards = {
   numTarjeta: "",
   Activo: 0,
-  cards: undefined,
+  card_list: undefined
 };
 
 export const cardSlice = createSlice({

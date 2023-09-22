@@ -27,7 +27,12 @@ export const FoodDetail = () => {
   const [total, setTotal] = useState<number>(1);
   const [checkboxValues, setCheckboxValues] = useState({});
   const history = useHistory();
-  const { id } = useParams();
+
+  interface RouteParams {
+    id: string;
+  }
+  const { id } = useParams<RouteParams>();
+
   const { performSQLAction, initialized } = useSQLiteDB();
 
   const options = [
@@ -38,7 +43,7 @@ export const FoodDetail = () => {
     // Agrega más opciones aquí si es necesario
   ];
 
-  const handleCheckboxChange = (event) => {
+  const handleCheckboxChange = (event: { target: { name: any; checked: any; }; }) => {
     const { name, checked } = event.target;
     setCheckboxValues((prevValues) => ({
       ...prevValues,
