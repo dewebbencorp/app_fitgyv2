@@ -15,7 +15,7 @@ import VIDEO_URL from "./video/background_login.mp4";
 export const Login = () => {
   const [loading, setLoading] = useState(false);
   const [rpIsActive, setRpActive] = useState(false);
-  const [rpResponse, setRpResponse] = useState();
+  const [rpResponse, setRpResponse] = useState<any>();
   const [error, setError] = useState<LoginError>();
   const history = useHistory();
   const dispatch: ThunkDispatch<any, void, AnyAction> = useDispatch();

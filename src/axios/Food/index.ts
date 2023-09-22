@@ -25,7 +25,7 @@ export const fetchTypesFood =
   };
 
 export const postFoodByType =
-  (id: number) =>
+  (id: string) =>
   (dispatch: Dispatch<any>): Promise<void> => {
     const postData = {
       id_Categoria: `${id}`,
@@ -40,7 +40,7 @@ export const postFoodByType =
   };
 
 export const postFoodDetail =
-  (id: number) =>
+  (id: string) =>
   (dispatch: Dispatch<any>): Promise<void> => {
     const postData = {
       id_Producto: id,

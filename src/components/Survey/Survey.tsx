@@ -21,7 +21,7 @@ export const Survey = () => {
     let MINUTES: number = 40
     let SECONDS: number = 30
 
-    const handleRadioChange = (event: { target: { value: React.SetStateAction<null>; }; }) => {
+    const handleRadioChange = (event:any) => {
         setSelectedValue(event.target.value);
     };
     const backButtonHandler = () => {

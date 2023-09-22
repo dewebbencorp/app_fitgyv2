@@ -12,7 +12,7 @@ import { Loading2 } from "../LoadScreen";
 export const News = () => {
   const [showModal, setModal] = useState(false);
   const [fullImage, setFullImage] = useState<string>();
-  const fotos: NewsData[] = useSelector((state: NewsData[]) => state.news_dta);
+  const fotos: NewsData[] = useSelector((state: any) => state.news_dta);
 
   const dispatch: ThunkDispatch<any, void, AnyAction> = useDispatch();
 

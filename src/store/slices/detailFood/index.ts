@@ -3,12 +3,13 @@ import { ProductoDetalle } from "../../../interfaces";
 import { saveDetail } from "../../services/fitbar";
 
 const EmptyDetail: ProductoDetalle = {
-  nombreProducto: "",
+  id_producto: 0,
+  nombre: "",
   categoria: "",
-  descripcion: "",
-  media_url: "",
+  Descripcion: "",
+  img_url: "",
   costo: 0,
-  detail_food: undefined,
+  detail_food: undefined
 };
 
 export const detailFood = createSlice({

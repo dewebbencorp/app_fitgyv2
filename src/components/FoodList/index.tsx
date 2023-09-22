@@ -24,7 +24,11 @@ export const ListFood = () => {
     (state: ProductoPorCategoria) => state.food_by_tye
   );
 
-  const { id } = useParams();
+  interface RouteParams {
+    id: string;
+  }
+
+  const { id } = useParams<RouteParams>();
 
   const history = useHistory();
   const { performSQLAction, initialized } = useSQLiteDB();
@@ -48,7 +52,7 @@ export const ListFood = () => {
 
   const data = Object.values(foodByType);
 
-  const producto: ProductoPorCategoria[] = data.filter(
+  const producto: ProductoPorCategoria[] | any = data.filter(
     (item) =>
       typeof item === "object" && item !== null && "id_categoria" in item
   );
@@ -103,7 +107,9 @@ export const ListFood = () => {
         </IonButtons>
       </IonToolbar>
 
-      <h1 className="title-list-food" style={{color:'white'}}>The Fit Bar</h1>
+      <h1 className="title-list-food" style={{ color: "white" }}>
+        The Fit Bar
+      </h1>
       <h1 className="sub-title-list-food">MENÚ</h1>
       {foodByType[0]?.id_categoria != id && showLoading && <Loading />}
 
@@ -112,7 +118,7 @@ export const ListFood = () => {
           {producto[0]?.id_categoria != id ? (
             <div>You need an internet connection! </div>
           ) : (
-            producto?.map((food) => (
+            producto?.map((food: ProductoPorCategoria) => (
               <>
                 <SwiperSlide key={food.id_producto} className="slide">
                   <div
@@ -162,7 +168,7 @@ export const ListFood = () => {
                       </div>
                       <div className="price-container">
                         <h1 className="text-price-food">
-                          {"$" + food.costo.slice(0, -3)}
+                          {"$" + food.costo.toString().slice(0, -3)}
                         </h1>
                         <h1 className="vertical-text">ИXM</h1>
                       </div>

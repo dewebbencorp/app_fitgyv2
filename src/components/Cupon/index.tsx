@@ -53,7 +53,7 @@ export const Cupon = () => {
     reset();
     toast.dismiss();
     toast.success("Cupon generado para: " + data.beneficiario);
-    setName(data.beneficiario)
+    setName(data.beneficiario);
     setIsVisible(true);
     setIsButtonDisabled(false);
   });
@@ -108,7 +108,6 @@ export const Cupon = () => {
         </form>
       </div>
       <IonModal
-        ref={modal}
         trigger="open-modal"
         initialBreakpoint={0.7}
         breakpoints={[1, 0.25, 0.5, 0.75]}

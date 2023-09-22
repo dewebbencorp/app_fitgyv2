@@ -42,13 +42,14 @@ export const AddCard = ({ setModal }: any) => {
           toast.success(`Exito : ${response.mensaje}`);
           //reset();
 
-          const contact : ResponseUpdate= await dispatch(updateContract(user.Clav_Asociado, user.CorreoE));
-          if(contract){
+          const contact: ResponseUpdate = await dispatch(
+            updateContract(user.Clav_Asociado, user.CorreoE)
+          );
+          if (contract) {
             console.log(contact);
-            
+
             toast.success(`${contact.response}`);
           }
-         
         } else {
           toast.error(`Error : ${response.mensaje}`);
         }
@@ -114,7 +115,7 @@ export const AddCard = ({ setModal }: any) => {
               })}
             />
 
-            {errors.ncard && <span>{errors.ncard.message}</span>}
+            {errors.ncard && <span>{errors.ncard.message as string}</span>}
             <h5>Fecha de vencimiento</h5>
             <input
               className="date-deadline-input"
@@ -133,7 +134,7 @@ export const AddCard = ({ setModal }: any) => {
                 },
               })}
             />
-            {errors.date && <span>{errors.date.message}</span>}
+            {errors.date && <span>{errors.date.message as string}</span>}
             <h5>Codigo de seguridad</h5>
             <div className="cvv-container">
               <input
@@ -155,7 +156,7 @@ export const AddCard = ({ setModal }: any) => {
 
               <img src={card_img} />
             </div>
-            {errors.cvv && <span>{errors.cvv.message}</span>}
+            {errors.cvv && <span>{errors.cvv.message as string}</span>}
 
             <div className="btn-close-container btn-send-up btn-save">
               <button type="submit" className="btn-up-dta">
