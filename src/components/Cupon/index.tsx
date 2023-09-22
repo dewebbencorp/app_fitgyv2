@@ -21,10 +21,11 @@ export const Cupon = () => {
   const [isButtonDisabled, setIsButtonDisabled] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
   const [code, setCode] = useState("");
+  const [name, setName] = useState<string>();
   const dispatch: ThunkDispatch<any, void, AnyAction> = useDispatch();
 
   const user: Asociado = useSelector((state: Asociado) => state.user);
-  const modal = useRef<HTMLIonModalElement>(null);
+  const modal = useRef<HTMLIonModalElement>();
   const {
     register,
     handleSubmit,
@@ -52,6 +53,7 @@ export const Cupon = () => {
     reset();
     toast.dismiss();
     toast.success("Cupon generado para: " + data.beneficiario);
+    setName(data.beneficiario)
     setIsVisible(true);
     setIsButtonDisabled(false);
   });
@@ -118,7 +120,7 @@ export const Cupon = () => {
           <AiOutlineCloseCircle onClick={() => dismiss()} />
         </div>
 
-        <ShareBarcode code={code} />
+        <ShareBarcode code={code} name={name ? name : ""} />
       </IonModal>
     </>
   );
