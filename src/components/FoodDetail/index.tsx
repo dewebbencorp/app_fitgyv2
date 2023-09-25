@@ -109,7 +109,7 @@ export const FoodDetail = () => {
 
   const food: ProductoDetalle = foodi[0];
 
-  console.log(checkboxValues);
+ 
 
   return (
     <>

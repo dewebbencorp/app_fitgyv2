@@ -1,28 +1,36 @@
-import { IonContent } from "@ionic/react";
+import React, { useState, useEffect } from "react";
+import { IonContent, IonToast } from "@ionic/react";
 import CodigoQR from "./CodigoQR";
 import Tarjeta from "./Tarjeta";
 import Whats from "./Whats";
 import logo from "./img/logo.png";
 import "./css/welcome.css";
 import { News } from "../../components/News";
+import { WELCOME_VIDEO } from "../../constants";
 
 export const Welcome = () => {
+  const [showNoInternetToast, setShowNoInternetToast] = useState(false);
+
+  useEffect(() => {
+    // Verificar la conexión a Internet aquí
+    const isOnline = navigator.onLine;
+
+    // Mostrar el mensaje si no hay conexión a Internet
+    setShowNoInternetToast(!isOnline);
+  }, []);
+
   return (
     <>
       <IonContent>
         <div className="content">
           <div className="head-info-container">
             <div className="welcome-logo">
-              <img src={logo} />
+              <img src={logo} alt="Logo" />
             </div>
             <div className="welcome-video">
-              <iframe
-                width="560"
-                height="315"
-                src="https://www.youtube.com/embed/couK2hOTrno?si=MmOC3i1kA3GvTljD&amp;controls=0"
-                title="YouTube video player"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              ></iframe>
+              <video src={WELCOME_VIDEO} autoPlay loop controls>
+                conectate a internet
+              </video>
             </div>
           </div>
 
@@ -33,6 +41,14 @@ export const Welcome = () => {
         <Tarjeta />
         <Whats />
       </IonContent>
+
+      {/* Mostrar un mensaje si no hay conexión a Internet */}
+      <IonToast
+        isOpen={showNoInternetToast}
+        message="No hay conexión a Internet. Por favor, verifica tu conexión e intenta de nuevo."
+        duration={5000}
+        onDidDismiss={() => setShowNoInternetToast(false)}
+      />
     </>
   );
 };

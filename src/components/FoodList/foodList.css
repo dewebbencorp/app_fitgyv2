@@ -15,7 +15,7 @@
   margin-left: 30vw;
   border-radius: 32vw;
   height: 64vh;
-  width: 29vh;
+  width: 30vh;
   position: relative;
 }
 
@@ -37,6 +37,24 @@
 .add-to-cart img {
   width: 12vh;
   padding: 4vh;
+}
+.image-container-food-finally {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin-top: 2vh;
+  width: 38vh;
+  height: 30vh;
+  clip-path: circle(40% at center);
+  background-color: #fdb382;
+  padding: 2.1rem;
+}
+.image-fl {
+  object-fit: cover;
+  width: 100vh;
+  height: 100%;
 }
 
 .image-container-food {

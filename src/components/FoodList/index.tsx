@@ -121,7 +121,7 @@ export const ListFood = () => {
                     className="food-container"
                     onClick={() => handleDetailClick(food.id_producto)}
                   >
-                    {food.id_categoria == 4 ||
+                    {/* {food.id_categoria == 4 ||
                     food.id_categoria == 5 ||
                     food.id_categoria == 6 ||
                     food.id_categoria != 7 ? (
@@ -143,7 +143,12 @@ export const ListFood = () => {
                         {loadImage && <LoadingImage />}
                         <img src={food.media_url} onLoad={Loaded} />
                       </div>
-                    )}
+                    )} */}
+
+                    <div className="image-container-food-finally">
+                      {loadImage && <LoadingImage />}
+                      <img className="image-fl" src={food.media_url} onLoad={Loaded} />
+                    </div>
 
                     <div className="description-info-container">
                       <div className="description-list-food">
