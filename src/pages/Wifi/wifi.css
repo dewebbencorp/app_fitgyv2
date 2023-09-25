@@ -1,39 +1,60 @@
-#titulo1{
-    font-size:1.4rem;
-    margin-top:5rem;
-    text-align:center; 
+.wifi-container {
+  position: absolute;
+  top: -2rem;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
-#titulo2{
-    font-size:7.5rem;
-    margin-top:1rem;
-    text-align:center;
-    letter-spacing:6px
+#titulo1 {
+  font-size: 1.4rem;
+  text-align: center;
 }
-#imgWifi{
-    margin-top:1rem;
-    width:70%;
-    margin-left:3.5rem
+#titulo2 {
+  font-size: 7rem;
+
+  text-align: center;
+  letter-spacing: 6px;
 }
-#nombreRed,#password2{
-    text-align: center;
+.img-ctn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-#nombreRed h6{
-    font-size: 1.5rem;
+
+.img-ctn img {
+  width: 60%;
 }
-#nombreRed span{
-    font-size: 1.3rem;
-    color:var(--naranja1);
+#nombreRed,
+#password2 {
+  text-align: center;
 }
-#password2 h6{
-    font-size: 1.5rem;
-  
+#nombreRed h6 {
+  font-size: 1.5rem;
 }
-#password2 span{
-    position: relative;
-    top:1.5rem;
-    font-size: 1.3rem;
-    border:2px solid var(--naranja1);
-    border-radius: 12px;
-    padding:1rem;
-    letter-spacing: 3px;
+#nombreRed span {
+  font-size: 1.3rem;
+  color: var(--naranja1);
+}
+#password2 h6 {
+  font-size: 1.5rem;
+}
+
+#password2 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#password2 span {
+  width: 100%;
+  top: 1.5rem;
+  font-size: 1.3rem;
+  border: 2px solid var(--naranja1);
+  border-radius: 12px;
+  padding: 1rem;
+  letter-spacing: 3px;
+  margin-bottom: 2vh;
 }

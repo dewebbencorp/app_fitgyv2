@@ -26,22 +26,28 @@ export const Wifi = () => {
 
   return (
     <IonContent>
-      <h4 id="titulo1" className="poppins">
-        Mantente en línea mientras
-      </h4>
-      <h3 className="kenyan" id="titulo2">
-        <i> ENTRENAS</i>
-      </h3>
-      <img id="imgWifi" src={wifiPrincipal} />
-      <div id="datosWifi">
-        <div id="nombreRed">
-          <h6 className="poppins">Nombre de la red:</h6>
-          <span> {nombreRed} </span>
+      <div className="wifi-container">
+        <h4 id="titulo1" className="poppins">
+          Mantente en línea mientras
+        </h4>
+        <h3 className="kenyan" id="titulo2">
+          <i> ENTRENAS</i>
+        </h3>
+
+        <div className="img-ctn">
+          <img src={wifiPrincipal} />
         </div>
 
-        <div id="password2">
-          <h6 className="poppins">Contraseña:</h6>
-          <span> {password} </span>
+        <div id="datosWifi">
+          <div id="nombreRed">
+            <h6 className="poppins">Nombre de la red:</h6>
+            <span> {nombreRed} </span>
+          </div>
+
+          <div id="password2">
+            <h6 className="poppins">Contraseña:</h6>
+            <span> {password} </span>
+          </div>
         </div>
       </div>
     </IonContent>
