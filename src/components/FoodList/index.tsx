@@ -12,14 +12,13 @@ import { postFoodByType } from "../../axios/Food";
 import { Loading, LoadingImage } from "../LoadScreen";
 import car_img from "./../FoodDetail/images/img_car.png";
 import add_img from "./images/img_add.png";
-
 import "./foodList.css";
 import "swiper/css";
-import { FadeLoader } from "react-spinners";
 import { IonBackButton, IonButtons, IonToolbar } from "@ionic/react";
 
 export const ListFood = () => {
   const [showLoading, setShowLoading] = useState(true);
+  const [producto, setProducto] = useState<ProductoPorCategoria[]>();
   const foodByType: any = useSelector(
     (state: ProductoPorCategoria) => state.food_by_tye
   );
@@ -43,20 +42,17 @@ export const ListFood = () => {
   const dispatch: ThunkDispatch<any, void, AnyAction> = useDispatch();
 
   useEffect(() => {
-    dispatch(postFoodByType(id));
+    getData();
+  }, []);
 
-    setTimeout(() => {
+  const getData = async () => {
+    setShowLoading(true);
+    const dta = await dispatch(postFoodByType(id));
+    if (dta) {
+      setProducto(dta);
       setShowLoading(false);
-    }, 5000);
-  }, [dispatch]);
-
-  const data = Object.values(foodByType);
-
-  const producto: ProductoPorCategoria[] | any = data.filter(
-    (item) =>
-      typeof item === "object" && item !== null && "id_categoria" in item
-  );
-
+    }
+  };
   const handleBackClick = () => {
     window.location.href = "/home/fitbar";
   };
@@ -115,7 +111,7 @@ export const ListFood = () => {
 
       <div className="main-fl-container">
         <Swiper className="swiper" spaceBetween={50} slidesPerView={1}>
-          {producto[0]?.id_categoria != id ? (
+          {foodByType[0]?.id_categoria != id ? (
             <div>You need an internet connection! </div>
           ) : (
             producto?.map((food: ProductoPorCategoria) => (
@@ -184,7 +180,7 @@ export const ListFood = () => {
           )}
         </Swiper>
 
-        {producto.length > 0 && producto[0].id_categoria == id && (
+        {producto && producto.length > 0 && (
           <div className="got-cart">
             <img onClick={() => goToCart()} className="car" src={car_img} />
           </div>

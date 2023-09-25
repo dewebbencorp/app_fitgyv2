@@ -118,8 +118,8 @@ export const UserProfile = () => {
           <div className="my-account">
             <div className="detail-account">
               <div className="detail-title">
-                <h3 className="kenyan">Perfil</h3>
-                <h5>¡Actualiza tu infomación!</h5>
+                <h3 className="kenyan">MI CUENTA</h3>
+                <h5>Revisar detalles de mi cuenta</h5>
               </div>
 
               <PiPencilSimple
@@ -129,10 +129,7 @@ export const UserProfile = () => {
             </div>
 
             <h3 className="kenyan" style={{ fontSize: "1.7em" }}>
-              Cliente{" "}
-              {user &&
-                user.NombreMem.charAt(0).toUpperCase() +
-                  user.NombreMem.slice(1).toLowerCase()}
+              CLIENTE PREMIUM
             </h3>
 
             <div className="ponits-container" onClick={() => gotPp()}>
@@ -153,7 +150,7 @@ export const UserProfile = () => {
               </div>
             </div>
             <div className="memberships">
-              <h1 className="kenyan">Membresia</h1>
+              <h1 className="kenyan">MEMBRESÍA</h1>
               <h2>Activa hasta: {deadline && deadline} </h2>
             </div>
           </div>

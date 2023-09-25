@@ -4,41 +4,70 @@ import { addFoodTypes } from "../../store/slices/typeFoodSlice";
 import { addFoodByType } from "../../store/slices/foodByTypeSlice";
 import { addDetailFood } from "../../store/slices/detailFood";
 import { BASE_URL } from "../Utils";
-import { ComprasHistorial, ProductosPorPuntos } from "../../interfaces";
+import {
+  ComprasHistorial,
+  ProductoCategorias,
+  ProductoPorCategoria,
+  ProductosPorPuntos,
+} from "../../interfaces";
 
 export const fetchTypesFood =
   () =>
-  (dispatch: Dispatch<any>): Promise<void> => {
-    const typesFoodData = localStorage.getItem("types_food");
+  async (dispatch: Dispatch<any>): Promise<ProductoCategorias[]> => {
+    try {
+      const response = await axios.get(`${BASE_URL}/getCategorias.php`);
 
-    if (typesFoodData) {
-      return Promise.resolve();
+      const responseData = response.data;
+
+      const map = responseData.map((product: any) => ({
+        id_categoria: product.id_categoria,
+        nombre: product.nombre,
+        descripcion: product.descripcion,
+        media_url: product.media_url,
+      }));
+      console.log(map);
+
+      dispatch(addFoodTypes(map));
+
+      return map;
+    } catch (error) {
+      console.log(error);
+      throw error;
     }
-
-    return axios
-      .get(`${BASE_URL}/getCategorias.php`)
-      .then((response) => {
-        dispatch(addFoodTypes(response.data));
-        localStorage.setItem("types_food", JSON.stringify(response.data));
-      })
-      .catch((error) => console.log(error));
   };
 
 export const postFoodByType =
   (id: string) =>
-  (dispatch: Dispatch<any>): Promise<void> => {
+  async (dispatch: Dispatch<any>): Promise<ProductoPorCategoria[]> => {
     const postData = {
       id_Categoria: `${id}`,
     };
+    try {
+      const response = await axios.post(
+        `${BASE_URL}/getCategoria_producto.php`,
+        postData
+      );
 
-    return axios
-      .post(`${BASE_URL}/getCategoria_producto.php`, postData)
-      .then((response) => {
-        dispatch(addFoodByType(response.data));
-      })
-      .catch((error) => console.log(error));
+      const responseData = response.data;
+
+      const map = responseData.map((product: any) => ({
+        id_producto: product.id_producto,
+        id_categoria: product.id_categoria,
+        nombreProducto: product.nombreProducto,
+        categoria: product.categoria,
+        media_url: product.media_url,
+        costo: product.costo,
+        food_by_tye: undefined,
+      }));
+
+      dispatch(addFoodByType(map));
+
+      return map;
+    } catch (error) {
+      console.log(error);
+      throw error;
+    }
   };
-
 export const postFoodDetail =
   (id: string) =>
   (dispatch: Dispatch<any>): Promise<void> => {

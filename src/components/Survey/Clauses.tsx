@@ -54,7 +54,7 @@ export const Clauses = () => {
                 </p>
 
                 <div className="clause-text">
-                  <p>Clausula</p>
+                  <p>¡Lorem impus!</p>
 
                   <p>
                     Lorem ipsum dolor sit amet consectetur adipisicing elit.

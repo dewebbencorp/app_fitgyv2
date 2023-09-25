@@ -42,7 +42,11 @@ export const PP = () => {
       <IonContent>
         {isVisible ? (
           <>
-            <div className="isActive" style={{marginTop:'4vh'}} onClick={() => setIsVisible(false)}>
+            <div
+              className="isActive"
+              style={{ marginTop: "4vh" }}
+              onClick={() => setIsVisible(false)}
+            >
               <img src={logo} />
               <div>
                 {" "}

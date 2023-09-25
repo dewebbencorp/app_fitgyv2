@@ -22,6 +22,7 @@ h2 {
 }
 
 .head-cupon h1 {
+  margin-top: 1.5rem;
   font-size: 1.7em;
   color: white;
 }
@@ -135,10 +136,10 @@ video {
   border-top-left-radius: inherit;
   border-top-right-radius: inherit;
   color: white;
- 
+
   background-color: var(--ion-tab-bar-background);
 }
-.bar-info .c-info h1{
+.bar-info .c-info h1 {
   font-size: large;
 }
 .bar-info div {

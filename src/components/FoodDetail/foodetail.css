@@ -54,7 +54,8 @@
   display: flex;
   flex-direction: column;
   align-items: start;
-  
+  margin-left: 1rem;
+  margin-right: 1rem;
 }
 .title-food {
   /*TODO*/
@@ -83,8 +84,8 @@
   display: flex;
   align-items: center;
   justify-content: left;
-  margin-left:5vw;
-  margin-right:15vw;
+  margin-left: 5vw;
+  margin-right: 15vw;
 }
 
 input[type="checkbox"] {
@@ -94,14 +95,14 @@ input[type="checkbox"] {
   margin-left: 5%;
   border: 2px solid var(--ion-tab-bar-background); /* Contorno para el checkbox no seleccionado */
   border-radius: 4rem; /* Bordes redondeados */
-
-  
 }
 
 /* Estilos para el checkbox seleccionado */
 input[type="checkbox"]:checked {
-  background-color: var(--ion-tab-bar-background); /* Cambiar el fondo cuando está seleccionado */
-  background-image: url('./images/check.png'); /* Ruta a tu archivo de icono */
+  background-color: var(
+    --ion-tab-bar-background
+  ); /* Cambiar el fondo cuando está seleccionado */
+  background-image: url("./images/check.png"); /* Ruta a tu archivo de icono */
   background-size: 16px; /* Ajustar el tamaño del icono */
   background-position: center; /* Posicionar el icono en el centro */
   background-repeat: no-repeat;
