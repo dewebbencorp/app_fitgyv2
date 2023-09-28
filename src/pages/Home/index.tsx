@@ -14,18 +14,19 @@ import { Wifi } from "../Wifi";
 import { Fitbar } from "../Fitbar/Fitbar";
 import "./home.css";
 import home from "./img/home.png";
-import perfil from "./img/perfil.png";
 import fitbar from "./img/fitbar.png";
 import cupon from "./img/cupon.png";
 import wifi from "./img/wifi.png";
 import { Profile } from "../Profile";
 import { Welcome } from "../Welcome";
 import { useEffect } from "react";
+import { FiUser, FiWifi } from "react-icons/fi";
+import { IoHomeOutline } from "react-icons/io5";
+import { RiCoupon5Line } from "react-icons/ri";
 export const Home = () => {
   const user: Asociado = useSelector((state: Asociado) => state.user);
   const location = useLocation();
 
-  console.log(location.pathname);
   useEffect(() => {
     if (!user.Nombre_Asociado) {
       window.location.href = "/login";
@@ -52,7 +53,9 @@ export const Home = () => {
             </IonRouterOutlet>
             <IonTabBar className="iontab" slot="bottom">
               <IonTabButton tab="perfil" href="/home/perfil">
-                <img width="30%" src={perfil} />
+                <span>
+                  <FiUser />
+                </span>
                 <IonLabel>Perfil</IonLabel>
               </IonTabButton>
 
@@ -61,25 +64,33 @@ export const Home = () => {
                 <IonLabel>Fitbar</IonLabel>
               </IonTabButton>
               <IonTabButton tab="inicio" href="/home/inicio">
-                <img width="60%"   src={home} />
+                <span>
+                  <IoHomeOutline />
+                </span>
                 <IonLabel>Home</IonLabel>
               </IonTabButton>
 
               {user.permisos == 0 ? (
                 <IonTabButton tab="cupon" disabled={true} href="/home/cupon">
-                  <img width="25%" src={cupon} />
+                  <span>
+                    <RiCoupon5Line />
+                  </span>
                   <IonLabel>Cupón</IonLabel>
                 </IonTabButton>
               ) : (
                 <IonTabButton tab="cupon" href="/home/cupon">
-                  <img width="25%" src={cupon} />
+                  <span>
+                    <RiCoupon5Line />
+                  </span>
 
                   <IonLabel>Cupón </IonLabel>
                 </IonTabButton>
               )}
 
               <IonTabButton tab="wifi" href="/home/wifi">
-                <img width="45%" src={wifi} />
+                <span>
+                  <FiWifi />
+                </span>
                 <IonLabel>Wifi</IonLabel>
               </IonTabButton>
             </IonTabBar>

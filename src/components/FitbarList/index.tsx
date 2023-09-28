@@ -9,7 +9,6 @@ import { useHistory } from "react-router";
 import { fetchTypesFood } from "../../axios/Food";
 
 export const FitbarList = () => {
-
   const food: ProductoCategorias = useSelector(
     (state: ProductoCategorias) => state.types_food
   );
@@ -21,7 +20,6 @@ export const FitbarList = () => {
 
   const history = useHistory();
   const handleDivClick = (id: number) => {
-   
     history.push(`/fitbar/food/${id}`);
   };
 
@@ -35,20 +33,15 @@ export const FitbarList = () => {
 
   return (
     <>
-
       <IonContent>
         <div className="header-info-container">
           <div className="header-info">
-            <h2 className="header-title-1">
-              Realiza tu pedido a través de
-            </h2>
+            <h2 className="header-title-1">Realiza tu pedido a través de</h2>
             <span className="progresbar-line">
               <IonProgressBar value={1} color="light" className="custom-pg" />
             </span>
 
-            <h1 className="header-title-2">
-              WhatsApp
-            </h1>
+            <h1 className="header-title-2">WhatsApp</h1>
           </div>
         </div>
         <div className="main-contaier">
@@ -59,9 +52,10 @@ export const FitbarList = () => {
               key={type_food.id_categoria}
             >
               <div className="card">
-                <div className="icon-container">
+                <div className="icon-ctn">
                   <img className="icon_type_food" src={type_food.media_url} />
                 </div>
+
                 <div className="card-description">
                   <h1 className="title">{type_food.nombre}</h1>
                   <h2 className="description limit-text ">
@@ -75,6 +69,4 @@ export const FitbarList = () => {
       </IonContent>
     </>
   );
-
-
 };
