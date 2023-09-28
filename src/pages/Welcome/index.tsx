@@ -28,7 +28,7 @@ export const Welcome = () => {
               <img src={logo} alt="Logo" />
             </div>
             <div className="welcome-video">
-              <video src={WELCOME_VIDEO} autoPlay loop controls>
+              <video src={WELCOME_VIDEO} autoPlay  >
                 conectate a internet
               </video>
             </div>
