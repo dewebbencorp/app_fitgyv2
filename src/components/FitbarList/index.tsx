@@ -53,7 +53,19 @@ export const FitbarList = () => {
             >
               <div className="card">
                 <div className="icon-ctn">
-                  <img className="icon_type_food" src={type_food.media_url} />
+                  {
+                    (type_food.id_categoria === 7 ? (
+                      <img
+                        className="icon_type_food-2"
+                        src={type_food.media_url}
+                      />
+                    ) : (
+                      <img
+                        className="icon_type_food"
+                        src={type_food.media_url}
+                      />
+                    ))
+                  }
                 </div>
 
                 <div className="card-description">

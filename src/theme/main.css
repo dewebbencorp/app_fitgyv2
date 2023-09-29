@@ -1,7 +1,7 @@
 @font-face {
   font-family: kenyan coffee;
-  font-style: normal;
-  font-weight: 700;
+  font-style: italic;
+  font-weight: 100;
   src: local("Kenyan Coffee"), url("./fonts/kenyan-coffee.woff") format("woff");
 }
 
@@ -26,6 +26,7 @@ body {
   --ion-gray-background: #444242;
 }
 .kenyan {
+  letter-spacing: 4px;
   font-family: var(--kenyan);
 }
 .poppins {

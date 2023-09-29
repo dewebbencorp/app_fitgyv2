@@ -108,7 +108,6 @@ export const UserProfile = () => {
             <div className="profile-data-container">
               <img
                 src={BASE_AVATAR_PROFILE + user.imgAvatar}
-                className="profile-image"
                 onClick={() => setActionSh(true)}
               />
             </div>
@@ -145,8 +144,8 @@ export const UserProfile = () => {
               onClick={() => SendWh(INBODY_MESSAGE)}
             >
               <div className="btn-add-inbody">
-                <img className="schedule-icon" src={schedule} />
-                <h5>Agendar Inbody</h5>
+              <img className="schedule-icon" src={schedule} />
+                <h3>Agendar Inbody</h3>
               </div>
             </div>
             <div className="memberships">
