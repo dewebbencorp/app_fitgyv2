@@ -60,13 +60,11 @@ export const Home = () => {
               </IonTabButton>
 
               <IonTabButton tab="fitbar" href="/home/fitbar">
-                <img width="60%" src={fitbar} />
+                <img className="img-tab" width="60%" src={fitbar} />
                 <IonLabel>Fitbar</IonLabel>
               </IonTabButton>
               <IonTabButton tab="inicio" href="/home/inicio">
-                <span>
-                  <IoHomeOutline />
-                </span>
+                <img className="img-tab" width="70%" src={home} />
                 <IonLabel>Home</IonLabel>
               </IonTabButton>
 
@@ -79,9 +77,7 @@ export const Home = () => {
                 </IonTabButton>
               ) : (
                 <IonTabButton tab="cupon" href="/home/cupon">
-                  <span>
-                    <RiCoupon5Line />
-                  </span>
+                  <img className="img-tab" width="35%" src={cupon} />
 
                   <IonLabel>Cupón </IonLabel>
                 </IonTabButton>

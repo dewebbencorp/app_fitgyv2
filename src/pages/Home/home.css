@@ -34,5 +34,11 @@ ion-tab-button span {
 .tab-selected span {
   opacity: 1;
   color: white;
-  -webkit-animation: ring 3s ease-in-out forwards;
+  animation: ring 3s ease-in-out forwards;
+}
+
+.tab-selected .img-tab {
+  opacity: 1;
+  color: white;
+  animation: ring 3s ease-in-out forwards;
 }
