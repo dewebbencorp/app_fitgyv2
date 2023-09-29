@@ -26,8 +26,7 @@ export const fetchTypesFood =
         descripcion: product.descripcion,
         media_url: product.media_url,
       }));
-      console.log(map);
-
+   
       dispatch(addFoodTypes(map));
 
       return map;
