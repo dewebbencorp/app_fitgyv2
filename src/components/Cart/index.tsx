@@ -18,7 +18,6 @@ export const Cart = () => {
   const [isClear, setClear] = useState(false);
   const [total, setTotalPrice] = useState(0);
 
-  // useEffect to load data on component mount
   useEffect(() => {
     setTimeout(() => {
       loadData();
@@ -68,11 +67,6 @@ export const Cart = () => {
           `
         );
 
-        const result = drop_order;
-        console.log("borrado ->");
-
-        console.log(result);
-
         setItems([]);
 
         setTimeout(() => {
@@ -116,9 +110,10 @@ export const Cart = () => {
         <div className="toolbar">
           <IonToolbar>
             <IonButtons slot="start">
-              
-                <HiChevronLeft onClick={() => handleBackClick()} style={{ fontSize: "2.5rem" }} />
-              
+              <HiChevronLeft
+                onClick={() => handleBackClick()}
+                style={{ fontSize: "2.5rem" }}
+              />
             </IonButtons>
             <h1 className="label-title">Mi carrito</h1>
           </IonToolbar>
@@ -133,7 +128,7 @@ export const Cart = () => {
                     <div className="card-container-food">
                       <div className="card-food">
                         <div className="icon-container-food">
-                          <img className="icon_food" src={food.image_url} />
+                          <img src={food.image_url} />
                         </div>
                         <div className="card-description-food">
                           <h1 className="title-food-cart">
