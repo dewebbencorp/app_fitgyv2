@@ -45,7 +45,17 @@ h2 {
   border-top-right-radius: 2rem;
   z-index: -1;
 }
-
+.video-container div {
+  position: absolute;
+  width: 100vw;
+  top: 7vh;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: #161616;
+  padding-bottom: 45vh;
+  z-index: 5;
+}
 video {
   width: 100vw;
   height: 35vh;

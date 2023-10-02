@@ -14,7 +14,7 @@
   padding: 2vh;
 }
 .header-info {
-  gap: 1rem;
+  padding-top: 1rem;
   display: flex;
   flex-direction: column;
   text-align: center;
@@ -98,7 +98,6 @@
 }
 
 .icon_type_food {
-  
   border-radius: 1.2rem;
   object-fit: cover;
   width: 100%;
@@ -106,7 +105,6 @@
 }
 
 .icon_type_food-2 {
-  
   border-radius: 1.2rem;
   object-fit: cover;
   width: 80%;

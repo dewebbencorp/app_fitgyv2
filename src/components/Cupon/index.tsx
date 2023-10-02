@@ -2,7 +2,7 @@ import cupon_img from "../../pages/Home/img/cupon.png";
 import { useForm } from "react-hook-form";
 import toast, { Toaster } from "react-hot-toast";
 import { useRef, useState } from "react";
-import { BACKGROUND_CUPON_VIDEO } from "../../constants";
+import BACKGROUND_CUPON_VIDEO from "./video/bg_cupon.mp4";
 import { generateCupon } from "../../axios/User";
 import { AnyAction, ThunkDispatch } from "@reduxjs/toolkit";
 import { useDispatch, useSelector } from "react-redux";
@@ -62,6 +62,12 @@ export const Cupon = () => {
     modal.current?.dismiss;
     setIsVisible(false);
   }
+  const [lv, setLv] = useState(true);
+  const loadvideo = (data: any) => {
+    if (data) {
+      setLv(false);
+    }
+  };
 
   return (
     <>
@@ -73,7 +79,13 @@ export const Cupon = () => {
             <h2>MENÚ</h2>
           </div>
           <div className="video-container">
-            <video src={BACKGROUND_CUPON_VIDEO} autoPlay loop />
+          {lv && <div></div>}
+            <video
+              src={BACKGROUND_CUPON_VIDEO}
+              autoPlay
+              loop
+              onLoadedData={loadvideo}
+            />
           </div>
         </div>
         <form onSubmit={onSubmit} className="btn-generate-container">

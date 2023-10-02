@@ -6,7 +6,7 @@ import Whats from "./Whats";
 import logo from "./img/logo.png";
 import "./css/welcome.css";
 import { News } from "../../components/News";
-import { WELCOME_VIDEO } from "../../constants";
+import WELCOME_VIDEO from "./video/home_video.mp4";
 
 export const Welcome = () => {
   const [showNoInternetToast, setShowNoInternetToast] = useState(false);
@@ -18,6 +18,12 @@ export const Welcome = () => {
     // Mostrar el mensaje si no hay conexión a Internet
     setShowNoInternetToast(!isOnline);
   }, []);
+  const [lv, setLv] = useState(true);
+  const loadvideo = (data: any) => {
+    if (data) {
+      setLv(false);
+    }
+  };
 
   return (
     <>
@@ -28,7 +34,8 @@ export const Welcome = () => {
               <img src={logo} alt="Logo" />
             </div>
             <div className="welcome-video">
-              <video src={WELCOME_VIDEO} autoPlay  >
+              {lv && <div></div>}
+              <video src={WELCOME_VIDEO} autoPlay loop onLoadedData={loadvideo}>
                 conectate a internet
               </video>
             </div>
