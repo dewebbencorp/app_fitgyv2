@@ -36,12 +36,11 @@ export const News = () => {
       <div className="news-container">
         <Swiper
           className="swiper"
-          direction={'horizontal'}
+          direction={"horizontal"}
           spaceBetween={15}
           slidesPerView={2.5}
           modules={[Pagination]}
           pagination={{
-        
             clickable: true,
           }}
         >
@@ -63,6 +62,7 @@ export const News = () => {
           )}
         </Swiper>
       </div>
+
       {showModal && <FullScreenImage Image={fullImage} setModal={setModal} />}
     </>
   );

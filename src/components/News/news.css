@@ -47,10 +47,10 @@
   }
 }
 
-.swiper-slide{
+.news-container .swiper-slide {
   padding-top: 2rem;
 }
-.swiper-pagination {
+.news-container .swiper-pagination {
   padding: 1rem;
   position: absolute;
   z-index: -1;
@@ -59,18 +59,17 @@
   width: auto !important;
   margin: 0;
 }
-.swiper-pagination-bullet {
+.news-container .swiper-pagination-bullet {
   padding: 1px 5px;
   border-radius: 0;
   width: 25px;
   height: 1px;
   text-align: center;
-  
 
   opacity: 1;
   background: rgba(201, 201, 201, 0.726);
 }
-.swiper-pagination-bullet-active {
+.news-container .swiper-pagination-bullet-active {
   color: #fff;
   background: orangered;
 }

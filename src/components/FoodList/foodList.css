@@ -1,5 +1,5 @@
 .main-fl-container {
-  opacity: 0;
+  margin-top: 0;
   transform: translateY(20px);
   animation: fadeAndSlide 0.1s ease-out forwards;
   color: white;
@@ -10,7 +10,6 @@
   align-items: center;
   flex-direction: column;
   background: linear-gradient(#ff9104, #f52204);
-  margin-top: 0rem;
   margin-bottom: 0rem;
   margin-left: 30vw;
   border-radius: 32vw;

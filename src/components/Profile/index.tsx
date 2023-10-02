@@ -51,6 +51,12 @@ export const UserProfile = ({ showP }: any) => {
   const backButtonHandler = () => {
     showP(false);
   };
+  useEffect(() => {
+    document.addEventListener("ionBackButton", backButtonHandler);
+    return () => {
+      document.removeEventListener("ionBackButton", backButtonHandler);
+    };
+  }, []);
 
   useEffect(() => {
     calculateDeadline();
