@@ -80,7 +80,7 @@ const CodigoQR = () => {
     <div className="btn_codigoQR">
       <IonButton fill="outline" onClick={openScanner}>
         <img src={qr} alt="QR Code" />
-        <span className="  poppins"> Código QR </span>
+        <span> Código QR </span>
       </IonButton>
       <IonModal isOpen={showModal}>
         <h2>
