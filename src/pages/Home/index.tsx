@@ -1,5 +1,6 @@
 import {
   IonLabel,
+  IonModal,
   IonRouterOutlet,
   IonTabBar,
   IonTabButton,
@@ -19,11 +20,13 @@ import cupon from "./img/cupon.png";
 import wifi from "./img/wifi.png";
 import { Profile } from "../Profile";
 import { Welcome } from "../Welcome";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { FiUser, FiWifi } from "react-icons/fi";
 import { IoHomeOutline } from "react-icons/io5";
 import { RiCoupon5Line } from "react-icons/ri";
+import { UserProfile } from "../../components/Profile";
 export const Home = () => {
+  const [profile, setProfile] = useState(false);
   const user: Asociado = useSelector((state: Asociado) => state.user);
   const location = useLocation();
 
@@ -52,7 +55,10 @@ export const Home = () => {
               </Route>
             </IonRouterOutlet>
             <IonTabBar className="iontab" slot="bottom">
-              <IonTabButton tab="perfil" href="/home/perfil">
+              <IonTabButton tab="perfil" onClick={() => setProfile(true)}>
+                <IonModal isOpen={profile}>
+                  <UserProfile showP={setProfile} />
+                </IonModal>
                 <span>
                   <FiUser />
                 </span>

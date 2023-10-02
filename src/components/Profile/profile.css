@@ -6,7 +6,7 @@
 
 .head-containaer-1 {
   width: 100%;
-  height: 15vh;
+  height: 21vh;
   background: linear-gradient(#ff7d04, #ec540d) !important;
 }
 
@@ -17,7 +17,7 @@
   background-color: white;
 }
 .pencil {
-  font-size: 2.4em;
+  font-size: 1.8em;
   color: white;
   right: 0;
   bottom: 0;
@@ -34,7 +34,7 @@
   clip-path: circle(45%);
 }
 
-.profile-data-container img{
+.profile-data-container img {
   object-fit: cover;
   width: 100%;
   height: 100%;
@@ -100,8 +100,6 @@ h3 {
   align-items: center;
   justify-content: center;
   width: 100%;
-
-  
 }
 .btn-add-inbody {
   display: flex;
@@ -125,7 +123,7 @@ h3 {
 }
 
 .memberships {
-  margin-top: 3vh;
+  margin-top: 3rem;
 }
 
 .memberships h1 {
@@ -148,7 +146,7 @@ h3 {
 
 .btn-close {
   position: absolute;
-  bottom: 3vh;
+  bottom: 5vh;
   font-size: 1.3em;
   display: flex;
   align-items: center;
@@ -163,7 +161,8 @@ h3 {
 .btn-close-update-container {
   display: flex;
   justify-content: right;
-  margin: 3vw;
+  margin-top: 2.5vh;
+  margin-right: 2vh;
 }
 
 .btn-close-update {
