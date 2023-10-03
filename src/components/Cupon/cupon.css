@@ -102,7 +102,7 @@ video {
 .btn-cupon-info {
   display: flex;
   align-items: center;
-  height: 2vh;
+  height: 1rem;
 }
 
 .btn-cupon-info img {
@@ -151,6 +151,10 @@ video {
 }
 .bar-info .c-info h1 {
   font-size: large;
+}
+.bar-info .c-info h2 {
+  font-size: large;
+  margin-bottom: 2rem;
 }
 .bar-info div {
   padding: 1rem;
