@@ -27,6 +27,7 @@ import { close, cloudUpload } from "ionicons/icons";
 import { SendWh } from "../SendWh";
 import { BASE_AVATAR_PROFILE } from "../../constants";
 import { HiChevronLeft, HiOutlinePencil } from "react-icons/hi2";
+import { PP } from "../PorducstPerPoints";
 
 export const UserProfile = ({ showP }: any) => {
   const [showModal, setModal] = useState(false);
@@ -106,10 +107,10 @@ export const UserProfile = ({ showP }: any) => {
       }
     }
   };
-
+  const [pp, setPp] = useState(false);
   const gotPp = () => {
     if (user.permisos !== 0) {
-      window.location.href = "/pp";
+      setPp(true);
     }
   };
 
@@ -214,6 +215,10 @@ export const UserProfile = ({ showP }: any) => {
           },
         ]}
       ></IonActionSheet>
+
+      <IonModal isOpen={pp}>
+        <PP setpp ={setPp}/>
+      </IonModal>
     </>
   );
 };

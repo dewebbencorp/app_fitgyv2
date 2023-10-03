@@ -10,14 +10,14 @@ import { Asociado, ProductosPorPuntos } from "../../interfaces";
 import { PchHistory } from "./History";
 import logo from "./../../pages/Welcome/img/logo.png";
 
-export const PP = () => {
+export const PP = ({ setpp }: any) => {
   const user: Asociado = useSelector((state: Asociado) => state.user);
   const dispatch: ThunkDispatch<any, void, AnyAction> = useDispatch();
   const [dta, setDta] = useState<ProductosPorPuntos[]>();
   const [isVisible, setIsVisible] = useState(false);
 
   const backButtonHandler = () => {
-    window.location.href = "/home/perfil";
+    setpp(false);
   };
 
   useEffect(() => {
