@@ -1,21 +1,26 @@
-.btn_tarjeta{
-    margin-top:2rem;
-    text-align: center;
-    margin-bottom: 8vh;
+.btn_tarjeta {
+  display: flex;
+  justify-content: center;
+  margin-top: 0.5rem;
+  text-align: center;
+  margin-bottom: 8vh;
 }
 
-.btn_tarjeta ion-button{
+.btn_tarjeta ion-button {
+  --background: none;
+  --border-color: var(--naranja1);
+  width: 50%;
+  font-size: 1rem;
+}
 
-    --background:none;
-    --color:white;
-    --border-color:var(--naranja1) ;
-    width:40%;
-    font-size: 1rem;
+.btn_tarjeta ion-button span {
+  color: white;
+  font-size: 1.1rem;
 }
-.btn_tarjeta img{
-    width:20%;
+.btn_tarjeta img {
+  width: 15%;
 }
-.btn_tarjeta span{
-   margin-left: 1rem;
-   text-transform: capitalize;
+.btn_tarjeta span {
+  margin-left: 1rem;
+  text-transform: capitalize;
 }

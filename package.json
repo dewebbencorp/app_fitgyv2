@@ -30,6 +30,7 @@
     "@reduxjs/toolkit": "^1.9.5",
     "@types/react-router": "^5.1.20",
     "@types/react-router-dom": "^5.3.3",
+    "@yudiel/react-qr-scanner": "^1.1.10",
     "axios": "^1.4.0",
     "cordova-plugin-x-socialsharing": "^6.0.4",
     "cropperjs": "^1.5.13",
@@ -47,7 +48,7 @@
     "react-router": "^5.3.4",
     "react-router-dom": "^5.3.4",
     "react-spinners": "^0.13.8",
-    "swiper": "^9.3.2"
+    "swiper": "^10.0.0"
   },
   "devDependencies": {
     "@capacitor/cli": "5.0.3",

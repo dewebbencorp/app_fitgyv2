@@ -22,7 +22,7 @@ const Tarjeta = () => {
       {titular !== 7 ? (
         <IonButton disabled={true} fill="outline">
           <img src={tarjeta} />
-          <span> Tarjeta </span>
+          <span > Tarjeta </span>
         </IonButton>
       ) : (
         <IonButton

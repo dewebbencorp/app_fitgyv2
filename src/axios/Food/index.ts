@@ -7,6 +7,7 @@ import { BASE_URL } from "../Utils";
 import {
   ComprasHistorial,
   ProductoCategorias,
+  ProductoDetalle,
   ProductoPorCategoria,
   ProductosPorPuntos,
 } from "../../interfaces";
@@ -25,8 +26,7 @@ export const fetchTypesFood =
         descripcion: product.descripcion,
         media_url: product.media_url,
       }));
-      console.log(map);
-
+   
       dispatch(addFoodTypes(map));
 
       return map;
@@ -68,19 +68,34 @@ export const postFoodByType =
       throw error;
     }
   };
+
 export const postFoodDetail =
   (id: string) =>
-  (dispatch: Dispatch<any>): Promise<void> => {
+  async (dispatch: Dispatch<any>): Promise<ProductoDetalle> => {
     const postData = {
       id_Producto: id,
     };
+    try {
+      const response = await axios.post(
+        `${BASE_URL}/getProducto.php`,
+        postData
+      );
 
-    return axios
-      .post(`${BASE_URL}/getProducto.php`, postData)
-      .then((response) => {
-        dispatch(addDetailFood(response.data));
-      })
-      .catch((error) => console.log(error));
+      const responseData: ProductoDetalle = {
+        id_producto: response.data.id_producto,
+        nombre: response.data.nombre,
+        categoria: response.data.categoria,
+        Descripcion: response.data.Descripcion,
+        img_url: response.data.image_url,
+        costo: response.data.costo,
+        detail_food: undefined,
+      };
+
+      return responseData;
+    } catch (error) {
+      console.log(error);
+      throw error;
+    }
   };
 
 export const producsPerPoints =

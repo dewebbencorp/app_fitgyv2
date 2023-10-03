@@ -24,6 +24,7 @@ import { BsPlus } from "react-icons/bs";
 
 export const FoodDetail = () => {
   const [loading, setLoadig] = useState(true);
+  const [food, setFood] = useState<ProductoDetalle>();
   const [total, setTotal] = useState<number>(1);
   const [checkboxValues, setCheckboxValues] = useState({});
   const history = useHistory();
@@ -35,15 +36,11 @@ export const FoodDetail = () => {
 
   const { performSQLAction, initialized } = useSQLiteDB();
 
-  const options = [
-    "Arroz",
-    "Salsa italiana",
-    "Pimienta",
-    "Zanahoria",
-    // Agrega más opciones aquí si es necesario
-  ];
+  const options = ["Arroz", "Salsa italiana", "Pimienta", "Zanahoria"];
 
-  const handleCheckboxChange = (event: { target: { name: any; checked: any; }; }) => {
+  const handleCheckboxChange = (event: {
+    target: { name: any; checked: any };
+  }) => {
     const { name, checked } = event.target;
     setCheckboxValues((prevValues) => ({
       ...prevValues,
@@ -100,22 +97,23 @@ export const FoodDetail = () => {
   const foodi: any = useSelector((state: ProductoDetalle) => state.detail_food);
 
   const dispatch: ThunkDispatch<any, void, AnyAction> = useDispatch();
-  useEffect(() => {
-    dispatch(postFoodDetail(id));
-    setTimeout(() => {
-      setLoadig(false);
-    }, 500);
+  useEffect(async () => {
+    const data = await dispatch(postFoodDetail(id));
+
+    if (data.id_producto) {
+      setFood(data);
+      setTimeout(() => {
+        setLoadig(false);
+      }, 1000);
+    }
   }, [dispatch]);
-
-  const food: ProductoDetalle = foodi[0];
-
-  console.log(checkboxValues);
 
   return (
     <>
       <Toaster />
 
       <IonToolbar>
+        <div className="gmt">.</div>
         <IonButtons slot="start">
           <HiChevronLeft
             onClick={() => handleBackClick()}
@@ -127,20 +125,14 @@ export const FoodDetail = () => {
       {loading && <Loading />}
       {food && (
         <IonContent>
+          <div className="gmt">.</div>
           <div className="main-container-food" key={food.costo}>
-            {food.categoria === "BATIDOS" ||
-            food.categoria === "HOTCAKES Y AVENA" ||
-            food.categoria === "SANDWICHES" ? (
-              <div className="food-image-container-2">
-                <img className="img-food-detail" src={food.img_url} />
-              </div>
-            ) : (
-              <div className="food-image-container">
-                <img className="img-food-detail" src={food.img_url} />
-              </div>
-            )}
-            <div>
-              <h1>
+            <div className="food-image-container">
+              <img src={food.img_url} />
+            </div>
+
+           
+              
                 <div className="food-description-container">
                   <div className="title-food">
                     {" "}
@@ -163,8 +155,8 @@ export const FoodDetail = () => {
                     </h5>
                   </div>
                 </div>
-              </h1>
-            </div>
+              
+           
           </div>
 
           {/*

@@ -53,7 +53,7 @@ export const ShareBarcode = ({ code, name }: ShareBarcodeProps) => {
       <div className="bar-info" ref={barcodeRef}>
         <div className="c-info">
           <h1>Beneficiario: {name}</h1>
-          {date && <h1>{formatDate(date)}</h1>}
+          {date && <h2>{formatDate(date)}</h2>}
         </div>
 
         <div>

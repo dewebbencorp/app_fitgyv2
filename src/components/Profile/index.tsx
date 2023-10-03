@@ -2,7 +2,13 @@ import { PiPencilSimple } from "react-icons/pi";
 import { useEffect, useState } from "react";
 import points from "./images/ponts.png";
 import schedule from "./images/schedule.png";
-import { IonActionSheet, IonContent, IonModal } from "@ionic/react";
+import {
+  IonActionSheet,
+  IonButtons,
+  IonContent,
+  IonModal,
+  IonToolbar,
+} from "@ionic/react";
 import { useHistory } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
 import { removeUser } from "../../store/slices/userSlice";
@@ -20,8 +26,10 @@ import { Toaster, toast } from "react-hot-toast";
 import { close, cloudUpload } from "ionicons/icons";
 import { SendWh } from "../SendWh";
 import { BASE_AVATAR_PROFILE } from "../../constants";
+import { HiChevronLeft, HiOutlinePencil } from "react-icons/hi2";
+import { PP } from "../PorducstPerPoints";
 
-export const UserProfile = () => {
+export const UserProfile = ({ showP }: any) => {
   const [showModal, setModal] = useState(false);
   const [actionSh, setActionSh] = useState(false);
   const user: Asociado = useSelector((state: Asociado) => state.user);
@@ -41,6 +49,15 @@ export const UserProfile = () => {
 
   const { deadline, calculateDeadline } = GetDeadLine(user.fecha_vencimiento);
   let INBODY_MESSAGE = `Hola mi nombre es ${user.Nombre_Asociado} ${user.Apellidos}, me gustaria saber como puedo agendar un inbody`;
+  const backButtonHandler = () => {
+    showP(false);
+  };
+  useEffect(() => {
+    document.addEventListener("ionBackButton", backButtonHandler);
+    return () => {
+      document.removeEventListener("ionBackButton", backButtonHandler);
+    };
+  }, []);
 
   useEffect(() => {
     calculateDeadline();
@@ -90,10 +107,10 @@ export const UserProfile = () => {
       }
     }
   };
-
+  const [pp, setPp] = useState(false);
   const gotPp = () => {
     if (user.permisos !== 0) {
-      window.location.href = "/pp";
+      setPp(true);
     }
   };
 
@@ -103,12 +120,20 @@ export const UserProfile = () => {
         <Toaster />
 
         <div className="main-ctn">
-          <div className="head-containaer-1"></div>
+          <div className="head-containaer-1">
+            <IonToolbar>
+              <IonButtons slot="start">
+                <HiChevronLeft
+                  onClick={() => backButtonHandler()}
+                  style={{ fontSize: "3.2rem", marginBottom: "0rem" }}
+                />
+              </IonButtons>
+            </IonToolbar>
+          </div>
           <div className="head-containaer-2">
             <div className="profile-data-container">
               <img
                 src={BASE_AVATAR_PROFILE + user.imgAvatar}
-                className="profile-image"
                 onClick={() => setActionSh(true)}
               />
             </div>
@@ -122,7 +147,7 @@ export const UserProfile = () => {
                 <h5>Revisar detalles de mi cuenta</h5>
               </div>
 
-              <PiPencilSimple
+              <HiOutlinePencil
                 className="pencil"
                 onClick={() => setModal(true)}
               />
@@ -146,7 +171,7 @@ export const UserProfile = () => {
             >
               <div className="btn-add-inbody">
                 <img className="schedule-icon" src={schedule} />
-                <h5>Agendar Inbody</h5>
+                <h3>Agendar Inbody</h3>
               </div>
             </div>
             <div className="memberships">
@@ -190,6 +215,10 @@ export const UserProfile = () => {
           },
         ]}
       ></IonActionSheet>
+
+      <IonModal isOpen={pp}>
+        <PP setpp ={setPp}/>
+      </IonModal>
     </>
   );
 };

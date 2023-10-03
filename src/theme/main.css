@@ -1,5 +1,16 @@
-@import url("https://fonts.cdnfonts.com/css/kenyan-coffee");
-@import url("https://fonts.cdnfonts.com/css/poppins");
+@font-face {
+  font-family: kenyan coffee;
+  font-style: italic;
+  font-weight: 100;
+  src: local("Kenyan Coffee"), url("./fonts/kenyan-coffee.woff") format("woff");
+}
+
+@font-face {
+  font-family: poppins;
+  font-style: normal;
+  font-weight: 500;
+  src: local("Poppins"), url("./fonts/Poppins-Medium.woff") format("woff");
+}
 :root {
   --kenyan: "Kenyan Coffee", sans-serif;
   --poppins: "Poppins", sans-serif;
@@ -15,6 +26,7 @@ body {
   --ion-gray-background: #444242;
 }
 .kenyan {
+  letter-spacing: 4px;
   font-family: var(--kenyan);
 }
 .poppins {
