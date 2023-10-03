@@ -1,6 +1,6 @@
 import { IonButton, IonModal } from "@ionic/react";
-import { BarcodeScanner } from "@ionic-native/barcode-scanner";
-import { useEffect, useState, useRef } from "react";
+import { useState } from "react";
+import { QrScanner } from "@yudiel/react-qr-scanner";
 import "./css/codigoQR.css";
 import qr from "./img/qr.png";
 import { useHistory } from "react-router";
@@ -16,69 +16,58 @@ interface Maquina {
 const CodigoQR = () => {
   const [showModal, setShowModal] = useState<boolean>(false);
   const [maquina, setMaquina] = useState<Maquina | null>(null);
-  const history = useHistory();
-  const scanCancelled = useRef(false); // Variable de referencia para rastrear si se ha cancelado el escaneo
-
-  const openScanner = async () => {
+  const [qrd, setQr] = useState(false);
+  const getData = async (id: string) => {
+    if (id === "" || id === undefined) {
+      return;
+    }
     try {
-      const data = await BarcodeScanner.scan();
-      if (!scanCancelled.current) {
-        console.log(`Barcode data: ${data.text}`);
-        setShowModal(true);
-        let send = {
-          codigo: data.text,
-        };
+      let send = {
+        codigo: id,
+      };
 
-        let url =
-          "https://187.188.16.29:4431/webservice-app2/controllers/detalleMaquina.php";
-        fetch(url, {
-          method: "POST",
-          body: JSON.stringify(send),
-          headers: {
-            "Content-Type": "application/json",
-          },
-        })
-          .then((res) => res.json())
-          .then((data) => {
+      let url =
+        "https://187.188.16.29:4431/webservice-app2/controllers/detalleMaquina.php";
+      fetch(url, {
+        method: "POST",
+        body: JSON.stringify(send),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.message) {
+            console.log(data.message);
+
+            setMaquina(null);
+            setShowModal(false);
+            alert(data.message);
+          } else {
             setMaquina(data);
-          })
-          .catch((error) => console.error("Error:", error))
-          .then((response) => console.log("Success:", response));
-      }
+          }
+        })
+        .catch((error) => console.error("Error:", error))
+        .then((response) => console.log("Success:", response));
     } catch (error) {
       console.error("Error en el escaneo:", error);
     }
   };
+
   const closeModal = () => {
     setMaquina(null);
+    setQr(false);
     setShowModal(false);
   };
-  const test = () => {
+
+  const openModal = () => {
     setShowModal(true);
-    let send = {
-      codigo: 1,
-    };
-    let url =
-      "https://187.188.16.29:4431/webservice-app2/controllers/detalleMaquina.php";
-    fetch(url, {
-      method: "POST",
-      body: JSON.stringify(send),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        // Manejar la respuesta del servidor
-        setMaquina(data);
-      })
-      .catch((error) => console.error("Error:", error))
-      .then((response) => console.log("Success:", response));
+    setQr(true);
   };
 
   return (
     <div className="btn_codigoQR">
-      <IonButton fill="outline" onClick={openScanner}>
+      <IonButton fill="outline" onClick={() => openModal()}>
         <img src={qr} alt="QR Code" />
         <span> Código QR </span>
       </IonButton>
@@ -117,14 +106,30 @@ const CodigoQR = () => {
               <div
                 style={{
                   textAlign: "center",
-                  padding: "4rem",
                   display: "flex",
                   flexDirection: "column",
                   alignItems: "center",
-                  marginTop: "30vh",
+                  marginTop: "10vh",
                 }}
               >
-                <h5>Debes escanear el codigo QR de la maquina</h5>
+                {qrd && (
+                  <QrScanner
+                    containerStyle={{ width: "90%", borderRadius:'2rem' }}
+                    scanDelay={4000}
+                    onDecode={(result) => getData(result)}
+                    onError={(error) => console.log(error?.message)}
+                  />
+                )}
+
+                <h5
+                  style={{
+                    marginTop: "0",
+                    padding: "2rem",
+                  }}
+                >
+                  Debes escanear el codigo QR de la maquina
+                </h5>
+
                 <div
                   style={{
                     textAlign: "center",
@@ -133,7 +138,6 @@ const CodigoQR = () => {
                     padding: "0.1rem",
                     borderRadius: "0.3rem",
                     fontSize: "0.6em",
-                    marginTop: "3vh",
                   }}
                   onClick={() => setShowModal(false)}
                 >
