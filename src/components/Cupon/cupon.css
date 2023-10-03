@@ -2,7 +2,7 @@
   position: relative;
   height: 100vh;
   z-index: -2;
-  background-color: var(--ion-tab-bar-background);
+  background: linear-gradient(#ff7d04, #ec540d) !important;
 }
 .cupon-container {
   display: flex;
@@ -23,13 +23,13 @@ h2 {
 
 .head-cupon h1 {
   margin-top: 1.5rem;
-  font-size: 1.7em;
+  font-size: 1.1em;
   color: white;
 }
 .head-cupon h2 {
-  font-size: 3.7em;
+  font-size: 2.7em;
   font-weight: bold;
-  color: black;
+  color: white;
 }
 .video-container {
   position: absolute;

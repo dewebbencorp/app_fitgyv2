@@ -75,8 +75,8 @@ export const Cupon = () => {
       <div className="main-cupon-container">
         <div className="cupon-container">
           <div className="head-cupon">
-            <h1>The Fit Bar</h1>
-            <h2>MENÚ</h2>
+            <h1>Genera tu cupón</h1>
+            <h2>CUPÓN</h2>
           </div>
           <div className="video-container">
           {lv && <div></div>}
