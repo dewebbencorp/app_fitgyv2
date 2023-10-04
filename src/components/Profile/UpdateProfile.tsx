@@ -144,11 +144,21 @@ export const UpdateProfile = ({ setModal, user }: UpdateProfileProps) => {
               {errors.phone && <span>{errors.phone.message}</span>}
             </div>
             <div className="list-options-container">
-              <button type="submit" className="btn-up-dta">
+              <button type="submit" >
                 Actualizar datos
               </button>
             </div>
           </form>
+        </div>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            alignItems: "center",
+            paddingLeft: "2rem",
+          }}
+        >
           <div
             className="change-pass-container"
             onClick={() => setFieldPw(true)}

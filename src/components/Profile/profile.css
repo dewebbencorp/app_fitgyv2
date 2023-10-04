@@ -176,7 +176,7 @@ h3 {
   border-radius: 1.5vw;
   width: 70%;
   height: 6vh;
-  background-color: var(--ion-tab-bar-background);
+  background: linear-gradient(#ff7d04, #ec540d) !important;
   font-size: 1.2em;
   font-family: var(--poppins);
 }
@@ -190,8 +190,8 @@ h3 {
 
 .input-container {
   margin-top: 2.5rem;
-  padding-left: 4vw;
-  padding-right: 4vw;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
 }
 
 .input-container input {
@@ -207,20 +207,21 @@ form h3 {
 
 .change-pass-container {
   display: flex;
-  justify-content: center;
+  justify-content: left;
   align-items: center;
   margin-top: 2vh;
+  width: 14rem;
 }
 
 .add-card-container {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
 }
 
 .add-card-container h5 {
   font-size: 1em;
-  margin-left: 3vw;
+  margin-left: 1.2rem;
 }
 
 .list-options-container {
@@ -229,6 +230,14 @@ form h3 {
   align-items: center;
   margin-top: 3vh;
 }
+
+.list-options-container button {
+  background-color: orangered;
+  width: 65%;
+  height: 2rem;
+  border-radius: 0.6rem;
+}
+
 .change-pass-container h5 {
   font-size: 1em;
   margin-left: 3vw;

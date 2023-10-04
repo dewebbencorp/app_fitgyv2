@@ -36,11 +36,11 @@ body {
 ion-button {
   --background: var(--naranja1);
   font-weight: bold;
+  
 }
 ion-tabs {
   border-radius: 100rem;
   color: white;
-
   height: 10vh;
 }
 ion-toolbar {

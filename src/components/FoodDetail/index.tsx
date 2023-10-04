@@ -148,8 +148,7 @@ export const FoodDetail = () => {
                     <h5>
                       {food.Descripcion ?? (
                         <div>
-                          {food.nombre} Lorem ipsum dolor sit amet consectetur
-                          adipisicing.
+                          {food.nombre}
                         </div>
                       )}
                     </h5>

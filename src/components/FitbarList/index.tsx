@@ -36,7 +36,8 @@ export const FitbarList = () => {
       <IonContent>
         <div className="header-info-container">
           <div className="header-info">
-            <h2 className="header-title-1">Realiza tu pedido a través de</h2>
+            <h2 className="header-title-1">Realiza tu pedido </h2>
+            <h2 className="header-title-1">a través de</h2>
             <span className="progresbar-line">
               <IonProgressBar value={1} color="light" className="custom-pg" />
             </span>

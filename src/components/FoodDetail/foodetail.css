@@ -18,6 +18,7 @@
   font-family: var(--poppins);
   transform: translateY(20px);
   animation: fadeAndSlide 1s ease-out forwards;
+  margin-bottom: 35vh;
 }
 .container-food {
   width: 100%;
@@ -26,11 +27,11 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin-top: -7vh;
-  width: 28rem;
+  margin-top: -12vh;
+  width: 35rem;
 }
 .food-image-container img {
-  height: 16rem;
+  height: 20rem;
   clip-path: circle(40%);
 }
 
@@ -57,10 +58,10 @@
   margin: 0rem;
 }
 
-.description-food {
+.description-food h5 {
   text-align: start;
-  font-size: 1rem;
-  font-family: "Times New Roman", Times, serif;
+  font-size: 0.9rem;
+  font-family: "Poppins";
   line-height: 1.5;
 }
 
@@ -99,8 +100,8 @@ input[type="checkbox"]:checked {
   position: fixed;
   display: flex;
   bottom: 0;
-  padding-top: 2vh;
-  padding-bottom: 3vh;
+  padding-top: 1.5rem;
+  padding-bottom: 2.8rem;
   justify-content: space-between;
   align-items: center;
   background-color: black;
@@ -119,7 +120,7 @@ input[type="checkbox"]:checked {
   align-items: center;
   width: 50%;
   font-family: var(--poppins);
-  font-size: 1em;
+  font-size: 1.2em;
   border-radius: 0.5rem;
   margin-right: 3vw;
   background-color: var(--ion-tab-bar-background);

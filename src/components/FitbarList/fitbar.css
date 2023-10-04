@@ -21,13 +21,13 @@
 }
 
 .header-title-1 {
-  font-size: 1.8em;
+  font-size: 2em;
 }
 .progresbar-line {
   display: flex;
   justify-content: center;
-  margin-left: 9vh;
-  margin-right: 9vh;
+  margin-left: 3vh;
+  margin-right: 3vh;
 }
 .custom-pg {
   height: 0.2em;

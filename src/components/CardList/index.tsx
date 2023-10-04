@@ -20,16 +20,25 @@ export const CardsList = () => {
   return (
     <>
       <div className="add-card-container" onClick={() => setInput(true)}>
-        <FaPlus
-          style={{ fontSize: "1.3em", color: "orangered", fontWeight: "bold" }}
-        />
-
-        <h5>Agregar otra tarjeta</h5>
-      </div>
-
-      <div className="current-card-container">
         {!cardss[0] && <Loading2 />}
         <div className="card-list-container">
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "left",
+            }}
+          >
+            <FaPlus
+              style={{
+                fontSize: "1.3em",
+                color: "orangered",
+                fontWeight: "bold",
+              }}
+            />
+
+            <h5>Agregar otra tarjeta</h5>
+          </div>
           {cardss.length > 0 &&
             cardss.map((card: Cards) => (
               <div key={card.numTarjeta}>
@@ -39,7 +48,7 @@ export const CardsList = () => {
                       card.Activo === 1 ? "far-Icon" : "far-Icon-non-active"
                     }
                   />
-                  {card.numTarjeta}{" "}
+                  <h3 >{card.numTarjeta} </h3>
                   <h5>{card.Activo === 1 ? "(Activa)" : "(Desactivada)"}</h5>
                 </div>
               </div>
