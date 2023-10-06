@@ -17,6 +17,7 @@ import {
   IonToolbar,
 } from "@ionic/react";
 import { AiOutlineCloseCircle } from "react-icons/ai";
+import { BG_CUPON } from "../../constants";
 export const Cupon = () => {
   const [isButtonDisabled, setIsButtonDisabled] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
@@ -81,7 +82,7 @@ export const Cupon = () => {
           <div className="video-container">
           {lv && <div></div>}
             <video
-              src={BACKGROUND_CUPON_VIDEO}
+              src={BG_CUPON}
               autoPlay
               loop
               onLoadedData={loadvideo}

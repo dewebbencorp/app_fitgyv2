@@ -12,6 +12,7 @@ import { Loading } from "../LoadScreen";
 import { AnyAction, ThunkDispatch } from "@reduxjs/toolkit";
 import { forgotMyPassword, login } from "../../axios/User";
 import VIDEO_URL from "./video/background_login.mp4";
+import { BG_LOGIN } from "../../constants";
 export const Login = () => {
   const [loading, setLoading] = useState(false);
   const [rpIsActive, setRpActive] = useState(false);
@@ -71,7 +72,7 @@ export const Login = () => {
       <div className="dot-container">
         <div className="video">
           <video
-            src={VIDEO_URL}
+            src={BG_LOGIN}
             autoPlay
             loop
             onCanPlayThrough={handleVideoLoaded}

@@ -7,6 +7,7 @@ import logo from "./img/logo.png";
 import "./css/welcome.css";
 import { News } from "../../components/News";
 import WELCOME_VIDEO from "./video/home_video.mp4";
+import { BG_HOME } from "../../constants";
 
 export const Welcome = () => {
   const [showNoInternetToast, setShowNoInternetToast] = useState(false);
@@ -35,7 +36,7 @@ export const Welcome = () => {
             </div>
             <div className="welcome-video">
               {lv && <div></div>}
-              <video src={WELCOME_VIDEO} autoPlay loop onLoadedData={loadvideo}>
+              <video src={BG_HOME} autoPlay loop onLoadedData={loadvideo}>
                 conectate a internet
               </video>
             </div>
