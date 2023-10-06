@@ -4,7 +4,7 @@ import { SQLiteDBConnection } from "@capacitor-community/sqlite";
 import { IonButton, IonButtons, IonToolbar } from "@ionic/react";
 import { HiChevronLeft } from "react-icons/hi2";
 import { BsWhatsapp } from "react-icons/bs";
-
+import { IoSadSharp } from "react-icons/io5";
 import { useHistory } from "react-router";
 import { CartI, CartTotal } from "../../interfaces";
 import "./cart.css";
@@ -154,7 +154,32 @@ export const Cart = () => {
                   </div>
                 </>
               ))}
-            {items && items?.length === 0 && <div> Aun no hay productos</div>}
+            {items && items?.length === 0 && (
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  color: "white",
+                  fontFamily: "keyan",
+                  fontSize: "1.2rem",
+                  gap: "1.5rem",
+                  animation:
+                    "shimmerAnimation  4s ease-in-out alternate-reverse infinite",
+                }}
+                className="ring"
+              >
+                ¡No hay productos en en carrito!
+                <IoSadSharp
+                  style={{
+                    fontSize: "2rem",
+                  }}
+
+                  className="bell-joke"
+                />
+              </div>
+            )}
           </div>
         </div>
         <div className="cart-total-container">
