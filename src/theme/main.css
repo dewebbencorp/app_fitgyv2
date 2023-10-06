@@ -11,6 +11,9 @@
   font-weight: 500;
   src: local("Poppins"), url("./fonts/Poppins-Medium.woff") format("woff");
 }
+
+@import url('https://fonts.cdnfonts.com/css/kenyan-coffee');
+@import url('https://fonts.cdnfonts.com/css/poppins');
 :root {
   --kenyan: "Kenyan Coffee", sans-serif;
   --poppins: "Poppins", sans-serif;
