@@ -4,6 +4,7 @@ import { QrScanner } from "@yudiel/react-qr-scanner";
 import "./css/codigoQR.css";
 import qr from "./img/qr.png";
 import { useHistory } from "react-router";
+import { BarcodeScanner } from '@awesome-cordova-plugins/barcode-scanner';
 
 interface Maquina {
   id_maquina: number;
@@ -17,6 +18,12 @@ const CodigoQR = () => {
   const [showModal, setShowModal] = useState<boolean>(false);
   const [maquina, setMaquina] = useState<Maquina | null>(null);
   const [qrd, setQr] = useState(false);
+
+  const openScanner = async () => {
+    const data = await BarcodeScanner.scan();
+    alert(`Barcode data: ${data.text}`);
+  };
+
   const getData = async (id: string) => {
     if (id === "" || id === undefined) {
       return;
@@ -67,7 +74,7 @@ const CodigoQR = () => {
 
   return (
     <div className="btn_codigoQR">
-      <IonButton fill="outline" onClick={() => openModal()}>
+      <IonButton fill="outline" onClick={() => openScanner()}>
         <img src={qr} alt="QR Code" />
         <span> Código QR </span>
       </IonButton>
@@ -123,6 +130,8 @@ const CodigoQR = () => {
                     onDecode={(result) => getData(result)}
                     onError={(error) => console.log(error?.message)}
                   />
+
+                  
                 )}
 
                 <h5

@@ -12,6 +12,8 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@awesome-cordova-plugins/barcode-scanner": "^6.4.0",
+    "@awesome-cordova-plugins/core": "^6.4.0",
     "@capacitor-community/sqlite": "^5.0.5",
     "@capacitor/android": "5.0.3",
     "@capacitor/app": "5.0.2",
