@@ -85,6 +85,7 @@ const CodigoQR = () => {
                   <div
                     style={{
                       textAlign: "center",
+                      backgroundColor: "black",
                       width: "40%",
                       border: "solid orangered 1px",
                       padding: "0.1rem",
@@ -114,7 +115,10 @@ const CodigoQR = () => {
               >
                 {qrd && (
                   <QrScanner
-                    containerStyle={{ width: "90%", borderRadius:'2rem' }}
+                    containerStyle={{
+                      width: "100%",
+                      borderRadius: "1rem",
+                    }}
                     scanDelay={4000}
                     onDecode={(result) => getData(result)}
                     onError={(error) => console.log(error?.message)}
