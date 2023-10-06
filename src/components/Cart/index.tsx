@@ -170,7 +170,7 @@ export const Cart = () => {
                 }}
                 className="ring"
               >
-                ¡No hay productos en en carrito!
+                ¡No hay productos en el carrito!
                 <IoSadSharp
                   style={{
                     fontSize: "2rem",
