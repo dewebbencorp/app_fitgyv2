@@ -11,7 +11,6 @@ import { addUser } from "../../store/slices/userSlice";
 import { Loading } from "../LoadScreen";
 import { AnyAction, ThunkDispatch } from "@reduxjs/toolkit";
 import { forgotMyPassword, login } from "../../axios/User";
-import VIDEO_URL from "./video/background_login.mp4";
 import { BG_LOGIN } from "../../constants";
 export const Login = () => {
   const [loading, setLoading] = useState(false);
