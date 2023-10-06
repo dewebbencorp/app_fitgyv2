@@ -3,9 +3,7 @@ import { useEffect, useState } from "react";
 import { QrScanner } from "@yudiel/react-qr-scanner";
 import "./css/codigoQR.css";
 import qr from "./img/qr.png";
-import { useHistory } from "react-router";
 import { isPlatform } from "@ionic/react";
-import { BarcodeScanner } from "@awesome-cordova-plugins/barcode-scanner";
 import { useForm } from "react-hook-form";
 
 interface Maquina {
@@ -19,17 +17,9 @@ interface Maquina {
 const CodigoQR = () => {
   const [showModal, setShowModal] = useState<boolean>(false);
   const [maquina, setMaquina] = useState<Maquina | null>(null);
-  const [isIos, setIsIos] = useState(false);
-  const [selector, setSelector] = useState(false);
   const [qrd, setQr] = useState(false);
 
-  useEffect(() => {
-    if (isPlatform("ios")) {
-      setIsIos(true);
-    }
-    if (isPlatform("android")) {
-    }
-  }, []);
+  useEffect(() => {}, []);
 
   const {
     register,
@@ -96,17 +86,10 @@ const CodigoQR = () => {
 
   return (
     <div className="btn_codigoQR">
-      {isIos ? (
-        <IonButton fill="outline" onClick={() => openModal()}>
-          <img src={qr} alt="QR Code" />
-          <span> Código QR </span>
-        </IonButton>
-      ) : (
-        <IonButton fill="outline" onClick={() => openModal()}>
-          <img src={qr} alt="QR Code" />
-          <span> Código QR </span>
-        </IonButton>
-      )}
+      <IonButton fill="outline" onClick={() => openModal()}>
+        <img src={qr} alt="QR Code" />
+        <span> {isPlatform("ios") ? "Código" : "Código QR"} </span>
+      </IonButton>
       <IonModal isOpen={showModal}>
         <h2>
           {maquina && (
@@ -216,8 +199,10 @@ const CodigoQR = () => {
                           border: "solid orangered 1px",
                           padding: "0.1rem",
                           borderRadius: "0.3rem",
-                          fontSize: "0.6em",
+                          fontSize: "0.7em",
                           backgroundColor: "transparent",
+                          textDecoration: "none",
+                          color: "white",
                         }}
                       >
                         Enviar
