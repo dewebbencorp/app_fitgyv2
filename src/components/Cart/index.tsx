@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-import { IonButtons, IonToolbar } from "@ionic/react";
+import { IonButtons, IonModal, IonToolbar } from "@ionic/react";
 import { HiChevronLeft } from "react-icons/hi2";
 import { BsWhatsapp } from "react-icons/bs";
 import { IoSadSharp } from "react-icons/io5";
@@ -12,13 +12,15 @@ import { AiFillDelete } from "react-icons/ai";
 import { useDispatch, useSelector } from "react-redux";
 import { dropAllCart, dropOrder } from "../../store/slices/cart";
 import { cartTotal } from "../../store/services/cart";
+import { UpdateOrder } from "../FoodDetail/UpdateOrder";
 
 export const Cart = () => {
   const items = useSelector((state: any) => state.cart);
   const history = useHistory();
-
-  const dispatch = useDispatch();
   const [isClear, setClear] = useState(false);
+  const [isDetail, setDetail] = useState(false);
+  const [product, setProduct] = useState<cart>();
+  const dispatch = useDispatch();
 
   useEffect(() => {
     setTimeout(() => {
@@ -44,6 +46,13 @@ export const Cart = () => {
     setClear(false);
     dispatch(dropAllCart(items));
   }
+
+  const showDetail = (data: any, total: number) => {
+    setDetail(true);
+
+    setProduct(data);
+  };
+
   return (
     <>
       <div className="cart-main-container">
@@ -66,7 +75,10 @@ export const Cart = () => {
               items.map((food: cart) => (
                 <>
                   <div key={food.id_producto}>
-                    <div className="card-container-food">
+                    <div
+                      className="card-container-food  "
+                      onClick={() => showDetail(food, food.total)}
+                    >
                       <div className="card-food">
                         <div className="icon-container-food">
                           <img src={food.img_url} />
@@ -133,6 +145,12 @@ export const Cart = () => {
           <BsWhatsapp className="btn-whats" />
         </div>
       </div>
+
+      <IonModal isOpen={isDetail}>
+        <div onClick={() => setDetail(false)}>close</div>
+
+        <UpdateOrder food={product} />
+      </IonModal>
     </>
   );
 };
