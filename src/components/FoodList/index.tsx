@@ -1,13 +1,11 @@
 import { HiChevronLeft } from "react-icons/hi2";
 import { Toaster, toast } from "react-hot-toast";
-import { SQLiteDBConnection } from "@capacitor-community/sqlite";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { AnyAction, ThunkDispatch } from "@reduxjs/toolkit";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { useHistory, useParams } from "react-router-dom";
 import { Cart, ProductoPorCategoria } from "../../interfaces";
-import { useSQLiteDB } from "../../database";
 import { postFoodByType } from "../../axios/Food";
 import { Loading, LoadingImage } from "../LoadScreen";
 import car_img from "./../FoodDetail/images/img_car.png";
@@ -31,8 +29,8 @@ export const ListFood = () => {
   const { id } = useParams<RouteParams>();
 
   const history = useHistory();
-  const { performSQLAction, initialized } = useSQLiteDB();
-  initialized;
+
+ 
   const handleDetailClick = (id: number) => {
     window.location.href = `/fitbar/food/detail/${id}`;
   };
