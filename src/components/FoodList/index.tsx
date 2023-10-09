@@ -58,21 +58,6 @@ export const ListFood = () => {
     window.location.href = "/home/fitbar";
   };
 
-  const addToCart2 = async (data: ProductoPorCategoria) => {
-    try {
-      // add test record to db
-      performSQLAction(async (db: SQLiteDBConnection | undefined) => {
-        await db?.query(
-          `INSERT INTO orders ( name_product, price, image_url, name_client, date_added )
-          VALUES (?,?,?,?,datetime('now'));`,
-          [data.nombreProducto, data.costo, data.media_url, "sebas"]
-        );
-      });
-    } catch (error) {
-      alert((error as Error).message);
-    } finally {
-    }
-  };
 
   const addToCart = async (data: ProductoPorCategoria) => {
     const product: Cart = {

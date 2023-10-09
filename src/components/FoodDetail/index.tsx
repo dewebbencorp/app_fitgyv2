@@ -1,26 +1,18 @@
-import {
-  IonButtons,
-  IonCheckbox,
-  IonContent,
-  IonItem,
-  IonToggle,
-  IonToolbar,
-} from "@ionic/react";
+import { IonButtons, IonContent, IonToolbar } from "@ionic/react";
 import { Toaster, toast } from "react-hot-toast";
 import { HiChevronLeft } from "react-icons/hi2";
 import { useHistory, useParams } from "react-router";
 import { RiSubtractFill } from "react-icons/ri";
-import { ProductoDetalle } from "../../interfaces";
+import { Cart, ProductoDetalle } from "../../interfaces";
 
 import "./foodetail.css";
-import { useSQLiteDB } from "../../database";
-import { SQLiteDBConnection } from "@capacitor-community/sqlite";
 import { AnyAction, ThunkDispatch } from "@reduxjs/toolkit";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { postFoodDetail } from "../../axios/Food";
 import { Loading } from "../LoadScreen";
 import { BsPlus } from "react-icons/bs";
+import { addProduct } from "../../store/slices/cart";
 
 export const FoodDetail = () => {
   const [loading, setLoadig] = useState(true);
@@ -28,13 +20,14 @@ export const FoodDetail = () => {
   const [total, setTotal] = useState<number>(1);
   const [checkboxValues, setCheckboxValues] = useState({});
   const history = useHistory();
+  
+
+  const dispatch: ThunkDispatch<any, void, AnyAction> = useDispatch();
 
   interface RouteParams {
     id: string;
   }
   const { id } = useParams<RouteParams>();
-
-  const { performSQLAction, initialized } = useSQLiteDB();
 
   const options = ["Arroz", "Salsa italiana", "Pimienta", "Zanahoria"];
 
@@ -48,55 +41,38 @@ export const FoodDetail = () => {
     }));
   };
 
-  const goToCart = () => {
-    history.push("/carrito");
-  };
+
 
   const handleBackClick = () => {
     history.goBack();
   };
 
-  const addToCart = async (
-    data: ProductoDetalle,
-    total: number,
-    complements: any
-  ) => {
-    try {
-      // add test record to db
-      performSQLAction(async (db: SQLiteDBConnection | undefined) => {
-        for (let i = 0; total - 1 >= i; i++) {
-          console.log(" soy un el numero", i, "de ", total);
+  const addToCart = async (data: ProductoDetalle, total: number) => {
+    const product: Cart = {
+      id_producto: data.id_producto,
+      product: data.nombre,
+      price: data.costo,
+      total: total,
+      img_url: data.img_url,
+    };
 
-          await db?.query(
-            `INSERT INTO orders ( name_product, price, image_url, name_client, date_added )
-            VALUES (?,?,?,?,datetime('now'));`,
-            [data.nombre, data.costo, data.img_url, "dev"]
-          );
-        }
-        setTotal(1);
-      });
-    } catch (error) {
-      alert((error as Error).message);
-    } finally {
-      toast.success("Producto añadido", {
-        duration: 2000,
-        position: "top-center",
-        style: {
-          marginTop: "1rem",
-          borderRadius: "10px",
-          background: "white",
-          color: "blach",
-          fontSize: "0.8em",
-          fontFamily: "var(--poppins)",
-          fontStyle: "italic",
-        },
-      });
-    }
+    dispatch(addProduct(product));
+    setTotal(1);
+    toast.success("Producto añadido", {
+      duration: 2000,
+      position: "top-center",
+      style: {
+        marginTop: "1rem",
+        borderRadius: "10px",
+        background: "white",
+        color: "blach",
+        fontSize: ".8em",
+        fontFamily: "var(--poppins)",
+        fontStyle: "italic",
+      },
+    });
   };
 
-  const foodi: any = useSelector((state: ProductoDetalle) => state.detail_food);
-
-  const dispatch: ThunkDispatch<any, void, AnyAction> = useDispatch();
   useEffect(async () => {
     const data = await dispatch(postFoodDetail(id));
 
@@ -104,7 +80,7 @@ export const FoodDetail = () => {
       setFood(data);
       setTimeout(() => {
         setLoadig(false);
-      }, 1000);
+      }, 500);
     }
   }, [dispatch]);
 
@@ -131,31 +107,21 @@ export const FoodDetail = () => {
               <img src={food.img_url} />
             </div>
 
-           
-              
-                <div className="food-description-container">
-                  <div className="title-food">
-                    {" "}
-                    <h1>{food.nombre}</h1>{" "}
-                  </div>
-                  <div className="categoria-food">
-                    <h5 style={{ color: "var(--ion-tab-bar-background)" }}>
-                      Categoría
-                    </h5>
-                    <h5>{food.categoria}</h5>
-                  </div>
-                  <div className="description-food">
-                    <h5>
-                      {food.Descripcion ?? (
-                        <div>
-                          {food.nombre}
-                        </div>
-                      )}
-                    </h5>
-                  </div>
-                </div>
-              
-           
+            <div className="food-description-container">
+              <div className="title-food">
+                {" "}
+                <h1>{food.nombre}</h1>{" "}
+              </div>
+              <div className="categoria-food">
+                <h5 style={{ color: "var(--ion-tab-bar-background)" }}>
+                  Categoría
+                </h5>
+                <h5>{food.categoria}</h5>
+              </div>
+              <div className="description-food">
+                <h5>{food.Descripcion ?? <div>{food.nombre}</div>}</h5>
+              </div>
+            </div>
           </div>
 
           {/*
@@ -203,7 +169,7 @@ export const FoodDetail = () => {
 
             <div
               className="add-to-cart-detail"
-              onClick={() => addToCart(food, total, checkboxValues)}
+              onClick={() => addToCart(food, total)}
             >
               <p>Agregar</p>
               <p>MX${food.costo * total}</p>
