@@ -1,6 +1,6 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import { Cart } from "../../../interfaces";
-import { setCartData } from "../../services/cart";
+import { dropAllData, dropData, setCartData } from "../../services/cart";
 
 const EmptyCart: Cart = {
   id_producto: 0,
@@ -19,8 +19,14 @@ export const cart = createSlice({
     addProduct: (state: Cart, action: PayloadAction<Cart>) => {
       return setCartData(action.payload);
     },
+    dropOrder: (state, action) => {
+      return dropData(action.payload);
+    },
+    dropAllCart: (state, action) => {
+      return dropAllData();
+    },
   },
 });
 
-export const { addProduct } = cart.actions;
+export const { addProduct, dropOrder, dropAllCart } = cart.actions;
 export default cart.reducer;

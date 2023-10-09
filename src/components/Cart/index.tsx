@@ -1,24 +1,24 @@
 import { useEffect, useState } from "react";
-import { useSQLiteDB } from "../../database";
-import { SQLiteDBConnection } from "@capacitor-community/sqlite";
-import { IonButton, IonButtons, IonToolbar } from "@ionic/react";
+
+import { IonButtons, IonToolbar } from "@ionic/react";
 import { HiChevronLeft } from "react-icons/hi2";
 import { BsWhatsapp } from "react-icons/bs";
 import { IoSadSharp } from "react-icons/io5";
 import { useHistory } from "react-router";
-import { Cart as cart, CartI, CartTotal } from "../../interfaces";
+import { Cart as cart } from "../../interfaces";
 import "./cart.css";
 import { sendWhatsAppMessage } from "./senMessage";
 import { AiFillDelete } from "react-icons/ai";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { dropAllCart, dropOrder } from "../../store/slices/cart";
+import { cartTotal } from "../../store/services/cart";
 
 export const Cart = () => {
-  const { performSQLAction, initialized } = useSQLiteDB();
-  const pp: any = useSelector((state: any) => state.cart);
+  const items = useSelector((state: any) => state.cart);
   const history = useHistory();
-  const [items, setItems] = useState<cart>();
+
+  const dispatch = useDispatch();
   const [isClear, setClear] = useState(false);
-  const [total, setTotalPrice] = useState(0);
 
   useEffect(() => {
     setTimeout(() => {
@@ -26,20 +26,10 @@ export const Cart = () => {
     }, 100);
   }, []);
 
-  const loadData = async () => {
-    if (!pp) {
-      setItems([]);
-      return;
-    }
-
-    setItems(pp);
-  };
-  
-  
+  const loadData = async () => {};
 
   const dropData = async (id_producto: number) => {
-    console.log(id_producto);
-    
+    dispatch(dropOrder(id_producto));
   };
 
   const handleBackClick = () => {
@@ -47,26 +37,12 @@ export const Cart = () => {
   };
 
   const handleWhatsAppClick = () => {
-    sendWhatsAppMessage(items ?? [], setClear);
+    sendWhatsAppMessage(items, setClear);
   };
 
   if (isClear) {
     setClear(false);
-    try {
-      performSQLAction(async (db: SQLiteDBConnection | undefined) => {
-        const drop_order = await db?.query(`DELETE FROM orders`);
-
-        const result = drop_order;
-
-        if (result?.values?.length == 0) {
-          console.log("BORRAR TODO EL CARRITO");
-          setItems([]);
-          setTotalPrice(0);
-        }
-      });
-    } catch (error) {
-      alert((error as Error).message);
-    }
+    dispatch(dropAllCart(items));
   }
   return (
     <>
@@ -118,7 +94,7 @@ export const Cart = () => {
                 </>
               ))}
 
-            {items?.id_producto ===0 && (
+            {items.length === 0 && (
               <div
                 style={{
                   display: "flex",
@@ -147,7 +123,7 @@ export const Cart = () => {
         </div>
         <div className="cart-total-container">
           <h4>Total</h4>
-          <h5> {"$" + total}</h5>
+          <h5> {"$" + cartTotal()}</h5>
         </div>
       </div>
 

@@ -1,15 +1,16 @@
 import { InAppBrowser } from "@ionic-native/in-app-browser";
-import { CartI } from "../../interfaces";
+import { Cart, CartI } from "../../interfaces";
 
 
-export const sendWhatsAppMessage = (message: CartI[],   setIsClear: (value: boolean) => void) => {
+export const sendWhatsAppMessage = (message: any,   setIsClear: (value: boolean) => void) => {
  
   let number = "9983191668"; 
   let data: string = ` `;
-  for (let i = 0; i < message.length; i++) {
-    const item = message[i];
-    data += `${item.name_product}, cantidad = ${item.total_product}\n\n `;
-  }
+
+  message.forEach(function (elemento: Cart) {
+    data += `${elemento.product}, total =  ${elemento.total} \n\n`;
+    
+  });
 
   const order: string = `Productos:\n\n ${data}`;
  

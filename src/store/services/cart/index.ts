@@ -19,6 +19,37 @@ export const setCartData = (item: Cart) => {
   return current;
 };
 
+export const cartTotal = () => {
+  const current = JSON.parse(localStorage.getItem("cart") || "[]");
+  var totalPrice = 0;
+  for (var i = 0; i < current.length; i++) {
+    var product = current[i];
+    var price = parseFloat(product.price);
+    var total = product.total;
+    var subtotal = price * total;
+    totalPrice += subtotal;
+  }
+
+  return totalPrice;
+};
+
+export const dropData = (id: number) => {
+  const current = JSON.parse(localStorage.getItem("cart") || "[]");
+
+  const updatedCart = current.filter(
+    (cartItem: Cart) => cartItem.id_producto !== id
+  );
+
+  localStorage.setItem("cart", JSON.stringify(updatedCart));
+
+  return updatedCart;
+};
+
+export const dropAllData = () => {
+  localStorage.removeItem("cart");
+  return [];
+};
+
 //TODO
 export const updateCartState = (userData: Partial<Cart>) => {
   const currentState = JSON.parse(localStorage.getItem("cart") as string);
