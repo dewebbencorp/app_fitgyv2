@@ -145,7 +145,7 @@ export const Login = () => {
                     <form onSubmit={resetPass}>
                       <div className="reset-pass-container">
                         <span onClick={() => setRpActive(true)}>
-                          {!rpResponse && <>Ingresa tu correo</>}
+                          {!rpResponse && <>Ingresa tú correo</>}
                           {rpResponse && <>{rpResponse}</>}
                         </span>
                       </div>
