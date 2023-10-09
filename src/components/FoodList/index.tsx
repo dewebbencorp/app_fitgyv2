@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 import { AnyAction, ThunkDispatch } from "@reduxjs/toolkit";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { useHistory, useParams } from "react-router-dom";
-import { ProductoPorCategoria } from "../../interfaces";
+import { Cart, ProductoPorCategoria } from "../../interfaces";
 import { useSQLiteDB } from "../../database";
 import { postFoodByType } from "../../axios/Food";
 import { Loading, LoadingImage } from "../LoadScreen";
@@ -15,6 +15,7 @@ import add_img from "./images/img_add.png";
 import "./foodList.css";
 import "swiper/css";
 import { IonBackButton, IonButtons, IonToolbar } from "@ionic/react";
+import { addProduct } from "../../store/slices/cart";
 
 export const ListFood = () => {
   const [showLoading, setShowLoading] = useState(true);
@@ -57,7 +58,7 @@ export const ListFood = () => {
     window.location.href = "/home/fitbar";
   };
 
-  const addToCart = async (data: ProductoPorCategoria) => {
+  const addToCart2 = async (data: ProductoPorCategoria) => {
     try {
       // add test record to db
       performSQLAction(async (db: SQLiteDBConnection | undefined) => {
@@ -70,22 +71,34 @@ export const ListFood = () => {
     } catch (error) {
       alert((error as Error).message);
     } finally {
-      toast.success("Producto añadido", {
-        duration: 2000,
-        position: "top-center",
-        style: {
-          marginTop: "1rem",
-          borderRadius: "10px",
-          background: "white",
-          color: "blach",
-          fontSize: ".8em",
-          fontFamily: "var(--poppins)",
-          fontStyle: "italic",
-        },
-      });
     }
   };
 
+  const addToCart = async (data: ProductoPorCategoria) => {
+    const product: Cart = {
+      id_producto: data.id_producto,
+      product: data.nombreProducto,
+      price: data.costo,
+      total: 1,
+      img_url: data.media_url,
+    };
+
+    dispatch(addProduct(product));
+
+    toast.success("Producto añadido", {
+      duration: 2000,
+      position: "top-center",
+      style: {
+        marginTop: "1rem",
+        borderRadius: "10px",
+        background: "white",
+        color: "blach",
+        fontSize: ".8em",
+        fontFamily: "var(--poppins)",
+        fontStyle: "italic",
+      },
+    });
+  };
   const [loadImage, setLoadImage] = useState(true);
   const Loaded = () => {
     setLoadImage(false);
@@ -147,7 +160,11 @@ export const ListFood = () => {
 
                     <div className="image-container-food-finally">
                       {loadImage && <LoadingImage />}
-                      <img className="image-fl" src={food.media_url} onLoad={Loaded} />
+                      <img
+                        className="image-fl"
+                        src={food.media_url}
+                        onLoad={Loaded}
+                      />
                     </div>
 
                     <div className="description-info-container">

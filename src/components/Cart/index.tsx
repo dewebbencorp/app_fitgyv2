@@ -6,15 +6,17 @@ import { HiChevronLeft } from "react-icons/hi2";
 import { BsWhatsapp } from "react-icons/bs";
 import { IoSadSharp } from "react-icons/io5";
 import { useHistory } from "react-router";
-import { CartI, CartTotal } from "../../interfaces";
+import { Cart as cart, CartI, CartTotal } from "../../interfaces";
 import "./cart.css";
 import { sendWhatsAppMessage } from "./senMessage";
 import { AiFillDelete } from "react-icons/ai";
+import { useSelector } from "react-redux";
 
 export const Cart = () => {
   const { performSQLAction, initialized } = useSQLiteDB();
+  const pp: any = useSelector((state: any) => state.cart);
   const history = useHistory();
-  const [items, setItems] = useState<Array<CartI>>();
+  const [items, setItems] = useState<cart>();
   const [isClear, setClear] = useState(false);
   const [total, setTotalPrice] = useState(0);
 
@@ -25,57 +27,19 @@ export const Cart = () => {
   }, []);
 
   const loadData = async () => {
-    try {
-      performSQLAction(async (db: SQLiteDBConnection | undefined) => {
-        const total_prod = await db?.query(
-          `SELECT 
-          id_order, name_product,
-          price,
-          COUNT(name_product) AS total_product,
-          image_url  
-
-          FROM orders
-          GROUP BY 
-          name_product 
-          ORDER BY
-          date_added DESC;
-          `
-        );
-        const totalPrice = await db?.query(
-          `SELECT  SUM(price) AS total_price FROM orders `
-        );
-
-        const total_price = totalPrice?.values;
-        const result = total_prod?.values;
-
-        if (result != undefined && total_price != undefined) {
-          setItems(result);
-          setTotalPrice(total_price[0].total_price);
-        }
-      });
-    } catch (error) {
-      alert((error as Error).message);
+    if (!pp) {
+      setItems([]);
+      return;
     }
+
+    setItems(pp);
   };
+  
+  
 
-  const dropData = async (nameProduct: string) => {
-    try {
-      performSQLAction(async (db: SQLiteDBConnection | undefined) => {
-        const drop_order = await db?.query(
-          `DELETE FROM orders
-            WHERE name_product = '${nameProduct}'
-          `
-        );
-
-        setItems([]);
-
-        setTimeout(() => {
-          loadData();
-        }, 50);
-      });
-    } catch (error) {
-      alert((error as Error).message);
-    }
+  const dropData = async (id_producto: number) => {
+    console.log(id_producto);
+    
   };
 
   const handleBackClick = () => {
@@ -122,18 +86,17 @@ export const Cart = () => {
         <div className="cart-main">
           <div className="cart-container">
             {items &&
-              items.map((food) => (
+              items.length > 0 &&
+              items.map((food: cart) => (
                 <>
-                  <div key={food.name_product}>
+                  <div key={food.id_producto}>
                     <div className="card-container-food">
                       <div className="card-food">
                         <div className="icon-container-food">
-                          <img src={food.image_url} />
+                          <img src={food.img_url} />
                         </div>
                         <div className="card-description-food">
-                          <h1 className="title-food-cart">
-                            {food.name_product}
-                          </h1>
+                          <h1 className="title-food-cart">{food.product}</h1>
                           <h2 className="price-food limit-text ">
                             {"$" + food.price}
                           </h2>
@@ -142,19 +105,20 @@ export const Cart = () => {
                         <div className="btn-options-container">
                           <AiFillDelete
                             className="btn-delete-order"
-                            onClick={() => dropData(food.name_product)}
+                            onClick={() => dropData(food.id_producto)}
                           />
                         </div>
                       </div>
 
                       <div className="total-product-container">
-                        <h5 className="total-product">{food.total_product}</h5>
+                        <h5 className="total-product">{food.total}</h5>
                       </div>
                     </div>
                   </div>
                 </>
               ))}
-            {items && items?.length === 0 && (
+
+            {items?.id_producto ===0 && (
               <div
                 style={{
                   display: "flex",
@@ -175,7 +139,6 @@ export const Cart = () => {
                   style={{
                     fontSize: "2rem",
                   }}
-
                   className="bell-joke"
                 />
               </div>

@@ -56,7 +56,7 @@ export interface Asociado {
   status: number;
   puntos: number;
   permisos: number;
-  terminos: number
+  terminos: number;
 }
 
 export interface UpdateProfile {
@@ -129,4 +129,12 @@ export interface CartI {
 
 export interface CartTotal {
   total_price: number;
+}
+
+export interface Cart {
+  id_producto: number;
+  product: string;
+  price: number;
+  total: number;
+  img_url: string;
 }

@@ -7,6 +7,7 @@ import newsReducer from "./slices/newsData";
 import cardReducer from "./slices/cardSlice";
 import setVCardReducer from "./slices/params";
 import setSurveyReducer from "./slices/questions";
+import setCartReducer from "./slices//cart";
 
 export const store = configureStore({
   reducer: {
@@ -18,5 +19,6 @@ export const store = configureStore({
     news_dta: newsReducer,
     card_list: cardReducer,
     survey: setSurveyReducer,
+    cart: setCartReducer,
   },
 });
