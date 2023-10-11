@@ -50,9 +50,17 @@ export const dropAllData = () => {
   return [];
 };
 
-//TODO
-export const updateCartState = (userData: Partial<Cart>) => {
-  const currentState = JSON.parse(localStorage.getItem("cart") as string);
-  const updatedState = { ...currentState, ...userData };
-  localStorage.setItem("cart", JSON.stringify(updatedState));
+export const updateCartState = (id_producto: number, total: number) => {
+  const current = JSON.parse(localStorage.getItem("cart") || "[]");
+
+  const existingItemIndex = current.findIndex(
+    (cartItem: Cart) => cartItem.id_producto === id_producto
+  );
+
+  if (existingItemIndex !== -1) {
+    current[existingItemIndex].total = total;
+    localStorage.setItem("cart", JSON.stringify(current));
+
+    return current;
+  }
 };

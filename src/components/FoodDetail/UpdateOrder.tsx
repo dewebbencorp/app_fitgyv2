@@ -8,12 +8,39 @@ import { useEffect, useState } from "react";
 
 import { BsFillArrowDownSquareFill, BsPlus } from "react-icons/bs";
 import { HiChevronLeft } from "react-icons/hi2";
-
-export const UpdateOrder = ({ food, showModal }): any => {
-  console.log(food);
-
+import { useDispatch } from "react-redux";
+import { dropOrder, updateCartItem } from "../../store/slices/cart";
+import { Cart } from "../../interfaces";
+interface UpdateOrderProps {
+  food: Cart;
+  showModal: (value: boolean) => void;
+}
+export const UpdateOrder = ({ food, showModal }: UpdateOrderProps) => {
+  const dispatch = useDispatch();
   const { img_url, id_producto, product, price, total } = food;
   const [t, setTotal] = useState<number>(food ? total : 0);
+
+  console.log(food);
+
+  const updateItem = () => {
+    const data: Cart = {
+      id_producto: id_producto,
+      product: "",
+      price: 0,
+      total: t,
+      img_url: "",
+    };
+    dispatch(updateCartItem(data));
+    toast.success("Actualizado");
+    showModal(false);
+  };
+
+  const dropItem = async () => {
+    dispatch(dropOrder(id_producto));
+    toast.success("Eliminado");
+    showModal(false);
+  };
+
   return (
     <>
       <IonToolbar id="tbg">
@@ -40,8 +67,8 @@ export const UpdateOrder = ({ food, showModal }): any => {
                 <h1>{product}</h1>{" "}
               </div>
               <div className="categoria-food"></div>
-              <div className="description-food">
-                <h5>{<div> Precio: ${price}</div>}</h5>
+              <div className="description-food ">
+                <h4>Precio: ${price}</h4>
               </div>
               <div
                 style={{
@@ -69,7 +96,7 @@ export const UpdateOrder = ({ food, showModal }): any => {
 
           <div className="car-options-container">
             <div className="btn-container">
-              {t > 1 ? (
+              {t > 0 ? (
                 <RiSubtractFill
                   style={{ fontSize: "2em" }}
                   onClick={() => setTotal(t - 1)}
@@ -84,10 +111,16 @@ export const UpdateOrder = ({ food, showModal }): any => {
               />
             </div>
 
-            <div className="add-to-cart-detail">
-              <p>Agregar</p>
-              <p>MX${price * t}</p>
-            </div>
+            {t > 0 ? (
+              <div className="add-to-cart-detail" onClick={updateItem}>
+                <p>Confirmar</p>
+                <p>MX${price * t}</p>
+              </div>
+            ) : (
+              <div className="drop-to-cart-detail" onClick={dropItem}>
+                <p>Eliminar orden</p>
+              </div>
+            )}
           </div>
         </IonContent>
       )}

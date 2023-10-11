@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 
 import { IonActionSheet, IonButtons, IonModal, IonToolbar } from "@ionic/react";
-import { HiChevronLeft } from "react-icons/hi2";
+import { HiChevronLeft, HiPencil } from "react-icons/hi2";
 import { BsWhatsapp } from "react-icons/bs";
-import { IoSadSharp } from "react-icons/io5";
+import { IoPencilOutline, IoSadSharp } from "react-icons/io5";
 import { useHistory } from "react-router";
 import { Cart as cart } from "../../interfaces";
 import "./cart.css";
@@ -30,20 +30,16 @@ export const Cart = () => {
 
   const backButtonHandler = () => {
     setDetail(false); // Cerrar el modal
-};
+  };
 
-useEffect(() => {
-    document.addEventListener('ionBackButton', backButtonHandler);
+  useEffect(() => {
+    document.addEventListener("ionBackButton", backButtonHandler);
     return () => {
-        document.removeEventListener('ionBackButton', backButtonHandler);
+      document.removeEventListener("ionBackButton", backButtonHandler);
     };
-}, []);
+  }, []);
 
   const loadData = async () => {};
-
-  const dropData = async (id_producto: number) => {
-    dispatch(dropOrder(id_producto));
-  };
 
   const handleBackClick = () => {
     history.goBack();
@@ -89,10 +85,7 @@ useEffect(() => {
                     <div className="card-container-food  ">
                       <div className="card-food">
                         <div className="icon-container-food ">
-                          <img
-                            src={food.img_url}
-                            onClick={() => showDetail(food, food.total)}
-                          />
+                          <img src={food.img_url} />
                         </div>
                         <div className="card-description-food">
                           <h1 className="title-food-cart">{food.product}</h1>
@@ -102,9 +95,9 @@ useEffect(() => {
                         </div>
 
                         <div className="btn-options-container">
-                          <AiFillDelete
-                            className="btn-delete-order"
-                            onClick={() => dropData(food.id_producto)}
+                          <IoPencilOutline
+                            className="btn-update-order"
+                            onClick={() => showDetail(food, food.total)}
                           />
                         </div>
                       </div>
@@ -150,17 +143,20 @@ useEffect(() => {
         </div>
       </div>
 
-      <div className="btn-pay-container" onClick={() => handleWhatsAppClick()}>
-        <div className="btn-whats-container">
-          <h5 className="text-got">Pedir por WhatsApp</h5>
-          <BsWhatsapp className="btn-whats" />
+      {items.length > 0 && (
+        <div
+          className="btn-pay-container"
+          onClick={() => handleWhatsAppClick()}
+        >
+          <div className="btn-whats-container">
+            <h5 className="text-got">Pedir por WhatsApp</h5>
+            <BsWhatsapp className="btn-whats" />
+          </div>
         </div>
-      </div>
+      )}
 
       <IonModal id="md" isOpen={isDetail}>
-        
-
-        <UpdateOrder food={product} showModal={setDetail} />
+        <UpdateOrder food={product } showModal={setDetail} />
       </IonModal>
     </>
   );

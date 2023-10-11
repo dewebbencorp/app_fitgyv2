@@ -100,6 +100,13 @@
   line-height: 1.5;
 }
 
+.description-food h4 {
+  text-align: start;
+  font-size: 1rem;
+  margin: 0;
+  font-family: "Poppins";
+}
+
 /*CHECKBOX*/
 
 .add-complement-container {
@@ -159,6 +166,20 @@ input[type="checkbox"]:checked {
   border-radius: 0.5rem;
   margin-right: 3vw;
   background-color: var(--ion-tab-bar-background);
+}
+
+.drop-to-cart-detail {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 50%;
+  font-family: var(--poppins);
+  font-size: 1.2em;
+  border-radius: 0.5rem;
+  margin-right: 3vw;
+  background-color: red;
+  transform: translateY(5px);
+  animation: fadeAndSlide 0.5s ease-out forwards;
 }
 .car {
   margin-top: 0.5rem;
