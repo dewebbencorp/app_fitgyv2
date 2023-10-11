@@ -3,6 +3,7 @@ import { Dispatch } from "redux";
 import { BASE_URL } from "../Utils";
 import {
   Asociado,
+  CuponList,
   RequesChangePassword,
   ResponseUpdate,
   UpdateProfile,
@@ -171,6 +172,35 @@ export const generateCupon =
         .catch((error) => {
           console.log(error);
           reject(error);
+        });
+    });
+  };
+
+export const getCuponList =
+  (claveSocio: number) =>
+  (dispatch: Dispatch<any>): Promise<CuponList> => {
+    const postData = {
+      claveSocio: claveSocio,
+    };
+
+    return new Promise<CuponList>((resolve) => {
+      axios
+        .post(`${BASE_URL}/listarTarjetaRegalo.php`, postData)
+        .then((response) => {
+          const responseData: CuponList = response.data.map((item: any) => ({
+            clave_asociado: item.clave_asociado,
+            asociado: item.asociado,
+            beneficiario: item.nombre_beneficiario,
+            utilizado: item.codigo_utilizado === 1,
+            vigente: item.codigo_vigente === 1,
+            vencimiento: item.fecha_vencimiento.date,
+          }));
+
+          resolve(responseData);
+        })
+        .catch((error) => {
+          console.log(error);
+          resolve(error);
         });
     });
   };

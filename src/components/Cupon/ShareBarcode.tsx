@@ -31,7 +31,7 @@ export const ShareBarcode = ({ code, name }: ShareBarcodeProps) => {
   };
 
   const formatDate = (date: Date) => {
-    const day = date.getDate();
+    const day = date.getDate()+15;
     const month = date.getMonth() + 1; // Meses en JavaScript comienzan desde 0
     const year = date.getFullYear();
     return `${day}/${month}/${year}`;
@@ -53,7 +53,7 @@ export const ShareBarcode = ({ code, name }: ShareBarcodeProps) => {
       <div className="bar-info" ref={barcodeRef}>
         <div className="c-info">
           <h1>Beneficiario: {name}</h1>
-          {date && <h2>{formatDate(date)}</h2>}
+          {date && <h2>Vence: {formatDate(date)}</h2>}
         </div>
 
         <div>

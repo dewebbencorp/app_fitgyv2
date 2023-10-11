@@ -138,3 +138,12 @@ export interface Cart {
   total: number;
   img_url: string;
 }
+
+export interface CuponList {
+  clave_asociado: number;
+  asociado: string;
+  beneficiario: string;
+  utilizado: boolean;
+  vigente: boolean;
+  vencimiento: string;
+}

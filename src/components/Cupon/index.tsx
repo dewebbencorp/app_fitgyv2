@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import toast, { Toaster } from "react-hot-toast";
 import { useRef, useState } from "react";
 import BACKGROUND_CUPON_VIDEO from "./video/bg_cupon.mp4";
-import { generateCupon } from "../../axios/User";
+import { generateCupon, getCuponList } from "../../axios/User";
 import { AnyAction, ThunkDispatch } from "@reduxjs/toolkit";
 import { useDispatch, useSelector } from "react-redux";
 import { Asociado, ResponseUpdate } from "../../interfaces";
@@ -70,6 +70,11 @@ export const Cupon = () => {
     }
   };
 
+  const loadList = async () => {
+    const data = await dispatch(getCuponList(user.Clav_Asociado));
+    console.log(data);
+    
+  };
   return (
     <>
       <Toaster />
@@ -80,13 +85,8 @@ export const Cupon = () => {
             <h2>CUPÓN</h2>
           </div>
           <div className="video-container">
-          {lv && <div></div>}
-            <video
-              src={BG_CUPON}
-              autoPlay
-              loop
-              onLoadedData={loadvideo}
-            />
+            {lv && <div></div>}
+            <video src={BG_CUPON} autoPlay loop onLoadedData={loadvideo} />
           </div>
         </div>
         <form onSubmit={onSubmit} className="btn-generate-container">
@@ -118,6 +118,7 @@ export const Cupon = () => {
               <img src={cupon_img} /> <p> Generar</p>
             </div>
           </button>
+          {user.permisos === 7 && <h5 onClick={() => loadList()}>Historial</h5>}
         </form>
       </div>
       <IonModal
