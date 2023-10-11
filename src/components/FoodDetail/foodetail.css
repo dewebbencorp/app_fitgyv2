@@ -8,6 +8,18 @@
   color: black;
 }
 
+#tbg {
+  background-color: black;
+}
+.gmt-2 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: black;
+  color: black;
+}
 .main-container-food {
   display: flex;
   flex-direction: column;
@@ -20,6 +32,18 @@
   animation: fadeAndSlide 1s ease-out forwards;
   margin-bottom: 35vh;
 }
+
+.main-container-food-2 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  opacity: 0;
+  font-family: var(--poppins);
+  transform: translateY(20px);
+  animation: fadeAndSlide 0.3s ease-out forwards;
+  margin-bottom: 20vh;
+}
 .container-food {
   width: 100%;
 }
@@ -29,6 +53,17 @@
   justify-content: center;
   margin-top: -12vh;
   width: 35rem;
+}
+.food-image-container- {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: -1vh;
+  width: 35rem;
+}
+
+.food-image-container- img {
+  clip-path: circle(30% at center);
 }
 .food-image-container img {
   height: 20rem;

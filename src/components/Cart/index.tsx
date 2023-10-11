@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-import { IonButtons, IonModal, IonToolbar } from "@ionic/react";
+import { IonActionSheet, IonButtons, IonModal, IonToolbar } from "@ionic/react";
 import { HiChevronLeft } from "react-icons/hi2";
 import { BsWhatsapp } from "react-icons/bs";
 import { IoSadSharp } from "react-icons/io5";
@@ -27,6 +27,17 @@ export const Cart = () => {
       loadData();
     }, 100);
   }, []);
+
+  const backButtonHandler = () => {
+    setDetail(false); // Cerrar el modal
+};
+
+useEffect(() => {
+    document.addEventListener('ionBackButton', backButtonHandler);
+    return () => {
+        document.removeEventListener('ionBackButton', backButtonHandler);
+    };
+}, []);
 
   const loadData = async () => {};
 
@@ -75,13 +86,13 @@ export const Cart = () => {
               items.map((food: cart) => (
                 <>
                   <div key={food.id_producto}>
-                    <div
-                      className="card-container-food  "
-                      onClick={() => showDetail(food, food.total)}
-                    >
+                    <div className="card-container-food  ">
                       <div className="card-food">
-                        <div className="icon-container-food">
-                          <img src={food.img_url} />
+                        <div className="icon-container-food ">
+                          <img
+                            src={food.img_url}
+                            onClick={() => showDetail(food, food.total)}
+                          />
                         </div>
                         <div className="card-description-food">
                           <h1 className="title-food-cart">{food.product}</h1>
@@ -146,10 +157,10 @@ export const Cart = () => {
         </div>
       </div>
 
-      <IonModal isOpen={isDetail}>
-        <div onClick={() => setDetail(false)}>close</div>
+      <IonModal id="md" isOpen={isDetail}>
+        
 
-        <UpdateOrder food={product} />
+        <UpdateOrder food={product} showModal={setDetail} />
       </IonModal>
     </>
   );
