@@ -159,3 +159,53 @@ video {
 .bar-info div {
   padding: 1rem;
 }
+
+/*HISTORY*/
+
+.title-row-2 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 3rem;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  font-weight: bold;
+  font-family: 'Poppins';
+  border: 1px solid orangered;
+  background: linear-gradient(#ff7d04, #ec540d) !important;
+  margin-bottom: 0.5rem;
+}
+
+main ion-grid ion-accordion-group ion-accordion {
+  background-color: black;
+}
+
+main ion-grid ion-accordion-group ion-accordion div span {
+  color: white;
+  font-size: 0.9rem;
+}
+.slotac {
+  background-color: rgba(88, 86, 86, 0.37);
+  border-radius: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-left: 1rem;
+  margin-bottom: 1rem;
+}
+
+.slotac p {
+  color: red;
+  margin: 0;
+  font-size: 0.9rem;
+}
+.slotac span {
+  color: ;
+  font-size: 1rem;
+  text-align: center;
+}
+ion-accordion ion-row {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}

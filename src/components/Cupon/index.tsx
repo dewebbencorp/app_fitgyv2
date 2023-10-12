@@ -1,12 +1,12 @@
 import cupon_img from "../../pages/Home/img/cupon.png";
 import { useForm } from "react-hook-form";
 import toast, { Toaster } from "react-hot-toast";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import BACKGROUND_CUPON_VIDEO from "./video/bg_cupon.mp4";
 import { generateCupon, getCuponList } from "../../axios/User";
 import { AnyAction, ThunkDispatch } from "@reduxjs/toolkit";
 import { useDispatch, useSelector } from "react-redux";
-import { Asociado, ResponseUpdate } from "../../interfaces";
+import { Asociado, CuponList, ResponseUpdate } from "../../interfaces";
 import "./cupon.css";
 import { ShareBarcode } from "./ShareBarcode";
 import {
@@ -18,9 +18,12 @@ import {
 } from "@ionic/react";
 import { AiOutlineCloseCircle } from "react-icons/ai";
 import { BG_CUPON } from "../../constants";
+import { CuponL } from "./CuponList";
 export const Cupon = () => {
   const [isButtonDisabled, setIsButtonDisabled] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
+  const [isHistory, setIsHistory] = useState(false);
+  const [history, setHistory] = useState<CuponList>();
   const [code, setCode] = useState("");
   const [name, setName] = useState<string>();
   const dispatch: ThunkDispatch<any, void, AnyAction> = useDispatch();
@@ -72,9 +75,23 @@ export const Cupon = () => {
 
   const loadList = async () => {
     const data = await dispatch(getCuponList(user.Clav_Asociado));
-    console.log(data);
-    
+    setIsHistory(true);
+   
+    setHistory(data);
   };
+
+  const backButtonHandler = () => {
+    setIsHistory(false);
+    setIsVisible(false);
+  };
+
+  useEffect(() => {
+    document.addEventListener("ionBackButton", backButtonHandler);
+    return () => {
+      document.removeEventListener("ionBackButton", backButtonHandler);
+    };
+  }, []);
+
   return (
     <>
       <Toaster />
@@ -125,6 +142,7 @@ export const Cupon = () => {
         trigger="open-modal"
         initialBreakpoint={0.7}
         breakpoints={[1, 0.25, 0.5, 0.75]}
+        onDidDismiss={() => setIsVisible(false)}
         isOpen={isVisible}
       >
         <div
@@ -134,6 +152,21 @@ export const Cupon = () => {
         </div>
 
         <ShareBarcode code={code} name={name ? name : ""} />
+      </IonModal>
+
+      <IonModal
+        trigger="open-modal"
+        initialBreakpoint={0.8}
+        isOpen={isHistory}
+        onDidDismiss={() => setIsHistory(false)}
+      >
+        <div
+          style={{ display: "flex", justifyContent: "end", fontSize: "2rem" }}
+        >
+         
+
+          <CuponL data={history} />
+        </div>
       </IonModal>
     </>
   );
