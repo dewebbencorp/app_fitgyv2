@@ -74,9 +74,14 @@ export const Cupon = () => {
   };
 
   const loadList = async () => {
+    toast.loading("Cargando");
     const data = await dispatch(getCuponList(user.Clav_Asociado));
+    if (data) {
+      toast.dismiss();
+      toast.success("Hecho");
+    }
     setIsHistory(true);
-   
+
     setHistory(data);
   };
 
@@ -135,7 +140,19 @@ export const Cupon = () => {
               <img src={cupon_img} /> <p> Generar</p>
             </div>
           </button>
-          {user.permisos === 7 && <h5 onClick={() => loadList()}>Historial</h5>}
+          {user.permisos === 7 && (
+            <h5
+              style={{
+                backgroundColor: "orangered",
+                padding: "0.5rem",
+                borderRadius: "0.5rem",
+                fontSize: "0.7rem",
+              }}
+              onClick={() => loadList()}
+            >
+              Historial
+            </h5>
+          )}
         </form>
       </div>
       <IonModal
@@ -163,8 +180,6 @@ export const Cupon = () => {
         <div
           style={{ display: "flex", justifyContent: "end", fontSize: "2rem" }}
         >
-         
-
           <CuponL data={history} />
         </div>
       </IonModal>
