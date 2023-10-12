@@ -199,7 +199,6 @@ export const getCuponList =
           resolve(responseData);
         })
         .catch((error) => {
-          console.log(error);
           resolve(error);
         });
     });

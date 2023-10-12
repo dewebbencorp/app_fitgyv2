@@ -75,13 +75,16 @@ export const Cupon = () => {
 
   const loadList = async () => {
     toast.loading("Cargando");
-    const data = await dispatch(getCuponList(user.Clav_Asociado));
-    if (data) {
+    const data : any= await dispatch(getCuponList(user.Clav_Asociado));
+    if (data.message) {
       toast.dismiss();
-      toast.success("Hecho");
+      toast.error("Error de red");
+      return;
     }
-    setIsHistory(true);
 
+    toast.dismiss();
+    toast.success("Éxito");
+    setIsHistory(true);
     setHistory(data);
   };
 
