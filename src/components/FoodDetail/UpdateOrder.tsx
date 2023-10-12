@@ -20,8 +20,7 @@ export const UpdateOrder = ({ food, showModal }: UpdateOrderProps) => {
   const { img_url, id_producto, product, price, total } = food;
   const [t, setTotal] = useState<number>(food ? total : 0);
 
-  console.log(food);
-
+ 
   const updateItem = () => {
     const data: Cart = {
       id_producto: id_producto,
