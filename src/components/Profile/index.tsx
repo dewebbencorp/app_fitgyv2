@@ -1,4 +1,3 @@
-import { PiPencilSimple } from "react-icons/pi";
 import { useEffect, useState } from "react";
 import points from "./images/ponts.png";
 import schedule from "./images/schedule.png";
@@ -62,19 +61,24 @@ export const UserProfile = ({ showP }: any) => {
   useEffect(() => {
     calculateDeadline();
   }, []);
+
   const openGallery = async () => {
-    if (user != null) {
-      const image = await Camera.getPhoto({
-        source: CameraSource.Photos,
-        allowEditing: false,
-        resultType: CameraResultType.Base64,
-      });
+    try {
+      if (user != null) {
+        const photo = await Camera.getPhoto({
+          resultType: CameraResultType.Base64,
+          source: CameraSource.Photos,
+          quality: 100,
+        });
 
-      const imageBase64 = image.base64String;
-
-      if (imageBase64) {
-        upph(imageBase64);
+       
+        if (photo.base64String) {
+          upph(photo.base64String);
+          
+        }
       }
+    } catch (error) {
+      toast(JSON.stringify(error.message));
     }
   };
 
@@ -95,8 +99,8 @@ export const UserProfile = ({ showP }: any) => {
           toast.dismiss();
           toast.success("Foto actualizada");
           setTimeout(() => {
-            showP(false)
-            showP(true)
+            showP(false);
+            showP(true);
           }, 500);
         }
       } catch (error: any) {
@@ -215,10 +219,10 @@ export const UserProfile = ({ showP }: any) => {
             role: "cancel",
           },
         ]}
-      ></IonActionSheet>
+      />
 
       <IonModal isOpen={pp}>
-        <PP setpp ={setPp}/>
+        <PP setpp={setPp} />
       </IonModal>
     </>
   );
