@@ -95,7 +95,8 @@ export const UserProfile = ({ showP }: any) => {
           toast.dismiss();
           toast.success("Foto actualizada");
           setTimeout(() => {
-            window.location.replace("/home/perfil");
+            showP(false)
+            showP(true)
           }, 500);
         }
       } catch (error: any) {
