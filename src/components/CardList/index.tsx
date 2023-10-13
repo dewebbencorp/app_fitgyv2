@@ -53,7 +53,12 @@ export const CardsList = () => {
                 checked={index === checkedIndex}
                 onClick={() => handleChecked(index, card)}
               />
-              <span>{card.numTarjeta} </span>
+              <div>
+                <span>{card.numTarjeta}</span>
+                <span className={checkedIndex === index ? " act " : " act2 "}>
+                  {checkedIndex === index ?  " (Activa) " : "(Desactivada)"}
+                </span>
+              </div>
             </section>
           ))}
       </div>

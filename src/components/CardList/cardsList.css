@@ -27,7 +27,22 @@
 .card-number-ctn span {
   color: white;
   font-size: 0.9rem;
-  
+}
+
+.card-number-ctn div {
+  display: flex;
+}
+
+.card-number-ctn div span {
+  margin-left: 0.2rem;
+}
+
+.act {
+  color: rgb(255, 113, 61) !important;
+}
+
+.act2 {
+  color: orangered !important;
 }
 
 /* ADD CARD INPUT */

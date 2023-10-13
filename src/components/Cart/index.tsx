@@ -99,6 +99,12 @@ export const Cart = () => {
                             className="btn-update-order"
                             onClick={() => showDetail(food, food.total)}
                           />
+                          <AiFillDelete
+                            className="btn-delete-order"
+                            onClick={() =>
+                              dispatch(dropOrder(food.id_producto))
+                            }
+                          />
                         </div>
                       </div>
 
@@ -156,7 +162,7 @@ export const Cart = () => {
       )}
 
       <IonModal id="md" isOpen={isDetail}>
-        <UpdateOrder food={product } showModal={setDetail} />
+        <UpdateOrder food={product} showModal={setDetail} />
       </IonModal>
     </>
   );

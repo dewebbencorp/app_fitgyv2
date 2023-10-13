@@ -48,7 +48,6 @@
 
 .card-container-food:hover .icon-container-food {
   background-color: #fdb382;
-  
 }
 
 .btn-options-container {
@@ -67,14 +66,26 @@
   visibility: visible;
 }
 
-.btn-update-order{
+.btn-update-order {
   font-size: 1.3em;
   margin-right: 1rem;
   padding: 0.1rem;
-  color: orangered;
-  border-radius: 1rem;
+  color: rgb(194, 61, 0);
+  animation: shimmerAnimation 2s ease-in-out alternate-reverse infinite;
+}
+
+.btn-delete-order {
+  font-size: 1.3em;
+  margin-right: 1rem;
+  padding: 0.1rem;
+  color: red;
+}
+
+.btn-delete-order,
+.btn-update-order {
   background-color: #f7aa77;
-  animation: shimmerAnimation 1s ease-in-out alternate-reverse infinite;
+  border-radius: 0.5rem;
+  padding: 0.2rem;
 }
 
 .total-product-container {
