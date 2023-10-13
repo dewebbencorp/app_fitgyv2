@@ -6,24 +6,25 @@ import "./cupon.css";
 
 interface ShareBarcodeProps {
   code: string;
-  name: string
+  name: string;
 }
 
 export const ShareBarcode = ({ code, name }: ShareBarcodeProps) => {
   const barcodeRef = useRef<HTMLDivElement | null>(null);
   const [date, setDate] = useState<Date | null>(null);
-
+  const [isActive, setIsActive] = useState(false);
   useEffect(() => {
     const today = new Date();
     setDate(today);
   }, []);
 
   const handleGenerateAndShare = async () => {
+    setIsActive(true);
     if (barcodeRef.current) {
       try {
         const canvas = await html2canvas(barcodeRef.current);
         const imageUri = canvas.toDataURL("image/png");
-        await SocialSharing.share('', "Cupón generado", imageUri, '');
+        await SocialSharing.share("", "Cupón generado", imageUri, "");
       } catch (error) {
         console.error("Error al generar y compartir el cupón:", error);
       }
@@ -31,12 +32,11 @@ export const ShareBarcode = ({ code, name }: ShareBarcodeProps) => {
   };
 
   const formatDate = (date: Date) => {
-    const day = date.getDate()+15;
+    const day = date.getDate() + 15;
     const month = date.getMonth() + 1; // Meses en JavaScript comienzan desde 0
     const year = date.getFullYear();
     return `${day}/${month}/${year}`;
   };
-
 
   return (
     <div className="main-barcode">
@@ -61,9 +61,13 @@ export const ShareBarcode = ({ code, name }: ShareBarcodeProps) => {
         </div>
       </div>
 
-      <button className="btn-generate" onClick={handleGenerateAndShare}>
+      <button
+        className="btn-generate"
+        onClick={handleGenerateAndShare}
+        disabled={isActive}
+      >
         <div className="btn-cupon-info">
-          <p>Compartir</p>
+          {isActive ? <p>Compartido </p> : <p>Compartir </p>}
         </div>
       </button>
     </div>

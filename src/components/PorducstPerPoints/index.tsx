@@ -73,7 +73,7 @@ export const PP = ({ setpp }: any) => {
 
                 {!isVisible && (
                   <h3
-                    style={{ marginTop: "2vh", color: "orangered" }}
+                    style={{ marginTop: "2vh", color: "orangered", textDecoration:'underline orangered' }}
                     onClick={() => setIsVisible(true)}
                   >
                     VER HISTORIAL
