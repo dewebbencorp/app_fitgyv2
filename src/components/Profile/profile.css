@@ -83,6 +83,7 @@ h3 {
   width: 2.5rem;
   height: 2.5rem;
   margin-right: 1.5rem;
+  animation: shimmerAnimation 2s ease-in-out alternate-reverse infinite;
 }
 
 .points h5 {

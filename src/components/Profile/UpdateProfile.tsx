@@ -144,42 +144,48 @@ export const UpdateProfile = ({ setModal, user }: UpdateProfileProps) => {
               {errors.phone && <span>{errors.phone.message}</span>}
             </div>
             <div className="list-options-container">
-              <button type="submit" >
-                Actualizar datos
-              </button>
+              <button type="submit">Actualizar datos</button>
             </div>
           </form>
         </div>
         <div
           style={{
             display: "flex",
-            flexDirection: "column",
             justifyContent: "center",
-            alignItems: "center",
-            paddingLeft: "2rem",
+            width: "100%",
           }}
         >
           <div
-            className="change-pass-container"
-            onClick={() => setFieldPw(true)}
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "center",
+              alignItems: "start",
+              paddingLeft: "2rem",
+            }}
           >
-            <TfiReload
-              style={{
-                fontSize: "1.3em",
-                color: "orangered",
-                fontWeight: "bold",
-              }}
-            />
+            <div
+              className="change-pass-container"
+              onClick={() => setFieldPw(true)}
+            >
+              <TfiReload
+                style={{
+                  fontSize: "1.3em",
+                  color: "orangered",
+                  fontWeight: "bold",
+                }}
+              />
 
-            <h5>Cambiar contraseña</h5>
+              <h5>Cambiar contraseña</h5>
+            </div>
+            {showFieldPw ? (
+              <>
+                <ChangePassword setPw={setFieldPw} />{" "}
+              </>
+            ) : (
+              <>{user.permisos === 7 && <CardsList />}</>
+            )}
           </div>
-          {showFieldPw ? (
-            <>
-              <ChangePassword setPw={setFieldPw} />{" "}
-            </>
-          ) : (
-            <>{user.permisos === 7 && <CardsList />}</>
-          )}
         </div>
       </IonContent>
     </>

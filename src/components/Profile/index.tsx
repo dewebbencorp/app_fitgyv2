@@ -158,7 +158,7 @@ export const UserProfile = ({ showP }: any) => {
             </h3>
 
             <div className="ponits-container" onClick={() => gotPp()}>
-              <img className="points-icon" src={points} />
+              <img className="points-icon " src={points} />
               <div className="points">
                 <h5>Puntos Disponibles</h5>
                 <h3 className="kenyan">{user.puntos}</h3>
