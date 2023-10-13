@@ -23,10 +23,9 @@ export const FullScreenImage = ({ Image, setModal }: any) => {
             position:'absolute',
             fontSize: "2rem",
             display: "flex",
-            justifyContent: "end",
+            justifyContent: "center",
             top:'1rem',
-            width: "100%",
-            marginRight: "0.7rem",
+            width: "100%"
           }}
         >
           <AiOutlineCloseCircle onClick={() => backButtonHandler()} />
