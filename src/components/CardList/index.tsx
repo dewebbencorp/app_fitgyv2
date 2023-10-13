@@ -8,52 +8,54 @@ import { IonModal } from "@ionic/react";
 import { AddCard } from "./AddCard";
 import "./cardsList.css";
 import { Loading2 } from "../LoadScreen";
+
 export const CardsList = () => {
   const [showInput, setInput] = useState(false);
   const cardss = useSelector((state: Cards) => state.card_list);
   const dispatch: ThunkDispatch<any, void, AnyAction> = useDispatch();
   const user: Asociado = useSelector((state: Asociado) => state.user);
+
   useEffect(() => {
     dispatch(postCardsList(user.Clav_Asociado));
   }, []);
 
+  const [checkedIndex, setCheckedIndex] = useState(0);
+
+  const handleChecked = (index: number, data: Cards) => {
+    setCheckedIndex(index);
+    console.table(data);
+  };
+
   return (
     <>
-      <div className="add-card-container" onClick={() => setInput(true)}>
+      <div className="mtj">
         {!cardss[0] && <Loading2 />}
-        <div className="card-list-container">
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "left",
-            }}
-          >
-            <FaPlus
-              style={{
-                fontSize: "1.3em",
-                color: "orangered",
-                fontWeight: "bold",
-              }}
-            />
 
-            <h5>Agregar otra tarjeta</h5>
-          </div>
-          {cardss.length > 0 &&
-            cardss.map((card: Cards) => (
-              <div key={card.numTarjeta}>
-                <div className="card-number-container">
-                  <FaCircle
-                    className={
-                      card.Activo === 1 ? "far-Icon" : "far-Icon-non-active"
-                    }
-                  />
-                  <h3 >{card.numTarjeta} </h3>
-                  <h5>{card.Activo === 1 ? "(Activa)" : "(Desactivada)"}</h5>
-                </div>
-              </div>
-            ))}
+        <div className="add-card" onClick={() => setInput(true)}>
+          <FaPlus
+            style={{
+              fontSize: "1.3em",
+              color: "orangered",
+              fontWeight: "bold",
+            }}
+          />
+
+          <h5>Agregar otra tarjeta</h5>
         </div>
+
+        {cardss.length > 0 &&
+          cardss.map((card: Cards, index: number) => (
+            <section className="card-number-ctn" key={index}>
+              <input
+                type="checkbox"
+                name=""
+                id=""
+                checked={index === checkedIndex}
+                onClick={() => handleChecked(index, card)}
+              />
+              <span>{card.numTarjeta} </span>
+            </section>
+          ))}
       </div>
 
       <IonModal isOpen={showInput}>

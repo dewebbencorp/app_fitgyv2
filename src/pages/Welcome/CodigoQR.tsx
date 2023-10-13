@@ -19,7 +19,17 @@ const CodigoQR = () => {
   const [maquina, setMaquina] = useState<Maquina | null>(null);
   const [qrd, setQr] = useState(false);
 
-  useEffect(() => {}, []);
+  const backButtonHandler = () => {
+    setShowModal(false);
+    setMaquina(null);
+  };
+
+  useEffect(() => {
+    document.addEventListener("ionBackButton", backButtonHandler);
+    return () => {
+      document.removeEventListener("ionBackButton", backButtonHandler);
+    };
+  }, []);
 
   const {
     register,
@@ -220,7 +230,7 @@ const CodigoQR = () => {
                     borderRadius: "0.3rem",
                     fontSize: "0.6em",
                   }}
-                  onClick={() => setShowModal(false)}
+                  onClick={() => backButtonHandler()}
                 >
                   Cerrar
                 </div>

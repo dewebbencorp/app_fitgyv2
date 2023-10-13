@@ -121,19 +121,18 @@ input[type="checkbox"] {
   appearance: none; /* Desactivar el estilo nativo del checkbox */
   width: 20px;
   height: 20px;
-  margin-left: 5%;
+  margin-right:0.5rem ;
+  background-color: orangered;
   border: 2px solid var(--ion-tab-bar-background); /* Contorno para el checkbox no seleccionado */
   border-radius: 4rem; /* Bordes redondeados */
 }
 
 /* Estilos para el checkbox seleccionado */
 input[type="checkbox"]:checked {
-  background-color: var(
-    --ion-tab-bar-background
-  ); /* Cambiar el fondo cuando está seleccionado */
-  background-image: url("./images/check.png"); /* Ruta a tu archivo de icono */
-  background-size: 16px; /* Ajustar el tamaño del icono */
-  background-position: center; /* Posicionar el icono en el centro */
+  background-color: white; 
+  background-image: url("./images/check.png"); 
+  background-size: 16px; 
+  background-position: center;
   background-repeat: no-repeat;
 }
 

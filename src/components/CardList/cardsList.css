@@ -1,46 +1,32 @@
-.current-card-container {
+/* ADD CARD LIST */
+.mtj {
   display: flex;
-  justify-content: left;
-  align-items: center;
   flex-direction: column;
-  margin-bottom: 2vh;
+  align-items: start;
+  margin-bottom: 4rem;
+}
+.add-card {
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  margin-bottom: 0.2rem;
 }
 
-.card-list-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  width: 14rem;
-}
-.card-list-container h5 {
+.add-card h5 {
   margin-left: 0.5rem;
 }
-.card-number-container {
+
+.card-number-ctn {
   display: flex;
   justify-content: left;
   align-items: center;
+  font-size: 0.6rem;
+  margin-bottom: 1rem;
 }
-
-.far-Icon {
-  color: orangered;
-  font-size: 1rem;
-  margin-right: 0.5rem;
-  margin-left: 0.2rem;
-}
-
-.far-Icon-non-active {
-  font-size: 1rem;
-  color: rgba(250, 119, 95, 0.911);
-  margin-right: 0.5rem;
-  margin-left: 0.2rem;
-}
-.card-number-container h5 {
-  font-size: 0.8rem;
-  color: var(--ion-tab-bar-background);
-}
-.card-number-container h3 {
-  font-size: 0.7em;
+.card-number-ctn span {
   color: white;
+  font-size: 0.9rem;
+  
 }
 
 /* ADD CARD INPUT */
@@ -112,6 +98,8 @@ form h5 {
   margin-top: 15vh;
   margin-left: 5vw;
   margin-right: 5vw;
+  padding-left: 6vw;
+  display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
