@@ -100,7 +100,10 @@ export const UserProfile = ({ showP }: any) => {
         const ph = await dispatch(uploadPhono(upImg, user.Clav_Asociado));
         if (ph) {
           toast.dismiss();
-          toast.success("Foto actualizada", { position: "top-right" });
+          toast.success("Foto actualizada", {
+            position: "top-right",
+            style: { marginTop: "1.5rem" },
+          });
           setTimeout(() => {
             showP(false);
             showP(true);
