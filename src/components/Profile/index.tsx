@@ -71,10 +71,8 @@ export const UserProfile = ({ showP }: any) => {
           quality: 100,
         });
 
-       
         if (photo.base64String) {
           upph(photo.base64String);
-          
         }
       }
     } catch (error) {
@@ -92,12 +90,13 @@ export const UserProfile = ({ showP }: any) => {
             background: "#333",
             color: "#fff",
           },
+          position: "top-left",
         });
 
         const ph = await dispatch(uploadPhono(upImg, user.Clav_Asociado));
         if (ph) {
           toast.dismiss();
-          toast.success("Foto actualizada");
+          toast.success("Foto actualizada", { position: "top-left" });
           setTimeout(() => {
             showP(false);
             showP(true);
@@ -106,7 +105,9 @@ export const UserProfile = ({ showP }: any) => {
       } catch (error: any) {
         toast.dismiss();
         toast.error(`${error.message}`);
-        console.error("Error al subir la imagen:", error);
+        console.error("Error al subir la imagen:", error, {
+          position: "top-left",
+        });
       } finally {
         //
       }

@@ -13,6 +13,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { dropAllCart, dropOrder } from "../../store/slices/cart";
 import { cartTotal } from "../../store/services/cart";
 import { UpdateOrder } from "../FoodDetail/UpdateOrder";
+import toast, { Toaster } from "react-hot-toast";
 
 export const Cart = () => {
   const items = useSelector((state: any) => state.cart);
@@ -60,8 +61,15 @@ export const Cart = () => {
     setProduct(data);
   };
 
+  const onDeletedOrder = (id: number) => {
+
+    dispatch(dropOrder(id))
+    toast.success("Eliminado", { position: "top-right" });
+  };
+
   return (
     <>
+      <Toaster />
       <div className="cart-main-container">
         <div className="toolbar">
           <IonToolbar>
@@ -101,9 +109,7 @@ export const Cart = () => {
                           />
                           <AiFillDelete
                             className="btn-delete-order"
-                            onClick={() =>
-                              dispatch(dropOrder(food.id_producto))
-                            }
+                            onClick={() => onDeletedOrder(food.id_producto)}
                           />
                         </div>
                       </div>

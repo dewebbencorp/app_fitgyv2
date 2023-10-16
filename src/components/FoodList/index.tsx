@@ -70,7 +70,7 @@ export const ListFood = () => {
 
     toast.success("Producto añadido", {
       duration: 2000,
-      position: "top-center",
+      position: "top-right",
       style: {
         marginTop: "1rem",
         borderRadius: "10px",
@@ -80,6 +80,7 @@ export const ListFood = () => {
         fontFamily: "var(--poppins)",
         fontStyle: "italic",
       },
+      
     });
   };
   const [loadImage, setLoadImage] = useState(true);

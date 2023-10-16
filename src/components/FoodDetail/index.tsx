@@ -60,7 +60,7 @@ export const FoodDetail = () => {
     setTotal(1);
     toast.success("Producto añadido", {
       duration: 2000,
-      position: "top-center",
+      position: "top-right",
       style: {
         marginTop: "1rem",
         borderRadius: "10px",

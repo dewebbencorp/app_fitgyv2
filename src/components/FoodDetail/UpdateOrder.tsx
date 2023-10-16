@@ -20,7 +20,6 @@ export const UpdateOrder = ({ food, showModal }: UpdateOrderProps) => {
   const { img_url, id_producto, product, price, total } = food;
   const [t, setTotal] = useState<number>(food ? total : 0);
 
- 
   const updateItem = () => {
     const data: Cart = {
       id_producto: id_producto,
@@ -30,13 +29,13 @@ export const UpdateOrder = ({ food, showModal }: UpdateOrderProps) => {
       img_url: "",
     };
     dispatch(updateCartItem(data));
-    toast.success("Actualizado");
+    toast.success("Actualizado", { position: "top-right" });
     showModal(false);
   };
 
   const dropItem = async () => {
     dispatch(dropOrder(id_producto));
-    toast.success("Eliminado");
+    toast.success("Eliminado", { position: "top-right" });
     showModal(false);
   };
 

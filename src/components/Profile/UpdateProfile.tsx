@@ -51,13 +51,16 @@ export const UpdateProfile = ({ setModal, user }: UpdateProfileProps) => {
           borderRadius: "10px",
           background: "#333",
           color: "#fff",
+          width: "70%",
         },
+        position: "top-left",
       });
+
       const res: ResponseUpdate = await dispatch(updateProfile(request));
 
       if (res.status) {
         toast.dismiss();
-        toast.success(`Exito : ${res.response}`);
+        toast.success(`${res.response}`, { position: "top-left" });
         reset({ email: "", phone: "" });
 
         dispatch(
@@ -65,7 +68,7 @@ export const UpdateProfile = ({ setModal, user }: UpdateProfileProps) => {
         );
       } else {
         toast.dismiss();
-        toast.error(`Error : ${res.response}`);
+        toast.error(`Error : ${res.response}`, { position: "top-left" });
       }
     } catch (error: any) {
       toast.dismiss();
