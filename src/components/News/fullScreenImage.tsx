@@ -20,12 +20,14 @@ export const FullScreenImage = ({ Image, setModal }: any) => {
       <div className="full-image-container">
         <div
           style={{
-            position:'absolute',
+            position: "absolute",
             fontSize: "2rem",
             display: "flex",
             justifyContent: "center",
-            top:'1rem',
-            width: "100%"
+            top: "2.5rem",
+            width: "100%",
+            animation:
+              "shimmerAnimation 2s ease-in-out alternate-reverse infinite",
           }}
         >
           <AiOutlineCloseCircle onClick={() => backButtonHandler()} />
