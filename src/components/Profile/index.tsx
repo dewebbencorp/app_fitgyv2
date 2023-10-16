@@ -76,7 +76,10 @@ export const UserProfile = ({ showP }: any) => {
         }
       }
     } catch (error) {
-      toast(JSON.stringify(error.message), { position: "top-right" });
+      toast(JSON.stringify(error.message), {
+        position: "top-right",
+        style: { marginTop: "1.5rem" },
+      });
     }
   };
 
@@ -89,6 +92,7 @@ export const UserProfile = ({ showP }: any) => {
             borderRadius: "10px",
             background: "#333",
             color: "#fff",
+            marginTop: "1.5rem",
           },
           position: "top-right",
         });
@@ -107,6 +111,7 @@ export const UserProfile = ({ showP }: any) => {
         toast.error(`${error.message}`);
         console.error("Error al subir la imagen:", error, {
           position: "top-right",
+          style: { marginTop: "1.5rem" },
         });
       } finally {
         //

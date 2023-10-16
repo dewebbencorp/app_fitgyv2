@@ -72,7 +72,7 @@ export const ListFood = () => {
       duration: 2000,
       position: "top-right",
       style: {
-        marginTop: "1rem",
+        marginTop: "1.5rem",
         borderRadius: "10px",
         background: "white",
         color: "blach",

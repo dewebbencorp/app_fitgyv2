@@ -29,13 +29,19 @@ export const UpdateOrder = ({ food, showModal }: UpdateOrderProps) => {
       img_url: "",
     };
     dispatch(updateCartItem(data));
-    toast.success("Actualizado", { position: "top-right" });
+    toast.success("Actualizado", {
+      position: "top-right",
+      style: { marginTop: "1.5rem" },
+    });
     showModal(false);
   };
 
   const dropItem = async () => {
     dispatch(dropOrder(id_producto));
-    toast.success("Eliminado", { position: "top-right" });
+    toast.success("Eliminado", {
+      position: "top-right",
+      style: { marginTop: "1.5rem" },
+    });
     showModal(false);
   };
 

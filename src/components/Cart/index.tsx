@@ -62,9 +62,11 @@ export const Cart = () => {
   };
 
   const onDeletedOrder = (id: number) => {
-
-    dispatch(dropOrder(id))
-    toast.success("Eliminado", { position: "top-right" });
+    dispatch(dropOrder(id));
+    toast.success("Eliminado", {
+      position: "top-right",
+      style: { marginTop: "1.5rem" },
+    });
   };
 
   return (
