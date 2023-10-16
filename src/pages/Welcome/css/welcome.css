@@ -27,10 +27,12 @@
   right: 0;
   border-radius: 1rem;
   background-color: black;
+  
 }
 
 .welcome-video video {
   width: inherit;
   height: inherit;
+  object-fit: cover;
   border-radius: 1rem;
 }

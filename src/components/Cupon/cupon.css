@@ -56,10 +56,12 @@ h2 {
   padding-bottom: 45vh;
   z-index: 5;
 }
-video {
+.imgd {
   width: 100vw;
   height: 35vh;
   object-fit: cover;
+  opacity: 0.5;
+  
 }
 
 .btn-generate-container {
