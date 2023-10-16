@@ -43,20 +43,29 @@ export const Cupon = () => {
 
   const onSubmit = handleSubmit(async (data) => {
     setIsButtonDisabled(true);
-    toast.loading("Generando cupon ...");
+    toast.loading("Generando cupon ...", {
+      position: "top-right",
+      style: { marginTop: "1.5rem" },
+    });
     const d: ResponseUpdate = await dispatch(
       generateCupon(user.Clav_Asociado, data.beneficiario)
     );
     if (!d.status) {
       toast.dismiss();
-      toast.error("Error al generar el cupon");
+      toast.error("Error al generar el cupon", {
+        position: "top-right",
+        style: { marginTop: "1.5rem" },
+      });
       setIsButtonDisabled(false);
       return;
     }
     setCode(d.response);
     reset();
     toast.dismiss();
-    toast.success("Cupon generado para: " + data.beneficiario);
+    toast.success("Cupon generado para: " + data.beneficiario, {
+      position: "top-right",
+      style: { marginTop: "1.5rem" },
+    });
     setName(data.beneficiario);
     setIsVisible(true);
     setIsButtonDisabled(false);
@@ -74,16 +83,25 @@ export const Cupon = () => {
   };
 
   const loadList = async () => {
-    toast.loading("Cargando");
-    const data : any= await dispatch(getCuponList(user.Clav_Asociado));
+    toast.loading("Cargando", {
+      position: "top-right",
+      style: { marginTop: "1.5rem" },
+    });
+    const data: any = await dispatch(getCuponList(user.Clav_Asociado));
     if (data.message) {
       toast.dismiss();
-      toast.error("Error de red");
+      toast.error("Error de red", {
+        position: "top-right",
+        style: { marginTop: "1.5rem" },
+      });
       return;
     }
 
     toast.dismiss();
-    toast.success("Éxito");
+    toast.success("Éxito", {
+      position: "top-right",
+      style: { marginTop: "1.5rem" },
+    });
     setIsHistory(true);
     setHistory(data);
   };

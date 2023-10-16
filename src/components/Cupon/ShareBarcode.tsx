@@ -3,6 +3,7 @@ import React, { useRef, useState, useEffect } from "react";
 import html2canvas from "html2canvas";
 import Barcode from "react-barcode";
 import "./cupon.css";
+import toast from "react-hot-toast";
 
 interface ShareBarcodeProps {
   code: string;
@@ -13,6 +14,7 @@ export const ShareBarcode = ({ code, name }: ShareBarcodeProps) => {
   const barcodeRef = useRef<HTMLDivElement | null>(null);
   const [date, setDate] = useState<Date | null>(null);
   const [isActive, setIsActive] = useState(false);
+  const [isShared, setIsShared] = useState(false);
   useEffect(() => {
     const today = new Date();
     setDate(today);
@@ -27,6 +29,9 @@ export const ShareBarcode = ({ code, name }: ShareBarcodeProps) => {
         await SocialSharing.share("", "Cupón generado", imageUri, "");
       } catch (error) {
         console.error("Error al generar y compartir el cupón:", error);
+      } finally {
+        setIsActive(false);
+        setIsShared(true);
       }
     }
   };
@@ -67,7 +72,13 @@ export const ShareBarcode = ({ code, name }: ShareBarcodeProps) => {
         disabled={isActive}
       >
         <div className="btn-cupon-info">
-          {isActive ? <p>Compartido </p> : <p>Compartir </p>}
+          {isActive ? (
+            <p>Compartiendo...</p>
+          ) : isShared ? (
+            <>Compartido</>
+          ) : (
+            <p>Compartir </p>
+          )}
         </div>
       </button>
     </div>
