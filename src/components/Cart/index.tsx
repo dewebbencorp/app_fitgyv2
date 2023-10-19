@@ -43,7 +43,7 @@ export const Cart = () => {
   const loadData = async () => {};
 
   const handleBackClick = () => {
-    history.goBack();
+    javascript:history.goBack()
   };
 
   const handleWhatsAppClick = () => {

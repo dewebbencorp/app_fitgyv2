@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { IonContent, IonToast } from "@ionic/react";
+import { IonContent, IonToast, isPlatform } from "@ionic/react";
 import CodigoQR from "./CodigoQR";
 import Tarjeta from "./Tarjeta";
 import Whats from "./Whats";
@@ -36,9 +36,16 @@ export const Welcome = () => {
             </div>
             <div className="welcome-video">
               {lv && <div></div>}
-              <video src={BG_HOME} autoPlay loop onLoadedData={loadvideo}>
-                conectate a internet
-              </video>
+
+              {isPlatform("android") ? (
+                <video src={BG_HOME} autoPlay loop onLoadedData={loadvideo}>
+                  conectate a internet
+                </video>
+              ) : (
+                <video src={BG_HOME}   onLoadedData={loadvideo} controls>
+                  conectate a internet
+                </video>
+              )}
             </div>
           </div>
 
