@@ -3,6 +3,35 @@
   margin-right: 3vh;
 }
 
+#ion-fitbar {
+  position: relative;
+}
+
+.float-cart {
+  position: fixed;
+  bottom: 2rem;
+  right: 1rem;
+  
+}
+
+.float-cart span {
+  transform: translateY(10px);
+  animation: ring 1.5s ease-out forwards;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  background-color: white;
+  color: orangered;
+  width: 1.5rem;
+  border-radius: 0.5rem;
+  font-size: 0.9em;
+  padding: 0.2rem;
+  z-index: 22;
+  right: -0.3rem;
+  top: -0.2rem;
+}
+
 .header-info-container {
   display: flex;
   justify-content: center;

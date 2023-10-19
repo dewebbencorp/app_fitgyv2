@@ -66,7 +66,7 @@ export const Home = () => {
               </IonTabButton>
 
               <IonTabButton tab="fitbar" href="/home/fitbar">
-                <img className="img-tab" width="80%" src={fitbar} />
+                <img className="img-tab" width="65%" src={fitbar} />
               </IonTabButton>
               <IonTabButton tab="inicio" href="/home/inicio">
                 <img className="img-tab" width="55%" src={home} />

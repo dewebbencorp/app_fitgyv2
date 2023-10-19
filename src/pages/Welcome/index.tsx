@@ -47,6 +47,7 @@ export const Welcome = () => {
 
         <CodigoQR />
         <Tarjeta />
+
         <Whats />
       </IonContent>
 

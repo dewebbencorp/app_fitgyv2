@@ -163,7 +163,7 @@ export const Cart = () => {
           onClick={() => handleWhatsAppClick()}
         >
           <div className="btn-whats-container">
-            <h5 className="text-got">Pedir por WhatsApp</h5>
+            <h5 className="text-got">Pídelo por WhatsApp</h5>
             <BsWhatsapp className="btn-whats" />
           </div>
         </div>

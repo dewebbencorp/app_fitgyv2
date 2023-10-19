@@ -7,7 +7,7 @@ import { Asociado } from "../../interfaces";
 import { WelcomeCards } from "../../components/CardList/WelcomeCards";
 
 const Tarjeta = () => {
-  const [showModal, setModal] = useState(false)
+  const [showModal, setModal] = useState(false);
   const user: Asociado = useSelector((state: Asociado) => state.user);
 
   const [titular, setTitular] = useState<number>();
@@ -22,22 +22,22 @@ const Tarjeta = () => {
       {titular !== 7 ? (
         <IonButton disabled={true} fill="outline">
           <img src={tarjeta} />
-          <span > Tarjeta </span>
+          <span> Tarjeta </span>
         </IonButton>
       ) : (
         <IonButton
           fill="outline"
           onClick={() => {
-            setModal(true)
+            setModal(true);
           }}
         >
           <img src={tarjeta} />
-          <span> Tarjeta </span>
+          <span  style={{ fontSize: "1.4rem",fontWeight:'bold' }}> Tarjeta </span>
         </IonButton>
       )}
 
       <IonModal isOpen={showModal}>
-        <WelcomeCards setModal={setModal}/>
+        <WelcomeCards setModal={setModal} />
       </IonModal>
     </div>
   );

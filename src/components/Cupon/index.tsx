@@ -128,8 +128,7 @@ export const Cupon = () => {
             <h2>CUPÓN</h2>
           </div>
           <div className="video-container">
-          
-            <img className="imgd" src={BACKGROUND_CUPON_VIDEO}  />
+            <img className="imgd" src={BACKGROUND_CUPON_VIDEO} />
           </div>
         </div>
         <form onSubmit={onSubmit} className="btn-generate-container">
@@ -143,11 +142,11 @@ export const Cupon = () => {
             {...register("beneficiario", {
               required: {
                 value: true,
-                message: "! El nombre es requerido ¡",
+                message: "¡El nombre es requerido! ",
               },
               minLength: {
                 value: 3,
-                message: "! El nombre debe ser mayor a 3 caracteres ¡",
+                message: "¡El nombre debe ser mayor a 3 caracteres!",
               },
             })}
           />
@@ -158,21 +157,14 @@ export const Cupon = () => {
             disabled={isButtonDisabled}
           >
             <div className="btn-cupon-info">
-              <img src={cupon_img} /> <p> Generar</p>
+              <img src={cupon_img} /> <p>Generar</p>
             </div>
           </button>
           {user.permisos === 7 && (
-            <h5
-              style={{
-                backgroundColor: "orangered",
-                padding: "0.5rem",
-                borderRadius: "0.5rem",
-                fontSize: "0.7rem",
-              }}
-              onClick={() => loadList()}
-            >
-              Historial
-            </h5>
+            <div className="btn-history" onClick={() => loadList()}>
+              
+              <h2>Historial</h2>{" "}
+            </div>
           )}
         </form>
       </div>

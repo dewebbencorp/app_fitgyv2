@@ -98,7 +98,10 @@ const CodigoQR = () => {
     <div className="btn_codigoQR">
       <IonButton fill="outline" onClick={() => openModal()}>
         <img src={qr} alt="QR Code" />
-        <span> {isPlatform("ios") ? "Código" : "Código QR"} </span>
+        <span style={{ fontSize: "1.4rem", fontWeight: "bold" }}>
+          {" "}
+          {isPlatform("ios") ? "Código" : "Código QR"}{" "}
+        </span>
       </IonButton>
       <IonModal isOpen={showModal}>
         <h2>
