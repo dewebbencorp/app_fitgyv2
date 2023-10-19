@@ -111,8 +111,9 @@ const CodigoQR = () => {
                 <div className="qr-c">
                   <h1 className="kenyan">EJERCICIOS</h1>
                   <h3> {maquina.nombre_maquina}</h3>
-                  <p>{maquina.descripcion_maquina}</p>
                   <video src={maquina.video_url} autoPlay loop controls />
+                  <p>{maquina.descripcion_maquina}</p>
+                 
 
                   <div
                     style={{
@@ -167,7 +168,7 @@ const CodigoQR = () => {
                       padding: "2rem",
                     }}
                   >
-                    Debes escanear el codigo QR de la maquina
+                    Debes escanear el código QR de la máquina
                   </h5>
                 ) : (
                   <>
@@ -188,7 +189,7 @@ const CodigoQR = () => {
                           padding: "0rem",
                         }}
                       >
-                        Ingesa el numero de la maquina
+                        Ingesa el número de la máquina
                       </h5>
                       <input
                         style={{
@@ -212,7 +213,7 @@ const CodigoQR = () => {
                           border: "solid orangered 1px",
                           padding: "0.1rem",
                           borderRadius: "0.3rem",
-                          fontSize: "0.7em",
+                          fontSize: "0.9em",
                           backgroundColor: "transparent",
                           textDecoration: "none",
                           color: "white",
@@ -231,7 +232,7 @@ const CodigoQR = () => {
                     border: "solid orangered 1px",
                     padding: "0.1rem",
                     borderRadius: "0.3rem",
-                    fontSize: "0.6em",
+                    fontSize: "0.9em",
                   }}
                   onClick={() => backButtonHandler()}
                 >
