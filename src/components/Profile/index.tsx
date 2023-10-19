@@ -157,8 +157,10 @@ export const UserProfile = ({ showP }: any) => {
           <div className="my-account">
             <div className="detail-account">
               <div className="detail-title">
-                <h3 className="kenyan">MI CUENTA</h3>
-                <h5>Revisar detalles de mi cuenta</h5>
+                <h3 className="kenyan italic">MI CUENTA</h3>
+                <h5 className="poppins-light" style={{ fontSize: "1em" }}>
+                  Revisar detalles de mi cuenta
+                </h5>
               </div>
 
               <HiOutlinePencil
@@ -167,7 +169,7 @@ export const UserProfile = ({ showP }: any) => {
               />
             </div>
 
-            <h3 className="kenyan" style={{ fontSize: "1.7em" }}>
+            <h3 className="kenyan italic" style={{ fontSize: "1.7em" }}>
               CLIENTE PREMIUM
             </h3>
 
@@ -189,8 +191,10 @@ export const UserProfile = ({ showP }: any) => {
               </div>
             </div>
             <div className="memberships">
-              <h1 className="kenyan">MEMBRESÍA</h1>
-              <h2>Activa hasta: {deadline && deadline} </h2>
+              <h1 className="kenyan italic">MEMBRESÍA</h1>
+              <h2 className="poppins-light" style={{ fontSize: "1.2em" }}>
+                Activa hasta: {deadline && deadline}{" "}
+              </h2>
             </div>
           </div>
         </div>

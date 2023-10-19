@@ -40,7 +40,7 @@ export const Wifi = () => {
 
         <div id="datosWifi">
           <div id="nombreRed">
-            <h6 className="poppins">Nombre de la red:</h6>
+            <h6 className="poppins">Nombre de la red</h6>
             <span> {nombreRed} </span>
           </div>
 

@@ -13,7 +13,7 @@ import { AnyAction, ThunkDispatch } from "@reduxjs/toolkit";
 import { forgotMyPassword, login } from "../../axios/User";
 import { BG_LOGIN } from "../../constants";
 
-import bg_log from './video/bb-login.gif'
+import bg_log from "./video/bb-login.gif";
 export const Login = () => {
   const [loading, setLoading] = useState(false);
   const [rpIsActive, setRpActive] = useState(false);
@@ -72,10 +72,7 @@ export const Login = () => {
     <IonContent>
       <div className="dot-container">
         <div className="video">
-          <img
-            src={bg_log}
-            
-          />
+          <img src={bg_log} />
         </div>
         {user.status === 1 ? (
           <Loading />

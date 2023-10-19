@@ -1,5 +1,6 @@
 @import url("https://fonts.cdnfonts.com/css/kenyan-coffee");
 @import url("https://fonts.cdnfonts.com/css/poppins");
+@import url("https://fonts.cdnfonts.com/s/16009/Poppins-Light.woff");
 @font-face {
   font-family: kenyan coffee;
   font-style: italic;
@@ -14,10 +15,17 @@
   src: local("Poppins"), url("./fonts/Poppins-Medium.woff") format("woff");
 }
 
+@font-face {
+  font-family: poppins-ligth;
+  font-style: normal;
+  font-weight: 500;
+  src: local("Poppins"), url("./fonts/Poppins-Light.woff") format("woff");
+}
 
 :root {
   --kenyan: "Kenyan Coffee", sans-serif;
   --poppins: "Poppins", sans-serif;
+  --poppins-light: "Poppins-Light", sans-serif;
   --naranja1: #ff4804;
 }
 body {
@@ -35,6 +43,9 @@ body {
 }
 .poppins {
   font-family: var(--poppins);
+}
+.poppins-light {
+  font-family: var(--poppins-light);
 }
 
 ion-button {
@@ -105,6 +116,16 @@ ion-toolbar {
 .bell-joke {
   animation: ring 10s ease-in-out infinite;
   transform-origin: 50% 14px;
+}
+
+/*tipado*/
+
+.italic {
+  font-style: italic;
+}
+
+.bold {
+  font-weight: bold;
 }
 
 @-webkit-keyframes ring {
