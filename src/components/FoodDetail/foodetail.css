@@ -119,9 +119,9 @@
 
 input[type="checkbox"] {
   appearance: none; /* Desactivar el estilo nativo del checkbox */
-  width: 20px;
-  height: 20px;
-  margin-right:0.5rem ;
+  width: 25px;
+  height: 25px;
+  margin-right: 0.5rem;
   background-color: orangered;
   border: 2px solid var(--ion-tab-bar-background); /* Contorno para el checkbox no seleccionado */
   border-radius: 4rem; /* Bordes redondeados */
@@ -129,9 +129,9 @@ input[type="checkbox"] {
 
 /* Estilos para el checkbox seleccionado */
 input[type="checkbox"]:checked {
-  background-color: white; 
-  background-image: url("./images/check.png"); 
-  background-size: 16px; 
+  background-color: white;
+  background-image: url("./images/check.png");
+  background-size: 25px;
   background-position: center;
   background-repeat: no-repeat;
 }

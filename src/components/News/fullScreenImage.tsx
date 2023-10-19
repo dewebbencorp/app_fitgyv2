@@ -21,10 +21,10 @@ export const FullScreenImage = ({ Image, setModal }: any) => {
         <div
           style={{
             position: "absolute",
-            fontSize: "2rem",
+            fontSize: "2.5rem",
             display: "flex",
             justifyContent: "center",
-            top: "2.5rem",
+            top: "1.5rem",
             width: "100%",
             animation:
               "shimmerAnimation 2s ease-in-out alternate-reverse infinite",

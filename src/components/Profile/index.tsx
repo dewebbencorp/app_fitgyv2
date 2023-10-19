@@ -204,11 +204,11 @@ export const UserProfile = ({ showP }: any) => {
       </IonContent>
 
       <IonModal isOpen={showModal}>
-        <div className="btn-close-update-container">
-          <AiOutlineCloseCircle
-            className="btn-close-update"
-            onClick={() => setModal(false)}
-          />
+        <div
+          className="btn-close-update-container"
+          onClick={() => setModal(false)}
+        >
+          <AiOutlineCloseCircle className="btn-close-update" />
         </div>
         <UpdateProfile setModal={setModal} user={user} />
       </IonModal>
