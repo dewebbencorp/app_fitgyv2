@@ -197,6 +197,8 @@
 }
 
 .got-cart span {
+  transform: translateY(10px);
+  animation: fadeAndSlide 0.5s ease-out forwards;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -204,10 +206,10 @@
   background-color: white;
   color: orangered;
   width: 2rem;
-  border-radius: 1rem;
+  border-radius: 0.5rem;
   font-size: 1em;
-  padding: 0.5rem;
+  padding: 0.4rem;
   z-index: 22;
   right: -0.5rem;
-  top: 0;
+  top: -0.3rem;
 }

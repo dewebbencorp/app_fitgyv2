@@ -153,7 +153,7 @@ export const Cart = () => {
         </div>
         <div className="cart-total-container">
           <h4>Total</h4>
-          <h5> {"$" + cartTotal()}</h5>
+          <h5> {"$" + cartTotal().total_price}</h5>
         </div>
       </div>
 

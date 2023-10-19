@@ -14,9 +14,11 @@ import "./foodList.css";
 import "swiper/css";
 import { IonBackButton, IonButtons, IonToolbar } from "@ionic/react";
 import { addProduct } from "../../store/slices/cart";
+import { cartTotal as totalState } from "../../store/services/cart";
 
 export const ListFood = () => {
   const [showLoading, setShowLoading] = useState(true);
+  const [cartTotal, setCartTotal] = useState(0);
   const [producto, setProducto] = useState<ProductoPorCategoria[]>();
   const foodByType: any = useSelector(
     (state: ProductoPorCategoria) => state.food_by_tye
@@ -41,6 +43,7 @@ export const ListFood = () => {
 
   useEffect(() => {
     getData();
+    setCartTotal(totalState().total_length);
   }, []);
 
   const getData = async () => {
@@ -65,7 +68,7 @@ export const ListFood = () => {
     };
 
     dispatch(addProduct(product));
-
+    setCartTotal(totalState().total_length);
     toast.success("Producto añadido", {
       duration: 2000,
       position: "top-right",
@@ -161,7 +164,7 @@ export const ListFood = () => {
 
         {producto && producto.length > 0 && (
           <div className="got-cart">
-            <span>100</span>
+            {cartTotal > 0 && <span> {cartTotal}</span>}
             <img onClick={() => goToCart()} className="car" src={car_img} />
           </div>
         )}

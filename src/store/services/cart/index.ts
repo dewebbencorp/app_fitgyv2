@@ -30,7 +30,7 @@ export const cartTotal = () => {
     totalPrice += subtotal;
   }
 
-  return totalPrice;
+  return { total_price: totalPrice, total_length: current.length };
 };
 
 export const dropData = (id: number) => {
