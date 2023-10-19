@@ -18,11 +18,11 @@ export const FitbarList = () => {
   const dispatch: ThunkDispatch<any, void, AnyAction> = useDispatch();
   useEffect(() => {
     dispatch(fetchTypesFood());
-   
+
     setCartTotal(totalState().total_length);
   }, [dispatch]);
   const goToCart = () => {
-    history.push("/carrito");
+    history.push("/carrito", { prevPath: history.location.pathname });
   };
   const history = useHistory();
   const handleDivClick = (id: number) => {

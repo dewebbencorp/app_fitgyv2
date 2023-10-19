@@ -35,15 +35,15 @@ export const Welcome = () => {
               <img src={logo} alt="Logo" />
             </div>
             <div className="welcome-video">
-              {lv && <div></div>}
+              {lv && isPlatform("android") && <div></div>}
 
               {isPlatform("android") ? (
                 <video src={BG_HOME} autoPlay loop onLoadedData={loadvideo}>
                   conectate a internet
                 </video>
               ) : (
-                <video src={BG_HOME}   onLoadedData={loadvideo} controls>
-                  conectate a internet
+                <video src={BG_HOME}   onLoadedData={loadvideo} controls >
+                  ¡Conectate a internet!
                 </video>
               )}
             </div>

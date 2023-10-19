@@ -43,7 +43,16 @@ export const Cart = () => {
   const loadData = async () => {};
 
   const handleBackClick = () => {
-    javascript:history.goBack()
+    const previousPath = history.location.state?.prevPath || undefined;
+
+    console.log(previousPath);
+
+    if (previousPath) {
+      window.location.href = previousPath;
+      return;
+    } else {
+      history.goBack();
+    }
   };
 
   const handleWhatsAppClick = () => {
