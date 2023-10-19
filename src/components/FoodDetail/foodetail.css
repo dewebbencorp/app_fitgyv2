@@ -180,13 +180,7 @@ input[type="checkbox"]:checked {
   transform: translateY(5px);
   animation: fadeAndSlide 0.5s ease-out forwards;
 }
-.car {
-  margin-top: 0.5rem;
-  width: 3rem;
-  padding: 0.5rem;
-  background-color: var(--ion-tab-bar-background);
-  clip-path: circle(50%);
-}
+
 .btn-container {
   display: flex;
   justify-content: center;

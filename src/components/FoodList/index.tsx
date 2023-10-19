@@ -30,7 +30,6 @@ export const ListFood = () => {
 
   const history = useHistory();
 
- 
   const handleDetailClick = (id: number) => {
     window.location.href = `/fitbar/food/detail/${id}`;
   };
@@ -56,7 +55,6 @@ export const ListFood = () => {
     window.location.href = "/home/fitbar";
   };
 
-
   const addToCart = async (data: ProductoPorCategoria) => {
     const product: Cart = {
       id_producto: data.id_producto,
@@ -80,7 +78,6 @@ export const ListFood = () => {
         fontFamily: "var(--poppins)",
         fontStyle: "italic",
       },
-      
     });
   };
   const [loadImage, setLoadImage] = useState(true);
@@ -118,30 +115,6 @@ export const ListFood = () => {
                     className="food-container"
                     onClick={() => handleDetailClick(food.id_producto)}
                   >
-                    {/* {food.id_categoria == 4 ||
-                    food.id_categoria == 5 ||
-                    food.id_categoria == 6 ||
-                    food.id_categoria != 7 ? (
-                      <div className="image-container-food-2">
-                        {loadImage && <LoadingImage />}
-                        <img src={food.media_url} onLoad={Loaded} />
-                      </div>
-                    ) : (
-                      food.id_categoria != 7 && (
-                        <div className="image-container-food">
-                          {loadImage && <LoadingImage />}
-                          <img src={food.media_url} onLoad={Loaded} />
-                        </div>
-                      )
-                    )}
-
-                    {food.id_categoria == 7 && (
-                      <div className="image-container-food-3">
-                        {loadImage && <LoadingImage />}
-                        <img src={food.media_url} onLoad={Loaded} />
-                      </div>
-                    )} */}
-
                     <div className="image-container-food-finally">
                       {loadImage && <LoadingImage />}
                       <img
@@ -188,6 +161,7 @@ export const ListFood = () => {
 
         {producto && producto.length > 0 && (
           <div className="got-cart">
+            <span>100</span>
             <img onClick={() => goToCart()} className="car" src={car_img} />
           </div>
         )}

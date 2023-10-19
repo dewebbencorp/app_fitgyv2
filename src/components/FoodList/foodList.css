@@ -180,9 +180,34 @@
   margin-bottom: 7vh;
   float: right;
   margin-right: 2rem;
+  position: relative;
 }
 
 .got-cart img {
   width: 17vw;
   padding: 4vw;
+}
+
+.car {
+  margin-top: 0.5rem;
+  width: 3rem;
+  padding: 0.5rem;
+  background-color: var(--ion-tab-bar-background);
+  clip-path: circle(50%);
+}
+
+.got-cart span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  background-color: white;
+  color: orangered;
+  width: 2rem;
+  border-radius: 1rem;
+  font-size: 1em;
+  padding: 0.5rem;
+  z-index: 22;
+  right: -0.5rem;
+  top: 0;
 }
