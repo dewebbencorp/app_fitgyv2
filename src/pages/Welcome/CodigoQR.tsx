@@ -112,7 +112,7 @@ const CodigoQR = () => {
                   <h1 className="kenyan">EJERCICIOS</h1>
                   <h3> {maquina.nombre_maquina}</h3>
                   <p>{maquina.descripcion_maquina}</p>
-                  <video src={maquina.video_url} autoPlay loop />
+                  <video src={maquina.video_url} autoPlay loop controls />
 
                   <div
                     style={{
@@ -122,8 +122,8 @@ const CodigoQR = () => {
                       border: "solid orangered 1px",
                       padding: "0.1rem",
                       borderRadius: "0.3rem",
-                      fontSize: "0.6em",
-                      marginTop: "3vh",
+                      fontSize: "0.8em",
+                      marginTop: "3rem",
                     }}
                     onClick={() => closeModal()}
                   >

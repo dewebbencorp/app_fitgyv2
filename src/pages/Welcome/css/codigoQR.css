@@ -55,12 +55,15 @@ h3 {
   font-style: italic;
 }
 .qr-c h3 {
-  font-size: 1rem;
+  font-size: 1.3rem;
   font-weight: bold;
 }
 .qr-c p {
-  text-align: center;
-  font-size: 0.8rem;
+  text-align: left;
+  line-height: normal;
+  font-size: 0.9rem;
+  overflow-y: scroll;
+  max-height: 15vh;
 }
 .qr-c video {
   margin-top: 1rem;
