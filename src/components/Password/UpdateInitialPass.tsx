@@ -10,7 +10,7 @@ export const UpdateInitialPass = () => {
   return (
     <>
       {user.passedit == 0 && user.Clav_Asociado ? (
-        <div className="Initial-pass-container" style={{ marginTop: "10vh" }}>
+        <div className="Initial-pass-container">
           <ChangePassword />
         </div>
       ) : (

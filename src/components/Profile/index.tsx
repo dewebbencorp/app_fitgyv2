@@ -177,7 +177,7 @@ export const UserProfile = ({ showP }: any) => {
               <img className="points-icon " src={points} />
               <div className="points">
                 <h5>Puntos Disponibles</h5>
-                <h3 className="kenyan">{user.puntos}</h3>
+                <h3 className="kenyan italic">{user.puntos}</h3>
               </div>
             </div>
 

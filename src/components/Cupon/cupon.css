@@ -18,7 +18,7 @@
 .head-cupon h1,
 h2 {
   font-family: var(--poppins);
-  margin: 0;
+  margin: 0.1rem;
 }
 
 .head-cupon h1 {
@@ -94,7 +94,7 @@ h2 {
 .btn-history h2 {
   color: white;
   font-size: 1.2rem;
-  font-family: 'Poppins';
+  font-family: "Poppins";
 }
 .btn-history:hover {
   opacity: 0.8;
@@ -136,7 +136,7 @@ h2 {
   margin-right: 4vw;
 }
 .btn-cupon-info p {
-  font-family: 'Poppins';
+  font-family: "Poppins";
   font-size: 1.2rem;
 }
 
@@ -233,4 +233,7 @@ ion-accordion ion-row {
   display: flex;
   justify-content: space-between;
   width: 100%;
+}
+#cuponl{
+  --ion-background-color: black;
 }

@@ -271,20 +271,13 @@ form h3 {
 /* CHANGE PASSWORD*/
 
 .ch-password-container {
-  position: absolute;
-  top: 15vh;
-  margin-left: 8vw;
-  margin-right: 8vw;
-  bottom: 0;
-  right: 0;
-  left: 0;
+  position: relative;
+  color: white;
   display: flex;
   flex-direction: column;
   justify-content: center;
   background-color: black;
   border-radius: 1rem;
-  height: 20rem;
-  margin-bottom: 5vh;
   opacity: 0;
   transform: translateY(20px);
   animation: fadeAndSlide 0.5s ease-out forwards;

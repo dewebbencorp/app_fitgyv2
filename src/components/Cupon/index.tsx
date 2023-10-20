@@ -103,7 +103,18 @@ export const Cupon = () => {
       style: { marginTop: "1.5rem" },
     });
     setIsHistory(true);
-    setHistory(data);
+
+    const unusedCode = data.filter(
+      (item: { utilizado: boolean }) => item.utilizado === false
+    );
+
+    const res = unusedCode.sort((a, b) => {
+      const fechaA = new Date(a.vencimiento);
+      const fechaB = new Date(b.vencimiento);
+      return fechaB - fechaA;
+    });
+
+    setHistory(res.slice(0, 5));
   };
 
   const backButtonHandler = () => {
@@ -124,7 +135,7 @@ export const Cupon = () => {
       <div className="main-cupon-container">
         <div className="cupon-container">
           <div className="head-cupon">
-            <h1>Genera tu cupón</h1>
+            <h1>Genera tú</h1>
             <h2>CUPÓN</h2>
           </div>
           <div className="video-container">
@@ -162,7 +173,6 @@ export const Cupon = () => {
           </button>
           {user.permisos === 7 && (
             <div className="btn-history" onClick={() => loadList()}>
-              
               <h2>Historial</h2>{" "}
             </div>
           )}
@@ -185,6 +195,7 @@ export const Cupon = () => {
       </IonModal>
 
       <IonModal
+        id="cuponl"
         trigger="open-modal"
         initialBreakpoint={0.8}
         isOpen={isHistory}

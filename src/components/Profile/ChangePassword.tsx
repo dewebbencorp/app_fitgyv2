@@ -71,12 +71,13 @@ export const ChangePassword = ({ setPw }: any) => {
               display: "flex",
               justifyContent: "end",
               marginTop: "0rem",
+              position: "absolute",
+              top: "0",
+              right: "-0.1rem",
+              fontSize: "2rem",
             }}
           >
-            <AiOutlineCloseCircle
-              className="btn-close-update"
-              onClick={() => setPw(false)}
-            />
+            <AiOutlineCloseCircle onClick={() => setPw(false)} />
           </div>
         )}
 
