@@ -60,20 +60,21 @@ h3 {
 }
 .qr-c p{
   padding: 0.3rem;
-  background-color: rgba(255, 255, 255, 0.062);
+  background-color: rgba(160, 160, 160, 0.062);
   text-align: left;
   line-height: 1.5rem;
   font-size: 0.9rem;
   overflow-y: scroll;
-  max-height: 15vh;
+  max-height: 22vh;
   scroll-behavior: smooth;
+  border-radius: 0.5rem;
   box-shadow: 0px  0px 10px rgba(255, 255, 255, 0.349);
 }
 
 .qr-c video {
 
   margin-top: 1rem;
-  height: 27vh;
-  
+  height: 100%;
+  border-radius: 1rem;
   width: 100%;
 }
