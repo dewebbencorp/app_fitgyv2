@@ -46,7 +46,7 @@ export const Wifi = () => {
 
           <div id="password2">
             <h6 className="poppins">Contraseña:</h6>
-            <span> {password} </span>
+            <span style={{ fontWeight: "bold" }}> {password} </span>
           </div>
         </div>
       </div>

@@ -8,11 +8,11 @@ export const sendWhatsAppMessage = (message: any,   setIsClear: (value: boolean)
   let data: string = ` `;
 
   message.forEach(function (elemento: Cart) {
-    data += `${elemento.product}, total =  ${elemento.total} \n\n`;
+    data += `\n${elemento.product}, cantidad =  ${elemento.total} \n`;
     
   });
 
-  const order: string = `Productos:\n\n ${data}`;
+  const order: string = `Orden de compra:\n ${data}`;
  
 
   const confirmMessage = `¿Deseas enviar el pedido por WhatsApp?\n\n${order}`;

@@ -47,7 +47,7 @@ export const UserProfile = ({ showP }: any) => {
   };
 
   const { deadline, calculateDeadline } = GetDeadLine(user.fecha_vencimiento);
-  let INBODY_MESSAGE = `Hola mi nombre es ${user.Nombre_Asociado} ${user.Apellidos}, me gustaria saber como puedo agendar un inbody`;
+  let INBODY_MESSAGE = `Hola mi nombre es ${user.Nombre_Asociado} ${user.Apellidos}, me gustaría saber como puedo agendar un inbody`;
   const backButtonHandler = () => {
     showP(false);
   };

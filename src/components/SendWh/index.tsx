@@ -2,7 +2,7 @@ import { InAppBrowser } from "@ionic-native/in-app-browser";
 
 
 export const SendWh = (message: string) => {
-    let number = "9983191668";
+    let number = "9983641651";
 
     console.log(message.length);
 
