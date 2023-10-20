@@ -122,9 +122,9 @@ const CodigoQR = () => {
                       width: "40%",
                       border: "solid orangered 1px",
                       padding: "0.1rem",
-                      borderRadius: "0.3rem",
+                      borderRadius: "0.5rem",
                       fontSize: "0.8em",
-                      marginTop: "3rem",
+                      marginTop: "2rem",
                     }}
                     onClick={() => closeModal()}
                   >
