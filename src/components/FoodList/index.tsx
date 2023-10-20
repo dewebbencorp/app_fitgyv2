@@ -19,6 +19,7 @@ import { cartTotal as totalState } from "../../store/services/cart";
 export const ListFood = () => {
   const [showLoading, setShowLoading] = useState(true);
   const [cartTotal, setCartTotal] = useState(0);
+  const [loadImage, setLoadImage] = useState(true);
   const [producto, setProducto] = useState<ProductoPorCategoria[]>();
   const foodByType: any = useSelector(
     (state: ProductoPorCategoria) => state.food_by_tye
@@ -68,7 +69,10 @@ export const ListFood = () => {
     };
 
     dispatch(addProduct(product));
-    setCartTotal(totalState().total_length);
+    setCartTotal(0);
+    setTimeout(() => {
+      setCartTotal(totalState().total_length);
+    }, 1);
     toast.success("Producto añadido", {
       duration: 2000,
       position: "top-right",
@@ -82,8 +86,10 @@ export const ListFood = () => {
         fontStyle: "italic",
       },
     });
+
+
   };
-  const [loadImage, setLoadImage] = useState(true);
+ 
   const Loaded = () => {
     setLoadImage(false);
   };

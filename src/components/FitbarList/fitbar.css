@@ -11,7 +11,6 @@
   position: fixed;
   bottom: 0.7rem;
   right: 1rem;
-  
 }
 
 .float-cart span {
@@ -31,6 +30,8 @@
   right: -0.3rem;
   top: -0.2rem;
 }
+
+
 
 .header-info-container {
   display: flex;

@@ -42,7 +42,12 @@ export const Welcome = () => {
                   conectate a internet
                 </video>
               ) : (
-                <video src={BG_HOME}   onLoadedData={loadvideo} controls >
+                <video
+                  src={BG_HOME}
+                  onLoadedData={loadvideo}
+                  controls
+                  style={{ background: "black", borderRadius: "1rem" }}
+                >
                   ¡Conectate a internet!
                 </video>
               )}
