@@ -20,7 +20,6 @@ export const FoodDetail = () => {
   const [total, setTotal] = useState<number>(1);
   const [checkboxValues, setCheckboxValues] = useState({});
   const history = useHistory();
-  
 
   const dispatch: ThunkDispatch<any, void, AnyAction> = useDispatch();
 
@@ -40,8 +39,6 @@ export const FoodDetail = () => {
       [name]: checked,
     }));
   };
-
-
 
   const handleBackClick = () => {
     history.goBack();
@@ -113,7 +110,12 @@ export const FoodDetail = () => {
                 <h1>{food.nombre}</h1>{" "}
               </div>
               <div className="categoria-food">
-                <h5 style={{ color: "var(--ion-tab-bar-background)" }}>
+                <h5
+                  style={{
+                    color: "var(--ion-tab-bar-background)",
+                    margin: "0",
+                  }}
+                >
                   Categoría
                 </h5>
                 <h5>{food.categoria}</h5>

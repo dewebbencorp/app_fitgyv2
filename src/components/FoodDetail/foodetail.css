@@ -25,7 +25,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
-  padding-top: 10vh;
+  padding-top: 15vh;
   opacity: 0;
   font-family: var(--poppins);
   transform: translateY(20px);
@@ -83,15 +83,6 @@
   font-size: 1.3em;
 }
 
-.categoria-food {
-  display: flex;
-  flex-direction: column;
-}
-
-.categoria-food h5 {
-  font-size: 1.1rem;
-  margin: 0rem;
-}
 
 .description-food h5 {
   text-align: start;
