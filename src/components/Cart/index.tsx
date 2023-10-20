@@ -5,7 +5,7 @@ import { HiChevronLeft, HiPencil } from "react-icons/hi2";
 import { BsWhatsapp } from "react-icons/bs";
 import { IoPencilOutline, IoSadSharp } from "react-icons/io5";
 import { useHistory } from "react-router";
-import { Cart as cart } from "../../interfaces";
+import { Asociado, Cart as cart } from "../../interfaces";
 import "./cart.css";
 import { sendWhatsAppMessage } from "./senMessage";
 import { AiFillDelete } from "react-icons/ai";
@@ -22,7 +22,7 @@ export const Cart = () => {
   const [isDetail, setDetail] = useState(false);
   const [product, setProduct] = useState<cart>();
   const dispatch = useDispatch();
-
+  const user: Asociado = useSelector((state: Asociado) => state.user);
   useEffect(() => {
     setTimeout(() => {
       loadData();
@@ -56,7 +56,12 @@ export const Cart = () => {
   };
 
   const handleWhatsAppClick = () => {
-    sendWhatsAppMessage(items, setClear);
+    sendWhatsAppMessage(
+      items,
+      setClear,
+      `${user.Nombre_Asociado} ${user.Apellidos}`,
+      user.Clav_Asociado
+    );
   };
 
   if (isClear) {
