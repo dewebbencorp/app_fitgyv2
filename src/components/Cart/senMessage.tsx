@@ -4,7 +4,7 @@ import { Cart, CartI } from "../../interfaces";
 
 export const sendWhatsAppMessage = (message: any,   setIsClear: (value: boolean) => void) => {
  
-  let number = "9983191668"; 
+  let number = "9983641651"; 
   let data: string = ` `;
 
   message.forEach(function (elemento: Cart) {
