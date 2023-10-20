@@ -76,7 +76,9 @@ export const PP = ({ setpp }: any) => {
                     style={{
                       marginTop: "2vh",
                       color: "orangered",
-                      textDecoration: "underline orangered",
+                      borderBottom: "2px solid orangered",
+                      display: "inline-block",
+                      padding: "0 0 0 0", 
                     }}
                     onClick={() => setIsVisible(true)}
                   >
