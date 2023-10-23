@@ -1,14 +1,12 @@
 import { IonProgressBar } from "@ionic/react";
-import { useEffect, useState } from "react";
-import { useForm } from "react-hook-form";
-import card_img from "./images/card_img.png";
+import { useEffect } from "react";
 import { AiOutlineCloseCircle } from "react-icons/ai";
 import { Asociado, ResponseUpdate, validCard } from "../../interfaces";
 import { useDispatch, useSelector } from "react-redux";
 import { AnyAction, ThunkDispatch } from "@reduxjs/toolkit";
-import { updateContract, validateCard } from "../../axios/Card";
 import { Toaster, toast } from "react-hot-toast";
-import { contract } from "ionicons/icons";
+import { useForm } from "react-hook-form";
+import { setNewCard } from "../../axios/Card";
 
 export const AddCard = ({ setModal }: any) => {
   const dispatch: ThunkDispatch<any, void, AnyAction> = useDispatch();
@@ -29,34 +27,18 @@ export const AddCard = ({ setModal }: any) => {
       claveSocio: user.Clav_Asociado,
       numTarjeta: data.ncard,
       vencimiento: data.date,
-      cvv: data.cvv,
     };
 
-    try {
-      toast.loading("Validando informacón");
-      const response = await dispatch(validateCard(card));
+    const res: ResponseUpdate = await dispatch(setNewCard(card));
 
-      setTimeout(async () => {
-        toast.dismiss();
-        if (response.exito) {
-          toast.success(`Exito : ${response.mensaje}`);
-          //reset();
-
-          const contact: ResponseUpdate = await dispatch(
-            updateContract(user.Clav_Asociado, user.CorreoE)
-          );
-          if (contract) {
-            console.log(contact);
-
-            toast.success(`${contact.response}`);
-          }
-        } else {
-          toast.error(`Error : ${response.mensaje}`);
-        }
-      }, 2000);
-    } catch (error) {
-      toast.error(`${error}`);
+    if (res.status === 0) {
+      toast.error(res.response);
+      return;
     }
+
+    toast.success(res.response);
+    reset();
+    return;
   });
 
   useEffect(() => {
@@ -135,28 +117,6 @@ export const AddCard = ({ setModal }: any) => {
               })}
             />
             {errors.date && <span>{errors.date.message as string}</span>}
-            <h5>Codigo de seguridad</h5>
-            <div className="cvv-container">
-              <input
-                className="date-deadline-input"
-                placeholder="cvv"
-                type="tel"
-                maxLength={3}
-                {...register("cvv", {
-                  minLength: {
-                    value: 3,
-                    message: "Deben ser almenos 3 dígitos",
-                  },
-                  required: {
-                    value: true,
-                    message: "*El cvv es requerido",
-                  },
-                })}
-              />
-
-              <img src={card_img} />
-            </div>
-            {errors.cvv && <span>{errors.cvv.message as string}</span>}
 
             <div className="btn-close-container btn-send-up btn-save">
               <button type="submit" className="btn-up-dta">

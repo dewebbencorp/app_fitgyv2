@@ -98,7 +98,6 @@ export interface validCard {
   claveSocio: number;
   numTarjeta: number;
   vencimiento: string;
-  cvv: number;
 }
 
 export interface Preguntas {

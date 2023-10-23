@@ -79,9 +79,11 @@ form h5 {
 
 .n-card-input {
   width: 100%;
+  margin-bottom: 1rem;
 }
 .date-deadline-input {
   width: 20%;
+  margin-bottom: 1rem;
 }
 
 .cvv-container {
