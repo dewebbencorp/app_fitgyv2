@@ -2,7 +2,7 @@ import axios from "axios";
 import { Dispatch } from "redux";
 import { BASE_URL } from "../Utils";
 import { setCards } from "../../store/slices/cardSlice";
-import { ResponseUpdate, validCard } from "../../interfaces";
+import { Cards, ResponseUpdate, validCard } from "../../interfaces";
 
 export const postCardsList =
   (cveSocio: number) =>
@@ -14,7 +14,13 @@ export const postCardsList =
     return axios
       .post(`${BASE_URL}/getTarjetasBancarias.php`, postData)
       .then((response) => {
-        dispatch(setCards(response.data));
+        const res = response.data.map((item: any) => ({
+          numTarjeta: item.NumTarjeta,
+          Activo: item.Estatus,
+        }));
+       
+
+        dispatch(setCards(res));
       })
       .catch((error) => console.log(error));
   };
@@ -67,7 +73,7 @@ export const updateContract =
   (dispatch: Dispatch<any>): Promise<ResponseUpdate> => {
     const postData = {
       clave_socio: claveSocio,
-      correo: correo
+      correo: correo,
     };
 
     return new Promise<ResponseUpdate>((resolve, reject) => {
@@ -86,5 +92,3 @@ export const updateContract =
         });
     });
   };
-
-
