@@ -78,11 +78,11 @@ export const ShareBarcode = ({ code, name }: ShareBarcodeProps) => {
       >
         <div className="btn-cupon-info">
           {isActive ? (
-            <p>Compartiendo...</p>
+            <p style={{ color: "white" }}>Compartiendo...</p>
           ) : isShared ? (
-            <>Compartido</>
+            <p style={{ color: "white" }}>Compartido</p>
           ) : (
-            <p>Compartir </p>
+            <p style={{ color: "white" }}>Compartir </p>
           )}
         </div>
       </button>

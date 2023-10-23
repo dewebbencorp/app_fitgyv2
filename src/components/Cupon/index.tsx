@@ -206,6 +206,23 @@ export const Cupon = () => {
         >
           <CuponL data={history} />
         </div>
+        <div
+          style={{ width: "100%", display: "flex", justifyContent: "center" }}
+        >
+          <button
+            style={{
+              width: "40%",
+              padding: "0.5rem",
+              backgroundColor: "orangered",
+              borderRadius: "0.5rem",
+              fontSize:'1rem'
+            }}
+            className="poppins"
+            onClick={() => setIsHistory(false)}
+          >
+            Cerrar
+          </button>
+        </div>
       </IonModal>
     </>
   );
