@@ -50,12 +50,12 @@ export const CardsList = () => {
 
     if (res.status !== 1) {
       toast.dismiss();
-      toast.error(res.response);
+      toast.error(res.response, sty);
       return;
     }
 
     toast.dismiss();
-    toast.success(res.response);
+    toast.success(res.response, sty);
     dispatch(postCardsList(user.Clav_Asociado));
   };
 
