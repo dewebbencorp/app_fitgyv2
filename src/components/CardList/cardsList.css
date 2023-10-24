@@ -133,6 +133,7 @@ form h5 {
   text-align: center;
 }
 .WC-container .wcl {
+  position: relative;
   background-color: black;
   padding: 2rem;
   border-radius: 1rem;

@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { AnyAction, ThunkDispatch } from "@reduxjs/toolkit";
 import { Toaster, toast } from "react-hot-toast";
 import { useForm } from "react-hook-form";
-import { setNewCard } from "../../axios/Card";
+import { postCardsList, setNewCard } from "../../axios/Card";
 
 export const AddCard = ({ setModal }: any) => {
   const dispatch: ThunkDispatch<any, void, AnyAction> = useDispatch();
@@ -31,6 +31,8 @@ export const AddCard = ({ setModal }: any) => {
 
     const res: ResponseUpdate = await dispatch(setNewCard(card));
 
+    console.log(res);
+    
     if (res.status === 0) {
       toast.error(res.response);
       return;
@@ -38,6 +40,7 @@ export const AddCard = ({ setModal }: any) => {
 
     toast.success(res.response);
     reset();
+    await dispatch(postCardsList(user.Clav_Asociado))
     return;
   });
 
@@ -80,10 +83,10 @@ export const AddCard = ({ setModal }: any) => {
               placeholder="123 . . . ."
               type="tel"
               minLength={16}
-              maxLength={19}
+              maxLength={16}
               {...register("ncard", {
                 maxLength: {
-                  value: 19,
+                  value: 16,
                   message: "Cantidad de caracteres exedido",
                 },
                 minLength: {

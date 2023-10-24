@@ -74,7 +74,7 @@ export const CardsList = () => {
             }}
           />
 
-          <h5>Agregar otra tarjeta</h5>
+          <h5>Agregar</h5>
         </div>
 
         {cardss.length > 0 &&
