@@ -10,7 +10,7 @@ import "./cardsList.css";
 import { Loading2 } from "../LoadScreen";
 import { AiFillDelete } from "react-icons/ai";
 import toast, { Toaster } from "react-hot-toast";
-
+const sty = { style: { marginTop: "2rem" } };
 export const CardsList = () => {
   const [showInput, setInput] = useState(false);
   const cardss = useSelector((state: Cards) => state.card_list);
@@ -25,19 +25,19 @@ export const CardsList = () => {
 
   const handleChecked = async (index: number, data: Cards) => {
     setCheckedIndex(index);
-    toast.loading("Cargando");
+    toast.loading("Cargando", sty);
     const res: ResponseUpdate = await dispatch(
       activateCard(data.id_tarjeta, user.Clav_Asociado)
     );
 
     if (res.status !== 1) {
       toast.dismiss();
-      toast.error(res.response);
+      toast.error(res.response, sty);
       return;
     }
 
     toast.dismiss();
-    toast.success(res.response);
+    toast.success(res.response, sty);
   };
 
   const handleDrop = async (index: number, data: Cards) => {
