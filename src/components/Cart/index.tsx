@@ -105,6 +105,7 @@ export const Cart = () => {
         <div className="cart-main">
           <div className="cart-container">
             {items &&
+              items.length !== 0 &&
               items.map((food: cart) => (
                 <>
                   <div key={food.id_producto}>
