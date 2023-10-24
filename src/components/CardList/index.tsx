@@ -59,7 +59,7 @@ export const CardsList = () => {
       }
   
       toast.dismiss();
-      toast.success(res.response, sty);
+      toast.success("Eliminada", sty);
       dispatch(postCardsList(user.Clav_Asociado));
     }
     
