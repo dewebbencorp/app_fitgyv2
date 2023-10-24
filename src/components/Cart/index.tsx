@@ -23,27 +23,17 @@ export const Cart = () => {
   const [product, setProduct] = useState<cart>();
   const dispatch = useDispatch();
   const user: Asociado = useSelector((state: Asociado) => state.user);
-  useEffect(() => {
-    
-    setTimeout(() => {
-      loadData();
-    }, 1);
-  }, []);
 
   const backButtonHandler = () => {
     setDetail(false); // Cerrar el modal
-
   };
 
   useEffect(() => {
-   
     document.addEventListener("ionBackButton", backButtonHandler);
     return () => {
       document.removeEventListener("ionBackButton", backButtonHandler);
     };
   }, []);
-
-  const loadData = async () => {};
 
   const handleBackClick = () => {
     const previousPath = history.location.state?.prevPath || undefined;
@@ -105,7 +95,7 @@ export const Cart = () => {
         <div className="cart-main">
           <div className="cart-container">
             {items &&
-              items.length !== 0 &&
+              items.length > 0 &&
               items.map((food: cart) => (
                 <>
                   <div key={food.id_producto}>

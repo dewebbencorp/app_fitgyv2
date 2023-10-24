@@ -17,9 +17,7 @@ const EmptyCart: Cart = {
 
 export const cart = createSlice({
   name: "foodDetail",
-  initialState: localStorage.getItem("cart")
-    ? JSON.parse(localStorage.getItem("cart") as string)
-    : EmptyCart,
+  initialState: JSON.parse(localStorage.getItem("cart") as string),
   reducers: {
     addProduct: (state: Cart, action: PayloadAction<Cart>) => {
       return setCartData(action.payload);

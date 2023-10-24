@@ -37,7 +37,8 @@ export const ListFood = () => {
     window.location.href = `/fitbar/food/detail/${id}`;
   };
   const goToCart = () => {
-    history.push("/carrito");
+
+    window.location.href = `/carrito`;
   };
 
   const dispatch: ThunkDispatch<any, void, AnyAction> = useDispatch();
