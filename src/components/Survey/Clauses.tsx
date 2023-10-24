@@ -28,7 +28,6 @@ export const Clauses = () => {
       updateContract(user.Clav_Asociado, user.CorreoE)
     );
     if (contract) {
-      console.log(contract);
       toast.dismiss();
       toast.success(`${contract.response}`, sty);
       dispatch(updateUserFields({ terminos: 1 }));

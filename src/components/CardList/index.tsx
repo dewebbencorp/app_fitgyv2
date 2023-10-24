@@ -41,22 +41,28 @@ export const CardsList = () => {
   };
 
   const handleDrop = async (index: number, data: Cards) => {
-    if (index === 0) {
-      setCheckedIndex(index);
-      return;
-    }
 
-    const res: ResponseUpdate = await dispatch(invalidateCard(data.id_tarjeta));
+    const cfm = window.confirm("Eliminar la tarjeta? \n" + data.numTarjeta)
 
-    if (res.status !== 1) {
+    if(cfm){
+      if (index === 0) {
+        setCheckedIndex(index);
+        return;
+      }
+  
+      const res: ResponseUpdate = await dispatch(invalidateCard(data.id_tarjeta));
+  
+      if (res.status !== 1) {
+        toast.dismiss();
+        toast.error(res.response, sty);
+        return;
+      }
+  
       toast.dismiss();
-      toast.error(res.response, sty);
-      return;
+      toast.success(res.response, sty);
+      dispatch(postCardsList(user.Clav_Asociado));
     }
-
-    toast.dismiss();
-    toast.success(res.response, sty);
-    dispatch(postCardsList(user.Clav_Asociado));
+    
   };
 
   return (
