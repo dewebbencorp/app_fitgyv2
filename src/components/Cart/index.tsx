@@ -24,16 +24,19 @@ export const Cart = () => {
   const dispatch = useDispatch();
   const user: Asociado = useSelector((state: Asociado) => state.user);
   useEffect(() => {
+    
     setTimeout(() => {
       loadData();
-    }, 100);
+    }, 1);
   }, []);
 
   const backButtonHandler = () => {
     setDetail(false); // Cerrar el modal
+
   };
 
   useEffect(() => {
+   
     document.addEventListener("ionBackButton", backButtonHandler);
     return () => {
       document.removeEventListener("ionBackButton", backButtonHandler);
@@ -102,7 +105,6 @@ export const Cart = () => {
         <div className="cart-main">
           <div className="cart-container">
             {items &&
-              items.length > 0 &&
               items.map((food: cart) => (
                 <>
                   <div key={food.id_producto}>
