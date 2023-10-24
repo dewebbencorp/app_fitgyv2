@@ -89,6 +89,7 @@ export interface VideoLogin {
   media_url: string;
 }
 export interface Cards {
+  id_tarjeta: number
   numTarjeta: string;
   Activo: number;
   card_list: any;

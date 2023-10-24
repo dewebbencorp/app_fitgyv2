@@ -15,6 +15,7 @@ export const postCardsList =
       .post(`${BASE_URL}/getTarjetasBancarias.php`, postData)
       .then((response) => {
         const res = response.data.map((item: any) => ({
+          id_tarjeta: item.Count,
           numTarjeta: item.NumTarjeta,
           Activo: item.Estatus,
         }));
@@ -39,6 +40,55 @@ export const setNewCard = (data: validCard) => {
           const responseData: ResponseUpdate = {
             response: response.data.mensaje,
             status: response.data.insertado,
+          };
+          resolve(responseData);
+        })
+        .catch((error) => {
+          console.log(error);
+          resolve(error);
+        });
+    });
+  };
+};
+
+export const invalidateCard = (id: number) => {
+  return async (): Promise<any> => {
+    const postData = {
+      idTarjeta: id,
+    };
+
+    return new Promise<ResponseUpdate>((resolve) => {
+      axios
+        .post(`${BASE_URL}/desactivarTarjeta.php`, postData)
+        .then((response) => {
+          const responseData: ResponseUpdate = {
+            response: response.data.mensaje,
+            status: response.data.estado,
+          };
+          resolve(responseData);
+        })
+        .catch((error) => {
+          console.log(error);
+          resolve(error);
+        });
+    });
+  };
+};
+
+export const activateCard = (id: number, clave: number) => {
+  return async (): Promise<any> => {
+    const postData = {
+      claveSocio: clave,
+      idTarjeta: id,
+    };
+
+    return new Promise<ResponseUpdate>((resolve) => {
+      axios
+        .post(`${BASE_URL}/activarTarjeta.php`, postData)
+        .then((response) => {
+          const responseData: ResponseUpdate = {
+            response: response.data.mensaje,
+            status: response.data.estado,
           };
           resolve(responseData);
         })
