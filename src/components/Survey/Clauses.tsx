@@ -6,7 +6,7 @@ import { updateContract } from "../../axios/Card";
 import { AnyAction, ThunkDispatch } from "@reduxjs/toolkit";
 import toast, { Toaster } from "react-hot-toast";
 import { updateUserFields } from "../../store/slices/userSlice";
-
+const sty = { style: { marginTop: "2rem" } };
 export const Clauses = () => {
   const dispatch: ThunkDispatch<any, void, AnyAction> = useDispatch();
   const user: Asociado = useSelector((state: Asociado) => state.user);
@@ -23,14 +23,14 @@ export const Clauses = () => {
   };
   const updateC = async () => {
     setIsButtonDisabled(true);
-    toast.loading("Validando infomación...");
+    toast.loading("Validando infomación...", sty);
     const contract: ResponseUpdate = await dispatch(
       updateContract(user.Clav_Asociado, user.CorreoE)
     );
     if (contract) {
       console.log(contract);
       toast.dismiss();
-      toast.success(`${contract.response}`);
+      toast.success(`${contract.response}`, sty);
       dispatch(updateUserFields({ terminos: 1 }));
     }
   };
