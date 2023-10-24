@@ -113,14 +113,9 @@ form h5 {
 /* WELCOME CARD*/
 
 .WC-container {
-  position: absolute;
-  background-color: rgba(0, 0, 0, 0.283);
-  z-index: 5;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  padding: 1.5rem;
+  margin-top: 8rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -135,6 +130,6 @@ form h5 {
 .WC-container .wcl {
   position: relative;
   background-color: black;
-  padding: 2rem;
+  padding: 2vh;
   border-radius: 1rem;
 }
