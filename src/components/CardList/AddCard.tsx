@@ -7,7 +7,7 @@ import { AnyAction, ThunkDispatch } from "@reduxjs/toolkit";
 import { Toaster, toast } from "react-hot-toast";
 import { useForm } from "react-hook-form";
 import { postCardsList, setNewCard } from "../../axios/Card";
-
+const sty = { style: { marginTop: "2rem" } };
 export const AddCard = ({ setModal }: any) => {
   const dispatch: ThunkDispatch<any, void, AnyAction> = useDispatch();
   const user: Asociado = useSelector((state: Asociado) => state.user);
@@ -31,14 +31,13 @@ export const AddCard = ({ setModal }: any) => {
 
     const res: ResponseUpdate = await dispatch(setNewCard(card));
 
-    console.log(res);
     
     if (res.status === 0) {
-      toast.error(res.response);
+      toast.error(res.response,  sty);
       return;
     }
 
-    toast.success(res.response);
+    toast.success(res.response,  sty);
     reset();
     await dispatch(postCardsList(user.Clav_Asociado))
     return;
