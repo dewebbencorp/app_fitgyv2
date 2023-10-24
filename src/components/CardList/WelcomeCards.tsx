@@ -16,30 +16,9 @@ export const WelcomeCards = ({ setModal }: any) => {
   return (
     <>
       <div className="WC-container">
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            marginBottom: "0rem",
-          }}
-        >
-          <AiOutlineCloseCircle
-            className="btn-close-update"
-            onClick={backButtonHandler}
-          />
-        </div>
-        <h1
-          style={{
-            fontFamily: "var(--poppins)",
-            fontSize: "1.7em",
-            marginTop: "5vh",
-            marginBottom: "3vh",
-          }}
-        >
-          Agrega una nueva tarjeta
-        </h1>
-        <div style={{ paddingRight: "2rem" }}>
-          <CardsList />
+        <div className="wcl">
+          <h1>Agrega una nueva tarjeta</h1>
+          <CardsList/>
         </div>
       </div>
     </>
