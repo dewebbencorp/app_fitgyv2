@@ -82,7 +82,7 @@ export const ShareBarcode = ({ code, name }: ShareBarcodeProps) => {
           ) : isShared ? (
             <p style={{ color: "white" }}>Compartido</p>
           ) : (
-            <p style={{ color: "white" }}>Compartir </p>
+            <p style={{ color: "white", textDecoration: "none" }}>Compartir </p>
           )}
         </div>
       </button>

@@ -131,7 +131,7 @@ export const Cart = () => {
                 </>
               ))}
 
-            {items.length === 0 && (
+            {!items  && (
               <div
                 style={{
                   display: "flex",
@@ -164,7 +164,7 @@ export const Cart = () => {
         </div>
       </div>
 
-      {items.length > 0 && (
+      {items && items.length > 0 && (
         <div
           className="btn-pay-container"
           onClick={() => handleWhatsAppClick()}

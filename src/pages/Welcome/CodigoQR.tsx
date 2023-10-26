@@ -189,7 +189,7 @@ const CodigoQR = () => {
                           padding: "0rem",
                         }}
                       >
-                        Ingesa el número de la máquina
+                        Ingresa el número de la máquina
                       </h5>
                       <input
                         style={{

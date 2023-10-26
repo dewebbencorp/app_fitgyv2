@@ -30,7 +30,7 @@ const App: React.FC = () => (
         <Route path="/login" component={SignIn} />
         <Route path="/home" component={Home} />
         <Route path="/fitbar/food/:id" component={ListFood} />
-        <Route path="/fitbar/food/detail/:id" component={FoodDetail} />
+        <Route path="/fitbar/food/detail/:data" component={FoodDetail} />
         <Route path="/carrito" component={Cart} />
         <Route path="/pp" component={PP} />
       </IonRouterOutlet>

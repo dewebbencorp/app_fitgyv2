@@ -1,13 +1,12 @@
 import { IonButtons, IonContent, IonToolbar } from "@ionic/react";
 import { Toaster, toast } from "react-hot-toast";
 import { HiChevronLeft } from "react-icons/hi2";
-import { useHistory, useParams } from "react-router";
+import { useParams } from "react-router";
 import { RiSubtractFill } from "react-icons/ri";
 import { Cart, ProductoDetalle } from "../../interfaces";
-
 import "./foodetail.css";
 import { AnyAction, ThunkDispatch } from "@reduxjs/toolkit";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
 import { postFoodDetail } from "../../axios/Food";
 import { Loading } from "../LoadScreen";
@@ -19,29 +18,16 @@ export const FoodDetail = () => {
   const [food, setFood] = useState<ProductoDetalle>();
   const [total, setTotal] = useState<number>(1);
   const [checkboxValues, setCheckboxValues] = useState({});
-  const history = useHistory();
 
   const dispatch: ThunkDispatch<any, void, AnyAction> = useDispatch();
 
   interface RouteParams {
-    id: string;
+    data: string;
   }
-  const { id } = useParams<RouteParams>();
-
-  const options = ["Arroz", "Salsa italiana", "Pimienta", "Zanahoria"];
-
-  const handleCheckboxChange = (event: {
-    target: { name: any; checked: any };
-  }) => {
-    const { name, checked } = event.target;
-    setCheckboxValues((prevValues) => ({
-      ...prevValues,
-      [name]: checked,
-    }));
-  };
+  const { data } = useParams<RouteParams>();
 
   const handleBackClick = () => {
-    history.goBack();
+    window.location.href = `/fitbar/food/${JSON.parse(data)[0].path}`;
   };
 
   const addToCart = async (data: ProductoDetalle, total: number) => {
@@ -71,10 +57,10 @@ export const FoodDetail = () => {
   };
 
   useEffect(async () => {
-    const data = await dispatch(postFoodDetail(id));
+    const res = await dispatch(postFoodDetail(JSON.parse(data)[0].id));
 
-    if (data.id_producto) {
-      setFood(data);
+    if (res.id_producto) {
+      setFood(res);
       setTimeout(() => {
         setLoadig(false);
       }, 500);

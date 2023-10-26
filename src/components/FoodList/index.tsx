@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { AnyAction, ThunkDispatch } from "@reduxjs/toolkit";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { useHistory, useParams } from "react-router-dom";
+import { useHistory, useLocation, useParams } from "react-router-dom";
 import { Cart, ProductoPorCategoria } from "../../interfaces";
 import { postFoodByType } from "../../axios/Food";
 import { Loading, LoadingImage } from "../LoadScreen";
@@ -32,12 +32,18 @@ export const ListFood = () => {
   const { id } = useParams<RouteParams>();
 
   const history = useHistory();
+  const location = useLocation();
 
-  const handleDetailClick = (id: number) => {
-    window.location.href = `/fitbar/food/detail/${id}`;
+  const handleDetailClick = (id_dta: number) => {
+    const data = {
+      id: id_dta,
+      path: id,
+    };
+
+    console.log(JSON.stringify(data));
+    window.location.href = `/fitbar/food/detail/[${JSON.stringify(data)}]`;
   };
   const goToCart = () => {
-
     window.location.href = `/carrito`;
   };
 
@@ -87,10 +93,8 @@ export const ListFood = () => {
         fontStyle: "italic",
       },
     });
-
-
   };
- 
+
   const Loaded = () => {
     setLoadImage(false);
   };

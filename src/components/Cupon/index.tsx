@@ -215,7 +215,9 @@ export const Cupon = () => {
               padding: "0.5rem",
               backgroundColor: "orangered",
               borderRadius: "0.5rem",
-              fontSize:'1rem'
+              fontSize: "1rem",
+              textDecoration: "none",
+              color: "white",
             }}
             className="poppins"
             onClick={() => setIsHistory(false)}
