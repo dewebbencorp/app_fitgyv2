@@ -44,7 +44,7 @@ export const ListFood = () => {
     window.location.href = `/fitbar/food/detail/[${JSON.stringify(data)}]`;
   };
   const goToCart = () => {
-    window.location.href = `/carrito`;
+    history.push("/carrito", { prevPath: history.location.pathname });
   };
 
   const dispatch: ThunkDispatch<any, void, AnyAction> = useDispatch();
