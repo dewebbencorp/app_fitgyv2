@@ -115,7 +115,7 @@ export const ListFood = () => {
         The Fit Bar
       </h1>
       <h1 className="sub-title-list-food bold">MENÚ</h1>
-      {foodByType[0]?.id_categoria != id && showLoading && <Loading />}
+      {showLoading && <Loading />}
 
       <div className="main-fl-container">
         <Swiper className="swiper" spaceBetween={50} slidesPerView={1}>

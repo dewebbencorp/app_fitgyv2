@@ -1,8 +1,10 @@
 .main-fl-container {
   margin-top: 0;
+  opacity: 0;
   transform: translateY(20px);
-  animation: fadeAndSlide 0.1s ease-out forwards;
+  animation: fadeAndSlide 1s ease-out forwards;
   color: white;
+  
 }
 
 .food-container {

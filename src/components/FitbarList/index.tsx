@@ -8,15 +8,21 @@ import { AnyAction, ThunkDispatch } from "@reduxjs/toolkit";
 import { useHistory } from "react-router";
 import { fetchTypesFood } from "../../axios/Food";
 import { cartTotal as totalState } from "../../store/services/cart";
+import { Loading } from "../LoadScreen";
 
 export const FitbarList = () => {
   const [cartTotal, setCartTotal] = useState(0);
+  const [loading, setLoading] = useState(true);
   const food: ProductoCategorias = useSelector(
     (state: ProductoCategorias) => state.types_food
   );
 
   const dispatch: ThunkDispatch<any, void, AnyAction> = useDispatch();
   useEffect(() => {
+    if (categorias.length > 0) {
+      setLoading(false);
+    }
+
     dispatch(fetchTypesFood());
 
     setCartTotal(totalState().total_length);
@@ -39,6 +45,7 @@ export const FitbarList = () => {
 
   return (
     <>
+      {loading && <Loading />}
       <IonContent id="ion-fitbar">
         <div className="header-info-container">
           <div className="header-info">
