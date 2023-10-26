@@ -111,10 +111,10 @@ export const ListFood = () => {
         </IonButtons>
       </IonToolbar>
 
-      <h1 className="title-list-food" style={{ color: "white" }}>
+      <h1 className="title-list-food " style={{ color: "white" }}>
         The Fit Bar
       </h1>
-      <h1 className="sub-title-list-food">MENÚ</h1>
+      <h1 className="sub-title-list-food bold">MENÚ</h1>
       {foodByType[0]?.id_categoria != id && showLoading && <Loading />}
 
       <div className="main-fl-container">
