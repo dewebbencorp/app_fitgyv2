@@ -19,16 +19,18 @@ export const FitbarList = () => {
 
   const dispatch: ThunkDispatch<any, void, AnyAction> = useDispatch();
   useEffect(() => {
-    if (categorias.length > 0) {
-      setLoading(false);
-    }
-
-    dispatch(fetchTypesFood());
-
-    setCartTotal(totalState().total_length);
-  }, [dispatch]);
+    getData();
+  }, []);
   const goToCart = () => {
     history.push("/carrito", { prevPath: history.location.pathname });
+  };
+
+  const getData = async () => {
+    const res = await dispatch(fetchTypesFood());
+    setCartTotal(totalState().total_length);
+    if (res) {
+      setLoading(false);
+    }
   };
   const history = useHistory();
   const handleDivClick = (id: number) => {
@@ -37,7 +39,6 @@ export const FitbarList = () => {
 
   const Food = Object.values(food);
 
-  // Filtrar los elementos que cumplen con la interfaz ProductoCategorias
   const categorias: ProductoCategorias[] = Food.filter(
     (item) =>
       typeof item === "object" && item !== null && "id_categoria" in item
