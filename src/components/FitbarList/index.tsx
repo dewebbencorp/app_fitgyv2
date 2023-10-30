@@ -80,8 +80,8 @@ export const FitbarList = () => {
 
                 <div className="card-description">
                   <h1 className="title">{type_food.nombre}</h1>
-                  <h2 className="description limit-text ">
-                    {type_food.descripcion + "..."}
+                  <h2 className="description ">
+                    {type_food.descripcion.slice(0, 18) + "..."}
                   </h2>
                 </div>
               </div>
