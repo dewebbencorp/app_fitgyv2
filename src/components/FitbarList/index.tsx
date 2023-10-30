@@ -19,6 +19,9 @@ export const FitbarList = () => {
 
   const dispatch: ThunkDispatch<any, void, AnyAction> = useDispatch();
   useEffect(() => {
+    if (food) {
+      setLoading(false);
+    }
     getData();
   }, []);
   const goToCart = () => {
