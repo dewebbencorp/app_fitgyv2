@@ -25,6 +25,7 @@ import { FiUser, FiWifi } from "react-icons/fi";
 import { IoHomeOutline } from "react-icons/io5";
 import { RiCoupon5Line } from "react-icons/ri";
 import { UserProfile } from "../../components/Profile";
+import { AiFillGift } from "react-icons/ai";
 export const Home = () => {
   const [profile, setProfile] = useState(false);
   const user: Asociado = useSelector((state: Asociado) => state.user);
@@ -75,9 +76,12 @@ export const Home = () => {
 
               {user.permisos == 7 ? (
                 <IonTabButton tab="cupon" href="/home/cupon">
-                <img className="img-tab" width="35%" src={cupon} />
-                <IonLabel>Cupón </IonLabel>
-              </IonTabButton>
+                  <span>
+                    <AiFillGift />
+                  </span>
+
+                  <IonLabel> </IonLabel>
+                </IonTabButton>
               ) : (
                 <></>
               )}
