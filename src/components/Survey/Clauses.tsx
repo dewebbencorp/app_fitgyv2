@@ -44,34 +44,54 @@ export const Clauses = () => {
 
             {mostrarContenidoCompleto ? (
               <>
-                <p>
+                <p className="abstract">
                   Esta actualización en el contrato permite que puedas generar
-                  cupones especiales que podrás utilizar para realizar compras
-                  con tu tarjeta registrada. Estos cupones son de un solo uso y
-                  podrás seleccionar a qué usuarios se los deseas enviar.
-                  ¡Aprovecha esta nueva funcionalidad!.
+                  certificados de regalo que podrás utilizar para realizar
+                  compras con tu tarjeta registrada. Estos cupones son de un
+                  solo uso y podrás seleccionar a qué usuarios se los deseas
+                  enviar. ¡Aprovecha esta nueva funcionalidad!.
                 </p>
 
                 <div className="clause-text">
-                  <p>¡Lorem impus!</p>
+                  <span>Tarjeta de regalo</span>
 
                   <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Impedit, nobis optio illum numquam sit hic atque in voluptas
-                    odio, debitis rerum voluptate enim eveniet ducimus repellat,
-                    earum eius corrupti esse praesentium laudantium. At
-                    excepturi eaque commodi incidunt, architecto aspernatur iure
-                    suscipit laudantium doloremque laboriosam. Deserunt nihil
-                    illum, nemo iste necessitatibus explicabo placeat expedita
-                    amet commodi doloribus ex quae unde, dolores veritatis!
-                    Aliquid nam consectetur omnis officiis culpa esse excepturi
-                    veritatis!
+                    El socio tiene la libertad desde su aplicación THE FITGYM de
+                    Generar un Certificado de Regalo y podrá regalar a otra
+                    persona para el uso y beneficio de este, teniendo de su
+                    conocimiento que estará absorbiendo el valor del Certificado
+                    que se consuma dentro de las instalaciones del Gimnasio.
                   </p>
                   <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Possimus, voluptas dolorum hic veritatis vitae adipisci
-                    quasi minus quas nostrum? Itaque expedita accusantium
-                    corrupti mollitia molestiae.
+                    {" "}
+                    Se define como una cuenta de pago abierto, lo que significa
+                    que su saldo se cargará a la tarjeta de crédito o débito en
+                    una única exhibición. No se establece un límite de saldo en
+                    el Certificado de Regalo, permitiendo al beneficiario
+                    utilizar lo que considere adquirir productos o servicios
+                    dentro del gimnasio.
+                  </p>
+                  <p>
+                    {" "}
+                    Los cupones generados son propiedad exclusiva de
+                    beneficiario al que se le está expidiendo, no son
+                    transferibles a terceros. Cualquier intento de transferir o
+                    revender un cupón resultará en la anulación del mismo y la
+                    revocación de los beneficios.
+                  </p>
+                  <p>
+                    Los cupones generados tendrán una vigencia de 15 días a
+                    partir de la fecha de generación. Pasada esta fecha, el
+                    cupón quedará automáticamente cancelado y no podrá ser
+                    utilizado y por lo tanto tendría que generar un nuevo
+                    certificado de regalo desde su aplicación el Socio.
+                  </p>
+                  <p>
+                    {" "}
+                    Los beneficiarios deben presentar al momento de hacer uso
+                    del Certificado de Regalo el código de barras y una
+                    identificación oficial que compruebe que los datos del
+                    Certificado sea la persona beneficiada para hacer uso.
                   </p>
                 </div>
               </>
