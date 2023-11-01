@@ -8,9 +8,10 @@ import toast from "react-hot-toast";
 interface ShareBarcodeProps {
   code: string;
   name: string;
+  view: boolean;
 }
 
-export const ShareBarcode = ({ code, name }: ShareBarcodeProps) => {
+export const ShareBarcode = ({ code, name, view }: ShareBarcodeProps) => {
   const barcodeRef = useRef<HTMLDivElement | null>(null);
   const [date, setDate] = useState<Date | null>(null);
   const [isActive, setIsActive] = useState(false);
@@ -50,15 +51,17 @@ export const ShareBarcode = ({ code, name }: ShareBarcodeProps) => {
 
   return (
     <div className="main-barcode">
-      <span
-        style={{
-          fontSize: "1em",
-          color: "white",
-          animation: "shimmerAnimation 1.5s infinite",
-        }}
-      >
-        ! Ahora puedes compartir tu código ¡
-      </span>
+      {view && (
+        <span
+          style={{
+            fontSize: "1em",
+            color: "white",
+            animation: "shimmerAnimation 1.5s infinite",
+          }}
+        >
+          ! Ahora puedes compartir tu código ¡
+        </span>
+      )}
 
       <div className="bar-info" ref={barcodeRef}>
         <div className="c-info">

@@ -73,19 +73,13 @@ export const Home = () => {
                 <IonLabel>Home</IonLabel>
               </IonTabButton>
 
-              {user.permisos == 0 ? (
-                <IonTabButton tab="cupon" disabled={true} href="/home/cupon">
-                  <span>
-                    <RiCoupon5Line />
-                  </span>
-                  <IonLabel>Cupón</IonLabel>
-                </IonTabButton>
-              ) : (
+              {user.permisos == 7 ? (
                 <IonTabButton tab="cupon" href="/home/cupon">
-                  <img className="img-tab" width="35%" src={cupon} />
-
-                  <IonLabel>Cupón </IonLabel>
-                </IonTabButton>
+                <img className="img-tab" width="35%" src={cupon} />
+                <IonLabel>Cupón </IonLabel>
+              </IonTabButton>
+              ) : (
+                <></>
               )}
 
               <IonTabButton tab="wifi" href="/home/wifi">

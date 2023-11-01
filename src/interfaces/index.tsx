@@ -145,5 +145,7 @@ export interface CuponList {
   beneficiario: string;
   utilizado: boolean;
   vigente: boolean;
+  generado: string;
   vencimiento: string;
+  codigo: string;
 }

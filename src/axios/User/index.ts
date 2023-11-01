@@ -194,6 +194,8 @@ export const getCuponList =
             utilizado: item.codigo_utilizado === 1,
             vigente: item.codigo_vigente === 1,
             vencimiento: item.fecha_vencimiento.date,
+            generado: item.fecha_generado.date,
+            codigo: item.codigo_cupon,
           }));
 
           resolve(responseData);

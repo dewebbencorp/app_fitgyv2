@@ -27,7 +27,7 @@ h2 {
   color: white;
 }
 .head-cupon h2 {
-  font-size: 2.7em;
+  font-size: 1.6em;
   font-weight: bold;
   color: white;
 }
@@ -216,24 +216,35 @@ main ion-grid ion-accordion-group ion-accordion div span {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-left: 1rem;
   margin-bottom: 1rem;
+  gap: 0;
+}
+
+.slotac p{
+  margin-bottom: 0.5rem;
+  margin-top: 0.5rem;
 }
 
 .slotac p {
-  color: red;
-  margin: 0;
-  font-size: 0.9rem;
-}
-.slotac span {
   font-size: 1rem;
   text-align: center;
+  
+}
+
+.btn-share-cupon {
+  background-color: orangered;
+  color: white;
+  padding: 0.7rem;
+  border-radius: 0.5rem;
+  margin-bottom: 1rem;
 }
 ion-accordion ion-row {
   display: flex;
   justify-content: space-between;
   width: 100%;
 }
-#cuponl{
+#cuponl {
   --ion-background-color: black;
+  overflow: hidden;
+  overflow-y: scroll;
 }

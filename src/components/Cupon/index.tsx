@@ -9,15 +9,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { Asociado, CuponList, ResponseUpdate } from "../../interfaces";
 import "./cupon.css";
 import { ShareBarcode } from "./ShareBarcode";
-import {
-  IonButton,
-  IonButtons,
-  IonModal,
-  IonTitle,
-  IonToolbar,
-} from "@ionic/react";
+import { IonModal } from "@ionic/react";
 import { AiOutlineCloseCircle } from "react-icons/ai";
-import { BG_CUPON } from "../../constants";
 import { CuponL } from "./CuponList";
 export const Cupon = () => {
   const [isButtonDisabled, setIsButtonDisabled] = useState(false);
@@ -37,7 +30,8 @@ export const Cupon = () => {
     reset,
   } = useForm({
     defaultValues: {
-      beneficiario: "",
+      nombre: "",
+      apellido: "",
     },
   });
 
@@ -48,7 +42,7 @@ export const Cupon = () => {
       style: { marginTop: "1.5rem" },
     });
     const d: ResponseUpdate = await dispatch(
-      generateCupon(user.Clav_Asociado, data.beneficiario)
+      generateCupon(user.Clav_Asociado, data.nombre + " " + data.apellido)
     );
     if (!d.status) {
       toast.dismiss();
@@ -62,11 +56,11 @@ export const Cupon = () => {
     setCode(d.response);
     reset();
     toast.dismiss();
-    toast.success("Cupon generado para: " + data.beneficiario, {
+    toast.success("Cupon generado para: " + data.nombre, {
       position: "top-right",
       style: { marginTop: "1.5rem" },
     });
-    setName(data.beneficiario);
+    setName(data.nombre + " " + data.apellido);
     setIsVisible(true);
     setIsButtonDisabled(false);
   });
@@ -136,31 +130,50 @@ export const Cupon = () => {
         <div className="cupon-container">
           <div className="head-cupon">
             <h1>Genera tú</h1>
-            <h2>CUPÓN</h2>
+            <h2>CERTIFICADO DE REGALO</h2>
           </div>
           <div className="video-container">
             <img className="imgd" src={BACKGROUND_CUPON_VIDEO} />
           </div>
         </div>
         <form onSubmit={onSubmit} className="btn-generate-container">
-          {errors.beneficiario ? (
-            <span>{errors.beneficiario.message}</span>
+          {errors.nombre ? (
+            <span>{errors.nombre.message}</span>
+          ) : errors.apellido ? (
+            <span>{errors.apellido.message}</span>
           ) : (
             <span className="span-m">Ingresa el nombre del beneficiario</span>
           )}
-          <input
-            type="text"
-            {...register("beneficiario", {
-              required: {
-                value: true,
-                message: "¡El nombre es requerido! ",
-              },
-              minLength: {
-                value: 3,
-                message: "¡El nombre debe ser mayor a 3 caracteres!",
-              },
-            })}
-          />
+          <div style={{ display: "flex", width: "70%", gap: "1rem" }}>
+            <input
+              placeholder="Nombre"
+              type="text"
+              {...register("nombre", {
+                required: {
+                  value: true,
+                  message: "¡El nombre es requerido! ",
+                },
+                minLength: {
+                  value: 5,
+                  message: "¡El nombre debe ser mayor a 5 caracteres!",
+                },
+              })}
+            />
+            <input
+              placeholder="Apellido"
+              type="text"
+              {...register("apellido", {
+                required: {
+                  value: true,
+                  message: "¡El pellido es requerido! ",
+                },
+                minLength: {
+                  value: 5,
+                  message: "¡El pellido debe ser mayor a 5 caracteres!",
+                },
+              })}
+            />
+          </div>
 
           <button
             type="submit"
@@ -191,7 +204,7 @@ export const Cupon = () => {
           <AiOutlineCloseCircle onClick={() => dismiss()} />
         </div>
 
-        <ShareBarcode code={code} name={name ? name : ""} />
+        <ShareBarcode code={code} name={name ? name : ""} view={true} />
       </IonModal>
 
       <IonModal
@@ -202,28 +215,30 @@ export const Cupon = () => {
         onDidDismiss={() => setIsHistory(false)}
       >
         <div
-          style={{ display: "flex", justifyContent: "end", fontSize: "2rem" }}
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            fontSize: "2rem",
+            position: "relative",
+          }}
         >
-          <CuponL data={history} />
-        </div>
-        <div
-          style={{ width: "100%", display: "flex", justifyContent: "center" }}
-        >
-          <button
+          <div
             style={{
-              width: "40%",
-              padding: "0.5rem",
-              backgroundColor: "orangered",
-              borderRadius: "0.5rem",
-              fontSize: "1rem",
-              textDecoration: "none",
+              width: "100%",
+              display: "flex",
+              justifyContent: "end",
+              position: "absolute",
+              zIndex: "30",
+              top: "0",
+              right: "0",
               color: "white",
+              fontSize: "1em",
             }}
-            className="poppins"
-            onClick={() => setIsHistory(false)}
           >
-            Cerrar
-          </button>
+            <AiOutlineCloseCircle onClick={() => setIsHistory(false)} />
+          </div>
+          <CuponL data={history} />
         </div>
       </IonModal>
     </>
