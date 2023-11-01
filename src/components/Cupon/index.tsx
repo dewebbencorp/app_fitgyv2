@@ -177,12 +177,10 @@ export const Cupon = () => {
 
           <button
             type="submit"
-            className="btn-generate"
+            className="btn-history"
             disabled={isButtonDisabled}
           >
-            <div className="btn-cupon-info">
-              <img src={cupon_img} /> <p>Generar</p>
-            </div>
+            <h2>Generar</h2>
           </button>
           {user.permisos === 7 && (
             <div className="btn-history" onClick={() => loadList()}>
