@@ -37,7 +37,7 @@ export const Cupon = () => {
 
   const onSubmit = handleSubmit(async (data) => {
     setIsButtonDisabled(true);
-    toast.loading("Generando cupon ...", {
+    toast.loading("Generando ...", {
       position: "top-right",
       style: { marginTop: "1.5rem" },
     });
@@ -46,7 +46,7 @@ export const Cupon = () => {
     );
     if (!d.status) {
       toast.dismiss();
-      toast.error("Error al generar el cupon", {
+      toast.error("Error al generar ", {
         position: "top-right",
         style: { marginTop: "1.5rem" },
       });
@@ -56,7 +56,7 @@ export const Cupon = () => {
     setCode(d.response);
     reset();
     toast.dismiss();
-    toast.success("Cupon generado para: " + data.nombre, {
+    toast.success("Generado", {
       position: "top-right",
       style: { marginTop: "1.5rem" },
     });
@@ -144,9 +144,18 @@ export const Cupon = () => {
           ) : (
             <span className="span-m">Ingresa el nombre del beneficiario</span>
           )}
-          <div style={{ display: "flex", width: "70%", gap: "1rem" }}>
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              margin: "0",
+            }}
+          >
             <input
+              style={{ width: "100%" }}
               placeholder="Nombre"
+              maxLength={10}
               type="text"
               {...register("nombre", {
                 required: {
@@ -157,9 +166,19 @@ export const Cupon = () => {
                   value: 5,
                   message: "¡El nombre debe ser mayor a 5 caracteres!",
                 },
+                maxLength: {
+                  value: 10,
+                  message: "El nombre es muy largo",
+                },
+                pattern: {
+                  value: /^[^\s]+$/,
+                  message: "El nombre no debe contener espacios en blanco",
+                }
               })}
             />
             <input
+              style={{ width: "100%" }}
+              maxLength={10}
               placeholder="Apellido"
               type="text"
               {...register("apellido", {
@@ -171,6 +190,14 @@ export const Cupon = () => {
                   value: 5,
                   message: "¡El pellido debe ser mayor a 5 caracteres!",
                 },
+                maxLength: {
+                  value: 10,
+                  message: "¡El apellido es muy largo!",
+                },
+                pattern: {
+                  value: /^[^\s]+$/,
+                  message: "El apellido no debe contener espacios en blanco",
+                }
               })}
             />
           </div>

@@ -173,13 +173,23 @@ export const UserProfile = ({ showP }: any) => {
               CLIENTE PREMIUM
             </h3>
 
-            <div className="ponits-container" onClick={() => gotPp()}>
+            {user.permisos === 7 ? (
+              <div className="ponits-container" onClick={() => gotPp()}>
+                <img className="points-icon " src={points} />
+                <div className="points">
+                  <h5>Puntos Disponibles</h5>
+                  <h3 className="kenyan italic">{user.puntos}</h3>
+                </div>
+              </div>
+            ) : (
+              <><div className="ponits-container">
               <img className="points-icon " src={points} />
               <div className="points">
                 <h5>Puntos Disponibles</h5>
-                <h3 className="kenyan italic">{user.puntos}</h3>
+                <h3 className="kenyan italic">0</h3>
               </div>
-            </div>
+            </div></>
+            )}
 
             <div
               className="btn-add-inbody-container"

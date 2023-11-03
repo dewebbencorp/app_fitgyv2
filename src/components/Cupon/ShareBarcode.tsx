@@ -27,9 +27,9 @@ export const ShareBarcode = ({ code, name, view }: ShareBarcodeProps) => {
       try {
         const canvas = await html2canvas(barcodeRef.current);
         const imageUri = canvas.toDataURL("image/png");
-        await SocialSharing.share("", "Cupón generado", imageUri, "");
+        await SocialSharing.share("", "Generado", imageUri, "");
       } catch (error) {
-        console.error("Error al generar y compartir el cupón:", error);
+        console.error("Error al generar y compartir :", error);
       } finally {
         setIsActive(false);
         setIsShared(true);

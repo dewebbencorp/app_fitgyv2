@@ -88,7 +88,7 @@ h2 {
   width: 60%;
   background-color: var(--ion-tab-bar-background);
   border-radius: 0.5rem;
-  margin-top: 1rem;
+  margin-top: 0.5rem;
   height: 2rem;
 }
 .btn-history h2 {

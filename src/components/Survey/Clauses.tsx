@@ -37,7 +37,7 @@ export const Clauses = () => {
   return (
     <>
       <Toaster />
-      {user.terminos == 0 && user.Clav_Asociado ? (
+      {user.terminos == 0 && user.permisos === 7 && user.Clav_Asociado ? (
         <div className="card-container-survey">
           <div className="clause-card">
             <h5>Bienvenido a The Fit Gym App</h5>
