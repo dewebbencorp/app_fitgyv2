@@ -4,7 +4,6 @@
   transform: translateY(20px);
   animation: fadeAndSlide 0.3s ease-out forwards;
   color: white;
-  
 }
 
 .food-container {
@@ -13,7 +12,7 @@
   flex-direction: column;
   background: linear-gradient(#ff9104, #f52204);
   margin-bottom: 0rem;
-  margin-left: 30vw;
+  margin-left: 12vw;
   border-radius: 32vw;
   height: 64vh;
   width: 30vh;
@@ -23,21 +22,18 @@
 .add-to-cart {
   position: absolute;
   top: 22vh;
-  margin-left: 31vh;
-
-  clip-path: circle(25%);
+  width: 4.5rem;
+  margin-left: 24vh;
+  clip-path: circle(35%);
   display: flex;
   justify-content: center;
   align-items: center;
-
   background-color: white;
-
   animation: shimmerAnimation 2s ease-in-out alternate-reverse infinite;
 }
 
 .add-to-cart img {
-  width: 12vh;
-  padding: 4vh;
+  padding: 1.1rem;
 }
 .image-container-food-finally {
   position: relative;

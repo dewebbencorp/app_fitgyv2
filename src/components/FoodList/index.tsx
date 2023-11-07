@@ -118,7 +118,7 @@ export const ListFood = () => {
       {showLoading && <Loading />}
 
       <div className="main-fl-container">
-        <Swiper className="swiper" spaceBetween={50} slidesPerView={1}>
+        <Swiper className="swiper" spaceBetween={0} slidesPerView={1.4}>
           {foodByType[0]?.id_categoria != id ? (
             <div>You need an internet connection! </div>
           ) : (
