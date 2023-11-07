@@ -19,12 +19,11 @@ import home from "./img/home.png";
 import fitbar from "./img/fitbar.png";
 import cupon from "./img/cupon.png";
 import wifi from "./img/wifi.png";
+import gift from "./img/giftCard.png";
 import { Profile } from "../Profile";
 import { Welcome } from "../Welcome";
 import { useEffect, useState } from "react";
 import { FiUser, FiWifi } from "react-icons/fi";
-import { IoHomeOutline } from "react-icons/io5";
-import { RiCoupon5Line } from "react-icons/ri";
 import { UserProfile } from "../../components/Profile";
 import { AiFillGift } from "react-icons/ai";
 export const Home = () => {
@@ -81,9 +80,7 @@ export const Home = () => {
 
               {user.permisos == 7 ? (
                 <IonTabButton tab="cupon" href="/home/cupon">
-                  <span>
-                    <AiFillGift />
-                  </span>
+                  <img className="img-tab" width="70%" src={gift} />
 
                   <IonLabel> </IonLabel>
                 </IonTabButton>
