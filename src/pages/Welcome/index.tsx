@@ -42,18 +42,14 @@ export const Welcome = () => {
                   conectate a internet
                 </video>
               ) : (
-                <iframe
-                  width="340"
-                  height="230"
-                  style={{
-                    borderRadius: "1rem",
-                  }}
-                  src="https://www.youtube.com/embed/pQsF3pzOc54?si=nCCWJCnkkp08oJb0&amp;controls=0"
-                  title="YouTube video player"
-                  frameborder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                  allowfullscreen
-                ></iframe>
+                <video
+                  src={BG_HOME}
+                  onLoadedData={loadvideo}
+                  controls
+                  style={{ background: "black", borderRadius: "1rem" }}
+                >
+                  ¡Conectate a internet!
+                </video>
               )}
             </div>
           </div>
