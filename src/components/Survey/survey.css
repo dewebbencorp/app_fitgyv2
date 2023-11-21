@@ -1,0 +1,151 @@
+.card-container-survey {
+  position: absolute;
+  z-index: 90;
+  background-color: rgba(0, 0, 0, 0.664);
+  color: black;
+  font-family: var(--poppins);
+  font-size: 1em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.survey-card {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: 4vw;
+  background-color: white;
+  border-radius: 1rem;
+  width: 85vw;
+  text-align: center;
+
+  opacity: 0;
+  transform: translateY(200px);
+  animation: fadeAndSlide 0.5s ease-out forwards;
+}
+
+.survey-card h1 {
+  font-size: 1em;
+  margin: 0;
+}
+
+.btn-send-survey {
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  background: var(--ion-background-color-2);
+  color: white;
+  font-family: var(--poppins);
+  font-size: 1em;
+  opacity: 0.7;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.btn-send-survey:hover {
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+/*STARS*/
+
+.rating {
+  display: flex;
+  padding: 1rem;
+  flex-direction: row-reverse;
+}
+
+.rating input {
+  display: none;
+}
+
+.rating label {
+  float: right;
+  cursor: pointer;
+  color: #ccc;
+  transition: color 0.3s;
+}
+
+.rating label:before {
+  content: "\2605";
+  font-size: 4rem;
+}
+
+.rating input:checked ~ label,
+.rating label:hover,
+.rating label:hover ~ label {
+  color: var(--ion-tab-bar-background);
+  transition: color 0.3s;
+}
+
+/* CLAUSE */
+
+.clause-card {
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 1rem;
+  width: 80vw;
+  padding: 1rem;
+}
+
+.clause-card h5 {
+  font-size: 1em;
+  color: black;
+  font-family: var(--poppins);
+}
+
+.clause-card p {
+  color: black;
+  font-family: var(--poppins);
+}
+
+.clause-text {
+  background-color: whitesmoke;
+  height: 25vh;
+  padding: 1em;
+  border-radius: 1rem;
+  overflow-y: auto;
+  transform: translateY(20px);
+  animation: fadeAndSlide 0.5s ease-out forwards;
+}
+
+.clause-text span {
+  color: black;
+  font-size: 1em;
+  font-weight: 450;
+  text-align: center;
+}
+
+.clause-text p,
+.abstract {
+  text-align: justify;
+  text-justify: inter-word;
+}
+
+.ver-mas {
+  display: flex;
+  justify-content: center;
+  width: 5rem;
+  border: solid tomato 1px;
+  border-radius: 1rem;
+  font-size: 1em;
+  margin-top: 2vh;
+  animation: shimmerAnimation 1.5s infinite;
+}
+
+.action {
+  display: flex;
+  justify-content: center;
+  width: 5rem;
+  padding: 0.5rem;
+  color: tomato;
+  border: solid tomato 1px;
+  border-radius: 1rem;
+  font-size: 1em;
+}

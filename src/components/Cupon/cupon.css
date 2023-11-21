@@ -1,0 +1,250 @@
+.main-cupon-container {
+  position: relative;
+  height: 100vh;
+  z-index: -2;
+  background: linear-gradient(#ff7d04, #ec540d) !important;
+}
+.cupon-container {
+  display: flex;
+  flex-direction: column;
+}
+.head-cupon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 1.7rem;
+}
+
+.head-cupon h1,
+h2 {
+  font-family: var(--poppins);
+  margin: 0.1rem;
+}
+
+.head-cupon h1 {
+  margin-top: 1.5rem;
+  font-size: 1.1em;
+  color: white;
+}
+.head-cupon h2 {
+  font-size: 1.6em;
+  font-weight: bold;
+  color: white;
+}
+.video-container {
+  position: absolute;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  background-color: #161616;
+  width: 100vw;
+  top: 20vh;
+  padding-bottom: 45vh;
+  padding-top: 8vh;
+  border-top-left-radius: 2rem;
+  border-top-right-radius: 2rem;
+  z-index: -1;
+}
+.video-container div {
+  position: absolute;
+  width: 100vw;
+  top: 7vh;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: #161616;
+  padding-bottom: 45vh;
+  z-index: 5;
+}
+.imgd {
+  width: 100vw;
+  height: 35vh;
+  object-fit: cover;
+  opacity: 0.5;
+}
+
+.btn-generate-container {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 17vh;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.btn-generate-container span {
+  font-family: var(--poppins);
+  font-size: 0.9em;
+  margin-bottom: 1rem;
+  font-size: 0.9em;
+}
+
+.btn-history {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 60%;
+  background-color: var(--ion-tab-bar-background);
+  border-radius: 0.5rem;
+  margin-top: 0.5rem;
+  height: 2rem;
+}
+.btn-history h2 {
+  color: white;
+  font-size: 1.2rem;
+  font-family: "Poppins";
+}
+.btn-history:hover {
+  opacity: 0.8;
+}
+
+.btn-generate-container .span-m {
+  color: white;
+}
+.btn-generate-container input {
+  margin-bottom: 1rem;
+  width: 60%;
+}
+
+.btn-generate {
+  display: flex;
+  justify-content: center;
+  background-color: var(--ion-tab-bar-background);
+  padding: 0.7rem;
+  border-radius: 0.5rem;
+  width: 60%;
+}
+
+.btn-generate[disabled] {
+  filter: brightness(0.5);
+  color: white;
+  cursor: not-allowed;
+}
+.btn-cupon-info {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 1rem;
+}
+
+.btn-cupon-info img {
+  width: 6vw;
+  height: 3.5vh;
+  margin-right: 4vw;
+}
+.btn-cupon-info p {
+  font-family: "Poppins";
+  font-size: 1.2rem;
+}
+
+/* BARCODE */
+
+.main-barcode {
+  font-family: var(--poppins);
+  display: flex;
+  height: 50vh;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: transparent;
+  gap: 1rem;
+}
+.bar-info {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  background-color: white;
+  padding: 0rem;
+  border-radius: 1rem;
+  gap: 0;
+}
+
+.c-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 0;
+  width: 100%;
+  border-top-left-radius: inherit;
+  border-top-right-radius: inherit;
+  color: white;
+
+  background-color: var(--ion-tab-bar-background);
+}
+.c-info h1 {
+  font-size: 1rem;
+}
+.c-info h2 {
+  font-size: 1rem;
+  margin-bottom: 2rem;
+}
+.bar-info div {
+  padding: 1rem;
+}
+
+/*HISTORY*/
+
+.title-row-2 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 3rem;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  font-weight: bold;
+  font-family: "Poppins";
+  border: 1px solid orangered;
+  background: linear-gradient(#ff7d04, #ec540d) !important;
+  margin-bottom: 0.5rem;
+}
+
+main ion-grid ion-accordion-group ion-accordion {
+  background-color: black;
+}
+
+main ion-grid ion-accordion-group ion-accordion div span {
+  color: white;
+  font-size: 0.9rem;
+}
+.slotac {
+  background-color: rgba(88, 86, 86, 0.37);
+  border-radius: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 1rem;
+  gap: 0;
+}
+
+.slotac p{
+  margin-bottom: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.slotac p {
+  font-size: 1rem;
+  text-align: center;
+  
+}
+
+.btn-share-cupon {
+  background-color: orangered;
+  color: white;
+  padding: 0.7rem;
+  border-radius: 0.5rem;
+  margin-bottom: 1rem;
+}
+ion-accordion ion-row {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+#cuponl {
+  --ion-background-color: black;
+  overflow: hidden;
+  overflow-y: scroll;
+}

@@ -1,0 +1,284 @@
+.main-ctn {
+  display: flex;
+  flex-direction: column;
+  font-family: var(--poppins);
+}
+
+.head-containaer-1 {
+  width: 100%;
+  height: 21vh;
+  background: linear-gradient(#ff7d04, #ec540d) !important;
+}
+
+.head-containaer-2 {
+  position: relative;
+  width: 100%;
+  height: 15vh;
+  background-color: white;
+}
+.pencil {
+  font-size: 1.8em;
+  color: white;
+  right: 0;
+  bottom: 0;
+  margin-right: 4vw;
+}
+.profile-data-container {
+  position: absolute;
+  display: flex;
+  justify-content: left;
+  width: 45vw;
+  height: 20vh;
+  margin-top: -11vh;
+  margin-left: 1rem;
+  clip-path: circle(45%);
+}
+
+.profile-data-container img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+.user-name {
+  position: absolute;
+  color: black;
+  font-size: 1em;
+  margin-left: 5vw;
+  bottom: 2vh;
+  font-style: italic;
+  top: 7vh;
+}
+
+.my-account {
+  margin: 1rem;
+  margin-top: 2rem;
+}
+
+.detail-account {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 4vh;
+}
+
+.detail-title h5,
+h3 {
+  margin: 0;
+}
+
+.detail-title h5 {
+  font-size: 0.8em;
+}
+.detail-title h3 {
+  font-size: 1.7em;
+}
+.ponits-container {
+  margin-top: 3vh;
+  margin-bottom: 4vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.points-icon {
+  width: 2.5rem;
+  height: 2.5rem;
+  margin-right: 1.5rem;
+  animation: shimmerAnimation 2s ease-in-out alternate-reverse infinite;
+}
+
+.points h5 {
+  font-size: 0.8em;
+  margin: 0;
+}
+
+.points h3 {
+  margin: 0;
+  font-size: 1.9em;
+}
+
+.btn-add-inbody-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+.btn-add-inbody {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 90%;
+  background-color: var(--ion-tab-bar-background);
+  border-radius: 0.3rem;
+  padding: 0.1rem;
+}
+
+.btn-add-inbody h3 {
+  font-size: 1.3rem;
+}
+
+.schedule-icon {
+  width: 2rem;
+  height: 2rem;
+  margin-right: 1rem;
+  padding: 0.1rem;
+}
+
+.memberships {
+  margin-top: 3rem;
+}
+
+.memberships h1 {
+  margin-bottom: 0;
+  font-size: 1.7em;
+}
+.memberships h2 {
+  margin-top: 0;
+  font-size: 0.8em;
+}
+
+.btn-close-container {
+  width: 100%;
+  height: 4vh;
+  display: flex;
+  justify-content: center;
+  border-radius: 0.5rem;
+  font-family: var(--poppins);
+}
+
+.btn-close {
+  position: absolute;
+  bottom: 5vh;
+  font-size: 1.3em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 52%;
+  background-color: var(--ion-tab-bar-background);
+  border-radius: 0.3rem;
+}
+
+/* UPDATEpROFILE*/
+
+.btn-close-update-container {
+  display: flex;
+  justify-content: right;
+  position: absolute;
+  z-index: 30;
+  right: 0;
+  top: 0;
+}
+
+.btn-close-update {
+  margin-top: 2.5rem;
+  margin-right: 1.5rem;
+  margin-bottom: 0.5rem;
+  font-size: 2em;
+}
+.title-up {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 1.5vw;
+  width: 70%;
+  height: 6vh;
+  background: linear-gradient(#ff7d04, #ec540d) !important;
+  font-size: 1.2em;
+  font-family: var(--poppins);
+  margin-top: 2rem;
+}
+.input-up-container {
+  display: flex;
+  flex-direction: column;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  padding-top: 0.5rem;
+}
+
+.input-container {
+  margin-top: 2.5rem;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+
+.input-container input {
+  height: 2.5rem;
+}
+
+form h3 {
+  font-size: 1em;
+  font-family: var(--poppins);
+  margin-top: 1vh;
+  margin-bottom: 0.5vh;
+}
+
+.change-pass-container {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  margin-top: 2vh;
+  width: 14rem;
+}
+
+.add-card-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.add-card-container h5 {
+  font-size: 1em;
+  margin-left: 1.2rem;
+}
+
+.list-options-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 3vh;
+}
+
+.list-options-container button {
+  background-color: orangered;
+  width: 65%;
+  height: 2rem;
+  border-radius: 0.6rem;
+}
+
+.change-pass-container h5 {
+  font-size: 1em;
+  margin-left: 3vw;
+}
+
+.btn-up-dta {
+  font-size: 0.9em;
+  display: flex;
+  align-items: center;
+  padding: 0.5rem;
+  justify-content: center;
+  width: 50%;
+  height: 2.5rem;
+  background-color: var(--ion-tab-bar-background);
+  border-radius: 1rem;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeAndSlide 0.5s ease-out forwards;
+}
+
+.btn-send-up {
+  margin-bottom: 5vh;
+}
+
+/* CHANGE PASSWORD*/
+
+.ch-password-container {
+  position: relative;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: black;
+  border-radius: 1rem;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeAndSlide 0.5s ease-out forwards;
+}

@@ -1,0 +1,194 @@
+.gmt {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: black;
+  color: black;
+}
+
+#tbg {
+  background-color: black;
+}
+.gmt-2 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: black;
+  color: black;
+}
+.main-container-food {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  padding-top: 15vh;
+  opacity: 0;
+  font-family: var(--poppins);
+  transform: translateY(20px);
+  animation: fadeAndSlide 1s ease-out forwards;
+  margin-bottom: 35vh;
+}
+
+.main-container-food-2 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  opacity: 0;
+  font-family: var(--poppins);
+  transform: translateY(20px);
+  animation: fadeAndSlide 0.3s ease-out forwards;
+  margin-bottom: 20vh;
+}
+.container-food {
+  width: 100%;
+}
+.food-image-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: -12vh;
+  width: 35rem;
+}
+.food-image-container- {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: -1vh;
+  width: 35rem;
+}
+
+.food-image-container- img {
+  clip-path: circle(30% at center);
+}
+.food-image-container img {
+  height: 20rem;
+  clip-path: circle(40%);
+}
+
+.food-description-container {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  width: 100%;
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+.title-food h1 {
+  font-weight: bold;
+  font-size: 1.3em;
+}
+
+
+.description-food h5 {
+  text-align: start;
+  font-size: 0.9rem;
+  font-family: "Poppins";
+  line-height: 1.5;
+}
+
+.description-food h4 {
+  text-align: start;
+  font-size: 1rem;
+  margin: 0;
+  font-family: "Poppins";
+}
+
+/*CHECKBOX*/
+
+.add-complement-container {
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  margin-left: 5vw;
+  margin-right: 15vw;
+}
+
+input[type="checkbox"] {
+  appearance: none; /* Desactivar el estilo nativo del checkbox */
+  width: 25px;
+  height: 25px;
+  margin-right: 0.5rem;
+  background-color: orangered;
+  border: 2px solid var(--ion-tab-bar-background); /* Contorno para el checkbox no seleccionado */
+  border-radius: 4rem; /* Bordes redondeados */
+}
+
+/* Estilos para el checkbox seleccionado */
+input[type="checkbox"]:checked {
+  background-color: white;
+  background-image: url("./images/check.png");
+  background-size: 25px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/*ADD TO CART*/
+.car-options-container {
+  position: fixed;
+  display: flex;
+  bottom: 0;
+  padding-top: 1.5rem;
+  padding-bottom: 2.8rem;
+  justify-content: space-between;
+  align-items: center;
+  background-color: black;
+  border-top: 1px solid var(--ion-background-color);
+  border-left: 1px solid var(--ion-background-color);
+  border-right: 1px solid var(--ion-background-color);
+  border-top-left-radius: 1rem;
+  border-top-right-radius: 1rem;
+  width: 100%;
+  z-index: 4;
+}
+
+.add-to-cart-detail {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 50%;
+  font-family: var(--poppins);
+  font-size: 1.2em;
+  border-radius: 0.5rem;
+  margin-right: 3vw;
+  background-color: var(--ion-tab-bar-background);
+}
+
+.drop-to-cart-detail {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 50%;
+  font-family: var(--poppins);
+  font-size: 1.2em;
+  border-radius: 0.5rem;
+  margin-right: 3vw;
+  background-color: red;
+  transform: translateY(5px);
+  animation: fadeAndSlide 0.5s ease-out forwards;
+}
+
+.btn-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.288);
+  margin-left: 2vw;
+  border-radius: 0.5rem;
+}
+.btn-info {
+  font-size: 1rem;
+  font-family: "Times New Roman", Times, serif;
+  background-color: white;
+  color: #08534f;
+  padding: 0.5rem;
+  border-radius: 1rem;
+}
+.car-img {
+  width: 15%;
+  margin-right: 0.5rem;
+}

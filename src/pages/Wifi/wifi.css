@@ -1,0 +1,62 @@
+.wifi-container {
+  position: absolute;
+  top: -2rem;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+#titulo1 {
+  font-size: 1.4rem;
+  text-align: center;
+}
+#titulo2 {
+  font-size: 7rem;
+
+  text-align: center;
+  letter-spacing: 6px;
+}
+.img-ctn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.img-ctn img {
+  width: 60%;
+}
+#nombreRed,
+#password2 {
+  text-align: center;
+}
+#nombreRed h6 {
+  font-size: 1.5rem;
+}
+#nombreRed span {
+  font-size: 1.3rem;
+  color: var(--naranja1);
+}
+#password2 h6 {
+  font-size: 1.5rem;
+}
+
+#password2 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#password2 span {
+  color: white;
+  width: 100%;
+  top: 1.5rem;
+  font-size: 1.3rem;
+  border: 2px solid var(--naranja1);
+  border-radius: 12px;
+  padding: 1rem;
+  margin-top: 1rem;
+  letter-spacing: 3px;
+  margin-bottom: 2vh;
+}

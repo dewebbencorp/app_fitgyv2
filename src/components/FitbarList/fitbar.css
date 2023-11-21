@@ -1,0 +1,136 @@
+.main-contaier {
+  margin-left: 3vh;
+  margin-right: 3vh;
+}
+
+#ion-fitbar {
+  position: relative;
+}
+
+.float-cart {
+  position: fixed;
+  bottom: 0.7rem;
+  right: 1rem;
+}
+
+.float-cart span {
+  transform: translateY(10px);
+  animation: ring 1.5s ease-out forwards;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  background-color: white;
+  color: orangered;
+  width: 1.5rem;
+  border-radius: 0.5rem;
+  font-size: 0.9em;
+  padding: 0.2rem;
+  z-index: 22;
+  right: -0.3rem;
+  top: -0.2rem;
+}
+
+.header-info-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 25vh;
+  background: linear-gradient(#ff7d04, #ec540d) !important;
+  border-bottom-left-radius: 4rem;
+  font-family: var(--poppins);
+  padding: 2vh;
+}
+.header-info {
+  padding-top: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.header-title-1 {
+  font-size: 2em;
+}
+.progresbar-line {
+  display: flex;
+  justify-content: center;
+  margin-left: 3vh;
+  margin-right: 3vh;
+}
+.custom-pg {
+  height: 0.2em;
+}
+.header-title-2 {
+  font-style: italic;
+  margin-top: 0;
+  font-size: 2.5em;
+  font-weight: bold;
+}
+
+.card-container {
+  border: 1px solid orangered;
+  margin: 1rem;
+  border-radius: 1rem;
+  padding: 0.5em;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeAndSlide 0.5s ease-out forwards;
+}
+
+.card:nth-child(n) {
+  animation-delay: calc(0.2s * (n - 1));
+}
+
+.card {
+  display: flex;
+  align-items: center;
+  justify-content: left;
+}
+.card-description {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  margin-left: 0.4em;
+  gap: 0.1rem;
+}
+.title {
+  color: orangered;
+  font-weight: bold;
+}
+
+.description,
+.title {
+  font-family: var(--poppins) !important;
+  font-size: 1em;
+  margin: 0;
+}
+
+
+
+.icon-ctn {
+  width: 3rem;
+  height: 3rem;
+  padding: 0rem;
+}
+
+.icon_type_food {
+  border-radius: 1.2rem;
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+.icon_type_food-2 {
+  border-radius: 1.2rem;
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+.error {
+  font-family: "Times New Roman", Times, serif;
+  font-style: italic;
+  font-size: 17px;
+  text-align: left;
+  margin-top: 1rem;
+}

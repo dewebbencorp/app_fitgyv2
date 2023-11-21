@@ -1,0 +1,80 @@
+.btn_codigoQR {
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.btn_codigoQR ion-button {
+  --background: none;
+
+  --border-color: var(--naranja1);
+  width: 50%;
+  font-size: 1rem;
+  
+}
+
+.btn_codigoQR ion-button span {
+  color: white;
+  font-size: 1.1rem;
+}
+
+.btn_codigoQR img {
+  width: 1.3rem;
+}
+
+.btn_codigoQR span {
+  margin-left: 1rem;
+  text-transform: capitalize;
+}
+
+/*GOD*/
+
+.qr-container {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background-color: black;
+}
+.qr-c {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1rem;
+  justify-content: center;
+  align-items: center;
+  margin-top: 8vh;
+  gap: 0.5rem;
+}
+.qr-c p,
+h3 {
+  font-family: var(--poppins);
+}
+.qr-c h1 {
+  font-size: 2.5em;
+  font-style: italic;
+}
+.qr-c h3 {
+  font-size: 1.3rem;
+  font-weight: bold;
+}
+.qr-c p{
+  padding: 0.3rem;
+  background-color: rgba(160, 160, 160, 0.062);
+  text-align: left;
+  line-height: 1.6rem;
+  font-size: 0.9rem;
+  overflow-y: scroll;
+  max-height: 25vh;
+  scroll-behavior: smooth;
+  border-radius: 0.5rem;
+  box-shadow: 0px  0px 10px rgba(255, 255, 255, 0.349);
+}
+
+.qr-c video {
+
+  margin-top: 1rem;
+  height: 100%;
+  border-radius: 1rem;
+  width: 100%;
+}

@@ -1,0 +1,48 @@
+.iontab {
+  display: felx;
+  align-items: center;
+  justify-content: center;
+  border-top-left-radius: 1.5rem;
+  border-top-right-radius: 1.5rem;
+  height: 9vh;
+  padding-top: 1vh;
+  padding-bottom: 1vh;
+}
+.imgHome {
+  width: 35%;
+}
+
+ion-tab-button {
+  height: 100%;
+  margin: 1vw;
+  color: white;
+  opacity: 0.7;
+  transition: transform 0.2s ease, opcacity 0.2s ease;
+}
+
+.tab-selected {
+  transform: scale(1.1);
+  opacity: 1;
+  color: white;
+}
+ion-label {
+  color: white;
+  font-size: 1em;
+}
+ion-tab-button span {
+  font-size: 1.7rem;
+  color: white;
+  opacity: 0.7;
+  transition: transform 0.2s ease, opcacity 0.2s ease;
+}
+.tab-selected span {
+  opacity: 1;
+  color: white;
+  animation: ring 3s ease-in-out forwards;
+}
+
+.tab-selected .img-tab {
+  opacity: 1;
+  color: white;
+  animation: ring 3s ease-in-out forwards;
+}
