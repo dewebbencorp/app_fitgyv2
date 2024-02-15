@@ -36,7 +36,7 @@ export const Cart = () => {
   }, []);
 
   const handleBackClick = () => {
-    const previousPath = history.location.state?.prevPath || undefined;
+    const previousPath = history.location.state?.prevPath || null;
 
     console.log(previousPath);
 
@@ -131,7 +131,7 @@ export const Cart = () => {
                 </>
               ))}
 
-            {!items  && (
+            {!items && (
               <div
                 style={{
                   display: "flex",
@@ -169,15 +169,15 @@ export const Cart = () => {
           className="btn-pay-container"
           onClick={() => handleWhatsAppClick()}
         >
-          <div className="btn-whats-container">
+          <div className=" flex gap-2   items-center bg-[#ec540d] p-[0.5rem] rounded-[0.5rem] ">
             <h5 className="text-got">Pídelo por WhatsApp</h5>
-            <BsWhatsapp className="btn-whats" />
+            <BsWhatsapp className="" />
           </div>
         </div>
       )}
 
       <IonModal id="md" isOpen={isDetail}>
-        <UpdateOrder food={product} showModal={setDetail} />
+        {product && <UpdateOrder food={product} showModal={setDetail} />}
       </IonModal>
     </>
   );

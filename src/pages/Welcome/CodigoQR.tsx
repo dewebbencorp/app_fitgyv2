@@ -2,9 +2,10 @@ import { IonButton, IonModal } from "@ionic/react";
 import { useEffect, useState } from "react";
 import { QrScanner } from "@yudiel/react-qr-scanner";
 import "./css/codigoQR.css";
-import qr from "./img/qr.png";
+import { HiQrCode } from "react-icons/hi2";
 import { isPlatform } from "@ionic/react";
 import { useForm } from "react-hook-form";
+import { BASE_URL } from "../../axios/Utils";
 
 interface Maquina {
   id_maquina: number;
@@ -51,8 +52,7 @@ const CodigoQR = () => {
         codigo: id,
       };
 
-      let url =
-        "https://187.188.16.29:4431/webservice-app2/controllers/detalleMaquina.php";
+      let url = `${BASE_URL}/detalleMaquina.php`;
       fetch(url, {
         method: "POST",
         body: JSON.stringify(send),
@@ -95,14 +95,13 @@ const CodigoQR = () => {
   });
 
   return (
-    <div className="btn_codigoQR">
-      <IonButton fill="outline" onClick={() => openModal()}>
-        <img src={qr} alt="QR Code" />
-        <span style={{ fontSize: "1.4rem", fontWeight: "bold" }}>
-          {" "}
-          {isPlatform("ios") ? "Código" : "Código QR"}{" "}
-        </span>
-      </IonButton>
+    <div className="btn_codigoQR ">
+      <section
+        onClick={() => openModal()}
+        className=" flex justify-center items-center "
+      >
+        <HiQrCode className="p-4 border-orange text-[10rem]" />
+      </section>
       <IonModal isOpen={showModal}>
         <h2>
           {maquina && (
@@ -113,7 +112,6 @@ const CodigoQR = () => {
                   <h3> {maquina.nombre_maquina}</h3>
                   <video src={maquina.video_url} autoPlay loop controls />
                   <p>{maquina.descripcion_maquina}</p>
-                 
 
                   <div
                     style={{

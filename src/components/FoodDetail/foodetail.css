@@ -83,7 +83,6 @@
   font-size: 1.3em;
 }
 
-
 .description-food h5 {
   text-align: start;
   font-size: 0.9rem;
@@ -144,32 +143,6 @@ input[type="checkbox"]:checked {
   border-top-right-radius: 1rem;
   width: 100%;
   z-index: 4;
-}
-
-.add-to-cart-detail {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  width: 50%;
-  font-family: var(--poppins);
-  font-size: 1.2em;
-  border-radius: 0.5rem;
-  margin-right: 3vw;
-  background-color: var(--ion-tab-bar-background);
-}
-
-.drop-to-cart-detail {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  width: 50%;
-  font-family: var(--poppins);
-  font-size: 1.2em;
-  border-radius: 0.5rem;
-  margin-right: 3vw;
-  background-color: red;
-  transform: translateY(5px);
-  animation: fadeAndSlide 0.5s ease-out forwards;
 }
 
 .btn-container {

@@ -112,6 +112,13 @@ ion-toolbar {
   animation: ring 4s 0.7s ease-in-out infinite;
   transform-origin: 50% 4px;
 }
+.border-orange {
+  border-width: 1px;
+  border-style: solid;
+  border-color: #ff7d04;
+  border-radius: 0.5rem; 
+  background-color: #000000;
+}
 
 .bell-joke {
   animation: ring 10s ease-in-out infinite;

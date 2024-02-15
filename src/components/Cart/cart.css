@@ -197,24 +197,7 @@
   bottom: 3rem;
 }
 
-.btn-whats-container {
-  display: flex;
-  background-color: #ec540d;
-  border-radius: 0.5rem;
-  transition: transform 0.3s ease;
-  font-family: var(--poppins);
-}
-.text-got {
-  font-size: 0.9rem;
-  margin-left: 2vw;
-  color: white;
-}
-.btn-whats {
-  font-size: 3rem;
-  padding: 0.9rem;
-  color: white;
-}
 
-.btn-whats-container:hover {
-  transform: scale(1.1);
-}
+
+
+

@@ -116,12 +116,12 @@ export const UpdateOrder = ({ food, showModal }: UpdateOrderProps) => {
             </div>
 
             {t > 0 ? (
-              <div className="add-to-cart-detail" onClick={updateItem}>
+              <div  className="flex justify-around items-center child:poppins child:text-[1em] w-[50%] rounded-[0.5rem] mr-2 bg-[var(--ion-tab-bar-background)]" onClick={updateItem}>
                 <p>Confirmar</p>
                 <p>MX${price * t}</p>
               </div>
             ) : (
-              <div className="drop-to-cart-detail" onClick={dropItem}>
+              <div  className="flex justify-around items-center child:poppins child:text-[1em] w-[50%] rounded-[0.5rem] mr-2 bg-[red] child:text-white"  onClick={dropItem}>
                 <p>Eliminar orden</p>
               </div>
             )}

@@ -156,7 +156,7 @@ export const FoodDetail = () => {
             </div>
 
             <div
-              className="add-to-cart-detail"
+              className="flex justify-around items-center child:poppins child:text-[1em] w-[50%] rounded-[0.5rem] mr-2 bg-[var(--ion-tab-bar-background)] child:text-white"
               onClick={() => addToCart(food, total)}
             >
               <p>Agregar</p>
@@ -168,3 +168,5 @@ export const FoodDetail = () => {
     </>
   );
 };
+
+

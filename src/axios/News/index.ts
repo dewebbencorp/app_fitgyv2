@@ -24,3 +24,15 @@ export const fetchNewsData =
         console.error(error);
       });
   };
+
+
+export const getWifi = async () => {
+  try {
+    const res = await axios.get(`${BASE_URL}/getWifi.php`);
+
+    return res.data;
+  } catch (error) {
+    console.log(error);
+    return { message: "errro" };
+  }
+};

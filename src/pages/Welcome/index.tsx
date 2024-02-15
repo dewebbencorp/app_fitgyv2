@@ -55,21 +55,24 @@ export const Welcome = () => {
           </div>
 
           <News />
+          
         </div>
 
-        <CodigoQR />
+        
         <Tarjeta />
 
         <Whats />
       </IonContent>
 
-      {/* Mostrar un mensaje si no hay conexión a Internet */}
+      
       <IonToast
         isOpen={showNoInternetToast}
         message="No hay conexión a Internet. Por favor, verifica tu conexión e intenta de nuevo."
         duration={5000}
         onDidDismiss={() => setShowNoInternetToast(false)}
       />
+
+      
     </>
   );
 };

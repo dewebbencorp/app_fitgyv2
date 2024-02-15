@@ -1,55 +1,47 @@
 import { IonContent } from "@ionic/react";
-import wifiPrincipal from "../Home/img/wifi_principal.png";
-import { useState } from "react";
-import "./wifi.css";
+import { useEffect, useState } from "react";
+import { getWifi } from "../../axios/News";
+import { Loading } from "../../components/LoadScreen";
+import { FaWifi } from "react-icons/fa6";
+import CodigoQR from "../Welcome/CodigoQR";
+import { HiQrCode } from "react-icons/hi2";
 export const Wifi = () => {
-  const [nombreRed, setNombreRed] = useState("");
-  const [password, setPassword] = useState("");
+  const [wifi, setWifi] = useState<any>(null);
 
-  let url =
-    "https://187.188.16.29:4431/webservice-app2/controllers/getWifi.php";
-  fetch(url, {
-    method: "GET", // or 'PUT'
-    // data can be `string` or {object}!
-    headers: {
-      "Content-Type": "application/json",
-    },
-  })
-    .then((res) => res.json())
-    .then((data) => {
-      // Manejar la respuesta del servidor
-      setNombreRed(data.nombreRed);
-      setPassword(data.password);
-    })
-    .catch((error) => console.error("Error:", error))
-    .then((response) => console.log("Success:", response));
+  useEffect(() => {
+    const data = async () => {
+      const wifi = await getWifi();
+
+      setWifi(wifi);
+    };
+
+    data();
+  }, []);
 
   return (
-    <IonContent>
-      <div className="wifi-container">
-        <h4 id="titulo1" className="poppins">
-          Mantente en línea mientras
-        </h4>
-        <h3 className="kenyan" id="titulo2">
-          <i> ENTRENAS</i>
-        </h3>
+    <div className="flex flex-col justify-center items-center h-[90vh] gap-10  overflow-y-auto animate-ap ">
+      {!wifi && <Loading />}
 
-        <div className="img-ctn">
-          <img src={wifiPrincipal} />
+      <section className="flex flex-col items-center w-[50%]">
+        <HiQrCode className="p-4 border-orange text-[10rem] mb-5" />
+        <p className="text-[1rem] font-bold poppins text-center">
+          Escanea aquí el código de la máquina
+        </p>
+      </section>
+
+      <section className="flex flex-col items-center  w-[50%]">
+        <FaWifi className="p-4 border-orange text-[10rem] mb-5 " />
+        <div className="child:text-[1rem] child:font-bold child:poppins child:text-center">
+          <p>¡Conéctate a nuestra red!</p>
+          <p className="child:text-[1rem] child:text-[#ff7d04]">
+            <span>{wifi?.nombreRed}</span>
+          </p>
+          <p>Contraseña</p>
+          <p className="child:text-[1rem] child:text-[#ff7d04]">
+            <span>{wifi?.password}</span>
+          </p>
         </div>
-
-        <div id="datosWifi">
-          <div id="nombreRed">
-            <h6 className="poppins">Nombre de la red</h6>
-            <span> {nombreRed} </span>
-          </div>
-
-          <div id="password2">
-            <h6 className="poppins">Contraseña:</h6>
-            <span style={{ fontWeight: "bold" }}> {password} </span>
-          </div>
-        </div>
-      </div>
-    </IonContent>
+      </section>
+    </div>
   );
 };
