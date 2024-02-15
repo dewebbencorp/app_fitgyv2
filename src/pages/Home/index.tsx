@@ -27,6 +27,7 @@ import { FiUser, FiWifi } from "react-icons/fi";
 import { UserProfile } from "../../components/Profile";
 import { AiFillGift } from "react-icons/ai";
 import { HiQrCode } from "react-icons/hi2";
+import { FitGroup } from "../FitGroup";
 export const Home = () => {
   const [profile, setProfile] = useState(false);
   const user: Asociado = useSelector((state: Asociado) => state.user);
@@ -49,7 +50,7 @@ export const Home = () => {
             <IonRouterOutlet>
               <Route exact path="/home/inicio" component={Welcome} />
               <Route exact path="/home/perfil" component={Profile} />
-              <Route exact path="/home/fitbar" component={Fitbar} />
+              <Route exact path="/home/fitgroup" component={FitGroup} />
               <Route exact path="/home/cupon" component={Cupon} />
               <Route exact path="/home/wifi" component={Wifi} />
               <Route exact path="/home">
@@ -69,7 +70,7 @@ export const Home = () => {
                 </span>
               </IonTabButton>
 
-              <IonTabButton tab="fitbar" href="/home/fitbar">
+              <IonTabButton tab="fitGroup" href="/home/fitgroup">
                 {isPlatform("android") ? (
                   <img className="img-tab" width="90%" src={fitbar} />
                 ) : (

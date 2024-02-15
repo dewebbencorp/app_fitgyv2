@@ -121,13 +121,13 @@
   animation: shimmerAnimation 1.5s infinite;
 }
 
-main {
+.mh{
   text-align: center;
   width: 100vw;
   border-radius: 1rem;
   margin-bottom: 2vh;
 }
-main .title-row {
+.mh .title-row {
   display: flex;
   justify-content: center;
   align-items: center;

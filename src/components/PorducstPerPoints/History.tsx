@@ -36,7 +36,7 @@ export const PchHistory = ({ user }: PchHistoryProps) => {
 
   return (
     <>
-      <main>
+      <main className="mh">
         <IonGrid>
           <IonRow class="title-row">
             <IonCol>Fecha</IonCol>

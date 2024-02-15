@@ -9,6 +9,7 @@ import { Loading2 } from "../LoadScreen";
 import { Asociado, ProductosPorPuntos } from "../../interfaces";
 import { PchHistory } from "./History";
 import logo from "./../../pages/Welcome/img/logo.png";
+import { IoSadSharp } from "react-icons/io5";
 
 export const PP = ({ setpp }: any) => {
   const user: Asociado = useSelector((state: Asociado) => state.user);
@@ -78,7 +79,7 @@ export const PP = ({ setpp }: any) => {
                       color: "orangered",
                       borderBottom: "2px solid orangered",
                       display: "inline-block",
-                      padding: "0 0 0 0", 
+                      padding: "0 0 0 0",
                     }}
                     onClick={() => setIsVisible(true)}
                   >
@@ -116,6 +117,24 @@ export const PP = ({ setpp }: any) => {
                       </div>
                     </>
                   ))}
+
+                  {dta && dta.length < 1 && (
+                    <div
+                      style={{
+                        animation:
+                          "shimmerAnimation  4s ease-in-out alternate-reverse infinite",
+                      }}
+                      className=" flex  flex-col gap-2 items-center animate-bounce "
+                    >
+                      ¡No hay productos disponibles!
+                      <IoSadSharp
+                        style={{
+                          fontSize: "2rem",
+                        }}
+                        className="bell-joke"
+                      />
+                    </div>
+                  )}
                 </>
               )}
             </div>
