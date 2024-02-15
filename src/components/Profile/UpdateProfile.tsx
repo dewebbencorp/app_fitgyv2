@@ -172,6 +172,7 @@ export const UpdateProfile = ({ setModal, user }: UpdateProfileProps) => {
               justifyContent: "center",
               alignItems: "start",
               paddingLeft: "2rem",
+              gap: "1rem"
             }}
           >
             <div

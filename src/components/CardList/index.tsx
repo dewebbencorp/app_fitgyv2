@@ -71,16 +71,17 @@ export const CardsList = () => {
       <div className="mtj">
         {!cardss[0] && <Loading2 />}
 
-        <div className="add-card" onClick={() => setInput(true)}>
+        <div className="add-card mb-5" onClick={() => setInput(true)}>
           <FaPlus
             style={{
               fontSize: "1.3em",
               color: "orangered",
               fontWeight: "bold",
+              
             }}
           />
 
-          <h5>Agregar</h5>
+          <h5 >Agregar</h5>
         </div>
 
         {cardss.length > 0 &&
