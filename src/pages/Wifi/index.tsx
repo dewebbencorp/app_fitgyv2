@@ -19,25 +19,26 @@ export const Wifi = () => {
   }, []);
 
   return (
-    <div className="flex flex-col justify-center items-center h-[90vh] gap-10  overflow-y-auto animate-ap ">
+    <div className="flex flex-col justify-center items-center h-[90vh] gap-10 pb-1 overflow-y-auto animate-ap">
       {!wifi && <Loading />}
 
       <section className="flex flex-col items-center w-[50%]">
         <HiQrCode className="p-4 border-orange text-[10rem] mb-5" />
-        <p className="text-[1rem] font-bold poppins text-center">
+        <p className="text-[1rem]  poppins text-center">
           Escanea aquí el código de la máquina
         </p>
       </section>
+      
 
       <section className="flex flex-col items-center  w-[50%]">
         <FaWifi className="p-4 border-orange text-[10rem] mb-5 " />
-        <div className="child:text-[1rem] child:font-bold child:poppins child:text-center">
+        <div className="child:text-[1rem] child:mb-2 child:poppins child:text-center">
           <p>¡Conéctate a nuestra red!</p>
-          <p className="child:text-[1rem] child:text-[#ff7d04]">
+          <p className="child:text-[0.9rem] child:text-[#ff7d04]">
             <span>{wifi?.nombreRed}</span>
           </p>
           <p>Contraseña</p>
-          <p className="child:text-[1rem] child:text-[#ff7d04]">
+          <p className="child:text-[0.9rem] child:text-[#ff7d04]">
             <span>{wifi?.password}</span>
           </p>
         </div>

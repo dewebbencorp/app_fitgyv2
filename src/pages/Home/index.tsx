@@ -26,6 +26,7 @@ import { useEffect, useState } from "react";
 import { FiUser, FiWifi } from "react-icons/fi";
 import { UserProfile } from "../../components/Profile";
 import { AiFillGift } from "react-icons/ai";
+import { HiQrCode } from "react-icons/hi2";
 export const Home = () => {
   const [profile, setProfile] = useState(false);
   const user: Asociado = useSelector((state: Asociado) => state.user);
@@ -63,7 +64,6 @@ export const Home = () => {
                 <span>
                   <FiUser />
                 </span>
-                <IonLabel>Perfil</IonLabel>
               </IonTabButton>
 
               <IonTabButton tab="fitbar" href="/home/fitbar">
@@ -74,8 +74,7 @@ export const Home = () => {
                 )}
               </IonTabButton>
               <IonTabButton tab="inicio" href="/home/inicio">
-                <img className="img-tab" width="55%" src={home} />
-                <IonLabel>Home</IonLabel>
+                <img className="img-tab" width="65%" src={home} />
               </IonTabButton>
 
               {user.permisos == 7 ? (
@@ -90,9 +89,8 @@ export const Home = () => {
 
               <IonTabButton tab="wifi" href="/home/wifi">
                 <span>
-                  <FiWifi />
+                  <HiQrCode />
                 </span>
-                <IonLabel>Wifi</IonLabel>
               </IonTabButton>
             </IonTabBar>
           </IonTabs>
