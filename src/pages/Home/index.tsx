@@ -57,6 +57,9 @@ export const Home = () => {
               </Route>
             </IonRouterOutlet>
             <IonTabBar className="iontab" slot="bottom">
+              <IonTabButton tab="inicio" href="/home/inicio">
+                <img className="img-tab" width="65%" src={home} />
+              </IonTabButton>
               <IonTabButton tab="perfil" onClick={() => setProfile(true)}>
                 <IonModal isOpen={profile}>
                   <UserProfile showP={setProfile} />
@@ -68,20 +71,15 @@ export const Home = () => {
 
               <IonTabButton tab="fitbar" href="/home/fitbar">
                 {isPlatform("android") ? (
-                  <img className="img-tab" width="80%" src={fitbar} />
+                  <img className="img-tab" width="90%" src={fitbar} />
                 ) : (
-                  <img className="img-tab" width="65%" src={fitbar} />
+                  <img className="img-tab" width="70%" src={fitbar} />
                 )}
-              </IonTabButton>
-              <IonTabButton tab="inicio" href="/home/inicio">
-                <img className="img-tab" width="65%" src={home} />
               </IonTabButton>
 
               {user.permisos == 7 ? (
                 <IonTabButton tab="cupon" href="/home/cupon">
-                  <img className="img-tab" width="70%" src={gift} />
-
-                  <IonLabel> </IonLabel>
+                  <img className="img-tab" width="50%" src={cupon} />
                 </IonTabButton>
               ) : (
                 <></>
