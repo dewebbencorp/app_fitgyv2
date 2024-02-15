@@ -100,7 +100,7 @@ const CodigoQR = () => {
         onClick={() => openModal()}
         className=" flex justify-center items-center "
       >
-        <HiQrCode className="p-4 border-orange text-[10rem]" />
+        <HiQrCode className="p-4 border-orange text-[10rem] mb-5" />
       </section>
       <IonModal isOpen={showModal}>
         <h2>
