@@ -75,7 +75,7 @@ export const UserProfile = ({ showP }: any) => {
           upph(photo.base64String);
         }
       }
-    } catch (error) {
+    } catch (error: any) {
       toast(JSON.stringify(error.message), {
         position: "top-right",
         style: { marginTop: "1.5rem" },
