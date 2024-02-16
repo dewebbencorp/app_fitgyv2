@@ -1,5 +1,11 @@
 import "./fitbar.css";
-import { IonContent, IonProgressBar, IonRouterLink } from "@ionic/react";
+import {
+  IonButtons,
+  IonContent,
+  IonProgressBar,
+  IonRouterLink,
+  IonToolbar,
+} from "@ionic/react";
 import { ProductoCategorias } from "../../interfaces";
 import { useEffect, useState } from "react";
 import car_img from "./../FoodDetail/images/img_car.png";
@@ -9,6 +15,7 @@ import { useHistory } from "react-router";
 import { fetchTypesFood } from "../../axios/Food";
 import { cartTotal as totalState } from "../../store/services/cart";
 import { Loading } from "../LoadScreen";
+import { HiChevronLeft } from "react-icons/hi2";
 
 export const FitbarList = () => {
   const [cartTotal, setCartTotal] = useState(0);
@@ -16,6 +23,10 @@ export const FitbarList = () => {
   const food: ProductoCategorias = useSelector(
     (state: ProductoCategorias) => state.types_food
   );
+
+  const handleBackClick = () => {
+    window.location.href = "/home/fitgroup";
+  };
 
   const dispatch: ThunkDispatch<any, void, AnyAction> = useDispatch();
   useEffect(() => {
@@ -51,7 +62,14 @@ export const FitbarList = () => {
     <>
       {loading && <Loading />}
       <IonContent id="ion-fitbar">
-        <div className="header-info-container">
+        <IonToolbar class=" bg-gradient-to-r from-[#ff7d04] to-[#ec540d]  rounded-bl-[3rem] ">
+          <IonButtons slot="start">
+            <HiChevronLeft
+              onClick={() => handleBackClick()}
+              className=" absolute z-10 left-[-0.2rem] top-[-6.5rem] text-[2.5rem]"
+            />
+          </IonButtons>
+
           <div className="header-info">
             <h2 className="header-title-1">Realiza tu pedido </h2>
             <h2 className="header-title-1">a través de</h2>
@@ -61,7 +79,8 @@ export const FitbarList = () => {
 
             <h1 className="header-title-2">WhatsApp</h1>
           </div>
-        </div>
+        </IonToolbar>
+
         <div className="main-contaier">
           {categorias?.map((type_food) => (
             <div

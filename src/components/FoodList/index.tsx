@@ -63,7 +63,7 @@ export const ListFood = () => {
     }
   };
   const handleBackClick = () => {
-    window.location.href = "/home/fitbar";
+    window.location.href = "/fitbar";
   };
 
   const addToCart = async (data: ProductoPorCategoria) => {

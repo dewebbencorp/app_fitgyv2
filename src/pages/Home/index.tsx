@@ -42,6 +42,7 @@ export const Home = () => {
   return (
     <>
       {user.Nombre_Asociado &&
+        !location.pathname.startsWith("/fitbar") &&
         !location.pathname.startsWith("/fitbar/food/") &&
         !location.pathname.startsWith("/carrito") &&
         !location.pathname.startsWith("/login") &&

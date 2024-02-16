@@ -31,18 +31,9 @@
   top: -0.2rem;
 }
 
-.header-info-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 25vh;
-  background: linear-gradient(#ff7d04, #ec540d) !important;
-  border-bottom-left-radius: 4rem;
-  font-family: var(--poppins);
-  padding: 2vh;
-}
 .header-info {
-  padding-top: 1.5rem;
+  padding-top: 0.5rem;
+  padding-bottom: 1.5rem;
   display: flex;
   flex-direction: column;
   text-align: center;
@@ -104,8 +95,6 @@
   font-size: 1em;
   margin: 0;
 }
-
-
 
 .icon-ctn {
   width: 3rem;
