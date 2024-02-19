@@ -17,8 +17,8 @@ export const typeFoodSlice = createSlice({
     : EmptyTypeFood,
   reducers: {
     addFoodTypes: (
-      state: ProductoCategorias,
-      action: PayloadAction<ProductoCategorias>
+      state,
+      action: PayloadAction<any>
     ) => {
       saveTypesFood(action.payload)
       return action.payload

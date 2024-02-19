@@ -4,9 +4,7 @@ import { ProductoCategorias } from "../../interfaces";
 import { useSelector } from "react-redux";
 
 export const FitGroup = () => {
-  const foodTypes = useSelector(
-    (state: ProductoCategorias) => state.types_food
-  );
+  const food = useSelector((state: any) => state.types_food);
 
   const history = useHistory();
   const goFitBar = () => {
@@ -23,10 +21,9 @@ export const FitGroup = () => {
           className="flex  justify-between text-[1.2rem] items-center  "
           onClick={goFitBar}
         >
-          <p className="mr-5">
-            Lorem ipsum dolor sit amet. | Lorem ipsum dolor sit amet
-            |consectetur adipisicing.
-            
+          <p className="mr-5 flex ">
+            Batido | Sandwiches| Hot Cakes | Omelette | Ensaladas | Platos
+            Fuertos | Bebidas
           </p>
 
           <img
@@ -43,8 +40,7 @@ export const FitGroup = () => {
             src={fitStoreImg}
           />
           <p className="ml-5">
-            Lorem ipsum dolor sit amet. | Lorem ipsum dolor sit amet
-            |consectetur adipisicing.
+            Aminoacidos | Creatinas| Quemadores| Galleta | Proteinas| Esteroides
           </p>
         </div>
       </section>

@@ -28,6 +28,8 @@ export const fetchTypesFood =
       }));
    
       dispatch(addFoodTypes(map));
+      
+      
 
       return map;
     } catch (error) {
