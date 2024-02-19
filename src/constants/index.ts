@@ -1,5 +1,7 @@
 import { BASE_URL_ASSETS } from "../axios/Utils";
 
+export const IMG_REWARDS = `${BASE_URL_ASSETS}/fitbar/productos/_detalle/8.png`;
+
 export const BASE_AVATAR_PROFILE = `${BASE_URL_ASSETS}/avatars-users/`;
 
 export const BG_LOGIN = `${BASE_URL_ASSETS}/media/home_video.mp4`;
