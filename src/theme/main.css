@@ -63,6 +63,34 @@ ion-toolbar {
   --padding-top: 4vh;
 }
 
+.animate-appearance-in {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeAndSlide 0.5s ease-out forwards;
+}
+.animate-appearance-in-2 {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeAndSlide 0.2s ease-out forwards;
+}
+
+
+.shimmer{
+  animation: shimmerAnimation 2s ease-in-out alternate-reverse infinite;
+  
+}
+
+.rewards-left {
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
+  background-color: black;
+  clip-path: polygon(0 0, 100% 0, 70% 100%, 0% 100%);
+  
+}
+
+
+
+
 /* Animations */
 @keyframes fadeAndSlide {
   to {
@@ -81,6 +109,7 @@ ion-toolbar {
 }
 
 /* shimmer template*/
+
 
 .shimmer-template {
   padding: 0.5rem;
@@ -116,7 +145,7 @@ ion-toolbar {
   border-width: 1px;
   border-style: solid;
   border-color: #ff7d04;
-  border-radius: 0.5rem; 
+  border-radius: 0.5rem;
   background-color: #000000;
 }
 

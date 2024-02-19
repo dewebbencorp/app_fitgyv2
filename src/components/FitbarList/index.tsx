@@ -62,7 +62,7 @@ export const FitbarList = () => {
     <>
       {loading && <Loading />}
       <IonContent id="ion-fitbar">
-        <IonToolbar class=" bg-gradient-to-r from-[#ff7d04] to-[#ec540d]  rounded-bl-[3rem] ">
+        <IonToolbar class=" bg-gradient-to-r from-[#ff7d04] to-[#ec540d]  rounded-bl-[3rem] animate-appearance-in-2">
           <IonButtons slot="start">
             <HiChevronLeft
               onClick={() => handleBackClick()}
@@ -81,7 +81,7 @@ export const FitbarList = () => {
           </div>
         </IonToolbar>
 
-        <div className="main-contaier">
+        <div className="main-contaier animate-appearance-in">
           {categorias?.map((type_food) => (
             <div
               className="card-container"

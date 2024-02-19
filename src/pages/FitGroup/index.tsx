@@ -1,7 +1,13 @@
 import { useHistory } from "react-router";
 import fitStoreImg from "../Home/img/fitbar.png";
+import { ProductoCategorias } from "../../interfaces";
+import { useSelector } from "react-redux";
 
 export const FitGroup = () => {
+  const foodTypes = useSelector(
+    (state: ProductoCategorias) => state.types_food
+  );
+
   const history = useHistory();
   const goFitBar = () => {
     history.push(`/fitbar`);
@@ -12,7 +18,7 @@ export const FitGroup = () => {
         TIENDA
       </section>
 
-      <section className="flex justify-center pl-2 pr-5 w-[90%] h-[9rem]   border-b-[2px] border-t-[2px] border-r-[2px] border-[#ec540d]  rounded-r-full ">
+      <section className="flex justify-center pl-2 pr-5 w-[90%] h-[9rem]   border-b-[2px] border-t-[2px] border-r-[2px] border-[#ec540d]  rounded-r-full animate-appearance-in *:">
         <div
           className="flex  justify-between text-[1.2rem] items-center  "
           onClick={goFitBar}
@@ -20,6 +26,7 @@ export const FitGroup = () => {
           <p className="mr-5">
             Lorem ipsum dolor sit amet. | Lorem ipsum dolor sit amet
             |consectetur adipisicing.
+            
           </p>
 
           <img
@@ -29,7 +36,7 @@ export const FitGroup = () => {
         </div>
       </section>
 
-      <section className="flex ml-[10%] mb-[10vh] justify-end pl-5 pr-2 w-[90%] h-[9rem]   border-b-[2px] border-t-[2px] border-l-[2px] border-[#ec540d]  rounded-l-full ">
+      <section className="flex ml-[10%] mb-[10vh] justify-end pl-5 pr-2 w-[90%] h-[9rem]   border-b-[2px] border-t-[2px] border-l-[2px] border-[#ec540d]  rounded-l-full animate-appearance-in">
         <div className="flex   text-[1.2rem] items-center  ">
           <img
             className="w-[6rem] bg-gradient-to-r from-[#ff7d04] to-[#ec540d] rounded-full p-1"
