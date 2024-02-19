@@ -24,9 +24,20 @@ export const FitbarList = () => {
     (state: ProductoCategorias) => state.types_food
   );
 
+  const history = useHistory();
+
   const handleBackClick = () => {
+    
     window.location.href = "/home/fitgroup";
   };
+
+  useEffect(() => {
+    document.addEventListener("ionBackButton", (ev: any) => {
+      ev.detail.register(10, () => {
+        handleBackClick();
+      });
+    });
+  }, []);
 
   const dispatch: ThunkDispatch<any, void, AnyAction> = useDispatch();
   useEffect(() => {
@@ -46,7 +57,7 @@ export const FitbarList = () => {
       setLoading(false);
     }
   };
-  const history = useHistory();
+
   const handleDivClick = (id: number) => {
     history.push(`/fitbar/food/${id}`);
   };

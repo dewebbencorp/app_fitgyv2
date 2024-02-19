@@ -15,7 +15,7 @@ export const Rewards = () => {
             />
           </div>
           <div className="flex justify-start items-center child:text-white ">
-            <p className="poppins italic bold text-[1rem] tracking-widest ">Promociones</p>
+            <p className="poppins italic bold text-[1rem] tracking-widest shimmer ">Promociones</p>
           </div>
         </section>
       </div>

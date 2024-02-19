@@ -32,7 +32,7 @@ export const ListFood = () => {
   const { id } = useParams<RouteParams>();
 
   const history = useHistory();
-  const location = useLocation();
+  
 
   const handleDetailClick = (id_dta: number) => {
     const data = {
@@ -62,9 +62,19 @@ export const ListFood = () => {
       setShowLoading(false);
     }
   };
+ 
   const handleBackClick = () => {
+    
     window.location.href = "/fitbar";
   };
+
+  useEffect(() => {
+    document.addEventListener("ionBackButton", (ev: any) => {
+      ev.detail.register(10, () => {
+        handleBackClick();
+      });
+    });
+  }, []);
 
   const addToCart = async (data: ProductoPorCategoria) => {
     const product: Cart = {
