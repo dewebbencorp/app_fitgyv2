@@ -133,6 +133,7 @@ export const Cart = () => {
 
             {!items && (
               <div
+
                 style={{
                   display: "flex",
                   flexDirection: "column",
@@ -145,7 +146,7 @@ export const Cart = () => {
                   animation:
                     "shimmerAnimation  4s ease-in-out alternate-reverse infinite",
                 }}
-                className="ring"
+                className="bell"
               >
                 ¡No hay productos en el carrito!
                 <IoSadSharp
