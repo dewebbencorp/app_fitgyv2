@@ -18,6 +18,7 @@ import { FoodDetail } from "./components/FoodDetail";
 import { Cart } from "./components/Cart";
 import { PP } from "./components/PorducstPerPoints";
 import { Fitbar } from "./pages/Fitbar/Fitbar";
+import { FitStoreList } from "./pages/FitStore";
 
 setupIonicReact();
 
@@ -33,6 +34,7 @@ const App: React.FC = () => (
         <Route exact path="/fitbar" component={Fitbar} />
         <Route path="/fitbar/food/:id" component={ListFood} />
         <Route path="/fitbar/food/detail/:data" component={FoodDetail} />
+        <Route path="/fitstore" component={FitStoreList} />
         <Route path="/carrito" component={Cart} />
         <Route path="/pp" component={PP} />
       </IonRouterOutlet>

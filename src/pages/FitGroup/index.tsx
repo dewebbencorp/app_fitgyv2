@@ -1,14 +1,14 @@
 import { useHistory } from "react-router";
 import fitStoreImg from "../Home/img/fitbar.png";
-import { ProductoCategorias } from "../../interfaces";
-import { useSelector } from "react-redux";
 
 export const FitGroup = () => {
-  const food = useSelector((state: any) => state.types_food);
-
   const history = useHistory();
   const goFitBar = () => {
     history.push(`/fitbar`);
+  };
+
+  const goFitStore = () => {
+    history.push(`/fitstore`);
   };
   return (
     <main className="flex flex-col justify-between items-start  h-screen pb-40   ">
@@ -34,7 +34,10 @@ export const FitGroup = () => {
       </section>
 
       <section className="flex ml-[10%] mb-[10vh] justify-end pl-5 pr-2 w-[90%] h-[9rem]   border-b-[2px] border-t-[2px] border-l-[2px] border-[#ec540d]  rounded-l-full animate-appearance-in">
-        <div className="flex   text-[1.2rem] items-center  ">
+        <div
+          className="flex   text-[1.2rem] items-center  "
+          onClick={goFitStore}
+        >
           <img
             className="w-[6rem] bg-gradient-to-r from-[#ff7d04] to-[#ec540d] rounded-full p-1"
             src={fitStoreImg}
