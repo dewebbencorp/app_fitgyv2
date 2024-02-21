@@ -12,6 +12,8 @@ import { ShareBarcode } from "./ShareBarcode";
 import { IonModal } from "@ionic/react";
 import { AiOutlineCloseCircle } from "react-icons/ai";
 import { CuponL } from "./CuponList";
+
+import logo from "./images/fitbar.png";
 export const Cupon = () => {
   const [isButtonDisabled, setIsButtonDisabled] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
@@ -124,98 +126,41 @@ export const Cupon = () => {
   }, []);
 
   return (
-    <>
+    <main className="flex justify-center items-center h-[80vh] ">
       <Toaster />
-      <div className="main-cupon-container">
-        <div className="cupon-container">
-          <div className="head-cupon">
-            <h1>Genera tú</h1>
-            <h2>CERTIFICADO DE REGALO</h2>
-          </div>
-          <div className="video-container">
-            <img className="imgd" src={BACKGROUND_CUPON_VIDEO} />
-          </div>
-        </div>
-        <form onSubmit={onSubmit} className="btn-generate-container">
-          {errors.nombre ? (
-            <span>{errors.nombre.message}</span>
-          ) : errors.apellido ? (
-            <span>{errors.apellido.message}</span>
-          ) : (
-            <span className="span-m">Ingresa el nombre del beneficiario</span>
-          )}
+
+      <section className=" flex justify-center items-center bg-gradient-to-r from-[#ff7d04] to-[#e64e08]   h-[70%] w-[75%] rounded-[1rem] relative">
+        <div className=" bg-[var(--ion-background-color)] absolute bottom-28 left-[-1rem] p-5 rounded-[2rem]"></div>
+        <div className=" bg-[var(--ion-background-color)] absolute bottom-28 right-[-1rem] p-5 rounded-[2rem]"></div>
+
+        <img
+          src={logo}
+          className="absolute w-32 top-[-3rem] bg-gradient-to-r  from-[#e64e08] to-[#ff7d04] p-3  rounded-full "
+        />
+
+        <section className="flex flex-col justify-start items-center  border-[2px] border-black p-1 h-[55%] w-[100%] gap-5">
           <div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-              margin: "0",
-            }}
+            className="
+shadow-custom-1 bg-[#ffdfd1] text-[1rem] tracking-widest text-[orangered] poppins  p-2 rounded-[0.5rem]"
           >
-            <input
-              style={{ width: "100%" }}
-              placeholder="Nombre"
-              maxLength={10}
-              type="text"
-              {...register("nombre", {
-                required: {
-                  value: true,
-                  message: "¡El nombre es requerido! ",
-                },
-                minLength: {
-                  value: 5,
-                  message: "¡El nombre debe ser mayor a 5 caracteres!",
-                },
-                maxLength: {
-                  value: 10,
-                  message: "El nombre es muy largo",
-                },
-                pattern: {
-                  value: /^[^\s]+$/,
-                  message: "El nombre no debe contener espacios en blanco",
-                }
-              })}
-            />
-            <input
-              style={{ width: "100%" }}
-              maxLength={10}
-              placeholder="Apellido"
-              type="text"
-              {...register("apellido", {
-                required: {
-                  value: true,
-                  message: "¡El pellido es requerido! ",
-                },
-                minLength: {
-                  value: 5,
-                  message: "¡El pellido debe ser mayor a 5 caracteres!",
-                },
-                maxLength: {
-                  value: 10,
-                  message: "¡El apellido es muy largo!",
-                },
-                pattern: {
-                  value: /^[^\s]+$/,
-                  message: "El apellido no debe contener espacios en blanco",
-                }
-              })}
-            />
+            Nuevo Cupón
           </div>
 
-          <button
-            type="submit"
-            className="btn-history"
-            disabled={isButtonDisabled}
-          >
-            <h2>Generar</h2>
-          </button>
-          {user.permisos === 7 && (
-            <div className="btn-history" onClick={() => loadList()}>
-              <h2>Historial</h2>{" "}
-            </div>
-          )}
-        </form>
-      </div>
+          <section className="flex  items-center justify-center w-[100%]">
+            <h1 className="w-[30%]">Nombre</h1>
+            <input type="text" className=" ml-2 border-white w-[50%] " />
+          </section>
+          <section className="flex  items-center justify-center w-[100%]">
+            <h1 className="w-[30%]">Apellido</h1>
+            <input type="text" className="ml-2 border-white w-[50%]" />
+          </section>
+          <section className="flex  items-center justify-center w-[100%]">
+            <h1 className="w-[30%]">Monto</h1>
+            <input type="text" className=" ml-2 border-white w-[50%]" />
+          </section>
+        </section>
+      </section>
+
       <IonModal
         trigger="open-modal"
         initialBreakpoint={0.7}
@@ -266,6 +211,6 @@ export const Cupon = () => {
           <CuponL data={history} />
         </div>
       </IonModal>
-    </>
+    </main>
   );
 };
