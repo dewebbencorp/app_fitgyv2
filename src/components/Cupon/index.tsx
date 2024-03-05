@@ -53,6 +53,9 @@ export const Cupon = () => {
   });
 
   const onSubmit = handleSubmit(async (data) => {
+    console.log(data);
+
+    return;
     setIsButtonDisabled(true);
     toast.loading("Generando ...", {
       position: "top-right",
@@ -145,11 +148,21 @@ export const Cupon = () => {
   return (
     <main className="flex flex-col   justify-center   items-center h-screen  ">
       <Toaster />
-      <h1 className=" poppins text-[1.2rem] bold tracking-widest italic  z-[-1rem] top-[8vh] absolute   ">
-        ¡GENERA TU CUPÓN!
+      <h1 className=" flex flex-col text-center justify-center items-center poppins text-[1.2rem] bold tracking-widest italic  z-[-1rem] top-[6vh] absolute   ">
+        
+        {errors.nombre ? (
+          <span className="poppins text-[0.9rem] bold tracking-widest italic">{errors.nombre.message}</span>
+        ) : errors.apellido ? (
+          <span className="poppins text-[0.9rem] bold tracking-widest italic">{errors.apellido.message}</span>
+        ) : (
+          <>¡GENERA TU CUPÓN!</>
+        )}
       </h1>
 
-      <section className=" flex flex-col justify-center  items-center bg-gradient-to-r from-[#ff7d04] to-[#e64e08] mt-16   h-[50%]  w-[80%] rounded-[2rem]  relative">
+      <form
+        onSubmit={onSubmit}
+        className=" flex flex-col justify-center  items-center bg-gradient-to-r from-[#ff7d04] to-[#e64e08] mt-16   h-[50%]  w-[80%] rounded-[2rem]  relative"
+      >
         {keyboarIsVisible ? (
           <></>
         ) : (
@@ -161,21 +174,41 @@ export const Cupon = () => {
 
         <img
           src={logo}
-          className="absolute w-32 top-[-5.5rem] bg-gradient-to-r  from-[#e64e08] to-[#ff7d04] p-3  rounded-full "
+          className="absolute w-32 top-[-5.8rem] bg-gradient-to-r  from-[#e64e08] to-[#ff7d04] p-3  rounded-full "
         />
-        <section className="flex flex-col justify-center items-center  relative z-[0]  h-[50%] mt-10 mb-10  w-[100%] gap-7">
+
+        <section className="flex flex-col justify-center items-center  relative z-[0]  h-[50%]  mt-12 mb-10  w-[100%] gap-7">
           <div
             className="
 shadow-custom-1 bg-[#ffdfd1] text-[1rem] text-center tracking-widest text-[orangered] poppins   p-2 rounded-[0.7rem]"
           >
             Nuevo Cupón
           </div>
-          <form className=" child:mb-3 child:text-[0.9rem]    w-[60%]">
+
+          <section className=" child:mb-3 child:text-[0.9rem]    w-[60%]">
             <section className="flex  items-center justify-center text-end w-[100%]">
               <h1 className="w-[30%] ">Nombre</h1>
               <input
                 type="text"
                 className=" ml-2 border-white border-[1px] w-[50%] h-7  "
+                {...register("nombre", {
+                  required: {
+                    value: true,
+                    message: "¡El nombre es requerido! ",
+                  },
+                  minLength: {
+                    value: 5,
+                    message: "¡El nombre debe ser mayor a 5 caracteres!",
+                  },
+                  maxLength: {
+                    value: 10,
+                    message: "El nombre es muy largo",
+                  },
+                  pattern: {
+                    value: /^[^\s]+$/,
+                    message: "El nombre no debe contener espacios en blanco",
+                  },
+                })}
               />
             </section>
             <section className="flex  items-center justify-center text-end w-[100%] ">
@@ -183,8 +216,27 @@ shadow-custom-1 bg-[#ffdfd1] text-[1rem] text-center tracking-widest text-[orang
               <input
                 type="text"
                 className="ml-2 border-white border-[1px] w-[50%] h-7 "
+                {...register("apellido", {
+                  required: {
+                    value: true,
+                    message: "¡El pellido es requerido! ",
+                  },
+                  minLength: {
+                    value: 5,
+                    message: "¡El pellido debe ser mayor a 5 caracteres!",
+                  },
+                  maxLength: {
+                    value: 10,
+                    message: "¡El apellido es muy largo!",
+                  },
+                  pattern: {
+                    value: /^[^\s]+$/,
+                    message: "El apellido no debe contener espacios en blanco",
+                  },
+                })}
               />
             </section>
+
             <section className="flex  items-center justify-center w-[100%] text-end ">
               <h1 className="w-[30%]">Monto</h1>
               <input
@@ -192,10 +244,10 @@ shadow-custom-1 bg-[#ffdfd1] text-[1rem] text-center tracking-widest text-[orang
                 className=" ml-2 border-white border-[1px] w-[50%] h-7"
               />
             </section>
-          </form>
+          </section>
 
           {!keyboarIsVisible && (
-            <div className=" absolute bottom-[-1rem] text-[var(--ion-background-color)] text-[2rem] bold -tracking-widest ">
+            <div className=" absolute bottom-[-1.5rem] text-[var(--ion-background-color)] text-[2rem] bold -tracking-widest ">
               - - - - - - - - - - - - - - - -
             </div>
           )}
@@ -203,22 +255,23 @@ shadow-custom-1 bg-[#ffdfd1] text-[1rem] text-center tracking-widest text-[orang
 
         {!keyboarIsVisible && (
           <section className="flex flex-col gap-4 items-center justify-center w-[100%] animate-appearance-in ">
-            <div
+            <button
               className="
-shadow-custom-1 bg-[#ffdfd1] text-[1rem] text-center tracking-widest text-[orangered] poppins   p-2 rounded-[0.7rem]"
+shadow-custom-1 bg-[#ffdfd1] text-[1rem] text-center tracking-widest text-[orangered] poppins   p-2 rounded-[0.7rem] hover:brightness-75"
+              type="submit"
             >
               Generar
-            </div>
+            </button>
 
             <div
               className="
-shadow-custom-1 bg-[#ffdfd1] text-[1rem] text-center tracking-widest text-[orangered] poppins   p-2 rounded-[0.7rem]"
+shadow-custom-1 bg-[#ffdfd1] text-[1rem] text-center tracking-widest text-[orangered] poppins   p-2 rounded-[0.7rem] hover:brightness-75"
             >
               Historial
             </div>
           </section>
         )}
-      </section>
+      </form>
 
       <IonModal
         trigger="open-modal"
