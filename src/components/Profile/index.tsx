@@ -182,13 +182,15 @@ export const UserProfile = ({ showP }: any) => {
                 </div>
               </div>
             ) : (
-              <><div className="ponits-container">
-              <img className="points-icon " src={points} />
-              <div className="points">
-                <h5>Puntos Disponibles</h5>
-                <h3 className="kenyan italic">0</h3>
-              </div>
-            </div></>
+              <>
+                <div className="ponits-container">
+                  <img className="points-icon " src={points} />
+                  <div className="points">
+                    <h5>Puntos Disponibles</h5>
+                    <h3 className="kenyan italic">0</h3>
+                  </div>
+                </div>
+              </>
             )}
 
             <div

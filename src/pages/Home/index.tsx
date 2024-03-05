@@ -17,7 +17,7 @@ import { Fitbar } from "../Fitbar/Fitbar";
 import "./home.css";
 import home from "./img/home.png";
 import fitbar from "./img/fitbar.png";
-import cupon from "./img/cupon.png";
+import cuponImg from "./img/cupon.png";
 import wifi from "./img/wifi.png";
 import gift from "./img/giftCard.png";
 import { Profile } from "../Profile";
@@ -28,11 +28,24 @@ import { UserProfile } from "../../components/Profile";
 import { AiFillGift } from "react-icons/ai";
 import { HiQrCode } from "react-icons/hi2";
 import { FitGroup } from "../FitGroup";
+
+import { Keyboard } from "@capacitor/keyboard";
+
 export const Home = () => {
   const [profile, setProfile] = useState(false);
+  const [keyboarIsVisible, setkeyboarIsVisible] = useState(false);
   const user: Asociado = useSelector((state: Asociado) => state.user);
   const location = useLocation();
 
+  useEffect(() => {
+    Keyboard.addListener("keyboardWillShow", (info) => {
+      setkeyboarIsVisible(true);
+    });
+
+    Keyboard.addListener("keyboardWillHide", () => {
+      setkeyboarIsVisible(false);
+    });
+  }, []);
   useEffect(() => {
     if (!user.Nombre_Asociado) {
       window.location.href = "/login";
@@ -53,13 +66,17 @@ export const Home = () => {
               <Route exact path="/home/inicio" component={Welcome} />
               <Route exact path="/home/perfil" component={Profile} />
               <Route exact path="/home/fitgroup" component={FitGroup} />
-              <Route exact path="/home/cupon" component={Cupon} />
               <Route exact path="/home/wifi" component={Wifi} />
+              <Route exact path="/home/cupon" component={Cupon} />
               <Route exact path="/home">
                 <Redirect to="/home/inicio" />
               </Route>
             </IonRouterOutlet>
-            <IonTabBar className="iontab" slot="bottom">
+            <IonTabBar
+              className="iontab"
+              slot="bottom"
+              hidden={keyboarIsVisible}
+            >
               <IonTabButton tab="inicio" href="/home/inicio">
                 <img className="img-tab" width="65%" src={home} />
               </IonTabButton>
@@ -82,7 +99,9 @@ export const Home = () => {
 
               {user.permisos == 7 ? (
                 <IonTabButton tab="cupon" href="/home/cupon">
-                  <img className="img-tab" width="50%" src={cupon} />
+                  <span>
+                    <img className="img-tab" width="50%" src={cuponImg} />
+                  </span>
                 </IonTabButton>
               ) : (
                 <></>

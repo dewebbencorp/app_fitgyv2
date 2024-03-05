@@ -14,6 +14,7 @@ import { AiOutlineCloseCircle } from "react-icons/ai";
 import { CuponL } from "./CuponList";
 
 import logo from "./images/fitbar.png";
+import { Keyboard } from "@capacitor/keyboard";
 export const Cupon = () => {
   const [isButtonDisabled, setIsButtonDisabled] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
@@ -21,10 +22,24 @@ export const Cupon = () => {
   const [history, setHistory] = useState<CuponList>();
   const [code, setCode] = useState("");
   const [name, setName] = useState<string>();
+
+  const [keyboarIsVisible, setkeyboarIsVisible] = useState(false);
+
   const dispatch: ThunkDispatch<any, void, AnyAction> = useDispatch();
 
   const user: Asociado = useSelector((state: Asociado) => state.user);
   const modal = useRef<HTMLIonModalElement>();
+
+  useEffect(() => {
+    Keyboard.addListener("keyboardWillShow", (info) => {
+      setkeyboarIsVisible(true);
+    });
+
+    Keyboard.addListener("keyboardWillHide", () => {
+      setkeyboarIsVisible(false);
+    });
+  }, []);
+
   const {
     register,
     handleSubmit,
@@ -119,6 +134,8 @@ export const Cupon = () => {
   };
 
   useEffect(() => {
+    console.log(document.querySelector("ion-tabbar"));
+
     document.addEventListener("ionBackButton", backButtonHandler);
     return () => {
       document.removeEventListener("ionBackButton", backButtonHandler);
@@ -126,39 +143,81 @@ export const Cupon = () => {
   }, []);
 
   return (
-    <main className="flex justify-center items-center h-[80vh] ">
+    <main className="flex flex-col   justify-center   items-center h-screen  ">
       <Toaster />
+      <h1 className=" poppins text-[1.2rem] bold tracking-widest italic  z-[-1rem] top-[8vh] absolute   ">
+        ¡GENERA TU CUPÓN!
+      </h1>
 
-      <section className=" flex justify-center items-center bg-gradient-to-r from-[#ff7d04] to-[#e64e08]   h-[70%] w-[75%] rounded-[1rem] relative">
-        <div className=" bg-[var(--ion-background-color)] absolute bottom-28 left-[-1rem] p-5 rounded-[2rem]"></div>
-        <div className=" bg-[var(--ion-background-color)] absolute bottom-28 right-[-1rem] p-5 rounded-[2rem]"></div>
+      <section className=" flex flex-col justify-center  items-center bg-gradient-to-r from-[#ff7d04] to-[#e64e08] mt-16   h-[50%]  w-[80%] rounded-[2rem]  relative">
+        {keyboarIsVisible ? (
+          <></>
+        ) : (
+          <>
+            <div className=" z-10 bg-[var(--ion-background-color)] absolute bottom-28 left-[-1rem] p-5 rounded-[2rem]"></div>
+            <div className=" z-10 bg-[var(--ion-background-color)] absolute bottom-28 right-[-1rem] p-5 rounded-[2rem]"></div>
+          </>
+        )}
 
         <img
           src={logo}
-          className="absolute w-32 top-[-3rem] bg-gradient-to-r  from-[#e64e08] to-[#ff7d04] p-3  rounded-full "
+          className="absolute w-32 top-[-5.5rem] bg-gradient-to-r  from-[#e64e08] to-[#ff7d04] p-3  rounded-full "
         />
-
-        <section className="flex flex-col justify-start items-center  border-[2px] border-black p-1 h-[55%] w-[100%] gap-5">
+        <section className="flex flex-col justify-center items-center  relative z-[0]  h-[50%] mt-10 mb-10  w-[100%] gap-7">
           <div
             className="
-shadow-custom-1 bg-[#ffdfd1] text-[1rem] tracking-widest text-[orangered] poppins  p-2 rounded-[0.5rem]"
+shadow-custom-1 bg-[#ffdfd1] text-[1rem] text-center tracking-widest text-[orangered] poppins   p-2 rounded-[0.7rem]"
           >
             Nuevo Cupón
           </div>
+          <form className=" child:mb-3 child:text-[0.9rem]    w-[60%]">
+            <section className="flex  items-center justify-center text-end w-[100%]">
+              <h1 className="w-[30%] ">Nombre</h1>
+              <input
+                type="text"
+                className=" ml-2 border-white border-[1px] w-[50%] h-7  "
+              />
+            </section>
+            <section className="flex  items-center justify-center text-end w-[100%] ">
+              <h1 className="w-[30%]">Apellido</h1>
+              <input
+                type="text"
+                className="ml-2 border-white border-[1px] w-[50%] h-7 "
+              />
+            </section>
+            <section className="flex  items-center justify-center w-[100%] text-end ">
+              <h1 className="w-[30%]">Monto</h1>
+              <input
+                type="text"
+                className=" ml-2 border-white border-[1px] w-[50%] h-7"
+              />
+            </section>
+          </form>
 
-          <section className="flex  items-center justify-center w-[100%]">
-            <h1 className="w-[30%]">Nombre</h1>
-            <input type="text" className=" ml-2 border-white w-[50%] " />
-          </section>
-          <section className="flex  items-center justify-center w-[100%]">
-            <h1 className="w-[30%]">Apellido</h1>
-            <input type="text" className="ml-2 border-white w-[50%]" />
-          </section>
-          <section className="flex  items-center justify-center w-[100%]">
-            <h1 className="w-[30%]">Monto</h1>
-            <input type="text" className=" ml-2 border-white w-[50%]" />
-          </section>
+          {!keyboarIsVisible && (
+            <div className=" absolute bottom-[-1rem] text-[var(--ion-background-color)] text-[2rem] bold -tracking-widest ">
+              - - - - - - - - - - - - - - - -
+            </div>
+          )}
         </section>
+
+        {!keyboarIsVisible && (
+          <section className="flex flex-col gap-4 items-center justify-center w-[100%] animate-appearance-in ">
+            <div
+              className="
+shadow-custom-1 bg-[#ffdfd1] text-[1rem] text-center tracking-widest text-[orangered] poppins   p-2 rounded-[0.7rem]"
+            >
+              Generar
+            </div>
+
+            <div
+              className="
+shadow-custom-1 bg-[#ffdfd1] text-[1rem] text-center tracking-widest text-[orangered] poppins   p-2 rounded-[0.7rem]"
+            >
+              Historial
+            </div>
+          </section>
+        )}
       </section>
 
       <IonModal
