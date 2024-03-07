@@ -149,19 +149,12 @@ export const Cupon = () => {
     <main className="flex flex-col   justify-center   items-center h-screen  ">
       <Toaster />
       <h1 className=" flex flex-col text-center justify-center items-center poppins text-[1.2rem] bold tracking-widest italic  z-[-1rem] top-[6vh] absolute   ">
-        
-        {errors.nombre ? (
-          <span className="poppins text-[0.9rem] bold tracking-widest italic">{errors.nombre.message}</span>
-        ) : errors.apellido ? (
-          <span className="poppins text-[0.9rem] bold tracking-widest italic">{errors.apellido.message}</span>
-        ) : (
-          <>¡GENERA TU CUPÓN!</>
-        )}
+        ¡GENERA TU CUPÓN!
       </h1>
 
       <form
         onSubmit={onSubmit}
-        className=" flex flex-col justify-center  items-center bg-gradient-to-r from-[#ff7d04] to-[#e64e08] mt-16   h-[50%]  w-[80%] rounded-[2rem]  relative"
+        className=" flex flex-col justify-center  items-center bg-gradient-to-r from-[#ff7d04] to-[#e64e08] mt-16    w-[80%] rounded-[2rem]  relative"
       >
         {keyboarIsVisible ? (
           <></>
@@ -177,16 +170,16 @@ export const Cupon = () => {
           className="absolute w-32 top-[-5.8rem] bg-gradient-to-r  from-[#e64e08] to-[#ff7d04] p-3  rounded-full "
         />
 
-        <section className="flex flex-col justify-center items-center  relative z-[0]  h-[50%]  mt-12 mb-10  w-[100%] gap-7">
+        <section className="flex flex-col justify-center items-center  relative z-[0]  h-[50%]  mt-8 mb-10  w-[100%] gap-7">
           <div
             className="
-shadow-custom-1 bg-[#ffdfd1] text-[1rem] text-center tracking-widest text-[orangered] poppins   p-2 rounded-[0.7rem]"
+shadow-custom-1 bg-[#ffdfd1] text-[1rem] text-center tracking-widest text-[orangered] poppins  mt-2 p-2 rounded-[0.7rem]"
           >
             Nuevo Cupón
           </div>
 
-          <section className=" child:mb-3 child:text-[0.9rem]    w-[60%]">
-            <section className="flex  items-center justify-center text-end w-[100%]">
+          <section className="  child:text-[0.9rem]    w-[60%]">
+            <section className="flex  mb-3 items-center justify-center text-end w-[100%]">
               <h1 className="w-[30%] ">Nombre</h1>
               <input
                 type="text"
@@ -211,7 +204,7 @@ shadow-custom-1 bg-[#ffdfd1] text-[1rem] text-center tracking-widest text-[orang
                 })}
               />
             </section>
-            <section className="flex  items-center justify-center text-end w-[100%] ">
+            <section className="flex mb-3 items-center justify-center text-end w-[100%] ">
               <h1 className="w-[30%]">Apellido</h1>
               <input
                 type="text"
@@ -237,17 +230,29 @@ shadow-custom-1 bg-[#ffdfd1] text-[1rem] text-center tracking-widest text-[orang
               />
             </section>
 
-            <section className="flex  items-center justify-center w-[100%] text-end ">
+            <section className="flex   items-center justify-center w-[100%] text-end ">
               <h1 className="w-[30%]">Monto</h1>
               <input
-                type="text"
+                type="number"
                 className=" ml-2 border-white border-[1px] w-[50%] h-7"
               />
             </section>
+
+            {errors.nombre ? (
+              <span className="text-white italic bold text-center shimer text-[0.8rem] animate-pulse ">
+                {errors.nombre.message}
+              </span>
+            ) : errors.apellido ? (
+              <span className="text-white italic bold text-center shimer text-[0.8rem] animate-pulse ">
+                {errors.apellido.message}
+              </span>
+            ) : (
+              <></>
+            )}
           </section>
 
           {!keyboarIsVisible && (
-            <div className=" absolute bottom-[-1.5rem] text-[var(--ion-background-color)] text-[2rem] bold -tracking-widest ">
+            <div className="   text-[var(--ion-background-color)] text-[2rem] bold -tracking-widest ">
               - - - - - - - - - - - - - - - -
             </div>
           )}

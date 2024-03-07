@@ -76,7 +76,8 @@ ion-toolbar {
 
 
 .shimmer{
-  animation: shimmerAnimation 2s ease-in-out alternate-reverse infinite;
+  animation: shimmerAnimation 1.5s infinite;
+
   
 }
 
