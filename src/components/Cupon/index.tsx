@@ -49,13 +49,14 @@ export const Cupon = () => {
     defaultValues: {
       nombre: "",
       apellido: "",
+      monto: "",
     },
   });
 
   const onSubmit = handleSubmit(async (data) => {
-    console.log(data);
-
-    return;
+    alert(JSON.stringify(data));
+    return
+    
     setIsButtonDisabled(true);
     toast.loading("Generando ...", {
       position: "top-right",
@@ -73,6 +74,7 @@ export const Cupon = () => {
       setIsButtonDisabled(false);
       return;
     }
+
     setCode(d.response);
     reset();
     toast.dismiss();
@@ -235,6 +237,24 @@ shadow-custom-1 bg-[#ffdfd1] text-[1rem] text-center tracking-widest text-[orang
               <input
                 type="number"
                 className=" ml-2 border-white border-[1px] w-[50%] h-7"
+                {...register("monto", {
+                  required: {
+                    value: true,
+                    message: "¡El monto es requerido! ",
+                  },
+                  minLength: {
+                    value: 3,
+                    message: "¡El monto debe tener almenos a 3 caracteres!",
+                  },
+                  maxLength: {
+                    value: 8,
+                    message: "¡El monto es muy grande!",
+                  },
+                  pattern: {
+                    value: /^\d+(\.\d+)?$/,
+                    message: "El monto debe ser un número válido",
+                  },
+                })}
               />
             </section>
 
@@ -245,6 +265,10 @@ shadow-custom-1 bg-[#ffdfd1] text-[1rem] text-center tracking-widest text-[orang
             ) : errors.apellido ? (
               <span className="text-white italic bold text-center shimer text-[0.8rem] animate-pulse ">
                 {errors.apellido.message}
+              </span>
+            ) : errors.monto ? (
+              <span className="text-white italic bold text-center shimer text-[0.8rem] animate-pulse ">
+                {errors.monto.message}
               </span>
             ) : (
               <></>
@@ -271,6 +295,7 @@ shadow-custom-1 bg-[#ffdfd1] text-[1rem] text-center tracking-widest text-[orang
             <div
               className="
 shadow-custom-1 bg-[#ffdfd1] text-[1rem] text-center tracking-widest text-[orangered] poppins   p-2 rounded-[0.7rem] hover:brightness-75"
+              onClick={loadList}
             >
               Historial
             </div>
