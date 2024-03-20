@@ -7,6 +7,7 @@ import logo from "./images/fitbar.png";
 import toast from "react-hot-toast";
 import { Asociado } from "../../interfaces";
 import { useSelector } from "react-redux";
+import { FaShareAlt } from "react-icons/fa";
 
 interface ShareBarcodeProps {
   code: string;
@@ -54,12 +55,12 @@ export const ShareBarcode = ({ code, name }: ShareBarcodeProps) => {
   };
 
   return (
-    <main className=" flex flex-col  justify-center items-center gap-10  h-screen ">
-      <h1 className=" absolute z-30 top-[5vh]  text-center  items-center poppins italic bold text-[1.5rem]  tracking-[0.2rem]  ">
+    <main className=" flex flex-col  justify-evenly  items-center gap-10  h-screen ">
+      <h1 className=" absolute z-30 top-[8vh]  text-center  items-center poppins italic bold text-[1.5rem]  tracking-[0.2rem]  ">
         ¡CUPÓN EXITOSO!
       </h1>
 
-      <section className="flex justify-center items-center z-10 border-[2px] border-[#e64e08]  h-[65%] w-[85%]  rounded-[2rem]  relative bg-[var(--ion-background-color)]  ">
+      <section className="flex justify-center items-center z-10 border-[2px] border-[#e64e08]  h-[65%] w-[85%]  rounded-[2rem]  relative bg-[var(--ion-background-color)] mt-[10vh] ">
         <img
           src={logo}
           className="absolute w-36 top-[-5rem] bg-gradient-to-r  from-[#e64e08] to-[#ff7d04] p-3  rounded-full border-[var(--ion-background-color)] border-[0.7rem] "
@@ -97,7 +98,7 @@ export const ShareBarcode = ({ code, name }: ShareBarcodeProps) => {
 
 
           <section className="flex justify-center mt-5 ">
-            hola
+          <FaShareAlt fontSize={28}/>
           </section>
         </section>
         {/* <button
