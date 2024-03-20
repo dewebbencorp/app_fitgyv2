@@ -220,7 +220,7 @@ main ion-grid ion-accordion-group ion-accordion div span {
   gap: 0;
 }
 
-.slotac p{
+.slotac p {
   margin-bottom: 0.5rem;
   margin-top: 0.5rem;
 }
@@ -228,7 +228,6 @@ main ion-grid ion-accordion-group ion-accordion div span {
 .slotac p {
   font-size: 1rem;
   text-align: center;
-  
 }
 
 .btn-share-cupon {
@@ -247,4 +246,35 @@ ion-accordion ion-row {
   --ion-background-color: black;
   overflow: hidden;
   overflow-y: scroll;
+}
+/* #modal-ticket {
+  --background: rgb(0, 0, 0);
+} */
+
+.square-left {
+  position: absolute;
+  bottom: 11rem;
+  left: -0.5rem;
+  z-index: 20;
+  border: 2px solid #e64e08;
+  margin: 2%;
+  width: 1.5rem;
+  height: 2.5rem;
+  border-top-right-radius: 2rem;
+  border-bottom-right-radius: 2rem;
+  border-left-color: var(--ion-background-color);
+}
+
+.square-right {
+  position: absolute;
+  bottom: 11rem;
+  right: -0.5rem;
+  z-index: 20;
+  border: 2px solid #e64e08;
+  margin: 2%;
+  width: 1.5rem;
+  height: 2.5rem;
+  border-top-left-radius: 2rem;
+  border-bottom-left-radius: 2rem;
+  border-right-color: var(--ion-background-color);
 }

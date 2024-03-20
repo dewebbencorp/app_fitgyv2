@@ -1,34 +1,25 @@
-import cupon_img from "../../pages/Home/img/cupon.png";
 import { useForm } from "react-hook-form";
 import toast, { Toaster } from "react-hot-toast";
 import { useEffect, useRef, useState } from "react";
-import BACKGROUND_CUPON_VIDEO from "./video/bg_cupon.gif";
-import { generateCupon, getCuponList } from "../../axios/User";
+import { generateCupon } from "../../axios/Cupon";
 import { AnyAction, ThunkDispatch } from "@reduxjs/toolkit";
 import { useDispatch, useSelector } from "react-redux";
-import { Asociado, CuponList, ResponseUpdate } from "../../interfaces";
-import "./cupon.css";
-import { ShareBarcode } from "./ShareBarcode";
-import { IonModal } from "@ionic/react";
-import { AiOutlineCloseCircle } from "react-icons/ai";
-import { CuponL } from "./CuponList";
-
+import { Asociado, ResponseUpdate } from "../../interfaces";
 import logo from "./images/fitbar.png";
 import { Keyboard } from "@capacitor/keyboard";
+import "./cupon.css";
+import { IonModal } from "@ionic/react";
+import { AiOutlineCloseCircle } from "react-icons/ai";
+import { ShareBarcode } from "./ShareBarcode";
+import { backgroundImage } from "html2canvas/dist/types/css/property-descriptors/background-image";
+
+const toastStyle = { style: { marginTop: "1.5rem" } };
+
 export const Cupon = () => {
   const [isButtonDisabled, setIsButtonDisabled] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
-  const [isHistory, setIsHistory] = useState(false);
-  const [history, setHistory] = useState<CuponList>();
-  const [code, setCode] = useState("");
-  const [name, setName] = useState<string>();
-
   const [keyboarIsVisible, setkeyboarIsVisible] = useState(false);
-
-  const dispatch: ThunkDispatch<any, void, AnyAction> = useDispatch();
-
   const user: Asociado = useSelector((state: Asociado) => state.user);
-  const modal = useRef<HTMLIonModalElement>();
 
   useEffect(() => {
     Keyboard.addListener("keyboardWillShow", (info) => {
@@ -54,87 +45,31 @@ export const Cupon = () => {
   });
 
   const onSubmit = handleSubmit(async (data) => {
-    alert(JSON.stringify(data));
-    return
-    
-    setIsButtonDisabled(true);
-    toast.loading("Generando ...", {
-      position: "top-right",
-      style: { marginTop: "1.5rem" },
-    });
-    const d: ResponseUpdate = await dispatch(
-      generateCupon(user.Clav_Asociado, data.nombre + " " + data.apellido)
+    setIsVisible(true);
+    return;
+    toast.loading("Generando ...", toastStyle);
+
+    const res = await generateCupon(
+      user.Clav_Asociado,
+      `${data.nombre} ${data.apellido}`,
+      parseInt(data.monto)
     );
-    if (!d.status) {
+
+    if (!res.status) {
       toast.dismiss();
-      toast.error("Error al generar ", {
-        position: "top-right",
-        style: { marginTop: "1.5rem" },
-      });
-      setIsButtonDisabled(false);
+      toast.error(`Error: ${res.response}`, toastStyle);
       return;
     }
 
-    setCode(d.response);
-    reset();
+    console.log(res.response);
+
     toast.dismiss();
-    toast.success("Generado", {
-      position: "top-right",
-      style: { marginTop: "1.5rem" },
-    });
-    setName(data.nombre + " " + data.apellido);
-    setIsVisible(true);
-    setIsButtonDisabled(false);
+    toast.success("Generado", toastStyle);
+
+    return;
   });
 
-  function dismiss() {
-    modal.current?.dismiss;
-    setIsVisible(false);
-  }
-  const [lv, setLv] = useState(true);
-  const loadvideo = (data: any) => {
-    if (data) {
-      setLv(false);
-    }
-  };
-
-  const loadList = async () => {
-    toast.loading("Cargando", {
-      position: "top-right",
-      style: { marginTop: "1.5rem" },
-    });
-    const data: any = await dispatch(getCuponList(user.Clav_Asociado));
-    if (data.message) {
-      toast.dismiss();
-      toast.error("Error de red", {
-        position: "top-right",
-        style: { marginTop: "1.5rem" },
-      });
-      return;
-    }
-
-    toast.dismiss();
-    toast.success("Éxito", {
-      position: "top-right",
-      style: { marginTop: "1.5rem" },
-    });
-    setIsHistory(true);
-
-    const unusedCode = data.filter(
-      (item: { utilizado: boolean }) => item.utilizado === false
-    );
-
-    const res = unusedCode.sort((a, b) => {
-      const fechaA = new Date(a.vencimiento);
-      const fechaB = new Date(b.vencimiento);
-      return fechaB - fechaA;
-    });
-
-    setHistory(res.slice(0, 5));
-  };
-
   const backButtonHandler = () => {
-    setIsHistory(false);
     setIsVisible(false);
   };
 
@@ -295,7 +230,6 @@ shadow-custom-1 bg-[#ffdfd1] text-[1rem] text-center tracking-widest text-[orang
             <div
               className="
 shadow-custom-1 bg-[#ffdfd1] text-[1rem] text-center tracking-widest text-[orangered] poppins   p-2 rounded-[0.7rem] hover:brightness-75"
-              onClick={loadList}
             >
               Historial
             </div>
@@ -305,53 +239,18 @@ shadow-custom-1 bg-[#ffdfd1] text-[1rem] text-center tracking-widest text-[orang
 
       <IonModal
         trigger="open-modal"
-        initialBreakpoint={0.7}
-        breakpoints={[1, 0.25, 0.5, 0.75]}
-        onDidDismiss={() => setIsVisible(false)}
+     
         isOpen={isVisible}
+
+        id="modal-ticket"
       >
         <div
           style={{ display: "flex", justifyContent: "end", fontSize: "2rem" }}
         >
-          <AiOutlineCloseCircle onClick={() => dismiss()} />
+          <AiOutlineCloseCircle onClick={() => setIsVisible(false)} />
         </div>
 
-        <ShareBarcode code={code} name={name ? name : ""} view={true} />
-      </IonModal>
-
-      <IonModal
-        id="cuponl"
-        trigger="open-modal"
-        initialBreakpoint={0.8}
-        isOpen={isHistory}
-        onDidDismiss={() => setIsHistory(false)}
-      >
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "center",
-            fontSize: "2rem",
-            position: "relative",
-          }}
-        >
-          <div
-            style={{
-              width: "100%",
-              display: "flex",
-              justifyContent: "end",
-              position: "absolute",
-              zIndex: "30",
-              top: "0",
-              right: "0",
-              color: "white",
-              fontSize: "1em",
-            }}
-          >
-            <AiOutlineCloseCircle onClick={() => setIsHistory(false)} />
-          </div>
-          <CuponL data={history} />
-        </div>
+        <ShareBarcode code="asawq" name="_nombre_"  />
       </IonModal>
     </main>
   );
