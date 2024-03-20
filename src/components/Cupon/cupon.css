@@ -254,29 +254,28 @@ ion-accordion ion-row {
 .square-left {
   position: absolute;
   bottom: 11rem;
-  left: -0.6rem;
+  left: -0.2rem;
   z-index: 20;
   border: 2px solid #e64e08;
-  margin: 2%;
+  
   width: 1.6rem;
   height: 2.5rem;
   border-top-right-radius: 2rem;
   border-bottom-right-radius: 2rem;
   border-left-color: var(--ion-background-color);
-  border-left-width: 0.2rem;
+  border-left-width: 0.3rem;
 }
 
 .square-right {
   position: absolute;
   bottom: 11rem;
-  right: -0.6rem;
+  right: -0.2rem;
   z-index: 20;
   border: 2px solid #e64e08;
-  margin: 2%;
   width: 1.5rem;
   height: 2.5rem;
   border-top-left-radius: 2rem;
   border-bottom-left-radius: 2rem;
   border-right-color: var(--ion-background-color);
-  border-right-width: 0.2rem
+  border-right-width: 0.3rem
 }
