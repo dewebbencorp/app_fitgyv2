@@ -57,7 +57,7 @@ export const ShareBarcode = ({ code, name }: ShareBarcodeProps) => {
 
       
 
-      <section className="flex justify-center items-center z-10 border-[2px] border-[#e64e08]  h-[70%] w-[85%] p-10 rounded-[2rem]  relative bg-[var(--ion-background-color)]">
+      <section className="flex justify-center items-center z-10 border-[2px] border-[#e64e08]  h-[70%] w-[85%] p-10 rounded-[2rem]  relative bg-[var(--ion-background-color)]  ">
       <img
           src={logo}
           className="absolute w-40 top-[-5rem] bg-gradient-to-r  from-[#e64e08] to-[#ff7d04] p-3  rounded-full border-[var(--ion-background-color)] border-[0.7rem] "
